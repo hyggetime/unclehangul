@@ -1,0 +1,53 @@
+import Link from "next/link";
+
+type ToolPlaceholderProps = {
+  title: string;
+  category: string;
+  descriptionEn: string;
+  descriptionKo: string;
+};
+
+function ToolPlaceholder({
+  title,
+  category,
+  descriptionEn,
+  descriptionKo,
+}: ToolPlaceholderProps) {
+  return (
+    <div className="md:col-span-12">
+      <div className="mx-auto w-full max-w-[1440px] p-4 md:p-8">
+        <div className="flex h-10 items-center gap-2 border-b-[0.5px] border-[#D9D9D3] px-1">
+          <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/45">
+            Tools / {category}
+          </p>
+        </div>
+        <div className="border-b-[0.5px] border-[#D9D9D3] px-5 py-12 md:px-8">
+          <h1 className="font-en text-2xl font-black md:text-3xl">{title}</h1>
+          <p className="font-en mt-4 max-w-xl text-sm leading-relaxed text-foreground/65">
+            {descriptionEn}
+          </p>
+          <p className="font-ko mt-2 max-w-xl text-sm leading-relaxed text-foreground/55">
+            {descriptionKo}
+          </p>
+          <Link
+            href="/tools"
+            className="font-en mt-8 inline-block text-xs font-bold uppercase tracking-[0.14em] text-foreground transition-colors hover:text-[#FF4B3E]"
+          >
+            ← Back to Tools
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function TypeGridTesterPage() {
+  return (
+    <ToolPlaceholder
+      title="Type & Grid Tester"
+      category="Design"
+      descriptionEn="Minimal typography and grid experiments—shipping soon."
+      descriptionKo="미니멀 타이포·격자 실험실을 준비 중입니다."
+    />
+  );
+}
