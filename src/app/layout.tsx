@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description:
     "한국어를 배우는 이들을 위한 타이포그래피 중심의 학습 공간. Learn Hangul with clarity.",
   metadataBase: new URL("https://unclehangul.com"),
+  verification: {
+    google: "syGIjQ2Y9Lp5mZ2f-CcmZ_JAf8i2ZkAxjRhikuyCYJw",
+  },
 };
 
 export default function RootLayout({
