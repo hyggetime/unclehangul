@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticleJsonLd } from "@/components/blog/ArticleJsonLd";
+import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
@@ -71,6 +72,8 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
             <div itemProp="articleBody" className="min-w-0 overflow-x-clip">
               <BlogBody blocks={post.blocks} constrainWidth />
             </div>
+
+            <AuthorTeaser />
           </article>
 
           <LearnSidebar />

@@ -126,9 +126,9 @@ Korean example sentences you can reuse in class or tutoring:
 
 ---
 
-## 6. Classroom Tips From a Certified Korean Language Teacher
+## 6. Classroom Tips
 
-As a **certified Korean language instructor and media director**, I design Uncle Hangul materials for **visual calm and oral repetition**. Numbers improve when you combine **eyes, mouth, and hand**:
+Numbers improve when you combine **eyes, mouth, and hand**:
 
 Write the Arabic numeral, draw vertical bars at 만 and 억 boundaries, then write the Korean reading underneath. Do not copy-paste from Google Translate audio until you have attempted the reading yourself—Translate is useful for checking, not for first contact.
 

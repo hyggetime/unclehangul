@@ -158,6 +158,13 @@ export default function Home() {
               tools, articles, and video.
             </p>
 
+            <Link
+              href="/about"
+              className="font-en touch-target mt-6 inline-flex min-h-12 items-center justify-center border-[0.5px] border-[#D9D9D3] bg-background px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E] active:border-[#FF4B3E] active:text-[#FF4B3E]"
+            >
+              Read full story ➔
+            </Link>
+
             <div className="mt-6 border-t-[0.5px] border-[#D9D9D3] pt-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex min-h-[88px] flex-col justify-between border-[0.5px] border-[#D9D9D3] bg-background p-4">

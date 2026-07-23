@@ -30,6 +30,9 @@
 /*.png
 /*.webp
 
+# Local backups (do not commit)
+/AI Backup-*/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

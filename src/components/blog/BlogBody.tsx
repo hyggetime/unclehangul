@@ -6,12 +6,18 @@ import type { BlogBlock } from "@/lib/blog/posts";
 type BlogBodyProps = {
   blocks: BlogBlock[];
   constrainWidth?: boolean;
+  /** Nested inside another panel (e.g. locale toggle). */
+  embedded?: boolean;
 };
 
-export function BlogBody({ blocks, constrainWidth = false }: BlogBodyProps) {
+export function BlogBody({
+  blocks,
+  constrainWidth = false,
+  embedded = false,
+}: BlogBodyProps) {
   return (
     <div
-      className={`blog-prose px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10 ${constrainWidth ? "max-w-3xl" : ""}`}
+      className={`blog-prose ${embedded ? "px-0 pb-0 pt-0" : "px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10"} ${constrainWidth ? "max-w-3xl" : ""}`}
     >
       {blocks.map((block, index) => (
         <BlogBlockRenderer key={`${block.type}-${index}`} block={block} />
