@@ -3,6 +3,7 @@ import {
   getMarkdownSlugs,
   loadMarkdownPost,
 } from "@/lib/blog/load-markdown-post";
+import { buildPageMetadata } from "@/lib/site-metadata";
 
 export type BlogBlock =
   | { type: "paragraph"; content: string }
@@ -105,41 +106,20 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 }
 
 export function getLearnIndexMetadata(): Metadata {
-  return {
+  return buildPageMetadata({
     title: "Learn Korean",
     description:
       "Hangul lessons, pronunciation drills, and reading guides from Uncle Hangul — structured for clear, long-form study.",
-    alternates: { canonical: "https://unclehangul.com/learn" },
-    openGraph: {
-      type: "website",
-      title: "Learn Korean · Uncle Hangul",
-      description:
-        "Hangul lessons, pronunciation drills, and reading guides from Uncle Hangul.",
-      url: "https://unclehangul.com/learn",
-      siteName: "Uncle Hangul",
-    },
-  };
+    path: "/learn",
+  });
 }
 
 export function getPostMetadata(post: BlogPost): Metadata {
-  const url = `https://unclehangul.com/learn/${post.slug}`;
-
-  return {
+  return buildPageMetadata({
     title: post.title,
     description: post.description,
-    alternates: { canonical: url },
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.description,
-      url,
-      publishedTime: post.publishedAt,
-      siteName: "Uncle Hangul",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-    },
-  };
+    path: `/learn/${post.slug}`,
+    openGraphType: "article",
+    publishedTime: post.publishedAt,
+  });
 }

@@ -4,6 +4,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import type { BlogBlock } from "@/lib/blog/posts";
 import { markdownToBlocks } from "@/lib/blog/parse-markdown";
+import { buildPageMetadata } from "@/lib/site-metadata";
 import { getSiteUrl } from "@/lib/site-url";
 
 export type LegalDocumentSlug = "privacy" | "terms";
@@ -50,9 +51,9 @@ export function loadLegalDocument(slug: LegalDocumentSlug): LegalDocument {
 
 export function getLegalMetadata(slug: LegalDocumentSlug): Metadata {
   const doc = loadLegalDocument(slug);
-  return {
+  return buildPageMetadata({
     title: doc.title,
     description: doc.description,
-    alternates: { canonical: `${getSiteUrl()}/${slug}` },
-  };
+    path: `/${slug}`,
+  });
 }

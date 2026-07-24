@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PackOptimizerFrame } from "@/components/tools/PackOptimizerFrame";
+import { getPackOptimizerMetadata } from "@/lib/tools/pack-optimizer-metadata";
 
-export const metadata: Metadata = {
-  title: "Pack Optimizer",
-  description:
-    "Logistics pack optimization—plan cartons and loads with the Uncle Hangul pack engine.",
-  alternates: { canonical: "https://unclehangul.com/tools/pack-optimizer" },
-  openGraph: {
-    title: "Pack Optimizer · Uncle Hangul",
-    description:
-      "Embedded pack optimization calculator from pack.unclehangul.com.",
-    url: "https://unclehangul.com/tools/pack-optimizer",
-  },
-};
+export const metadata: Metadata = getPackOptimizerMetadata();
 
 export default function PackOptimizerPage() {
   return (

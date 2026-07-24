@@ -2,21 +2,9 @@ import type { Metadata } from "next";
 import { ToolCard } from "@/components/tools/ToolCard";
 import { ToolsAdDrawer } from "@/components/tools/ToolsAdDrawer";
 import { TOOLS_CATALOG } from "@/lib/tools/catalog";
+import { getToolsIndexMetadata } from "@/lib/tools/metadata";
 
-export const metadata: Metadata = {
-  title: "Tools",
-  description:
-    "Uncle Hangul tool archive—language, design, utility, and automation web apps on a shared minimal grid.",
-  alternates: { canonical: "https://unclehangul.com/tools" },
-  openGraph: {
-    type: "website",
-    title: "Tools · Uncle Hangul",
-    description:
-      "Language, design, and utility web apps—typography-first, grid-native.",
-    url: "https://unclehangul.com/tools",
-    siteName: "Uncle Hangul",
-  },
-};
+export const metadata: Metadata = getToolsIndexMetadata();
 
 export default function ToolsPage() {
   return (

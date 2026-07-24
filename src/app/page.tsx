@@ -2,10 +2,13 @@ import Link from "next/link";
 import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { NameConverter } from "@/components/NameConverter";
 import { PostCard } from "@/components/PostCard";
+import { getHomeMetadata } from "@/lib/home/metadata";
 import {
   UNCLE_HANGUL_CHANNEL_URL,
   UNCLE_HANGUL_VIDEOS,
 } from "@/lib/youtube";
+
+export const metadata = getHomeMetadata();
 
 const MENU_ITEMS = [
   {

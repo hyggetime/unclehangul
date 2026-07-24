@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
 import { loadAboutContent } from "@/lib/about/load-about";
-import { getSiteUrl } from "@/lib/site-url";
+import { buildPageMetadata } from "@/lib/site-metadata";
 
 export function getAboutMetadata(): Metadata {
   const about = loadAboutContent();
-  const url = `${getSiteUrl()}/about`;
-
-  return {
+  return buildPageMetadata({
     title: about.title,
     description: about.description,
-    alternates: { canonical: url },
-    openGraph: {
-      title: about.title,
-      description: about.description,
-      url,
-      type: "profile",
-    },
-  };
+    path: "/about",
+    openGraphType: "profile",
+  });
 }

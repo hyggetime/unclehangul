@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { AdSenseScript } from "@/components/AdSenseScript";
+import { getRootMetadataBase } from "@/lib/site-metadata";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,7 +19,15 @@ export const metadata: Metadata = {
   },
   description:
     "한국어를 배우는 이들을 위한 타이포그래피 중심의 학습 공간. Learn Hangul with clarity.",
-  metadataBase: new URL("https://unclehangul.com"),
+  metadataBase: getRootMetadataBase(),
+  openGraph: {
+    siteName: "Uncle Hangul",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
   verification: {
     google: "syGIjQ2Y9Lp5mZ2f-CcmZ_JAf8i2ZkAxjRhikuyCYJw",
   },

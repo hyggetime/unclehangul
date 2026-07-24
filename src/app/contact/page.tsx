@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getSiteUrl } from "@/lib/site-url";
+import { getContactMetadata } from "@/lib/contact/metadata";
 
 const INSTAGRAM_URL = "https://www.instagram.com/uncle_hangul/";
 const YOUTUBE_CHANNEL_URL =
   "https://www.youtube.com/channel/UC0Rtx0qDJhDqet5xWVMslfg";
 const CONTACT_EMAIL = "unclehangul@gmail.com";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Reach Uncle Han-guel for Korean learning questions, vocabulary ideas, and collaboration.",
-  alternates: { canonical: `${getSiteUrl()}/contact` },
-};
+export const metadata: Metadata = getContactMetadata();
 
 export default function ContactPage() {
   return (
