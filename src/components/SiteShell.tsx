@@ -1,4 +1,5 @@
 import { AdPlaceholder } from "@/components/AdPlaceholder";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
 type SiteShellProps = {
@@ -14,9 +15,11 @@ export function SiteShell({ children }: SiteShellProps) {
       <div className="mx-auto w-full max-w-[1440px] border-x-[0.5px] border-[#D9D9D3]">
         <SiteHeader />
 
-        <main className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-start pb-16 md:grid-cols-12">
+        <main className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-start pb-0 md:grid-cols-12">
           {children}
         </main>
+
+        <SiteFooter />
       </div>
 
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30">
