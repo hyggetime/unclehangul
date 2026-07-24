@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { MediaFrame } from "@/components/MediaFrame";
+import { InlineMarkdown } from "@/components/legal/InlineMarkdown";
 import { YoutubeEmbed } from "@/components/media/YoutubeEmbed";
 import type { BlogBlock } from "@/lib/blog/posts";
 
@@ -8,35 +9,88 @@ type BlogBodyProps = {
   constrainWidth?: boolean;
   /** Nested inside another panel (e.g. locale toggle). */
   embedded?: boolean;
+  /** Parse `[label](url)` in paragraphs and lists. */
+  richText?: boolean;
+  /** Legal docs: EN typography, tighter section headings. */
+  legalProse?: boolean;
 };
 
 export function BlogBody({
   blocks,
   constrainWidth = false,
   embedded = false,
+  richText = false,
+  legalProse = false,
 }: BlogBodyProps) {
+  const paddingClass = embedded
+    ? "px-0 pb-0 pt-0"
+    : legalProse
+      ? "px-0 pb-0 pt-8"
+      : "px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10";
+
   return (
     <div
-      className={`blog-prose ${embedded ? "px-0 pb-0 pt-0" : "px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-10"} ${constrainWidth ? "max-w-3xl" : ""}`}
+      className={`blog-prose ${paddingClass} ${constrainWidth ? "max-w-3xl" : ""}`}
     >
       {blocks.map((block, index) => (
-        <BlogBlockRenderer key={`${block.type}-${index}`} block={block} />
+        <BlogBlockRenderer
+          key={`${block.type}-${index}`}
+          block={block}
+          richText={richText}
+          legalProse={legalProse}
+        />
       ))}
     </div>
   );
 }
 
-function BlogBlockRenderer({ block }: { block: BlogBlock }) {
+function BlogBlockRenderer({
+  block,
+  richText,
+  legalProse,
+}: {
+  block: BlogBlock;
+  richText: boolean;
+  legalProse: boolean;
+}) {
+  const paragraphClass = legalProse
+    ? "font-en mb-6 text-sm leading-relaxed text-foreground/70 md:text-base"
+    : "font-ko mb-6 text-base leading-relaxed text-foreground/80";
+
   switch (block.type) {
     case "paragraph":
       return (
-        <p className="font-ko mb-6 text-base leading-relaxed text-foreground/80">
-          {block.content}
+        <p className={paragraphClass}>
+          {richText ? (
+            <InlineMarkdown text={block.content} />
+          ) : (
+            block.content
+          )}
         </p>
+      );
+
+    case "list":
+      return (
+        <ul
+          className={`${paragraphClass} mt-3 list-none space-y-2 pl-0`}
+        >
+          {block.items.map((item, index) => (
+            <li key={index}>
+              {richText ? <InlineMarkdown text={item} /> : item}
+            </li>
+          ))}
+        </ul>
       );
 
     case "heading":
       if (block.level === 2) {
+        if (legalProse) {
+          return (
+            <h2 className="font-en mb-3 mt-10 text-base font-bold leading-snug text-foreground first:mt-0 md:mt-12 md:text-lg">
+              {block.content}
+            </h2>
+          );
+        }
         return (
           <h2 className="font-en blog-heading-2 mb-4 mt-10 border-t-[0.5px] border-[#D9D9D3] pt-8 text-xl font-bold leading-tight tracking-[-0.02em] text-foreground first:mt-0 first:border-t-0 first:pt-0 md:text-2xl md:tracking-tight">
             {block.content}

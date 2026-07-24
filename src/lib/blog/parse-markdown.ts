@@ -14,11 +14,35 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
     paragraph = [];
   }
 
+  function flushList(listItems: string[]) {
+    const items = listItems.map((item) => item.trim()).filter(Boolean);
+    if (items.length) blocks.push({ type: "list", items });
+  }
+
+  let listItems: string[] = [];
+
+  function flushListBuffer() {
+    flushList(listItems);
+    listItems = [];
+  }
+
   for (const rawLine of lines) {
     const line = rawLine.trimEnd();
 
+    const listMatch = line.match(/^-\s+(.+)$/);
+    if (listMatch) {
+      flushParagraph();
+      listItems.push(listMatch[1].trim());
+      continue;
+    }
+
+    if (listItems.length > 0 && line.trim() !== "") {
+      flushListBuffer();
+    }
+
     if (line.trim() === "---") {
       flushParagraph();
+      flushListBuffer();
       blocks.push({ type: "divider" });
       continue;
     }
@@ -26,6 +50,7 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
     const h2 = line.match(/^##\s+(.+)$/);
     if (h2) {
       flushParagraph();
+      flushListBuffer();
       blocks.push({ type: "heading", level: 2, content: h2[1].trim() });
       continue;
     }
@@ -33,6 +58,7 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
     const h3 = line.match(/^###\s+(.+)$/);
     if (h3) {
       flushParagraph();
+      flushListBuffer();
       blocks.push({ type: "heading", level: 3, content: h3[1].trim() });
       continue;
     }
@@ -40,6 +66,7 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
     const yt = line.trim().match(YOUTUBE_LINE);
     if (yt) {
       flushParagraph();
+      flushListBuffer();
       blocks.push({
         type: "youtube",
         videoId: yt[1],
@@ -51,6 +78,7 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
 
     if (line.trim() === "") {
       flushParagraph();
+      flushListBuffer();
       continue;
     }
 
@@ -58,5 +86,6 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
   }
 
   flushParagraph();
+  flushListBuffer();
   return blocks;
 }

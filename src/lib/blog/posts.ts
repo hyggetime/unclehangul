@@ -7,6 +7,7 @@ import {
 export type BlogBlock =
   | { type: "paragraph"; content: string }
   | { type: "heading"; level: 2 | 3; content: string }
+  | { type: "list"; items: string[] }
   | { type: "divider" }
   | {
       type: "youtube";
