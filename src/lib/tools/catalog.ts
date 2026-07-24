@@ -28,13 +28,13 @@ export const TOOLS_CATALOG: ToolEntry[] = [
   },
   {
     number: "02",
-    category: "DESIGN",
-    title: "Type & Grid Tester",
+    category: "UTIL",
+    title: "Pack Optimizer",
     descriptionEn:
-      "A minimal typography and layout lab for 0.5px grids, scale, and hairline rhythm.",
+      "Logistics pack optimization—carton and load planning powered by pack.unclehangul.com.",
     descriptionKo:
-      "미니멀 타이포그래피와 격자 레이아웃을 실험하는 디자인 샌드박스입니다.",
-    href: "/tools/type-grid-tester",
+      "물류 적재·박스 배치를 최적화하는 패킹 엔진 위젯입니다.",
+    href: "/tools/pack-optimizer",
   },
   {
     number: "03",
