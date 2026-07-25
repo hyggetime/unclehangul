@@ -12,6 +12,8 @@ type PageMetadataOptions = {
   openGraphType?: "website" | "article" | "profile";
   publishedTime?: string;
   noIndex?: boolean;
+  /** When true, document title is exactly `title` (no layout suffix). */
+  absoluteTitle?: boolean;
 };
 
 function absoluteUrl(path: string): string {
@@ -26,10 +28,14 @@ function openGraphTitle(title: string): string {
 /** Shared metadata for public marketing, legal, and tool pages. */
 export function buildPageMetadata(options: PageMetadataOptions): Metadata {
   const url = absoluteUrl(options.path);
-  const ogTitle = openGraphTitle(options.title);
+  const ogTitle = options.absoluteTitle
+    ? options.title
+    : openGraphTitle(options.title);
 
   return {
-    title: options.title,
+    title: options.absoluteTitle
+      ? { absolute: options.title }
+      : options.title,
     description: options.description,
     alternates: { canonical: url },
     openGraph: {

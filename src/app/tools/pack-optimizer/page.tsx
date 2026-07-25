@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PackOptimizerFrame } from "@/components/tools/PackOptimizerFrame";
+import { PackOptimizerSeoContent } from "@/components/tools/PackOptimizerSeoContent";
 import { getPackOptimizerMetadata } from "@/lib/tools/pack-optimizer-metadata";
 
 export const metadata: Metadata = getPackOptimizerMetadata();
@@ -22,6 +23,7 @@ export default function PackOptimizerPage() {
 
       <div className="w-full bg-background">
         <PackOptimizerFrame />
+        <PackOptimizerSeoContent />
       </div>
     </div>
   );
