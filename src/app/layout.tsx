@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { AdSenseScript } from "@/components/AdSenseScript";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { getRootMetadataBase } from "@/lib/site-metadata";
 import "./globals.css";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased">
+        <GoogleAnalytics />
         <AdSenseScript />
         <SiteShell>{children}</SiteShell>
       </body>
