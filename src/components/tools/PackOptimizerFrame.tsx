@@ -5,7 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 const WIDGET_ORIGIN = "https://pack.unclehangul.com";
 const WIDGET_SRC = `${WIDGET_ORIGIN}/pack-optimizer?widget=true`;
 /** Before the iframe posts height; keeps layout stable on first paint. */
-const INITIAL_HEIGHT_PX = 1200;
+const INITIAL_HEIGHT_DESKTOP_PX = 1200;
+const INITIAL_HEIGHT_MOBILE_PX = 720;
 /** Floor after resize messages (short empty states). */
 const MIN_HEIGHT_PX = 400;
 const HEIGHT_BUFFER_PX = 16;
@@ -39,8 +40,21 @@ function parseHeightFromMessage(data: unknown): number | null {
   return null;
 }
 
+function getInitialHeightPx(): number {
+  if (typeof window === "undefined") {
+    return INITIAL_HEIGHT_DESKTOP_PX;
+  }
+  return window.matchMedia("(max-width: 767px)").matches
+    ? INITIAL_HEIGHT_MOBILE_PX
+    : INITIAL_HEIGHT_DESKTOP_PX;
+}
+
 export function PackOptimizerFrame() {
-  const [heightPx, setHeightPx] = useState(INITIAL_HEIGHT_PX);
+  const [heightPx, setHeightPx] = useState(INITIAL_HEIGHT_DESKTOP_PX);
+
+  useEffect(() => {
+    setHeightPx(getInitialHeightPx());
+  }, []);
 
   const applyHeight = useCallback((next: number) => {
     setHeightPx(

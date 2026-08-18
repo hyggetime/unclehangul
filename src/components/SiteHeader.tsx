@@ -1,4 +1,11 @@
 import Link from "next/link";
+import { MobileNavDrawer } from "@/components/MobileNavDrawer";
+import { PRIMARY_NAV_ITEMS } from "@/lib/site-nav";
+
+const DESKTOP_NAV = [
+  ...PRIMARY_NAV_ITEMS,
+  { href: "/about", title: "About" },
+] as const;
 
 export function SiteHeader() {
   return (
@@ -15,18 +22,26 @@ export function SiteHeader() {
         </Link>
 
         <div className="flex items-center gap-1">
+          <div className="hidden items-center gap-1 md:flex">
+            {DESKTOP_NAV.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="font-en touch-target inline-flex items-center justify-center px-2 text-[11px] font-bold uppercase tracking-[0.14em] transition-colors hover:text-[#FF4B3E]"
+              >
+                {item.title === "Name → Hangul" ? "Name" : item.title}
+              </Link>
+            ))}
+          </div>
+
           <Link
             href="/contact"
-            className="font-en touch-target inline-flex items-center justify-center px-2 text-[11px] font-bold uppercase tracking-[0.14em]"
+            className="font-en touch-target inline-flex items-center justify-center px-2 text-[11px] font-bold uppercase tracking-[0.14em] transition-colors hover:text-[#FF4B3E]"
           >
-            CONTACT
+            Contact
           </Link>
-          <Link
-            href="#menu"
-            className="font-en touch-target inline-flex items-center justify-center px-2 text-[11px] font-bold uppercase tracking-[0.14em]"
-          >
-            MENU
-          </Link>
+
+          <MobileNavDrawer />
         </div>
       </nav>
     </header>

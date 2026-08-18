@@ -59,10 +59,14 @@ function renderMarkup() {
         </label>
         <label class="block p-4 md:p-5">
           <span class="font-en mb-2 block text-[10px] font-bold uppercase tracking-widest text-foreground/35">Raw address</span>
-          <textarea data-ems-raw rows="12" spellcheck="false" placeholder="123 Main Street&#10;Apt 4B&#10;New York, NY 10001&#10;USA" class="${inputClass} min-h-[280px] resize-y leading-relaxed"></textarea>
+          <textarea data-ems-raw rows="6" spellcheck="false" placeholder="123 Main Street&#10;Apt 4B&#10;New York, NY 10001&#10;USA" class="${inputClass} min-h-[160px] resize-y leading-relaxed md:min-h-[280px]"></textarea>
         </label>
+        <button type="button" data-ems-show-fields class="font-en touch-target flex min-h-12 w-full items-center justify-between border-t-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/40 px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E] md:hidden">
+          <span data-ems-show-fields-label>View EMS fields</span>
+          <span aria-hidden>↓</span>
+        </button>
       </section>
-      <section>
+      <section data-ems-output class="max-md:hidden">
         <div class="border-b-[0.5px] border-[#D9D9D3] px-4 py-4 md:px-5">
           <p class="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">EMS fields</p>
           <p class="font-ko mt-1 text-xs text-foreground/50">우체국 계약EMS 입력 규격으로 분할됩니다.</p>
@@ -113,6 +117,9 @@ export function mountEmsConverter(root) {
 
   const rawInput = host.querySelector("[data-ems-raw]");
   const countryInput = host.querySelector("[data-ems-country]");
+  const outputSection = host.querySelector("[data-ems-output]");
+  const showFieldsBtn = host.querySelector("[data-ems-show-fields]");
+  const showFieldsLabel = host.querySelector("[data-ems-show-fields-label]");
   const fieldInputs = FIELD_KEYS.map((field) => ({
     key: field.key,
     input: host.querySelector(`[data-ems-field="${field.key}"]`),
@@ -120,6 +127,27 @@ export function mountEmsConverter(root) {
   }));
 
   const timers = new Map();
+  let mobileOutputOpen = false;
+  const mobileMq = window.matchMedia("(max-width: 767px)");
+
+  function syncMobileOutput() {
+    if (!outputSection) return;
+
+    if (!mobileMq.matches) {
+      outputSection.classList.remove("max-md:hidden");
+      showFieldsBtn?.classList.add("hidden");
+      return;
+    }
+
+    showFieldsBtn?.classList.remove("hidden");
+    if (mobileOutputOpen) {
+      outputSection.classList.remove("max-md:hidden");
+      if (showFieldsLabel) showFieldsLabel.textContent = "Hide EMS fields";
+    } else {
+      outputSection.classList.add("max-md:hidden");
+      if (showFieldsLabel) showFieldsLabel.textContent = "View EMS fields";
+    }
+  }
 
   function fill(parsed) {
     const view = toEmsView(parsed);
@@ -165,10 +193,22 @@ export function mountEmsConverter(root) {
     button.addEventListener("click", onCopy);
   }
 
+  showFieldsBtn?.addEventListener("click", () => {
+    mobileOutputOpen = !mobileOutputOpen;
+    syncMobileOutput();
+    if (mobileOutputOpen) {
+      outputSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+
+  mobileMq.addEventListener("change", syncMobileOutput);
+  syncMobileOutput();
+
   run();
 
   return () => {
     for (const timeout of timers.values()) window.clearTimeout(timeout);
+    mobileMq.removeEventListener("change", syncMobileOutput);
     host.innerHTML = "";
   };
 }

@@ -120,12 +120,12 @@ export function EmsAddressSeoContent() {
   return (
     <section
       className="border-t-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]"
-      aria-labelledby="ems-address-seo-heading"
+      aria-label="EMS Address Converter guide and FAQ"
     >
       <EmsAddressStructuredData pageUrl={pageUrl} />
-      <div className="mx-auto w-full max-w-[1440px] px-5 py-10 md:px-8 md:py-12">
+      <div className="mx-auto w-full max-w-[1440px] px-5 section-y md:px-8">
         <article className="mx-auto max-w-2xl">
-          <header className="border-b-[0.5px] border-[#D9D9D3] pb-8">
+          <header className="hidden border-b-[0.5px] border-[#D9D9D3] pb-8 md:block">
             <h2
               id="ems-address-seo-heading"
               className="font-ko text-xl font-black tracking-tight text-foreground md:text-2xl"
@@ -148,7 +148,7 @@ export function EmsAddressSeoContent() {
               </strong>
               로 자동 분할하고, 특수문자·악센트를 EMS 입력에 맞게 정리합니다.
             </p>
-            <p className="font-en">
+            <p className="font-en hidden md:block">
               Paste a buyer&apos;s overseas English address and get Korea Post
               contract-EMS fields in real time. Supports GB, FR, NL, BE, SE, DE,
               US, JP, CA, and AU with postcode validation—runs entirely in your

@@ -1,16 +1,6 @@
 import Link from "next/link";
 import { AdSenseUnit } from "@/components/AdSenseUnit";
-
-const RECOMMENDED_TOOLS = [
-  { href: "/", label: "Name → Hangul", description: "English name converter" },
-  { href: "/tools", label: "Hangul Tools", description: "Practice utilities" },
-  {
-    href: "https://www.youtube.com/@unclehangul",
-    label: "Uncle Hangul TV",
-    description: "Video lessons",
-    external: true,
-  },
-] as const;
+import { RECOMMENDED_TOOLS } from "@/lib/learn/recommended-tools";
 
 type LearnSidebarProps = {
   /** Show the tall desktop AdSense slot (hidden on mobile). */
@@ -21,7 +11,7 @@ export function LearnSidebar({ showDesktopAd = true }: LearnSidebarProps) {
   return (
     <aside
       aria-label="Recommended tools and sponsors"
-      className="min-w-0 border-t-[0.5px] border-[#D9D9D3] p-4 md:col-span-3 md:border-l-[0.5px] md:border-t-0"
+      className="hidden min-w-0 border-t-[0.5px] border-[#D9D9D3] p-4 md:block md:col-span-3 md:border-l-[0.5px] md:border-t-0"
     >
       <section aria-labelledby="learn-tools-heading">
         <h2
@@ -51,7 +41,7 @@ export function LearnSidebar({ showDesktopAd = true }: LearnSidebarProps) {
               </>
             );
 
-            if ("external" in tool && tool.external) {
+            if (tool.external) {
               return (
                 <a
                   key={tool.href}

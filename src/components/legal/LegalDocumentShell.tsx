@@ -22,7 +22,7 @@ export function LegalDocumentShell({ document }: LegalDocumentShellProps) {
           </Link>
         </div>
 
-        <article className="mx-auto max-w-2xl px-1 py-10 md:py-12">
+        <article className="mx-auto max-w-2xl px-1 section-y">
           <header className="border-b-[0.5px] border-[#D9D9D3] pb-8">
             <h1 className="font-en text-2xl font-black tracking-tight text-foreground md:text-3xl">
               {document.heading}

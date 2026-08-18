@@ -7,7 +7,7 @@ export function DashboardSidebar() {
   return (
     <aside
       aria-label="Sidebar"
-      className="min-w-0 border-t-[0.5px] border-[#D9D9D3] md:col-span-4 md:col-start-9 md:row-start-1 md:self-start md:border-l-[0.5px] md:border-t-0"
+      className="hidden min-w-0 border-t-[0.5px] border-[#D9D9D3] md:block md:col-span-4 md:col-start-9 md:row-start-1 md:self-start md:border-l-[0.5px] md:border-t-0"
     >
       <div className="md:sticky md:top-14">
         <div className="p-5 md:p-8">

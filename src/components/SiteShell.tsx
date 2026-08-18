@@ -22,7 +22,7 @@ export function SiteShell({ children }: SiteShellProps) {
         <SiteFooter />
       </div>
 
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30">
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom,0px)]">
         <div className="mx-auto w-full max-w-[1440px]">
           <AdPlaceholder
             slot="bottom"

@@ -3,30 +3,13 @@ import { DashboardSidebar } from "@/components/DashboardSidebar";
 import { NameConverter } from "@/components/NameConverter";
 import { PostCard } from "@/components/PostCard";
 import { getHomeMetadata } from "@/lib/home/metadata";
+import { PRIMARY_NAV_ITEMS } from "@/lib/site-nav";
 import {
   UNCLE_HANGUL_CHANNEL_URL,
   UNCLE_HANGUL_VIDEOS,
 } from "@/lib/youtube";
 
 export const metadata = getHomeMetadata();
-
-const MENU_ITEMS = [
-  {
-    href: "/learn",
-    title: "Learn",
-    description: "자모부터 문장까지, 선명하게.",
-  },
-  {
-    href: "/tools",
-    title: "Tools",
-    description: "발음·읽기·쓰기 실전 도구.",
-  },
-  {
-    href: "/resources",
-    title: "Resources",
-    description: "자료와 가이드를 모아두다.",
-  },
-] as const;
 
 const MAIN_COLUMN =
   "relative z-10 w-full min-w-0 overflow-visible md:col-span-8 md:col-start-1 md:row-start-1 md:border-r-[0.5px] md:border-[#D9D9D3]";
@@ -79,6 +62,8 @@ export default function Home() {
             date="15 MIN"
             title="Reading big numbers in Korean"
             excerpt="910,213,090처럼 큰 숫자를 한국어로 어떻게 읽는지, 한글아저씨 롱폼 강의로 차근차근 따라갑니다."
+            deferMediaOnMobile
+            mediaLinkHref="/learn/korean-numbers-910-million"
             media={{
               type: "youtube",
               videoId: UNCLE_HANGUL_VIDEOS.numbersLong.id,
@@ -103,18 +88,18 @@ export default function Home() {
           aria-label="Primary sections"
           className="relative z-10 w-full bg-background"
         >
-          {MENU_ITEMS.map((item) => (
+          {PRIMARY_NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="group touch-target flex items-center justify-between gap-5 border-t-[0.5px] border-[#D9D9D3] p-5 py-8 transition-colors md:p-8"
+              className="group touch-target flex items-center justify-between gap-5 border-t-[0.5px] border-[#D9D9D3] p-5 py-5 transition-colors md:p-8 md:py-8"
             >
               <div className="min-w-0 flex-1 basis-0 pr-2">
                 <span className="font-en block break-words text-2xl font-black leading-tight tracking-tight text-foreground transition-colors group-hover:text-[#FF4B3E] group-active:text-[#FF4B3E] sm:text-3xl">
                   {item.title}
                 </span>
                 <span className="font-ko mt-2 block text-sm leading-relaxed text-foreground/55">
-                  {item.description}
+                  {item.descriptionKo}
                 </span>
               </div>
               <span
@@ -130,7 +115,7 @@ export default function Home() {
         <section
           id="about"
           aria-labelledby="about-heading"
-          className="relative z-10 w-full shrink-0 scroll-mt-16 border-t-[0.5px] border-b-[0.5px] border-[#D9D9D3] bg-background px-5 py-10 md:px-8 md:py-12"
+          className="relative z-10 w-full shrink-0 scroll-mt-16 border-t-[0.5px] border-b-[0.5px] border-[#D9D9D3] bg-background px-5 section-y md:px-8"
         >
           <div className="mx-auto w-full min-w-0 max-w-xl md:max-w-2xl">
             <p

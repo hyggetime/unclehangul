@@ -1,7 +1,7 @@
 type AdSlot = "bottom" | "sidebar" | "inline";
 
 const SLOT_MIN_HEIGHT: Record<AdSlot, string> = {
-  bottom: "min-h-16",
+  bottom: "min-h-16 pb-[env(safe-area-inset-bottom,0px)]",
   sidebar: "min-h-[250px] lg:min-h-[600px]",
   inline: "min-h-[250px]",
 };

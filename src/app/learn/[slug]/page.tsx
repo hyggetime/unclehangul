@@ -4,6 +4,7 @@ import { ArticleJsonLd } from "@/components/blog/ArticleJsonLd";
 import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
+import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
 import {
   getAllPostSlugs,
@@ -68,6 +69,8 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
               </p>
               <meta itemProp="datePublished" content={post.publishedAt} />
             </header>
+
+            <LearnRecommendedToolsChips />
 
             <div itemProp="articleBody" className="min-w-0 overflow-x-clip">
               <BlogBody blocks={post.blocks} constrainWidth />

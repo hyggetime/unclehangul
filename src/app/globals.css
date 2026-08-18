@@ -7,6 +7,9 @@
   --border: #d9d9d3;
   --accent: #ff4b3e;
   --touch-min: 48px;
+  --space-section-mobile: 2rem;
+  --space-section-desktop: 3rem;
+  --anchor-ad-min-height: 4rem;
 }
 
 @theme inline {
@@ -68,6 +71,22 @@ body {
 .touch-target {
   min-height: var(--touch-min);
   min-width: var(--touch-min);
+}
+
+.section-y {
+  padding-block: var(--space-section-mobile);
+}
+
+@media (min-width: 768px) {
+  .section-y {
+    padding-block: var(--space-section-desktop);
+  }
+}
+
+.site-bottom-offset {
+  margin-bottom: calc(
+    var(--anchor-ad-min-height) + env(safe-area-inset-bottom, 0px)
+  );
 }
 
 .font-en {

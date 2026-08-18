@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LearnIndexJsonLd } from "@/components/learn/LearnIndexJsonLd";
+import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
 import { getAllPosts, getLearnIndexMetadata } from "@/lib/blog/posts";
 
@@ -34,6 +35,8 @@ export default function LearnIndexPage() {
                 발행일만으로도 검색 로봇이 구조를 읽을 수 있게 짰습니다.
               </p>
             </header>
+
+            <LearnRecommendedToolsChips />
 
             <ul className="list-none">
               {posts.map((post) => (

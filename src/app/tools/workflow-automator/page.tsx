@@ -23,10 +23,10 @@ function ToolPlaceholder({
         </div>
         <div className="border-b-[0.5px] border-[#D9D9D3] px-5 py-12 md:px-8">
           <h1 className="font-en text-2xl font-black md:text-3xl">{title}</h1>
-          <p className="font-en mt-4 max-w-xl text-sm leading-relaxed text-foreground/65">
+          <p className="font-en mt-4 hidden max-w-xl text-sm leading-relaxed text-foreground/65 md:block">
             {descriptionEn}
           </p>
-          <p className="font-ko mt-2 max-w-xl text-sm leading-relaxed text-foreground/55">
+          <p className="font-ko mt-3 max-w-xl text-sm leading-relaxed text-foreground/55 md:mt-2">
             {descriptionKo}
           </p>
           <Link

@@ -93,12 +93,12 @@ export function PackOptimizerSeoContent() {
   return (
     <section
       className="border-t-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]"
-      aria-labelledby="pack-optimizer-seo-heading"
+      aria-label="Pack Optimizer guide and FAQ"
     >
       <PackOptimizerStructuredData pageUrl={pageUrl} />
-      <div className="mx-auto w-full max-w-[1440px] px-5 py-10 md:px-8 md:py-12">
+      <div className="mx-auto w-full max-w-[1440px] px-5 section-y md:px-8">
         <article className="mx-auto max-w-2xl">
-          <header className="border-b-[0.5px] border-[#D9D9D3] pb-8">
+          <header className="hidden border-b-[0.5px] border-[#D9D9D3] pb-8 md:block">
             <h2
               id="pack-optimizer-seo-heading"
               className="font-ko text-xl font-black tracking-tight text-foreground md:text-2xl"
@@ -119,7 +119,7 @@ export function PackOptimizerSeoContent() {
               동시에 고려하면, 한 번에 큰 박스를 보내는 것보다 비용·리스크
               면에서 유리한 물류 전략이 드러나는 경우가 많습니다.
             </p>
-            <p className="font-en">
+            <p className="font-en hidden md:block">
               This 3D packing calculator simulates how SKUs fit inside cartons so
               global sellers can compare split K-Packet shipments against a
               single EMS box before you tape the first carton. Use it as a
@@ -134,14 +134,22 @@ export function PackOptimizerSeoContent() {
             </h3>
             <dl className="mt-4 divide-y-[0.5px] divide-[#D9D9D3] border-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]">
               {FAQ_ITEMS.map((item) => (
-                <div key={item.question} className="px-4 py-5 md:px-6">
-                  <dt className="font-ko text-sm font-bold leading-snug text-foreground md:text-base">
-                    {item.question}
-                  </dt>
-                  <dd className="font-ko mt-3 text-sm leading-relaxed text-foreground/65">
+                <details key={item.question} className="group">
+                  <summary className="font-ko cursor-pointer list-none px-4 py-4 text-sm font-bold leading-snug text-foreground marker:content-none md:px-6 md:py-5 md:text-base [&::-webkit-details-marker]:hidden">
+                    <span className="flex items-start justify-between gap-3">
+                      <span>{item.question}</span>
+                      <span
+                        aria-hidden
+                        className="font-en shrink-0 text-xs font-bold uppercase tracking-widest text-foreground/35 transition-colors group-open:text-[#FF4B3E]"
+                      >
+                        +
+                      </span>
+                    </span>
+                  </summary>
+                  <dd className="font-ko border-t-[0.5px] border-[#D9D9D3] px-4 pb-5 pt-3 text-sm leading-relaxed text-foreground/65 md:px-6 md:pb-6">
                     {item.answer}
                   </dd>
-                </div>
+                </details>
               ))}
             </dl>
           </div>

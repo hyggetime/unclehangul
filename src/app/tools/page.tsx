@@ -20,12 +20,12 @@ export default function ToolsPage() {
           <h1 className="font-en text-3xl font-black leading-tight tracking-tight text-foreground md:text-4xl">
             Tools
           </h1>
-          <p className="font-en mt-4 max-w-2xl text-sm leading-relaxed text-foreground/65 md:text-base">
+          <p className="font-en mt-4 hidden max-w-2xl text-sm leading-relaxed text-foreground/65 md:block md:text-base">
             In-house web apps across language, design, and automation—each slot
             on the same 0.5px grid. Add a row to the catalog when a tool ships;
             categories stay text-only.
           </p>
-          <p className="font-ko mt-2 max-w-2xl text-sm leading-relaxed text-foreground/55">
+          <p className="font-ko mt-3 max-w-2xl text-sm leading-relaxed text-foreground/55 md:mt-2 md:text-base">
             한글 학습을 넘어 디자인·유틸리티·자동화까지, 확장 가능한 도구
             아카이브입니다.
           </p>

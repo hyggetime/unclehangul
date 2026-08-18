@@ -33,7 +33,7 @@ export function NameConverter() {
     <section
       id="name-converter"
       aria-label="English name to Hangul converter"
-      className="relative z-10 border-t-[0.5px] border-[#D9D9D3] px-5 py-10 md:px-8 md:py-12"
+      className="relative z-10 border-t-[0.5px] border-[#D9D9D3] px-5 section-y md:px-8"
     >
       <div className="mx-auto w-full min-w-0 max-w-xl md:max-w-2xl">
         <p className="font-en mb-6 text-[10px] font-bold uppercase tracking-widest text-foreground/40 md:mb-8">
@@ -61,7 +61,11 @@ export function NameConverter() {
         <div
           aria-live="polite"
           aria-atomic="true"
-          className="mt-6 flex min-h-[132px] flex-col items-center justify-center border-[0.5px] border-[#D9D9D3] bg-background px-4 py-8 md:mt-8 md:min-h-[168px] md:py-10"
+          className={`mt-6 flex flex-col items-center justify-center border-[0.5px] border-[#D9D9D3] bg-background px-4 md:mt-8 ${
+            result?.hangul
+              ? "py-6 md:min-h-[168px] md:py-10"
+              : "min-h-[88px] py-6 md:min-h-[132px] md:py-8"
+          }`}
         >
           <p
             className={`font-ko text-center text-4xl font-black leading-none tracking-tight text-foreground md:text-5xl ${!result?.hangul ? "text-foreground/25" : ""}`}

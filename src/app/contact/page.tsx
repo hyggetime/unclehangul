@@ -25,7 +25,7 @@ export default function ContactPage() {
           </Link>
         </div>
 
-        <article className="mx-auto max-w-2xl border-b-[0.5px] border-[#D9D9D3] px-1 py-10 md:py-12">
+        <article className="mx-auto max-w-2xl border-b-[0.5px] border-[#D9D9D3] px-1 section-y">
           <h1 className="font-en text-2xl font-black leading-tight tracking-tight text-foreground md:text-3xl">
             Say Hello to Uncle Han-guel!
           </h1>

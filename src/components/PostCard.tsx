@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MediaFrame } from "@/components/MediaFrame";
 import { YoutubeEmbed } from "@/components/media/YoutubeEmbed";
 import { MetaStrip } from "@/components/MetaStrip";
@@ -9,6 +10,9 @@ type PostCardProps = {
   title: string;
   excerpt: string;
   className?: string;
+  /** Mobile: link instead of embed to shorten home scroll. */
+  deferMediaOnMobile?: boolean;
+  mediaLinkHref?: string;
   media:
     | {
         type: "youtube";
@@ -31,6 +35,8 @@ export function PostCard({
   title,
   excerpt,
   className = "",
+  deferMediaOnMobile = false,
+  mediaLinkHref,
   media,
 }: PostCardProps) {
   return (
@@ -45,11 +51,32 @@ export function PostCard({
         </h2>
 
         {media.type === "youtube" ? (
-          <YoutubeEmbed
-            videoId={media.videoId}
-            title={media.title}
-            layout={media.layout}
-          />
+          deferMediaOnMobile && mediaLinkHref ? (
+            <>
+              <div className="md:hidden">
+                <Link
+                  href={mediaLinkHref}
+                  className="font-en flex min-h-12 items-center justify-between border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"
+                >
+                  Watch full lesson
+                  <span aria-hidden>↗</span>
+                </Link>
+              </div>
+              <div className="hidden md:block">
+                <YoutubeEmbed
+                  videoId={media.videoId}
+                  title={media.title}
+                  layout={media.layout}
+                />
+              </div>
+            </>
+          ) : (
+            <YoutubeEmbed
+              videoId={media.videoId}
+              title={media.title}
+              layout={media.layout}
+            />
+          )
         ) : (
           <MediaFrame>
             <div className="relative aspect-[4/3] w-full">
