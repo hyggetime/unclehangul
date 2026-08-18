@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>해외 주소 EMS 변환기</title>
+    <!--
+      Standalone/MV3 mount shell. Live site: /tools/ems-address
+      Core (sanitizer, rules, parser) has no DOM. Bundle postcode-validator with the same ESM imports.
+    -->
+    <style>
+      :root {
+        --background: #f2f2f0;
+        --foreground: #111111;
+        --border: #d9d9d3;
+        --accent: #ff4b3e;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: Inter, Pretendard, sans-serif;
+      }
+      #ems-converter { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+    </style>
+  </head>
+  <body>
+    <div id="ems-converter"></div>
+    <script type="module">
+      import { mountEmsConverter } from "./ui/adapter.js";
+      mountEmsConverter(document.getElementById("ems-converter"));
+    </script>
+  </body>
+</html>

@@ -46,6 +46,16 @@ export const TOOLS_CATALOG: ToolEntry[] = [
       "n8n 기반으로 반복 작업을 묶어 실행하는 자동화 유틸리티입니다.",
     href: "/tools/workflow-automator",
   },
+  {
+    number: "04",
+    category: "UTIL",
+    title: "EMS Address Converter",
+    descriptionEn:
+      "Split overseas English addresses into Korea Post contract-EMS fields in real time.",
+    descriptionKo:
+      "해외 영문 주소를 우체국 계약EMS 입력 규격(Country, Zipcode, City, State, Line1, Line2)으로 분할합니다.",
+    href: "/tools/ems-address",
+  },
 ];
 
 export function formatCategoryTag(category: ToolCategory): string {
