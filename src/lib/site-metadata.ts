@@ -14,6 +14,8 @@ type PageMetadataOptions = {
   noIndex?: boolean;
   /** When true, document title is exactly `title` (no layout suffix). */
   absoluteTitle?: boolean;
+  /** Optional SEO/AEO keywords (comma-joined in metadata). */
+  keywords?: string[];
 };
 
 function absoluteUrl(path: string): string {
@@ -37,6 +39,7 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
       ? { absolute: options.title }
       : options.title,
     description: options.description,
+    ...(options.keywords?.length ? { keywords: options.keywords } : {}),
     alternates: { canonical: url },
     openGraph: {
       type: options.openGraphType ?? "website",

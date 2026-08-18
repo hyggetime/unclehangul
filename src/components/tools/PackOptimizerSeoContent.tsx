@@ -1,4 +1,13 @@
+import { ToolCrossLinks } from "@/components/tools/ToolCrossLinks";
+import {
+  JsonLd,
+  buildFaqPageJsonLd,
+  buildHowToJsonLd,
+  buildWebApplicationJsonLd,
+} from "@/lib/seo/json-ld";
 import { getSiteUrl } from "@/lib/site-url";
+
+const PAGE_PATH = "/tools/pack-optimizer";
 
 const FAQ_ITEMS = [
   {
@@ -26,49 +35,77 @@ const FAQ_ITEMS = [
     answer:
       "이 도구는 배송비 절감 시나리오를 탐색하는 참고용입니다. 통관·할증·연료할증·수령국 제한은 반영되지 않을 수 있으므로, 출고 전 우체국·EMS 공식 견적과 대조하세요.",
   },
+  {
+    question: "EMS 발송 전 해외 주소 입력은 어떻게 준비하나요?",
+    answer:
+      "계약EMS 발송 시 수취인 주소는 Country, Zipcode, City, State, Line1, Line2 여섯 필드로 나눠 입력합니다. Uncle Hangul EMS Address Converter(/tools/ems-address)에서 영문 주소를 붙여 넣으면 필드별로 자동 분할·복사할 수 있습니다.",
+  },
 ] as const;
 
-function PackOptimizerFaqJsonLd() {
-  const pageUrl = `${getSiteUrl()}/tools/pack-optimizer`;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQ_ITEMS.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-    url: pageUrl,
-  };
+const HOWTO_STEPS = [
+  {
+    name: "SKU·박스 정보 입력",
+    text: "발송할 상품 SKU, 수량, 박스(카톤) 규격을 Pack Optimizer 위젯에 입력합니다.",
+  },
+  {
+    name: "3D 적재 시뮬레이션 확인",
+    text: "아이템이 박스 안에 어떻게 배치되는지 3D packing 결과를 확인합니다.",
+  },
+  {
+    name: "K-Packet vs EMS 비교",
+    text: "한 박스 EMS vs K-Packet 분할 등 시나리오별 부피·중량·비용 트레이드를 비교합니다.",
+  },
+  {
+    name: "발송 전 견적 대조",
+    text: "선택한 전략을 우체국·EMS 공식 견적과 대조한 뒤, 해외 주소는 EMS Address Converter로 입력 필드를 준비합니다.",
+  },
+] as const;
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
+function PackOptimizerStructuredData({ pageUrl }: { pageUrl: string }) {
+  const schemas = [
+    buildFaqPageJsonLd(pageUrl, [...FAQ_ITEMS]),
+    buildWebApplicationJsonLd({
+      name: "국제 배송비 최적화 3D 계산기 (Pack Optimizer)",
+      description:
+        "K-Packet 분할 배송(쪼개기)과 EMS 부피무게(체적중량) 청구 리스크를 3D packing 알고리즘으로 시뮬레이션하는 무료 웹 도구.",
+      url: pageUrl,
+      featureList: [
+        "3D carton packing simulation",
+        "K-Packet split-shipment scenario comparison",
+        "EMS volumetric weight risk preview",
+        "SKU and box dimension input",
+        "Global seller logistics planning",
+      ],
+    }),
+    buildHowToJsonLd(
+      "K-Packet 분할·EMS 부피무게로 해외 배송비 절감하기",
+      "3D packing 계산기로 K-Packet 쪼개기와 EMS 체적중량 리스크를 비교하는 절차.",
+      [...HOWTO_STEPS],
+    ),
+  ];
+
+  return <JsonLd data={schemas} />;
 }
 
 export function PackOptimizerSeoContent() {
+  const pageUrl = `${getSiteUrl()}${PAGE_PATH}`;
+
   return (
     <section
       className="border-t-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]"
       aria-labelledby="pack-optimizer-seo-heading"
     >
-      <PackOptimizerFaqJsonLd />
+      <PackOptimizerStructuredData pageUrl={pageUrl} />
       <div className="mx-auto w-full max-w-[1440px] px-5 py-10 md:px-8 md:py-12">
         <article className="mx-auto max-w-2xl">
           <header className="border-b-[0.5px] border-[#D9D9D3] pb-8">
             <h2
               id="pack-optimizer-seo-heading"
-              className="font-en text-xl font-black tracking-tight text-foreground md:text-2xl"
+              className="font-ko text-xl font-black tracking-tight text-foreground md:text-2xl"
             >
-              International shipping cost optimizer
+              국제 배송비 최적화 3D 계산기
             </h2>
-            <p className="font-ko mt-1 text-sm text-foreground/50">
+            <p className="font-en mt-1 text-sm text-foreground/50">
               K-Packet · EMS · 3D packing
             </p>
           </header>
@@ -108,6 +145,18 @@ export function PackOptimizerSeoContent() {
               ))}
             </dl>
           </div>
+
+          <ToolCrossLinks
+            heading="Related tools"
+            links={[
+              {
+                href: "/tools/ems-address",
+                title: "EMS Address Converter · 해외 주소 EMS 변환기",
+                descriptionKo:
+                  "해외 영문 주소를 계약EMS Country, Zipcode, City, State, Line1, Line2 필드로 실시간 분할합니다.",
+              },
+            ]}
+          />
         </article>
       </div>
     </section>

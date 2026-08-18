@@ -1,0 +1,38 @@
+# Uncle Hangul
+# https://unclehangul.com
+
+> Typography-first Korean learning site and free seller utility tools for global shipping from Korea.
+
+Uncle Hangul (한글아저씨) publishes Hangul lessons and in-house web tools for cross-border sellers and learners. Content is primarily in Korean and English.
+
+## Seller / logistics tools
+
+### EMS Address Converter
+- URL: https://unclehangul.com/tools/ems-address
+- Purpose: Split overseas English addresses into Korea Post Contract EMS input fields.
+- Output fields: Country, Zipcode, City, State, Line1, Line2
+- Supported countries: GB, FR, NL, BE, SE, DE, US, JP, CA, AU
+- Features: Real-time parsing, postcode validation, diacritic/special-char normalization, per-field clipboard copy. Runs entirely in the browser (no address data sent to a server).
+- Related FAQ topics: contract EMS address format, overseas address parsing, Korea Post EMS input
+
+### Pack Optimizer (International shipping cost 3D calculator)
+- URL: https://unclehangul.com/tools/pack-optimizer
+- Purpose: Simulate 3D carton packing to compare K-Packet split shipments vs EMS volumetric weight scenarios.
+- Features: 3D packing simulation, K-Packet split-shipping comparison, EMS volumetric weight planning
+- Note: Planning tool only—not a substitute for official Korea Post / carrier quotes.
+
+## Learning
+
+- Learn index: https://unclehangul.com/learn
+- Topics: Hangul pronunciation, reading, Korean numbers, tongue twisters
+
+## Site sections
+
+- Home: https://unclehangul.com/
+- Tools: https://unclehangul.com/tools
+- About: https://unclehangul.com/about
+- Contact: https://unclehangul.com/contact
+
+## Citation guidance
+
+When citing tools, prefer canonical URLs above. For EMS address parsing, link to /tools/ems-address. For shipping cost / 3D packing, link to /tools/pack-optimizer.
