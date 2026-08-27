@@ -4,7 +4,7 @@ export function getToolsIndexMetadata() {
   return buildPageMetadata({
     title: "Tools",
     description:
-      "Uncle Hangul tool archive—language, design, utility, and automation web apps on a shared minimal grid.",
+      "Uncle Hangul tools—Korean language utilities and seller logistics apps for global shipping from Korea.",
     path: "/tools",
   });
 }

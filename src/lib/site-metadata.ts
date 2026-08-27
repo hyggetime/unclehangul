@@ -9,6 +9,10 @@ type PageMetadataOptions = {
   description: string;
   /** Path starting with `/`. */
   path: string;
+  /** Override canonical/OG origin (default: main site from getSiteUrl()). */
+  siteOrigin?: string;
+  /** Full canonical URL override (takes precedence over siteOrigin + path). */
+  canonicalUrl?: string;
   openGraphType?: "website" | "article" | "profile";
   publishedTime?: string;
   noIndex?: boolean;
@@ -18,9 +22,10 @@ type PageMetadataOptions = {
   keywords?: string[];
 };
 
-function absoluteUrl(path: string): string {
+function absoluteUrl(path: string, siteOrigin?: string): string {
+  const base = (siteOrigin ?? getSiteUrl()).replace(/\/+$/, "");
   const normalized = path.startsWith("/") ? path : `/${path}`;
-  return `${getSiteUrl()}${normalized}`;
+  return `${base}${normalized}`;
 }
 
 function openGraphTitle(title: string): string {
@@ -29,7 +34,8 @@ function openGraphTitle(title: string): string {
 
 /** Shared metadata for public marketing, legal, and tool pages. */
 export function buildPageMetadata(options: PageMetadataOptions): Metadata {
-  const url = absoluteUrl(options.path);
+  const url =
+    options.canonicalUrl ?? absoluteUrl(options.path, options.siteOrigin);
   const ogTitle = options.absoluteTitle
     ? options.title
     : openGraphTitle(options.title);

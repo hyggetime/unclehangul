@@ -1,3 +1,5 @@
+import { getEmsAddressUrl } from "@/lib/domains";
+
 export type RecommendedTool = {
   href: string;
   label: string;
@@ -12,9 +14,15 @@ export const RECOMMENDED_TOOLS: readonly RecommendedTool[] = [
     description: "English name converter",
   },
   {
-    href: "/tools",
-    label: "Hangul Tools",
-    description: "Practice utilities",
+    href: getEmsAddressUrl(),
+    label: "EMS Address",
+    description: "Contract EMS fields",
+    external: true,
+  },
+  {
+    href: "/tools#seller-tools",
+    label: "Seller Tools",
+    description: "Shipping & logistics",
   },
   {
     href: "https://www.youtube.com/@unclehangul",

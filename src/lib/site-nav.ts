@@ -12,9 +12,9 @@ export const PRIMARY_NAV_ITEMS: readonly SiteNavItem[] = [
     descriptionKo: "자모부터 문장까지, 선명하게.",
   },
   {
-    href: "/tools",
-    title: "Tools",
-    descriptionKo: "발음·읽기·쓰기 실전 도구.",
+    href: "/tools#seller-tools",
+    title: "Seller Tools",
+    descriptionKo: "해외배송·물류 실전 도구.",
   },
   {
     href: "/#name-converter",

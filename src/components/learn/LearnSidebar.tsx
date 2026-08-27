@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AdSenseUnit } from "@/components/AdSenseUnit";
+import { getAdSlot } from "@/lib/ads/slots";
 import { RECOMMENDED_TOOLS } from "@/lib/learn/recommended-tools";
 
 type LearnSidebarProps = {
@@ -70,9 +71,7 @@ export function LearnSidebar({ showDesktopAd = true }: LearnSidebarProps) {
           className="mt-6 hidden md:block"
         >
           <AdSenseUnit
-            slot={
-              process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDEBAR ?? "sidebar-desktop"
-            }
+            slot={getAdSlot("sidebar", "sidebar-desktop")}
             format="vertical"
             minHeight={600}
             className="h-[600px]"

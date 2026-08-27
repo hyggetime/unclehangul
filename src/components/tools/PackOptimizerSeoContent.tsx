@@ -1,13 +1,12 @@
 import { ToolCrossLinks } from "@/components/tools/ToolCrossLinks";
+import { ToolFaqAccordion } from "@/components/tools/ToolFaqAccordion";
 import {
   JsonLd,
   buildFaqPageJsonLd,
   buildHowToJsonLd,
   buildWebApplicationJsonLd,
 } from "@/lib/seo/json-ld";
-import { getSiteUrl } from "@/lib/site-url";
-
-const PAGE_PATH = "/tools/pack-optimizer";
+import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
 
 const FAQ_ITEMS = [
   {
@@ -38,7 +37,7 @@ const FAQ_ITEMS = [
   {
     question: "EMS 발송 전 해외 주소 입력은 어떻게 준비하나요?",
     answer:
-      "계약EMS 발송 시 수취인 주소는 Country, Zipcode, City, State, Line1, Line2 여섯 필드로 나눠 입력합니다. Uncle Hangul EMS Address Converter(/tools/ems-address)에서 영문 주소를 붙여 넣으면 필드별로 자동 분할·복사할 수 있습니다.",
+      "계약EMS 발송 시 수취인 주소는 Country, Zipcode, City, State, Line1, Line2 여섯 필드로 나눠 입력합니다. Uncle Hangul EMS Address Converter(tools.unclehangul.com/ems-address)에서 영문 주소를 붙여 넣으면 필드별로 자동 분할·복사할 수 있습니다.",
   },
 ] as const;
 
@@ -88,14 +87,14 @@ function PackOptimizerStructuredData({ pageUrl }: { pageUrl: string }) {
 }
 
 export function PackOptimizerSeoContent() {
-  const pageUrl = `${getSiteUrl()}${PAGE_PATH}`;
+  const appUrl = getPackOptimizerUrl();
 
   return (
     <section
       className="border-t-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]"
       aria-label="Pack Optimizer guide and FAQ"
     >
-      <PackOptimizerStructuredData pageUrl={pageUrl} />
+      <PackOptimizerStructuredData pageUrl={appUrl} />
       <div className="mx-auto w-full max-w-[1440px] px-5 section-y md:px-8">
         <article className="mx-auto max-w-2xl">
           <header className="hidden border-b-[0.5px] border-[#D9D9D3] pb-8 md:block">
@@ -128,40 +127,17 @@ export function PackOptimizerSeoContent() {
             </p>
           </div>
 
-          <div className="pt-8">
-            <h3 className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/45">
-              FAQ
-            </h3>
-            <dl className="mt-4 divide-y-[0.5px] divide-[#D9D9D3] border-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]">
-              {FAQ_ITEMS.map((item) => (
-                <details key={item.question} className="group">
-                  <summary className="font-ko cursor-pointer list-none px-4 py-4 text-sm font-bold leading-snug text-foreground marker:content-none md:px-6 md:py-5 md:text-base [&::-webkit-details-marker]:hidden">
-                    <span className="flex items-start justify-between gap-3">
-                      <span>{item.question}</span>
-                      <span
-                        aria-hidden
-                        className="font-en shrink-0 text-xs font-bold uppercase tracking-widest text-foreground/35 transition-colors group-open:text-[#FF4B3E]"
-                      >
-                        +
-                      </span>
-                    </span>
-                  </summary>
-                  <dd className="font-ko border-t-[0.5px] border-[#D9D9D3] px-4 pb-5 pt-3 text-sm leading-relaxed text-foreground/65 md:px-6 md:pb-6">
-                    {item.answer}
-                  </dd>
-                </details>
-              ))}
-            </dl>
-          </div>
+          <ToolFaqAccordion items={FAQ_ITEMS} />
 
           <ToolCrossLinks
             heading="Related tools"
             links={[
               {
-                href: "/tools/ems-address",
+                href: getEmsAddressUrl(),
                 title: "EMS Address Converter · 해외 주소 EMS 변환기",
                 descriptionKo:
                   "해외 영문 주소를 계약EMS Country, Zipcode, City, State, Line1, Line2 필드로 실시간 분할합니다.",
+                external: true,
               },
             ]}
           />

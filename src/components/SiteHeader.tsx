@@ -29,7 +29,11 @@ export function SiteHeader() {
                 href={item.href}
                 className="font-en touch-target inline-flex items-center justify-center px-2 text-[11px] font-bold uppercase tracking-[0.14em] transition-colors hover:text-[#FF4B3E]"
               >
-                {item.title === "Name → Hangul" ? "Name" : item.title}
+                {item.title === "Name → Hangul"
+                  ? "Name"
+                  : item.title === "Seller Tools"
+                    ? "Seller"
+                    : item.title}
               </Link>
             ))}
           </div>

@@ -1,12 +1,17 @@
 import { buildPageMetadata } from "@/lib/site-metadata";
+import { getEmsAddressUrl, getToolsSiteUrl } from "@/lib/domains";
 
 export function getEmsAddressMetadata() {
+  const toolsOrigin = getToolsSiteUrl();
+
   return buildPageMetadata({
     title:
       "해외 주소 EMS 변환기 (계약EMS Country·Zipcode·City·State·Line1·Line2) | 한글아저씨",
     description:
       "해외 영문 주소를 우체국 계약EMS 입력 폼(Country, Zipcode, City, State, Line1, Line2) 규격으로 실시간 분할·정제. 영국·미국·일본 등 10개국 지원. 무료 웹 도구.",
-    path: "/tools/ems-address",
+    path: "/ems-address",
+    siteOrigin: toolsOrigin,
+    canonicalUrl: getEmsAddressUrl(),
     absoluteTitle: true,
     keywords: [
       "EMS 주소 변환",

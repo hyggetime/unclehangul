@@ -1,15 +1,10 @@
 import Script from "next/script";
-
-const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-
-const GA_MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]+$/;
+import { getGaMeasurementId } from "@/lib/analytics/ga4";
 
 export function GoogleAnalytics() {
-  if (
-    !measurementId ||
-    !GA_MEASUREMENT_ID_PATTERN.test(measurementId) ||
-    process.env.NODE_ENV === "development"
-  ) {
+  const measurementId = getGaMeasurementId();
+
+  if (!measurementId || process.env.NODE_ENV === "development") {
     return null;
   }
 
@@ -26,7 +21,12 @@ export function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${measurementId}');
+          gtag('config', '${measurementId}', {
+            send_page_view: true,
+            page_path: window.location.pathname,
+            page_location: window.location.href,
+            page_title: document.title
+          });
         `}
       </Script>
     </>

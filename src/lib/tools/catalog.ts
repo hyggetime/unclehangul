@@ -1,3 +1,9 @@
+import {
+  getEmsAddressUrl,
+  getPackOptimizerUrl,
+} from "@/lib/domains";
+import { getPublishedCatalogEntries } from "@/lib/tools/launch-rules";
+
 export type ToolCategory =
   | "LANG"
   | "DESIGN"
@@ -5,13 +11,20 @@ export type ToolCategory =
   | "AUTO"
   | "MEDIA";
 
+export type ToolCatalogSection = "language" | "seller";
+
 export type ToolEntry = {
   number: string;
   category: ToolCategory;
+  section: ToolCatalogSection;
   title: string;
   descriptionEn: string;
   descriptionKo: string;
   href: string;
+  /** Opens in new tab; used for pack/tools subdomains. */
+  external?: boolean;
+  /** When false, hidden from catalog, nav cross-links, and sitemap helpers. */
+  published?: boolean;
 };
 
 /** Extensible catalog — append entries; categories stay typography-only. */
@@ -19,6 +32,7 @@ export const TOOLS_CATALOG: ToolEntry[] = [
   {
     number: "01",
     category: "LANG",
+    section: "language",
     title: "Name Converter",
     descriptionEn:
       "Real-time English-to-Hangul transliteration. Type a name and read the phonetic match instantly.",
@@ -29,35 +43,57 @@ export const TOOLS_CATALOG: ToolEntry[] = [
   {
     number: "02",
     category: "UTIL",
+    section: "seller",
     title: "Pack Optimizer",
     descriptionEn:
-      "Logistics pack optimization—carton and load planning powered by pack.unclehangul.com.",
+      "3D carton packing on pack.unclehangul.com — K-Packet split vs EMS volumetric weight.",
     descriptionKo:
-      "물류 적재·박스 배치를 최적화하는 패킹 엔진 위젯입니다.",
-    href: "/tools/pack-optimizer",
+      "pack.unclehangul.com에서 3D 패킹·K-Packet·EMS 시뮬레이션.",
+    href: getPackOptimizerUrl(),
+    external: true,
   },
   {
     number: "03",
     category: "UTIL",
+    section: "seller",
+    title: "EMS Address Converter",
+    descriptionEn:
+      "Split overseas English addresses into Korea Post contract-EMS fields in real time.",
+    descriptionKo:
+      "해외 영문 주소를 우체국 계약EMS 입력 규격(Country, Zipcode, City, State, Line1, Line2)으로 분할합니다.",
+    href: getEmsAddressUrl(),
+    external: true,
+  },
+];
+
+/** Unpublished tools — not listed until shipped. */
+export const TOOLS_CATALOG_DRAFT: ToolEntry[] = [
+  {
+    number: "—",
+    category: "AUTO",
+    section: "seller",
     title: "Workflow Automator",
     descriptionEn:
       "n8n-powered routines for repetitive publishing, file, and notification tasks.",
     descriptionKo:
       "n8n 기반으로 반복 작업을 묶어 실행하는 자동화 유틸리티입니다.",
     href: "/tools/workflow-automator",
-  },
-  {
-    number: "04",
-    category: "UTIL",
-    title: "EMS Address Converter",
-    descriptionEn:
-      "Split overseas English addresses into Korea Post contract-EMS fields in real time.",
-    descriptionKo:
-      "해외 영문 주소를 우체국 계약EMS 입력 규격(Country, Zipcode, City, State, Line1, Line2)으로 분할합니다.",
-    href: "/tools/ems-address",
+    published: false,
   },
 ];
 
 export function formatCategoryTag(category: ToolCategory): string {
   return `[${category}]`;
+}
+
+export function getPublishedTools(): ToolEntry[] {
+  return getPublishedCatalogEntries(TOOLS_CATALOG);
+}
+
+export function getLanguageTools(): ToolEntry[] {
+  return getPublishedTools().filter((tool) => tool.section === "language");
+}
+
+export function getSellerTools(): ToolEntry[] {
+  return getPublishedTools().filter((tool) => tool.section === "seller");
 }

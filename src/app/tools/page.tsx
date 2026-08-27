@@ -1,12 +1,40 @@
 import type { Metadata } from "next";
 import { ToolCard } from "@/components/tools/ToolCard";
 import { ToolsAdDrawer } from "@/components/tools/ToolsAdDrawer";
-import { TOOLS_CATALOG } from "@/lib/tools/catalog";
+import {
+  getLanguageTools,
+  getSellerTools,
+} from "@/lib/tools/catalog";
 import { getToolsIndexMetadata } from "@/lib/tools/metadata";
 
 export const metadata: Metadata = getToolsIndexMetadata();
 
+function ToolsSectionHeader({
+  id,
+  titleEn,
+  titleKo,
+}: {
+  id: string;
+  titleEn: string;
+  titleKo: string;
+}) {
+  return (
+    <div
+      id={id}
+      className="scroll-mt-24 border-b-[0.5px] border-[#D9D9D3] px-1 py-4 md:col-span-3"
+    >
+      <h2 className="font-en text-lg font-black tracking-tight text-foreground md:text-xl">
+        {titleEn}
+      </h2>
+      <p className="font-ko mt-1 text-sm text-foreground/55">{titleKo}</p>
+    </div>
+  );
+}
+
 export default function ToolsPage() {
+  const languageTools = getLanguageTools();
+  const sellerTools = getSellerTools();
+
   return (
     <div className="md:col-span-12">
       <div className="mx-auto w-full max-w-[1440px] p-4 md:p-8">
@@ -21,18 +49,32 @@ export default function ToolsPage() {
             Tools
           </h1>
           <p className="font-en mt-4 hidden max-w-2xl text-sm leading-relaxed text-foreground/65 md:block md:text-base">
-            In-house web apps across language, design, and automation—each slot
-            on the same 0.5px grid. Add a row to the catalog when a tool ships;
-            categories stay text-only.
+            Language utilities and seller logistics apps—split by intent on the
+            same 0.5px grid.
           </p>
           <p className="font-ko mt-3 max-w-2xl text-sm leading-relaxed text-foreground/55 md:mt-2 md:text-base">
-            한글 학습을 넘어 디자인·유틸리티·자동화까지, 확장 가능한 도구
-            아카이브입니다.
+            한국어 학습 도구는 메인 사이트, 셀러·물류 도구는{" "}
+            <span className="font-en">tools</span>·
+            <span className="font-en">pack</span> 서브도메인에서 운영합니다.
           </p>
         </header>
 
         <div className="grid grid-cols-1 border-l-[0.5px] border-t-[0.5px] border-[#D9D9D3] md:grid-cols-3">
-          {TOOLS_CATALOG.map((tool) => (
+          <ToolsSectionHeader
+            id="language-tools"
+            titleEn="Language"
+            titleKo="한국어 학습·발음 도구"
+          />
+          {languageTools.map((tool) => (
+            <ToolCard key={tool.href} {...tool} />
+          ))}
+
+          <ToolsSectionHeader
+            id="seller-tools"
+            titleEn="Seller Tools"
+            titleKo="해외배송·물류·셀러 실전 도구"
+          />
+          {sellerTools.map((tool) => (
             <ToolCard key={tool.href} {...tool} />
           ))}
 

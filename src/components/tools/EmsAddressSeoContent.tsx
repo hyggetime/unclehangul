@@ -1,13 +1,12 @@
 import { ToolCrossLinks } from "@/components/tools/ToolCrossLinks";
+import { ToolFaqAccordion } from "@/components/tools/ToolFaqAccordion";
 import {
   JsonLd,
   buildFaqPageJsonLd,
   buildHowToJsonLd,
   buildWebApplicationJsonLd,
 } from "@/lib/seo/json-ld";
-import { getSiteUrl } from "@/lib/site-url";
-
-const PAGE_PATH = "/tools/ems-address";
+import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
 
 const SUPPORTED_COUNTRIES = [
   { code: "GB", nameKo: "영국", nameEn: "United Kingdom" },
@@ -115,7 +114,7 @@ function EmsAddressStructuredData({ pageUrl }: { pageUrl: string }) {
 }
 
 export function EmsAddressSeoContent() {
-  const pageUrl = `${getSiteUrl()}${PAGE_PATH}`;
+  const pageUrl = getEmsAddressUrl();
 
   return (
     <section
@@ -255,32 +254,17 @@ export function EmsAddressSeoContent() {
             </div>
           </div>
 
-          <div className="pt-8">
-            <h3 className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/45">
-              FAQ
-            </h3>
-            <dl className="mt-4 divide-y-[0.5px] divide-[#D9D9D3] border-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]">
-              {FAQ_ITEMS.map((item) => (
-                <div key={item.question} className="px-4 py-5 md:px-6">
-                  <dt className="font-ko text-sm font-bold leading-snug text-foreground md:text-base">
-                    {item.question}
-                  </dt>
-                  <dd className="font-ko mt-3 text-sm leading-relaxed text-foreground/65">
-                    {item.answer}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          <ToolFaqAccordion items={FAQ_ITEMS} />
 
           <ToolCrossLinks
             heading="Related tools"
             links={[
               {
-                href: "/tools/pack-optimizer",
+                href: getPackOptimizerUrl(),
                 title: "Pack Optimizer · 국제 배송비 3D 계산기",
                 descriptionKo:
                   "K-Packet 분할 배송·EMS 부피무게를 3D packing으로 비교해 배송비 절감 시나리오를 확인합니다.",
+                external: true,
               },
             ]}
           />

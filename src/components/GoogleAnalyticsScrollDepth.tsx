@@ -2,26 +2,16 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { isGaTrackingEnabled, sendScrollDepthEvent } from "@/lib/analytics/ga4";
 
 const SCROLL_MILESTONES = [50, 90] as const;
-
-const GA_MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]+$/;
-
-function isTrackingEnabled(): boolean {
-  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-  return (
-    process.env.NODE_ENV !== "development" &&
-    Boolean(measurementId) &&
-    GA_MEASUREMENT_ID_PATTERN.test(measurementId ?? "")
-  );
-}
 
 export function GoogleAnalyticsScrollDepth() {
   const pathname = usePathname();
   const firedRef = useRef<Set<number>>(new Set());
 
   useEffect(() => {
-    if (!isTrackingEnabled()) return;
+    if (!isGaTrackingEnabled()) return;
 
     firedRef.current = new Set();
     let ticking = false;
@@ -46,10 +36,7 @@ export function GoogleAnalyticsScrollDepth() {
       for (const milestone of SCROLL_MILESTONES) {
         if (percent >= milestone && !firedRef.current.has(milestone)) {
           firedRef.current.add(milestone);
-          gtag("event", "scroll_depth", {
-            percent_scrolled: milestone,
-            page_path: pathname,
-          });
+          sendScrollDepthEvent(gtag, milestone, pathname);
         }
       }
 

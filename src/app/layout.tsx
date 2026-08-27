@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { AdSenseScript } from "@/components/AdSenseScript";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { GoogleAnalyticsToolActions } from "@/components/GoogleAnalyticsToolActions";
+import { GoogleAnalyticsPageSection } from "@/components/GoogleAnalyticsPageSection";
 import { GoogleAnalyticsScrollDepth } from "@/components/GoogleAnalyticsScrollDepth";
 import { getRootMetadataBase } from "@/lib/site-metadata";
 import "./globals.css";
@@ -50,6 +52,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-full bg-background text-foreground antialiased">
         <GoogleAnalytics />
+        <GoogleAnalyticsPageSection />
+        <GoogleAnalyticsToolActions />
         <GoogleAnalyticsScrollDepth />
         <AdSenseScript />
         <SiteShell>{children}</SiteShell>

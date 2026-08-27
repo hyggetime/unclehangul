@@ -9,6 +9,7 @@ export type ToolCardProps = {
   descriptionEn: string;
   descriptionKo: string;
   href: string;
+  external?: boolean;
   className?: string;
 };
 
@@ -19,13 +20,14 @@ export function ToolCard({
   descriptionEn,
   descriptionKo,
   href,
+  external = false,
   className = "",
 }: ToolCardProps) {
-  return (
-    <Link
-      href={href}
-      className={`group flex min-h-[220px] flex-col justify-between border-r-[0.5px] border-b-[0.5px] border-[#D9D9D3] bg-background p-5 transition-colors md:min-h-[260px] md:p-6 ${className}`.trim()}
-    >
+  const cardClassName =
+    `group flex min-h-[220px] flex-col justify-between border-r-[0.5px] border-b-[0.5px] border-[#D9D9D3] bg-background p-5 transition-colors md:min-h-[260px] md:p-6 ${className}`.trim();
+
+  const content = (
+    <>
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <span className="font-en text-xs font-bold tracking-widest text-foreground/40">
           {number}
@@ -33,6 +35,11 @@ export function ToolCard({
         <span className="font-en text-[10px] font-bold tracking-wider text-foreground/45">
           {formatCategoryTag(category)}
         </span>
+        {external ? (
+          <span className="font-en text-[10px] font-bold tracking-wider text-foreground/35">
+            ↗
+          </span>
+        ) : null}
       </div>
 
       <div className="my-6 min-w-0 flex-1">
@@ -53,6 +60,25 @@ export function ToolCard({
       >
         ↘
       </span>
+    </>
+  );
+
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cardClassName}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={cardClassName}>
+      {content}
     </Link>
   );
 }

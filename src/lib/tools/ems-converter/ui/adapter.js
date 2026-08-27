@@ -171,6 +171,13 @@ export function mountEmsConverter(root) {
     if (!value) return;
     try {
       await copyText(value);
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("uh:tool-action", {
+            detail: { tool: "ems-address", action: "copy_field", field: key },
+          }),
+        );
+      }
       button.dataset.copied = "1";
       button.textContent = "Copied";
       const prev = timers.get(key);

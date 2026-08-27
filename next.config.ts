@@ -26,6 +26,11 @@ const nextConfig: NextConfig = {
         destination: "/learn/:slug",
         permanent: true,
       },
+      {
+        source: "/tools/ems-address",
+        destination: "https://tools.unclehangul.com/ems-address",
+        permanent: true,
+      },
     ];
   },
 };
