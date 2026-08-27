@@ -69,7 +69,7 @@ Instagram  ←→  unclehangul.com  ←→  YouTube
 | Play widgets (C–D) | Yes | Single column, 48px controls |
 | Watch / pairings (E) | Yes | Stacked buttons, no desktop-only tables |
 | Content feedback | Yes | Full-width thumbs, one tap |
-| Usage help (F–G) | Yes | Bottom sheet, EN/KO toggle, 48px targets |
+| Usage help (F–G) | Yes | Bottom sheet, EN/KO toggle, Play + tools + home Name |
 | Pack Optimizer full (F) | Yes | 2-col inputs, sticky header |
 | EMS / seller tools | Partial | Utility layout OK; seller off main nav |
 
@@ -125,7 +125,7 @@ Coming-soon pages: branded shell, `noindex`, back link to `/play` or home.
 | **D** | Jamo builder game MVP | **Done** (2026-08-27) |
 | **E** | IG/YT ↔ Learn/Play pairing ops, optional scheduled publish | **Done** (2026-08-27) |
 | **F** | Pack Optimizer full page (Uncle Hangul chrome) + bilingual usage help | **Done** (2026-08-28) |
-| **G** | Tool onboarding pattern — UsageHelpDialog on EMS, Pack landing, Play (next) | **In progress** |
+| **G** | Tool onboarding — UsageHelpDialog on EMS, Pack, Play widgets (EN/KO) | **Done** (2026-08-28) |
 
 **Feedback (not comments):** Learn, Play, and tool pages show “Was this helpful?” (👍/👎). Votes fire GA4 `content_feedback` events; one vote per browser via localStorage. Public Q&A stays on Instagram / YouTube for now. **GA4 Admin setup:** [GA4-SETUP.md](./GA4-SETUP.md).
 
@@ -144,6 +144,7 @@ Coming-soon pages: branded shell, `noindex`, back link to `/play` or home.
 ## 11. References in repo
 
 - Play catalog: `src/lib/play/catalog.ts`
+- Play usage copy: `src/lib/play/usage-guides.ts`
 - Channels: `src/lib/channels.ts`
 - Nav: `src/lib/site-nav.ts`
 - Mobile patterns: prior Phase 1–3 (`section-y`, drawer, Learn chips)

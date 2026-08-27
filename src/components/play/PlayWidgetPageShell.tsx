@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
+import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
+import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
 
 type PlayWidgetPageShellProps = {
   sectionLabel?: string;
@@ -10,6 +12,7 @@ type PlayWidgetPageShellProps = {
   descriptionKo: string;
   children: ReactNode;
   feedbackContentId?: string;
+  usageGuide?: ToolUsageGuide;
 };
 
 export function PlayWidgetPageShell({
@@ -20,6 +23,7 @@ export function PlayWidgetPageShell({
   descriptionKo,
   children,
   feedbackContentId,
+  usageGuide,
 }: PlayWidgetPageShellProps) {
   return (
     <div className="md:col-span-12">
@@ -49,6 +53,11 @@ export function PlayWidgetPageShell({
           <p className="font-ko mt-2 max-w-xl text-sm leading-relaxed text-foreground/55">
             {descriptionKo}
           </p>
+          {usageGuide ? (
+            <div className="mt-5">
+              <UsageHelpDialog guide={usageGuide} />
+            </div>
+          ) : null}
         </header>
 
         <div className="px-5 py-8 md:px-8 md:py-10">{children}</div>

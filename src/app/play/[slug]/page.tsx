@@ -5,6 +5,7 @@ import { ComingSoonShell } from "@/components/play/ComingSoonShell";
 import { JamoBuilderWidget } from "@/components/play/JamoBuilderWidget";
 import { PlayWidgetPageShell } from "@/components/play/PlayWidgetPageShell";
 import { buildPageMetadata } from "@/lib/site-metadata";
+import { getPlayUsageGuide } from "@/lib/play/usage-guides";
 import { PLAY_WIDGETS, getPlayWidget } from "@/lib/play/catalog";
 
 type PlayWidgetPageProps = {
@@ -55,6 +56,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           descriptionEn={widget.descriptionEn}
           descriptionKo={widget.descriptionKo}
           feedbackContentId={slug}
+          usageGuide={getPlayUsageGuide(slug)}
         >
           <CityNamesWidget />
         </PlayWidgetPageShell>
@@ -69,6 +71,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           descriptionEn={widget.descriptionEn}
           descriptionKo={widget.descriptionKo}
           feedbackContentId={slug}
+          usageGuide={getPlayUsageGuide(slug)}
         >
           <JamoBuilderWidget />
         </PlayWidgetPageShell>

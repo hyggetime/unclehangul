@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
+import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import { convertEnglishName } from "@/lib/name-to-hangul";
+import { NAME_CONVERTER_USAGE } from "@/lib/play/usage-guides";
 
 /** Placeholder — swap for a dedicated Hangul structure post when published. */
 const LEARN_STRUCTURE_HREF = "/learn/tongue-twister-girin";
@@ -37,9 +39,12 @@ export function NameConverter() {
       className="relative z-10 border-t-[0.5px] border-[#D9D9D3] px-5 section-y md:px-8"
     >
       <div className="mx-auto w-full min-w-0 max-w-xl md:max-w-2xl">
-        <p className="font-en mb-6 text-[10px] font-bold uppercase tracking-widest text-foreground/40 md:mb-8">
-          Name → Hangul
-        </p>
+        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between md:mb-8">
+          <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
+            Name → Hangul
+          </p>
+          <UsageHelpDialog guide={NAME_CONVERTER_USAGE} />
+        </div>
 
         <label className="block">
           <span className="font-en mb-2 block text-[10px] font-bold uppercase tracking-widest text-foreground/35">
