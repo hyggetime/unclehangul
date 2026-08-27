@@ -1,6 +1,7 @@
 import { EmsAddressConverter } from "@/components/tools/EmsAddressConverter";
 import { EmsAddressSeoContent } from "@/components/tools/EmsAddressSeoContent";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
+import { EMS_ADDRESS_USAGE } from "@/lib/tools/ems-address/usage-guide";
 
 type EmsAddressToolViewProps = {
   backHref?: string;
@@ -32,6 +33,7 @@ export function EmsAddressToolView({
       primary={<EmsAddressConverter />}
       seo={<EmsAddressSeoContent />}
       feedback={{ contentType: "tool", contentId: "ems-address" }}
+      usageGuide={EMS_ADDRESS_USAGE}
     />
   );
 }

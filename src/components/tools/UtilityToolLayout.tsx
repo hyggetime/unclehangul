@@ -5,8 +5,10 @@ import {
   ContentFeedback,
   type ContentFeedbackType,
 } from "@/components/feedback/ContentFeedback";
+import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import { ToolPageChrome } from "@/components/tools/ToolPageChrome";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
+import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
 
 type UtilityToolLayoutProps = {
   category: string;
@@ -26,6 +28,7 @@ type UtilityToolLayoutProps = {
     contentType: ContentFeedbackType;
     contentId: string;
   };
+  usageGuide?: ToolUsageGuide;
 };
 
 /**
@@ -44,6 +47,7 @@ export function UtilityToolLayout({
   seo,
   showDesktopSidebarAd = true,
   feedback,
+  usageGuide,
 }: UtilityToolLayoutProps) {
   return (
     <div className="min-w-0 w-full">
@@ -60,6 +64,12 @@ export function UtilityToolLayout({
           descriptionKo={descriptionKo}
           descriptionEn={descriptionEn}
         />
+
+        {usageGuide ? (
+          <div className="mt-4 flex justify-start px-0 md:mt-6">
+            <UsageHelpDialog guide={usageGuide} />
+          </div>
+        ) : null}
 
         <div className="mt-6 grid grid-cols-1 items-start gap-0 md:mt-8 md:grid-cols-12 md:gap-6">
           <div className="min-w-0 md:col-span-8">

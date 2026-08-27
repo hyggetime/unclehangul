@@ -9,6 +9,11 @@ const TOOLS_HOSTS = new Set([
   `www.${TOOLS_SITE_HOST}`,
 ]);
 
+const PACK_HOSTS = new Set([
+  PACK_SITE_HOST,
+  `www.${PACK_SITE_HOST}`,
+]);
+
 export function getToolsSiteUrl(): string {
   const raw =
     process.env.NEXT_PUBLIC_TOOLS_SITE_URL ?? `https://${TOOLS_SITE_HOST}`;
@@ -35,6 +40,12 @@ export function isToolsHost(host: string | null | undefined): boolean {
   return TOOLS_HOSTS.has(normalized);
 }
 
+export function isPackHost(host: string | null | undefined): boolean {
+  if (!host) return false;
+  const normalized = host.split(":")[0]?.toLowerCase() ?? "";
+  return PACK_HOSTS.has(normalized);
+}
+
 export function isMainHost(host: string | null | undefined): boolean {
   if (!host) return true;
   const normalized = host.split(":")[0]?.toLowerCase() ?? "";
@@ -48,6 +59,9 @@ export function isMainHost(host: string | null | undefined): boolean {
 
 /** Internal path prefix rewritten for tools.unclehangul.com requests. */
 export const TOOLS_SITE_PATH_PREFIX = "/tools-site";
+
+/** Internal path prefix rewritten for pack.unclehangul.com requests. */
+export const PACK_SITE_PATH_PREFIX = "/pack-site";
 
 export function getMainSiteUrl(): string {
   return getSiteUrl();

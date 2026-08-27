@@ -1,7 +1,7 @@
 # Uncle Hangul Design Bible
 
 **Status:** Living document (design & product source of truth)  
-**Last updated:** 2026-08-27  
+**Last updated:** 2026-08-28  
 **Scope:** `unclehangul.com` main site — not `tools.unclehangul.com`
 
 This is **not** a work log. It records **why** the product looks and behaves the way it does, and **what** to build next. Implementation notes and commit history live in git; this file is the **IA + brand + phase plan** reference.
@@ -60,6 +60,21 @@ Instagram  ←→  unclehangul.com  ←→  YouTube
 6. Learn sidebar / tool promos: **hidden on mobile**; use top chips or in-content links instead.
 7. Seller tools: **zero** links in main header, home, Learn chips.
 
+### Mobile-first audit (2026-08-28)
+
+| Area | Mobile-first? | Notes |
+|------|---------------|--------|
+| Home IA (A) | Yes | 390px-first hero, chip nav, no sidebar Shorts |
+| Learn rail / cards (B) | Yes | Touch rows, sidebar hidden on mobile |
+| Play widgets (C–D) | Yes | Single column, 48px controls |
+| Watch / pairings (E) | Yes | Stacked buttons, no desktop-only tables |
+| Content feedback | Yes | Full-width thumbs, one tap |
+| Usage help (F–G) | Yes | Bottom sheet, EN/KO toggle, 48px targets |
+| Pack Optimizer full (F) | Yes | 2-col inputs, sticky header |
+| EMS / seller tools | Partial | Utility layout OK; seller off main nav |
+
+**Gaps:** anchor ad vs sticky header on real devices; Play jamo many buttons (wrap OK at 390px).
+
 ---
 
 ## 6. Home IA (target)
@@ -109,8 +124,12 @@ Coming-soon pages: branded shell, `noindex`, back link to `/play` or home.
 | **C** | City names + TTS widget | **Done** (2026-08-27) |
 | **D** | Jamo builder game MVP | **Done** (2026-08-27) |
 | **E** | IG/YT ↔ Learn/Play pairing ops, optional scheduled publish | **Done** (2026-08-27) |
+| **F** | Pack Optimizer full page (Uncle Hangul chrome) + bilingual usage help | **Done** (2026-08-28) |
+| **G** | Tool onboarding pattern — UsageHelpDialog on EMS, Pack landing, Play (next) | **In progress** |
 
 **Feedback (not comments):** Learn, Play, and tool pages show “Was this helpful?” (👍/👎). Votes fire GA4 `content_feedback` events; one vote per browser via localStorage. Public Q&A stays on Instagram / YouTube for now. **GA4 Admin setup:** [GA4-SETUP.md](./GA4-SETUP.md).
+
+**Usage help:** `UsageHelpDialog` — EN/KO toggle, mobile bottom sheet. Copy in `src/lib/tools/*/usage-guide.ts`. Register `pack-subdomain` in GA4 if reporting pack host separately.
 
 ---
 

@@ -200,3 +200,10 @@ body {
   text-transform: uppercase;
   color: rgb(17 17 17 / 0.4);
 }
+
+/* Pack Optimizer iframe embed (?widget=true) — transparent, no min-height lock */
+html.pack-widget-embed,
+body.pack-widget-embed {
+  background: transparent !important;
+  min-height: 0 !important;
+}

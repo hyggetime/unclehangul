@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import { getPackOptimizerUrl } from "@/lib/domains";
+import { PACK_OPTIMIZER_USAGE } from "@/lib/tools/pack-optimizer/usage-guide";
 
 type PackOptimizerLaunchPanelProps = {
   /** When true, fits inside UtilityToolLayout primary column (no outer page padding). */
@@ -41,7 +43,7 @@ export function PackOptimizerLaunchPanel({
           engine used for embeds, extensions, and future apps.
         </p>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <Link
             href={packUrl}
             target="_blank"
@@ -50,6 +52,7 @@ export function PackOptimizerLaunchPanel({
           >
             Open 3D Calculator ↗
           </Link>
+          <UsageHelpDialog guide={PACK_OPTIMIZER_USAGE} />
           <Link
             href="/tools#seller-tools"
             className="font-en touch-target inline-flex min-h-12 items-center justify-center border-[0.5px] border-[#D9D9D3] px-6 text-sm font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"

@@ -2,7 +2,7 @@
  * GA4 analytics helpers.
  * Admin setup (custom dimensions, Explore reports): docs/GA4-SETUP.md
  */
-import { TOOLS_SITE_PATH_PREFIX } from "@/lib/domains";
+import { TOOLS_SITE_PATH_PREFIX, PACK_SITE_PATH_PREFIX } from "@/lib/domains";
 
 export const GA_MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]+$/;
 
@@ -38,10 +38,13 @@ export function isGaTrackingEnabled(): boolean {
 export type PageSection =
   | "home"
   | "learn"
+  | "play"
+  | "watch"
   | "tools-index"
   | "tool-seller"
   | "tool-lang"
   | "tools-subdomain"
+  | "pack-subdomain"
   | "about"
   | "legal"
   | "other";
@@ -72,8 +75,13 @@ export function getPageSection(pathname: string): PageSection {
   if (pathname.startsWith(TOOLS_SITE_PATH_PREFIX)) {
     return "tools-subdomain";
   }
+  if (pathname.startsWith(PACK_SITE_PATH_PREFIX)) {
+    return "pack-subdomain";
+  }
   if (pathname === "/") return "home";
   if (pathname.startsWith("/learn")) return "learn";
+  if (pathname.startsWith("/play")) return "play";
+  if (pathname === "/watch") return "watch";
   if (pathname === "/tools") return "tools-index";
   if (pathname === "/tools/pack-optimizer") return "tool-seller";
   if (pathname.startsWith("/tools/")) return "tool-seller";

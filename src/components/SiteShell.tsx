@@ -3,7 +3,7 @@ import { AdSenseAnchor } from "@/components/ads/AdSenseAnchor";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ToolsSiteShell } from "@/components/ToolsSiteShell";
-import { isToolsHost } from "@/lib/domains";
+import { isPackHost, isToolsHost } from "@/lib/domains";
 
 type SiteShellProps = {
   children: React.ReactNode;
@@ -19,6 +19,19 @@ export async function SiteShell({ children }: SiteShellProps) {
 
   if (isToolsHost(host)) {
     return <ToolsSiteShell>{children}</ToolsSiteShell>;
+  }
+
+  if (isPackHost(host)) {
+    return (
+      <div className="min-h-full bg-background">
+        {children}
+        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom,0px)]">
+          <div className="mx-auto w-full max-w-[1440px]">
+            <AdSenseAnchor className="pointer-events-auto" />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
