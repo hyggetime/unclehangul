@@ -6,7 +6,6 @@ import { getHomeMetadata } from "@/lib/home/metadata";
 import { PRIMARY_NAV_ITEMS } from "@/lib/site-nav";
 import {
   UNCLE_HANGUL_CHANNEL_URL,
-  UNCLE_HANGUL_VIDEOS,
 } from "@/lib/youtube";
 
 export const metadata = getHomeMetadata();
@@ -54,26 +53,19 @@ export default function Home() {
         </section>
 
         <section
-          aria-label="Featured long-form lesson"
+          aria-label="Featured article"
           className="relative border-t-[0.5px] border-[#D9D9D3]"
         >
           <PostCard
-            category="LEARN"
-            date="15 MIN"
-            title="Reading big numbers in Korean"
-            excerpt="910,213,090처럼 큰 숫자를 한국어로 어떻게 읽는지, 한글아저씨 롱폼 강의로 차근차근 따라갑니다."
-            deferMediaOnMobile
-            mediaLinkHref="/learn/korean-numbers-910-million"
-            media={{
-              type: "youtube",
-              videoId: UNCLE_HANGUL_VIDEOS.numbersLong.id,
-              title: UNCLE_HANGUL_VIDEOS.numbersLong.title,
-              layout: "long",
-            }}
+            category="VISUAL VOCABULARY"
+            date="12 MIN"
+            title="The Graphic Blueprint of Sound"
+            excerpt="Why English loanwords reshape inside Hangul’s modular grid—and how that unlocks thousands of words you already know."
+            mediaLinkHref="/learn/graphic-blueprint-hangul-loanwords"
           />
           <div className="border-t-[0.5px] border-[#D9D9D3] px-5 py-4 md:px-8 md:py-5">
             <Link
-              href="/learn/korean-numbers-910-million"
+              href="/learn/graphic-blueprint-hangul-loanwords"
               className="font-en text-xs font-bold uppercase tracking-[0.14em] text-foreground transition-colors hover:text-[#FF4B3E]"
             >
               Read full article ↗

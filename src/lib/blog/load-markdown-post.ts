@@ -6,6 +6,26 @@ import { markdownToBlocks } from "@/lib/blog/parse-markdown";
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content/blog");
 
+function formatPublishedLabel(publishedAt: string): string {
+  const date = new Date(publishedAt);
+  if (Number.isNaN(date.getTime())) return publishedAt;
+  return date
+    .toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    })
+    .toUpperCase();
+}
+
+function resolveSectionLabel(data: Record<string, unknown>): string {
+  if (data.sectionLabel) return String(data.sectionLabel);
+  if (data.category) {
+    return `LEARN / ${String(data.category).toUpperCase()}`;
+  }
+  return "LEARN / KOREAN";
+}
+
 export function getMarkdownSlugs(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];
   return fs
@@ -23,9 +43,11 @@ export function loadMarkdownPost(slug: string): BlogPost | undefined {
 
   const title = String(data.title ?? slug);
   const description = String(data.description ?? "");
-  const publishedAt = String(data.publishedAt ?? "");
-  const publishedLabel = String(data.publishedLabel ?? publishedAt);
-  const sectionLabel = String(data.sectionLabel ?? "LEARN / KOREAN");
+  const publishedAt = String(data.publishedAt ?? data.date ?? "");
+  const publishedLabel = String(
+    data.publishedLabel ?? formatPublishedLabel(publishedAt),
+  );
+  const sectionLabel = resolveSectionLabel(data);
 
   return {
     slug,

@@ -13,7 +13,7 @@ type PostCardProps = {
   /** Mobile: link instead of embed to shorten home scroll. */
   deferMediaOnMobile?: boolean;
   mediaLinkHref?: string;
-  media:
+  media?:
     | {
         type: "youtube";
         videoId: string;
@@ -50,47 +50,57 @@ export function PostCard({
           {title}
         </h2>
 
-        {media.type === "youtube" ? (
-          deferMediaOnMobile && mediaLinkHref ? (
-            <>
-              <div className="md:hidden">
-                <Link
-                  href={mediaLinkHref}
-                  className="font-en flex min-h-12 items-center justify-between border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"
-                >
-                  Watch full lesson
-                  <span aria-hidden>↗</span>
-                </Link>
-              </div>
-              <div className="hidden md:block">
-                <YoutubeEmbed
-                  videoId={media.videoId}
-                  title={media.title}
-                  layout={media.layout}
+        {media ? (
+          media.type === "youtube" ? (
+            deferMediaOnMobile && mediaLinkHref ? (
+              <>
+                <div className="md:hidden">
+                  <Link
+                    href={mediaLinkHref}
+                    className="font-en flex min-h-12 items-center justify-between border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"
+                  >
+                    Read full article
+                    <span aria-hidden>↗</span>
+                  </Link>
+                </div>
+                <div className="hidden md:block">
+                  <YoutubeEmbed
+                    videoId={media.videoId}
+                    title={media.title}
+                    layout={media.layout}
+                  />
+                </div>
+              </>
+            ) : (
+              <YoutubeEmbed
+                videoId={media.videoId}
+                title={media.title}
+                layout={media.layout}
+              />
+            )
+          ) : (
+            <MediaFrame>
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src={media.src}
+                  alt={media.alt}
+                  width={media.width}
+                  height={media.height}
+                  className="h-full w-full rounded-none object-cover"
+                  sizes="(max-width: 448px) 100vw, 448px"
                 />
               </div>
-            </>
-          ) : (
-            <YoutubeEmbed
-              videoId={media.videoId}
-              title={media.title}
-              layout={media.layout}
-            />
+            </MediaFrame>
           )
-        ) : (
-          <MediaFrame>
-            <div className="relative aspect-[4/3] w-full">
-              <Image
-                src={media.src}
-                alt={media.alt}
-                width={media.width}
-                height={media.height}
-                className="h-full w-full rounded-none object-cover"
-                sizes="(max-width: 448px) 100vw, 448px"
-              />
-            </div>
-          </MediaFrame>
-        )}
+        ) : mediaLinkHref ? (
+          <Link
+            href={mediaLinkHref}
+            className="font-en flex min-h-12 items-center justify-between border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-4 py-3 text-xs font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"
+          >
+            Read full article
+            <span aria-hidden>↗</span>
+          </Link>
+        ) : null}
 
         <p className="font-ko text-sm leading-relaxed text-foreground/65">
           {excerpt}

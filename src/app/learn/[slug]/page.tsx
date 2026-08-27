@@ -73,7 +73,7 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
             <LearnRecommendedToolsChips />
 
             <div itemProp="articleBody" className="min-w-0 overflow-x-clip">
-              <BlogBody blocks={post.blocks} constrainWidth />
+              <BlogBody blocks={post.blocks} constrainWidth richText />
             </div>
 
             <AuthorTeaser />

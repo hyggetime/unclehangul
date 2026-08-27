@@ -55,7 +55,7 @@ function BlogBlockRenderer({
 }) {
   const paragraphClass = legalProse
     ? "font-en mb-6 text-sm leading-relaxed text-foreground/70 md:text-base"
-    : "font-ko mb-6 text-base leading-relaxed text-foreground/80";
+    : "font-en mb-6 text-base leading-relaxed text-foreground/80";
 
   switch (block.type) {
     case "paragraph":
@@ -71,15 +71,74 @@ function BlogBlockRenderer({
 
     case "list":
       return (
-        <ul
-          className={`${paragraphClass} mt-3 list-none space-y-2 pl-0`}
-        >
+        <ul className={`${paragraphClass} mt-3 list-none space-y-2 pl-0`}>
           {block.items.map((item, index) => (
             <li key={index}>
               {richText ? <InlineMarkdown text={item} /> : item}
             </li>
           ))}
         </ul>
+      );
+
+    case "ordered-list":
+      return (
+        <ol
+          className={`${paragraphClass} mt-3 list-decimal space-y-2 pl-5 marker:font-en marker:text-foreground/50`}
+        >
+          {block.items.map((item, index) => (
+            <li key={index}>
+              {richText ? <InlineMarkdown text={item} /> : item}
+            </li>
+          ))}
+        </ol>
+      );
+
+    case "table":
+      return (
+        <div className="my-8 overflow-x-auto border-[0.5px] border-[#D9D9D3]">
+          <table className="w-full min-w-[560px] text-left text-sm">
+            <thead className="border-b-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/40">
+              <tr>
+                {block.headers.map((header) => (
+                  <th
+                    key={header}
+                    className="font-en px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-foreground/45"
+                  >
+                    {richText ? (
+                      <InlineMarkdown text={header} />
+                    ) : (
+                      header
+                    )}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, rowIndex) => (
+                <tr
+                  key={rowIndex}
+                  className="border-b-[0.5px] border-[#D9D9D3] last:border-b-0"
+                >
+                  {row.map((cell, cellIndex) => (
+                    <td
+                      key={cellIndex}
+                      className="font-en px-4 py-3 align-top leading-relaxed text-foreground/75"
+                    >
+                      {richText ? <InlineMarkdown text={cell} /> : cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+
+    case "code":
+      return (
+        <pre className="my-8 overflow-x-auto border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/40 p-4 font-mono text-xs leading-relaxed text-foreground/80 md:text-sm">
+          <code>{block.content}</code>
+        </pre>
       );
 
     case "heading":

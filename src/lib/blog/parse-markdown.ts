@@ -3,10 +3,31 @@ import type { BlogBlock } from "@/lib/blog/posts";
 const YOUTUBE_LINE =
   /^@youtube\s+(\S+)\s*\|\s*(short|long)\s*\|\s*(.+)\s*$/i;
 
+const TABLE_SEPARATOR =
+  /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/;
+
+function parseTableCells(line: string): string[] {
+  return line
+    .trim()
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cell.trim());
+}
+
+function isTableRow(line: string): boolean {
+  const trimmed = line.trim();
+  return trimmed.startsWith("|") && trimmed.includes("|");
+}
+
 export function markdownToBlocks(markdown: string): BlogBlock[] {
   const blocks: BlogBlock[] = [];
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   let paragraph: string[] = [];
+  let listItems: string[] = [];
+  let orderedItems: string[] = [];
+  let inCode = false;
+  let codeLines: string[] = [];
 
   function flushParagraph() {
     const text = paragraph.join(" ").trim();
@@ -14,36 +35,102 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
     paragraph = [];
   }
 
-  function flushList(listItems: string[]) {
-    const items = listItems.map((item) => item.trim()).filter(Boolean);
-    if (items.length) blocks.push({ type: "list", items });
+  function flushList(listItemsToFlush: string[], ordered = false) {
+    const items = listItemsToFlush.map((item) => item.trim()).filter(Boolean);
+    if (!items.length) return;
+    blocks.push({
+      type: ordered ? "ordered-list" : "list",
+      items,
+    });
   }
-
-  let listItems: string[] = [];
 
   function flushListBuffer() {
-    flushList(listItems);
+    flushList(listItems, false);
     listItems = [];
+    flushList(orderedItems, true);
+    orderedItems = [];
   }
 
-  for (const rawLine of lines) {
+  function flushCode() {
+    if (!codeLines.length) return;
+    blocks.push({ type: "code", content: codeLines.join("\n").trimEnd() });
+    codeLines = [];
+  }
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const rawLine = lines[index];
     const line = rawLine.trimEnd();
 
-    const listMatch = line.match(/^-\s+(.+)$/);
+    if (line.trim().startsWith("```")) {
+      if (inCode) {
+        flushCode();
+        inCode = false;
+      } else {
+        flushParagraph();
+        flushListBuffer();
+        inCode = true;
+      }
+      continue;
+    }
+
+    if (inCode) {
+      codeLines.push(rawLine);
+      continue;
+    }
+
+    if (isTableRow(line)) {
+      const nextLine = lines[index + 1]?.trim() ?? "";
+      if (TABLE_SEPARATOR.test(nextLine)) {
+        flushParagraph();
+        flushListBuffer();
+
+        const headers = parseTableCells(line);
+        index += 1;
+        const rows: string[][] = [];
+
+        while (index + 1 < lines.length && isTableRow(lines[index + 1])) {
+          index += 1;
+          rows.push(parseTableCells(lines[index]));
+        }
+
+        blocks.push({ type: "table", headers, rows });
+        continue;
+      }
+    }
+
+    const orderedMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (orderedMatch) {
+      flushParagraph();
+      if (listItems.length) flushList(listItems, false);
+      listItems = [];
+      orderedItems.push(orderedMatch[1].trim());
+      continue;
+    }
+
+    const listMatch = line.match(/^[-*]\s+(.+)$/);
     if (listMatch) {
       flushParagraph();
+      if (orderedItems.length) flushList(orderedItems, true);
+      orderedItems = [];
       listItems.push(listMatch[1].trim());
       continue;
     }
 
-    if (listItems.length > 0 && line.trim() !== "") {
-      flushListBuffer();
+    if (listItems.length > 0 || orderedItems.length > 0) {
+      if (line.trim() !== "") flushListBuffer();
     }
 
     if (line.trim() === "---") {
       flushParagraph();
       flushListBuffer();
       blocks.push({ type: "divider" });
+      continue;
+    }
+
+    const h1 = line.match(/^#\s+(.+)$/);
+    if (h1) {
+      flushParagraph();
+      flushListBuffer();
       continue;
     }
 
@@ -87,5 +174,7 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
 
   flushParagraph();
   flushListBuffer();
+  if (inCode) flushCode();
+
   return blocks;
 }

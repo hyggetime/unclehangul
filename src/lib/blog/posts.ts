@@ -9,6 +9,9 @@ export type BlogBlock =
   | { type: "paragraph"; content: string }
   | { type: "heading"; level: 2 | 3; content: string }
   | { type: "list"; items: string[] }
+  | { type: "ordered-list"; items: string[] }
+  | { type: "table"; headers: string[]; rows: string[][] }
+  | { type: "code"; content: string }
   | { type: "divider" }
   | {
       type: "youtube";
