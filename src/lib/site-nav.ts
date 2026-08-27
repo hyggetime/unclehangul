@@ -4,21 +4,21 @@ export type SiteNavItem = {
   descriptionKo: string;
 };
 
-/** Primary sections linked from header drawer and home menu. */
+/** Primary sections — main site only (no seller tools). */
 export const PRIMARY_NAV_ITEMS: readonly SiteNavItem[] = [
   {
     href: "/learn",
     title: "Learn",
-    descriptionKo: "자모부터 문장까지, 선명하게.",
+    descriptionKo: "글로 익히는 한글·어휘.",
   },
   {
-    href: "/tools#seller-tools",
-    title: "Seller Tools",
-    descriptionKo: "해외배송·물류 실전 도구.",
+    href: "/play",
+    title: "Hangul Play",
+    descriptionKo: "이름·도시·자모 — 짧은 위젯.",
   },
   {
-    href: "/#name-converter",
-    title: "Name → Hangul",
-    descriptionKo: "영문 이름을 한글로 변환.",
+    href: "/watch",
+    title: "Watch",
+    descriptionKo: "인스타·유튜브 채널.",
   },
 ] as const;

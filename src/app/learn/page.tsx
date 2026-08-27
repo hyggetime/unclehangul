@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LearnArticleCard } from "@/components/learn/LearnArticleCard";
 import { LearnIndexJsonLd } from "@/components/learn/LearnIndexJsonLd";
 import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
 import { getAllPosts, getLearnIndexMetadata } from "@/lib/blog/posts";
 
 export const metadata: Metadata = getLearnIndexMetadata();
+
+export const revalidate = 3600;
 
 export default function LearnIndexPage() {
   const posts = getAllPosts();
@@ -31,8 +33,8 @@ export default function LearnIndexPage() {
                 Lessons &amp; articles
               </h1>
               <p className="font-ko mt-4 max-w-2xl text-sm leading-relaxed text-foreground/65 md:text-base">
-                마크다운 파이프라인에서 연결될 포스트 목록입니다. 제목과
-                발행일만으로도 검색 로봇이 구조를 읽을 수 있게 짰습니다.
+                Visual Vocabulary, 발음, 읽기 — 한글아저씨의 글과 영상을 모아
+                두었습니다.
               </p>
             </header>
 
@@ -44,30 +46,7 @@ export default function LearnIndexPage() {
                   key={post.slug}
                   className="border-b-[0.5px] border-[#D9D9D3] last:border-b-0"
                 >
-                  <article className="py-6 md:py-8">
-                    <p className="font-en mb-2 text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-                      <time dateTime={post.publishedAt}>
-                        {post.publishedLabel}
-                      </time>
-                    </p>
-                    <h2 className="font-en text-xl font-bold leading-tight tracking-tight md:text-2xl">
-                      <Link
-                        href={`/learn/${post.slug}`}
-                        className="text-foreground transition-colors hover:text-[#FF4B3E] active:text-[#FF4B3E]"
-                      >
-                        {post.title}
-                      </Link>
-                    </h2>
-                    <p className="font-ko mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65 md:text-base">
-                      {post.description}
-                    </p>
-                    <Link
-                      href={`/learn/${post.slug}`}
-                      className="font-en mt-4 inline-flex text-xs font-bold uppercase tracking-[0.14em] text-foreground/55 transition-colors hover:text-[#FF4B3E]"
-                    >
-                      Read article ↗
-                    </Link>
-                  </article>
+                  <LearnArticleCard post={post} variant="index" />
                 </li>
               ))}
             </ul>

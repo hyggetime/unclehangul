@@ -48,6 +48,8 @@ export function loadMarkdownPost(slug: string): BlogPost | undefined {
     data.publishedLabel ?? formatPublishedLabel(publishedAt),
   );
   const sectionLabel = resolveSectionLabel(data);
+  const status = parseStatus(data.status);
+  const publishAt = data.publishAt ? String(data.publishAt) : undefined;
 
   return {
     slug,
@@ -56,6 +58,17 @@ export function loadMarkdownPost(slug: string): BlogPost | undefined {
     publishedAt,
     publishedLabel,
     sectionLabel,
+    status,
+    publishAt,
     blocks: markdownToBlocks(content.trim()),
   };
+}
+
+function parseStatus(
+  value: unknown,
+): BlogPost["status"] | undefined {
+  if (value === "draft" || value === "scheduled" || value === "published") {
+    return value;
+  }
+  return undefined;
 }

@@ -1,196 +1,71 @@
 import Link from "next/link";
-import { DashboardSidebar } from "@/components/DashboardSidebar";
+import { HomeChannelsBand } from "@/components/home/HomeChannelsBand";
+import { HomeHero } from "@/components/home/HomeHero";
+import { HomeLearnRail } from "@/components/home/HomeLearnRail";
+import { PlayWidgetStrip } from "@/components/home/PlayWidgetStrip";
 import { NameConverter } from "@/components/NameConverter";
-import { PostCard } from "@/components/PostCard";
 import { getHomeMetadata } from "@/lib/home/metadata";
-import { PRIMARY_NAV_ITEMS } from "@/lib/site-nav";
-import {
-  UNCLE_HANGUL_CHANNEL_URL,
-} from "@/lib/youtube";
+import { getAllPosts } from "@/lib/blog/posts";
+import { UNCLE_HANGUL_CHANNEL_URL } from "@/lib/youtube";
 
 export const metadata = getHomeMetadata();
 
 const MAIN_COLUMN =
-  "relative z-10 w-full min-w-0 overflow-visible md:col-span-8 md:col-start-1 md:row-start-1 md:border-r-[0.5px] md:border-[#D9D9D3]";
+  "relative z-10 w-full min-w-0 md:col-span-12";
 
 export default function Home() {
-  return (
-    <>
-      <div className={MAIN_COLUMN}>
-        <span
-          aria-hidden
-          className="font-ko pointer-events-none absolute -left-8 top-32 -z-10 select-none text-[10rem] font-black leading-none text-[#E5E5DE] md:text-[12rem]"
-        >
-          ㅎ
-        </span>
-        <span
-          aria-hidden
-          className="font-ko pointer-events-none absolute -right-6 top-[48%] -z-10 select-none text-[10rem] font-black leading-none text-[#E5E5DE] md:text-[12rem]"
-        >
-          ㄱ
-        </span>
+  const posts = getAllPosts();
 
-        <section className="relative px-5 pb-14 pt-16 md:p-8 md:pb-16 md:pt-12">
-          <h1 className="font-en text-5xl font-black lowercase leading-[0.92] tracking-[-0.04em] text-foreground sm:text-6xl md:text-7xl">
-            unlock
-          </h1>
-          <p className="font-en mt-4 max-w-xl text-xl font-bold leading-tight tracking-[-0.02em] text-foreground sm:text-2xl md:mt-6 md:text-3xl">
-            the Unexpected Language.
+  return (
+    <div className={MAIN_COLUMN}>
+      <HomeHero />
+      <HomeLearnRail posts={posts} />
+
+      <div id="hangul-play">
+        <NameConverter />
+        <PlayWidgetStrip />
+      </div>
+
+      <HomeChannelsBand />
+
+      <section
+        id="about"
+        aria-labelledby="about-heading"
+        className="scroll-mt-16 border-t-[0.5px] border-[#D9D9D3] px-5 section-y md:px-8"
+      >
+        <div className="mx-auto w-full min-w-0 max-w-xl md:max-w-2xl">
+          <p
+            id="about-heading"
+            className="font-en mb-4 text-xs font-bold uppercase tracking-[0.14em] text-foreground/45"
+          >
+            Meet the Creator
           </p>
-          <p className="font-ko mt-8 max-w-prose text-sm leading-relaxed text-foreground/65 md:mt-10 md:text-base">
-            Uncle Hangul은 군더더기 없는 타이포그래피로 한국어를 익히는
-            공간입니다.{" "}
+
+          <p className="font-en text-lg font-black leading-snug tracking-tight text-foreground md:text-xl">
+            Certified Korean Language Teacher &amp; Media Director
+          </p>
+
+          <p className="font-ko mt-4 text-sm leading-relaxed text-foreground/65">
+            타이포그래피로 한글을 가르치는{" "}
             <a
               href={UNCLE_HANGUL_CHANNEL_URL}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer author"
               className="font-en text-foreground underline decoration-[0.5px] underline-offset-4 transition-colors hover:text-[#FF4B3E]"
             >
               @unclehangul
             </a>
-            에서 영상으로도 만나보세요.
+            . 글·위젯·영상이 같은 브랜드로 이어집니다.
           </p>
-        </section>
 
-        <section
-          aria-label="Featured article"
-          className="relative border-t-[0.5px] border-[#D9D9D3]"
-        >
-          <PostCard
-            category="VISUAL VOCABULARY"
-            date="12 MIN"
-            title="The Graphic Blueprint of Sound"
-            excerpt="Why English loanwords reshape inside Hangul’s modular grid—and how that unlocks thousands of words you already know."
-            mediaLinkHref="/learn/graphic-blueprint-hangul-loanwords"
-          />
-          <div className="border-t-[0.5px] border-[#D9D9D3] px-5 py-4 md:px-8 md:py-5">
-            <Link
-              href="/learn/graphic-blueprint-hangul-loanwords"
-              className="font-en text-xs font-bold uppercase tracking-[0.14em] text-foreground transition-colors hover:text-[#FF4B3E]"
-            >
-              Read full article ↗
-            </Link>
-          </div>
-        </section>
-
-        <NameConverter />
-
-        <nav
-          id="menu"
-          aria-label="Primary sections"
-          className="relative z-10 w-full bg-background"
-        >
-          {PRIMARY_NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="group touch-target flex items-center justify-between gap-5 border-t-[0.5px] border-[#D9D9D3] p-5 py-5 transition-colors md:p-8 md:py-8"
-            >
-              <div className="min-w-0 flex-1 basis-0 pr-2">
-                <span className="font-en block break-words text-2xl font-black leading-tight tracking-tight text-foreground transition-colors group-hover:text-[#FF4B3E] group-active:text-[#FF4B3E] sm:text-3xl">
-                  {item.title}
-                </span>
-                <span className="font-ko mt-2 block text-sm leading-relaxed text-foreground/55">
-                  {item.descriptionKo}
-                </span>
-              </div>
-              <span
-                aria-hidden
-                className="font-en shrink-0 text-xl leading-none text-foreground transition-colors group-hover:text-[#FF4B3E] group-active:text-[#FF4B3E] sm:text-2xl"
-              >
-                ↘
-              </span>
-            </Link>
-          ))}
-        </nav>
-
-        <section
-          id="about"
-          aria-labelledby="about-heading"
-          className="relative z-10 w-full shrink-0 scroll-mt-16 border-t-[0.5px] border-b-[0.5px] border-[#D9D9D3] bg-background px-5 section-y md:px-8"
-        >
-          <div className="mx-auto w-full min-w-0 max-w-xl md:max-w-2xl">
-            <p
-              id="about-heading"
-              className="font-en mb-4 text-xs font-bold uppercase tracking-[0.14em] text-foreground/45"
-            >
-              Meet the Creator
-            </p>
-
-            <p className="font-en text-xl font-black leading-snug tracking-tight text-foreground md:text-2xl">
-              Certified Korean Language Teacher &amp; Media Director behind
-              Uncle Hangul
-            </p>
-
-            <p className="font-en mt-4 text-sm leading-relaxed text-foreground/65">
-              On{" "}
-              <a
-                href={UNCLE_HANGUL_CHANNEL_URL}
-                target="_blank"
-                rel="noopener noreferrer author"
-                className="text-foreground underline decoration-[0.5px] underline-offset-4 transition-colors hover:text-[#FF4B3E]"
-              >
-                @unclehangul
-              </a>
-              , we teach Hangul through typography-first, distraction-free
-              lessons—so learners read structure, sound, and meaning on one calm
-              surface. This site extends that same editorial discipline to
-              tools, articles, and video.
-            </p>
-
-            <Link
-              href="/about"
-              className="font-en touch-target mt-6 inline-flex min-h-12 items-center justify-center border-[0.5px] border-[#D9D9D3] bg-background px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E] active:border-[#FF4B3E] active:text-[#FF4B3E]"
-            >
-              Read full story ➔
-            </Link>
-
-            <div className="mt-6 border-t-[0.5px] border-[#D9D9D3] pt-6">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex min-h-[88px] flex-col justify-between border-[0.5px] border-[#D9D9D3] bg-background p-4">
-                  <span className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-                    Certified
-                  </span>
-                  <span className="font-en text-xs font-bold leading-snug tracking-tight text-foreground">
-                    Korean Language Teacher
-                  </span>
-                  <span className="font-ko text-[11px] leading-relaxed text-foreground/55">
-                    자격 verified · credential mark
-                  </span>
-                </div>
-
-                <a
-                  href={UNCLE_HANGUL_CHANNEL_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex min-h-[88px] flex-col justify-between border-[0.5px] border-[#D9D9D3] bg-background p-4 transition-colors hover:border-[#FF4B3E] active:border-[#FF4B3E]"
-                >
-                  <span className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-                    Channels
-                  </span>
-                  <span className="font-en text-xs font-bold leading-snug tracking-tight text-foreground transition-colors group-hover:text-[#FF4B3E]">
-                    YouTube · @unclehangul
-                  </span>
-                  <span className="font-en text-[11px] leading-relaxed text-foreground/55">
-                    Long-form &amp; Shorts ↗
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <aside
-          aria-label="Advertisement"
-          className="relative z-10 flex min-h-[250px] w-full shrink-0 items-center justify-center border-t-[0.5px] border-[#D9D9D3] bg-[#EBEBE5] p-5 md:p-8"
-        >
-          <span className="font-en text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/30">
-            Advertisement
-          </span>
-        </aside>
-      </div>
-
-      <DashboardSidebar />
-    </>
+          <Link
+            href="/about"
+            className="font-en touch-target mt-6 inline-flex min-h-12 items-center justify-center border-[0.5px] border-[#D9D9D3] bg-background px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"
+          >
+            Read full story ➔
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -4,7 +4,7 @@ export function getHomeMetadata() {
   return buildPageMetadata({
     title: "Home",
     description:
-      "Typography-first Korean learning—lessons, tools, and video from Uncle Han-guel (한글아저씨).",
+      "Learn Korean through Hangul design — articles, Hangul Play widgets, and links to @unclehangul on YouTube and Instagram.",
     path: "/",
   });
 }

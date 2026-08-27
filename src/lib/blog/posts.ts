@@ -3,6 +3,7 @@ import {
   getMarkdownSlugs,
   loadMarkdownPost,
 } from "@/lib/blog/load-markdown-post";
+import { isPostPublic } from "@/lib/blog/publish";
 import { buildPageMetadata } from "@/lib/site-metadata";
 
 export type BlogBlock =
@@ -34,6 +35,10 @@ export type BlogPost = {
   publishedAt: string;
   publishedLabel: string;
   sectionLabel: string;
+  /** `draft` hidden; `scheduled` uses publishAt; default published. */
+  status?: "draft" | "scheduled" | "published";
+  /** ISO datetime; when set, overrides publishedAt for visibility. */
+  publishAt?: string;
   blocks: BlogBlock[];
 };
 
@@ -89,23 +94,30 @@ export function getAllPosts(): BlogPost[] {
     if (!bySlug.has(post.slug)) bySlug.set(post.slug, post);
   }
 
-  return [...bySlug.values()].sort((a, b) =>
-    b.publishedAt.localeCompare(a.publishedAt),
-  );
+  return [...bySlug.values()]
+    .filter((post) => isPostPublic(post))
+    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 }
 
 export function getAllPostSlugs(): string[] {
+  return getAllPosts().map((post) => post.slug);
+}
+
+export function getPostBySlug(slug: string): BlogPost | undefined {
+  const fromMarkdown = loadMarkdownPost(slug);
+  const post =
+    fromMarkdown ?? POSTS.find((entry) => entry.slug === slug);
+  if (!post || !isPostPublic(post)) return undefined;
+  return post;
+}
+
+/** All slugs on disk (including scheduled/draft) for static path discovery. */
+export function getAllPostSlugsIncludingUnpublished(): string[] {
   const slugs = new Set([
     ...POSTS.map((post) => post.slug),
     ...getMarkdownSlugs(),
   ]);
   return [...slugs];
-}
-
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  const fromMarkdown = loadMarkdownPost(slug);
-  if (fromMarkdown) return fromMarkdown;
-  return POSTS.find((post) => post.slug === slug);
 }
 
 export function getLearnIndexMetadata(): Metadata {

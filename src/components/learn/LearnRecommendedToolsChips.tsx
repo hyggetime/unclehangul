@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { RECOMMENDED_TOOLS } from "@/lib/learn/recommended-tools";
+import { LEARN_RECOMMENDED_LINKS } from "@/lib/learn/recommended-links";
 
 export function LearnRecommendedToolsChips() {
   return (
@@ -8,26 +8,26 @@ export function LearnRecommendedToolsChips() {
         id="learn-tools-chips-heading"
         className="font-en px-5 pt-4 text-[10px] font-bold uppercase tracking-widest text-foreground/45"
       >
-        Recommended Tools
+        Explore
       </p>
       <nav
         aria-labelledby="learn-tools-chips-heading"
         className="flex gap-2 overflow-x-auto px-5 py-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {RECOMMENDED_TOOLS.map((tool) => {
+        {LEARN_RECOMMENDED_LINKS.map((item) => {
           const className =
             "font-en touch-target inline-flex min-h-14 shrink-0 items-center border-[0.5px] border-[#D9D9D3] bg-background px-4 text-xs font-bold tracking-tight text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E] active:border-[#FF4B3E] active:text-[#FF4B3E]";
 
-          if (tool.external) {
+          if (item.external) {
             return (
               <a
-                key={tool.href}
-                href={tool.href}
+                key={item.href}
+                href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={className}
               >
-                {tool.label}
+                {item.label}
                 <span aria-hidden className="ml-1.5">
                   ↗
                 </span>
@@ -36,8 +36,8 @@ export function LearnRecommendedToolsChips() {
           }
 
           return (
-            <Link key={tool.href} href={tool.href} className={className}>
-              {tool.label}
+            <Link key={item.href} href={item.href} className={className}>
+              {item.label}
             </Link>
           );
         })}

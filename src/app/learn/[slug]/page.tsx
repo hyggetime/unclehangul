@@ -4,10 +4,11 @@ import { ArticleJsonLd } from "@/components/blog/ArticleJsonLd";
 import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
+import { ArticleChannelLinks } from "@/components/learn/ArticleChannelLinks";
 import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
 import {
-  getAllPostSlugs,
+  getAllPostSlugsIncludingUnpublished,
   getPostBySlug,
   getPostMetadata,
 } from "@/lib/blog/posts";
@@ -17,8 +18,10 @@ type LearnPostPageProps = {
 };
 
 export function generateStaticParams() {
-  return getAllPostSlugs().map((slug) => ({ slug }));
+  return getAllPostSlugsIncludingUnpublished().map((slug) => ({ slug }));
 }
+
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -76,6 +79,7 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
               <BlogBody blocks={post.blocks} constrainWidth richText />
             </div>
 
+            <ArticleChannelLinks slug={slug} />
             <AuthorTeaser />
           </article>
 
