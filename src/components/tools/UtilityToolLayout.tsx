@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 import { ToolDesktopSideAd } from "@/components/ads/ToolDesktopSideAd";
 import { ToolPageAdSlot } from "@/components/ads/ToolPageAdSlot";
+import {
+  ContentFeedback,
+  type ContentFeedbackType,
+} from "@/components/feedback/ContentFeedback";
 import { ToolPageChrome } from "@/components/tools/ToolPageChrome";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
 
@@ -17,6 +21,11 @@ type UtilityToolLayoutProps = {
   /** Collapsed FAQ, cross-links, JSON-LD block. */
   seo: ReactNode;
   showDesktopSidebarAd?: boolean;
+  /** When set, shows “Was this helpful?” below the tool UI. */
+  feedback?: {
+    contentType: ContentFeedbackType;
+    contentId: string;
+  };
 };
 
 /**
@@ -34,6 +43,7 @@ export function UtilityToolLayout({
   primary,
   seo,
   showDesktopSidebarAd = true,
+  feedback,
 }: UtilityToolLayoutProps) {
   return (
     <div className="min-w-0 w-full">
@@ -56,6 +66,13 @@ export function UtilityToolLayout({
             <ToolPageAdSlot variant="action" className="px-0" />
             <div className="pt-4 md:pt-6">{primary}</div>
             <ToolPageAdSlot variant="result" className="px-0 pt-6 md:pt-8" />
+            {feedback ? (
+              <ContentFeedback
+                contentType={feedback.contentType}
+                contentId={feedback.contentId}
+                className="mt-8 md:mt-10"
+              />
+            ) : null}
           </div>
 
           {showDesktopSidebarAd ? <ToolDesktopSideAd /> : null}

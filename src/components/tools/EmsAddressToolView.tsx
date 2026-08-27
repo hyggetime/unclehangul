@@ -31,6 +31,7 @@ export function EmsAddressToolView({
       descriptionEn="Paste an overseas English address. Split into Korea Post contract-EMS fields with per-field copy—GB, FR, NL, BE, SE, DE, US, JP, CA, AU."
       primary={<EmsAddressConverter />}
       seo={<EmsAddressSeoContent />}
+      feedback={{ contentType: "tool", contentId: "ems-address" }}
     />
   );
 }

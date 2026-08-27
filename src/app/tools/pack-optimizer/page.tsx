@@ -27,6 +27,7 @@ export default function PackOptimizerLandingPage() {
         primary={<PackOptimizerLaunchPanel compact />}
         seo={<PackOptimizerSeoContent />}
         showDesktopSidebarAd={false}
+        feedback={{ contentType: "tool", contentId: "pack-optimizer" }}
       />
     </div>
   );

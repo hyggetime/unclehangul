@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { ContentFeedback } from "@/components/feedback/ContentFeedback";
 import { convertEnglishName } from "@/lib/name-to-hangul";
 
 /** Placeholder — swap for a dedicated Hangul structure post when published. */
@@ -89,6 +90,12 @@ export function NameConverter() {
             {copied ? "Copied" : "Copy"}
           </button>
         </div>
+
+        <ContentFeedback
+          contentType="play"
+          contentId="name-converter"
+          className="mt-6 md:mt-8"
+        />
 
         <Link
           href={LEARN_STRUCTURE_HREF}

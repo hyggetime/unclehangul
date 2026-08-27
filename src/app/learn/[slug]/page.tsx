@@ -5,6 +5,7 @@ import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
 import { ArticleChannelLinks } from "@/components/learn/ArticleChannelLinks";
+import { ContentFeedback } from "@/components/feedback/ContentFeedback";
 import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
 import {
@@ -81,6 +82,11 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
 
             <ArticleChannelLinks slug={slug} />
             <AuthorTeaser />
+            <ContentFeedback
+              contentType="learn"
+              contentId={slug}
+              className="mx-5 mb-10 max-w-3xl md:mx-8 md:mb-12"
+            />
           </article>
 
           <LearnSidebar />

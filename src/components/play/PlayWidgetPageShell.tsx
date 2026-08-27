@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ContentFeedback } from "@/components/feedback/ContentFeedback";
 
 type PlayWidgetPageShellProps = {
   sectionLabel?: string;
@@ -8,6 +9,7 @@ type PlayWidgetPageShellProps = {
   descriptionEn: string;
   descriptionKo: string;
   children: ReactNode;
+  feedbackContentId?: string;
 };
 
 export function PlayWidgetPageShell({
@@ -17,6 +19,7 @@ export function PlayWidgetPageShell({
   descriptionEn,
   descriptionKo,
   children,
+  feedbackContentId,
 }: PlayWidgetPageShellProps) {
   return (
     <div className="md:col-span-12">
@@ -49,6 +52,16 @@ export function PlayWidgetPageShell({
         </header>
 
         <div className="px-5 py-8 md:px-8 md:py-10">{children}</div>
+
+        {feedbackContentId ? (
+          <div className="border-t-[0.5px] border-[#D9D9D3] px-5 md:px-8">
+            <ContentFeedback
+              contentType="play"
+              contentId={feedbackContentId}
+              className="pb-8 pt-8 md:pb-10"
+            />
+          </div>
+        ) : null}
 
         <div className="border-t-[0.5px] border-[#D9D9D3] px-5 py-6 md:px-8">
           <Link

@@ -54,6 +54,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           titleKo={widget.titleKo}
           descriptionEn={widget.descriptionEn}
           descriptionKo={widget.descriptionKo}
+          feedbackContentId={slug}
         >
           <CityNamesWidget />
         </PlayWidgetPageShell>
@@ -67,6 +68,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           titleKo={widget.titleKo}
           descriptionEn={widget.descriptionEn}
           descriptionKo={widget.descriptionKo}
+          feedbackContentId={slug}
         >
           <JamoBuilderWidget />
         </PlayWidgetPageShell>

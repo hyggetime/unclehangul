@@ -1,3 +1,7 @@
+/**
+ * GA4 analytics helpers.
+ * Admin setup (custom dimensions, Explore reports): docs/GA4-SETUP.md
+ */
 import { TOOLS_SITE_PATH_PREFIX } from "@/lib/domains";
 
 export const GA_MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]+$/;
@@ -6,11 +10,9 @@ export const GA_MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]+$/;
 export const GA4_SCROLL_DEPTH_EVENT = "scroll_depth";
 
 /**
- * Register these as event-scoped custom dimensions in GA4 Admin → Custom definitions:
- * - percent_scrolled (number)
- * - scroll_depth_bucket (text)
- * - page_path (text)
- * - page_title (text)
+ * Register event-scoped custom dimensions — full list in docs/GA4-SETUP.md
+ * - content_type, content_id, reaction (content_feedback)
+ * - percent_scrolled, scroll_depth_bucket, page_path, page_title
  */
 export const GA4_SCROLL_PARAMS = {
   PERCENT_SCROLLED: "percent_scrolled",
@@ -44,12 +46,21 @@ export type PageSection =
   | "legal"
   | "other";
 
-/** GA4 custom event for section-level reporting (register `page_section` in Admin). */
+/** GA4 custom event for section-level reporting. Register `page_section` — docs/GA4-SETUP.md */
 export const GA4_PAGE_CONTEXT_EVENT = "page_context";
 
 export const GA4_PAGE_SECTION_PARAM = "page_section";
 
 export const GA4_TOOL_ACTION_EVENT = "tool_action";
+
+export const GA4_CONTENT_FEEDBACK_EVENT = "content_feedback";
+
+/** Register content_type, content_id, reaction in GA4 Admin — docs/GA4-SETUP.md */
+export const GA4_FEEDBACK_PARAMS = {
+  CONTENT_TYPE: "content_type",
+  CONTENT_ID: "content_id",
+  REACTION: "reaction",
+} as const;
 
 export const GA4_TOOL_PARAMS = {
   TOOL_NAME: "tool_name",
@@ -89,6 +100,22 @@ export function sendToolActionEvent(detail: {
     [GA4_TOOL_PARAMS.ACTION]: detail.action,
     ...(detail.field ? { [GA4_TOOL_PARAMS.FIELD]: detail.field } : {}),
     page_path: window.location.pathname,
+  });
+}
+
+export function sendContentFeedbackEvent(detail: {
+  contentType: string;
+  contentId: string;
+  reaction: "helpful" | "not_helpful";
+}): void {
+  if (!isGaTrackingEnabled() || typeof window.gtag !== "function") return;
+
+  window.gtag("event", GA4_CONTENT_FEEDBACK_EVENT, {
+    [GA4_FEEDBACK_PARAMS.CONTENT_TYPE]: detail.contentType,
+    [GA4_FEEDBACK_PARAMS.CONTENT_ID]: detail.contentId,
+    [GA4_FEEDBACK_PARAMS.REACTION]: detail.reaction,
+    page_path: window.location.pathname,
+    page_title: document.title,
   });
 }
 

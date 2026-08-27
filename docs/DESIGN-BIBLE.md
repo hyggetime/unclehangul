@@ -110,6 +110,8 @@ Coming-soon pages: branded shell, `noindex`, back link to `/play` or home.
 | **D** | Jamo builder game MVP | **Done** (2026-08-27) |
 | **E** | IG/YT ↔ Learn/Play pairing ops, optional scheduled publish | **Done** (2026-08-27) |
 
+**Feedback (not comments):** Learn, Play, and tool pages show “Was this helpful?” (👍/👎). Votes fire GA4 `content_feedback` events; one vote per browser via localStorage. Public Q&A stays on Instagram / YouTube for now. **GA4 Admin setup:** [GA4-SETUP.md](./GA4-SETUP.md).
+
 ---
 
 ## 10. Content voice
