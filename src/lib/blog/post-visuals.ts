@@ -3,6 +3,7 @@ export const POST_HANGUL_TILES: Record<string, string> = {
   "graphic-blueprint-hangul-loanwords": "버스",
   "korean-numbers-910-million": "910",
   "tongue-twister-girin": "기린",
+  "why-typing-korean-feels-like-tetris-hangul-keyboards": "간",
 };
 
 export function getPostHangulTile(slug: string, title: string): string {

@@ -34,6 +34,15 @@ export const CONTENT_PAIRINGS: readonly ContentPairing[] = [
     playHref: "/play/city-names",
   },
   {
+    learnSlug: "why-typing-korean-feels-like-tetris-hangul-keyboards",
+    title: "Hangul keyboard UX",
+    instagram: {
+      label: "Keyboard & jamo clips",
+      href: UNCLE_HANGUL_INSTAGRAM_URL,
+    },
+    playHref: "/play/jamo-builder",
+  },
+  {
     learnSlug: "tongue-twister-girin",
     title: "Tongue twister drill",
     youtube: {
