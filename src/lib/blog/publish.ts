@@ -5,10 +5,20 @@ export type PostPublishMeta = Pick<
   "publishedAt" | "status" | "publishAt"
 >;
 
+/** YYYY-MM-DD frontmatter dates go live at 00:00 KST (site timezone). */
+const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+
+export function parsePublishInstant(raw: string): Date {
+  if (DATE_ONLY.test(raw)) {
+    return new Date(`${raw}T00:00:00+09:00`);
+  }
+  return new Date(raw);
+}
+
 export function getEffectivePublishDate(post: PostPublishMeta): Date | null {
   const raw = post.publishAt ?? post.publishedAt;
   if (!raw) return null;
-  const date = new Date(raw);
+  const date = parsePublishInstant(raw);
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
