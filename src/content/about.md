@@ -1,6 +1,6 @@
 ---
 title: "About Me · Uncle Hangul"
-description: "Meet Uncle Hangul (Unclehangul)—a designer, creator, and certified Korean teacher. Learn Hangul (Hangeul) through visual context and cultural nuance, not grammar drills."
+description: "Meet Uncle Hangul — a designer, creator, and certified Korean teacher. Learn Hangul through visual context and cultural nuance, not grammar drills."
 heading: "About Me: Hey, Call me 'Uncle Hangul'!"
 taglineEn: "The Maker Who Believes in Language Acquisition"
 taglineKo: "만들기를 좋아하는 디자이너, 언어 습득을 말하다"

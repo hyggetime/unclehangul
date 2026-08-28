@@ -1,4 +1,4 @@
-const RAIL_LABELS = ["UNCLEHANGUL", "KOREAN"] as const;
+const RAIL_LABELS = ["UNCLE HANGUL", "KOREAN"] as const;
 
 export function VerticalRail() {
   return (

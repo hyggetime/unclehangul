@@ -7,9 +7,7 @@ export function getAboutMetadata(): Metadata {
   const about = loadAboutContent();
   return buildPageMetadata({
     title: about.title,
-    description:
-      about.description ||
-      `Meet ${seoBrandPhrase()} — a designer, creator, and certified Korean teacher. Learn ${seoScriptPhrase()} through visual context.`,
+    description: `${about.description} ${seoBrandPhrase()}. Learn ${seoScriptPhrase()} through visual context and cultural nuance.`,
     path: "/about",
     openGraphType: "profile",
     keywords: learningPageKeywords(["about", "Korean teacher", "language acquisition"]),

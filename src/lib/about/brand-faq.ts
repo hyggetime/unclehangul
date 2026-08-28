@@ -1,9 +1,9 @@
 /** About-page brand & spelling FAQ — shared by visible UI and FAQPage JSON-LD. */
 export const ABOUT_BRAND_FAQ = [
   {
-    question: "Is it Uncle Hangul or Unclehangul?",
+    question: "Is it Uncle Hangul or Uncle hangul?",
     answer:
-      "Both refer to the same brand. Uncle Hangul is the readable English name; Unclehangul matches the domain unclehangul.com and social handle @unclehangul. Korean speakers often say 한글아저씨. Spacing and capitalization can vary in search — we treat them as one brand.",
+      "Both refer to the same brand — spacing and capitalization can vary. Uncle Hangul is the form we use in sentences; Uncle hangul is the same name written casually. The website is unclehangul.com and the social handle is @unclehangul. Korean speakers often say 한글아저씨.",
   },
   {
     question: "What is the difference between Hangul and Hangeul? Which is correct?",

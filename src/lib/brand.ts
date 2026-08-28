@@ -1,7 +1,10 @@
-/** User-facing brand — single source of truth for UI copy. */
+/** Readable brand in sentences and headings. */
 export const BRAND_NAME = "Uncle Hangul";
 
-/** Compact brand (copyright, domain-adjacent labels). Matches unclehangul.com. */
+/** Casual UI variant (same brand, lowercase “hangul”). */
+export const BRAND_NAME_CASUAL = "Uncle hangul";
+
+/** Compact brand for SEO/AEO metadata only — not shown in user-facing prose. */
 export const BRAND_NAME_COMPACT = "Unclehangul";
 
 export const BRAND_NAME_KO = "한글아저씨";
