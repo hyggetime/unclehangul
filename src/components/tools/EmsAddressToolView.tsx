@@ -1,7 +1,7 @@
 import { EmsAddressConverter } from "@/components/tools/EmsAddressConverter";
 import { EmsAddressSeoContent } from "@/components/tools/EmsAddressSeoContent";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
-import { getEmsAddressUrl } from "@/lib/domains";
+import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
 import { EMS_ADDRESS_USAGE } from "@/lib/tools/ems-address/usage-guide";
 
 type EmsAddressToolViewProps = {
@@ -31,6 +31,13 @@ export function EmsAddressToolView({
         </>
       }
       descriptionEn="Paste an overseas English address. Split into Korea Post contract-EMS fields with per-field copy—GB, FR, NL, BE, SE, DE, US, JP, CA, AU."
+      crossLinks={[
+        {
+          href: getPackOptimizerUrl(),
+          label: "Pack Optimizer ↗",
+          external: true,
+        },
+      ]}
       primary={<EmsAddressConverter />}
       seo={<EmsAddressSeoContent />}
       feedback={{ contentType: "tool", contentId: "ems-address" }}

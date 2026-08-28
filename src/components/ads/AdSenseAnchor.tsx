@@ -15,9 +15,9 @@ export function AdSenseAnchor({ className = "" }: AdSenseAnchorProps) {
     <AdSenseUnit
       slot={getAdSlot("anchor", "anchor-bottom")}
       format="horizontal"
-      minHeight={64}
+      minHeight="var(--anchor-ad-min-height)"
       placeholderLabel="Anchor Ad"
-      className={`border-x-0 border-b-0 border-t-[0.5px] border-[#D9D9D3] bg-background ${className}`.trim()}
+      className={`anchor-ad-unit border-x-0 border-b-0 border-t-[0.5px] border-[#D9D9D3] bg-background ${className}`.trim()}
     />
   );
 }

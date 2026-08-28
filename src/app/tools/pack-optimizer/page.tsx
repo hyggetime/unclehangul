@@ -2,7 +2,7 @@ import { ToolPageAdSlot } from "@/components/ads/ToolPageAdSlot";
 import { PackOptimizerLaunchPanel } from "@/components/tools/PackOptimizerLaunchPanel";
 import { PackOptimizerSeoContent } from "@/components/tools/PackOptimizerSeoContent";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
-import { getPackOptimizerUrl } from "@/lib/domains";
+import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
 import { PACK_OPTIMIZER_USAGE } from "@/lib/tools/pack-optimizer/usage-guide";
 import { getPackOptimizerLandingMetadata } from "@/lib/tools/pack-optimizer-metadata";
 import type { Metadata } from "next";
@@ -26,6 +26,13 @@ export default function PackOptimizerLandingPage() {
           </>
         }
         descriptionEn="Simulate 3D carton packing to compare split K-Packet shipments against a single EMS box before you ship."
+        crossLinks={[
+          {
+            href: getEmsAddressUrl(),
+            label: "EMS Address ↗",
+            external: true,
+          },
+        ]}
         primary={<PackOptimizerLaunchPanel compact />}
         seo={<PackOptimizerSeoContent />}
         showDesktopSidebarAd={false}

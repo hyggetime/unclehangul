@@ -6,7 +6,7 @@ import {
   type ContentFeedbackType,
 } from "@/components/feedback/ContentFeedback";
 import { ShareButtons } from "@/components/share/ShareButtons";
-import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
+import { ToolActionBar, type ToolCrossLink } from "@/components/tools/ToolActionBar";
 import { ToolPageChrome } from "@/components/tools/ToolPageChrome";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
 import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
@@ -22,7 +22,8 @@ type UtilityToolLayoutProps = {
   /** Core widget UI or launch CTA panel. */
   primary: ReactNode;
   /** Collapsed FAQ, cross-links, JSON-LD block. */
-  seo: ReactNode;
+  seo?: ReactNode;
+  crossLinks?: ToolCrossLink[];
   showDesktopSidebarAd?: boolean;
   /** When set, shows “Was this helpful?” below the tool UI. */
   feedback?: {
@@ -52,6 +53,7 @@ export function UtilityToolLayout({
   descriptionEn,
   primary,
   seo,
+  crossLinks,
   showDesktopSidebarAd = true,
   feedback,
   share,
@@ -59,27 +61,29 @@ export function UtilityToolLayout({
 }: UtilityToolLayoutProps) {
   return (
     <div className="min-w-0 w-full">
-      <ToolPageChrome
-        category={category}
-        backHref={backHref}
-        backLabel={backLabel}
-      />
+      <div className="sticky top-0 z-40 border-b-[0.5px] border-[#D9D9D3] bg-background">
+        <ToolPageChrome
+          category={category}
+          backHref={backHref}
+          backLabel={backLabel}
+        />
+        <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 py-4 md:flex-row md:items-start md:justify-between md:px-8 md:py-5">
+          <ToolPageHeader
+            embedded
+            title={title}
+            subtitleEn={subtitleEn}
+            descriptionKo={descriptionKo}
+            descriptionEn={descriptionEn}
+          />
+          <ToolActionBar
+            usageGuide={usageGuide}
+            crossLinks={crossLinks}
+          />
+        </div>
+      </div>
 
       <div className="mx-auto w-full max-w-[1440px] p-4 md:p-8">
-        <ToolPageHeader
-          title={title}
-          subtitleEn={subtitleEn}
-          descriptionKo={descriptionKo}
-          descriptionEn={descriptionEn}
-        />
-
-        {usageGuide ? (
-          <div className="mt-4 flex justify-start px-0 md:mt-6">
-            <UsageHelpDialog guide={usageGuide} />
-          </div>
-        ) : null}
-
-        <div className="mt-6 grid grid-cols-1 items-start gap-0 md:mt-8 md:grid-cols-12 md:gap-6">
+        <div className="grid grid-cols-1 items-start gap-0 md:grid-cols-12 md:gap-6">
           <div className="min-w-0 md:col-span-8">
             <ToolPageAdSlot variant="action" className="px-0" />
             <div className="pt-4 md:pt-6">{primary}</div>
@@ -106,7 +110,7 @@ export function UtilityToolLayout({
         </div>
       </div>
 
-      {seo}
+      {seo ?? null}
     </div>
   );
 }

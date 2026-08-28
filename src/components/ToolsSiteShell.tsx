@@ -46,7 +46,7 @@ export function ToolsSiteShell({ children }: ToolsSiteShellProps) {
 
         <main className="mx-auto w-full max-w-[1440px]">{children}</main>
 
-        <ToolLegalFooter className="site-bottom-offset" />
+        <ToolLegalFooter />
       </div>
 
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom,0px)]">

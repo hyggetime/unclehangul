@@ -9,7 +9,20 @@
   --touch-min: 48px;
   --space-section-mobile: 2rem;
   --space-section-desktop: 3rem;
+  /* Sync with AdSenseAnchor minHeight + clearance above fixed anchor bar */
   --anchor-ad-min-height: 4rem;
+  --anchor-ad-clearance: 2rem;
+  --site-bottom-reserve: calc(
+    var(--anchor-ad-min-height) + var(--anchor-ad-clearance) +
+      env(safe-area-inset-bottom, 0px)
+  );
+}
+
+@media (min-width: 768px) {
+  :root {
+    --anchor-ad-min-height: 5.5rem;
+    --anchor-ad-clearance: 2.5rem;
+  }
 }
 
 @theme inline {
@@ -84,9 +97,12 @@ body {
 }
 
 .site-bottom-offset {
-  margin-bottom: calc(
-    var(--anchor-ad-min-height) + env(safe-area-inset-bottom, 0px)
-  );
+  padding-bottom: var(--site-bottom-reserve);
+  scroll-margin-bottom: var(--site-bottom-reserve);
+}
+
+.site-shell-scroll {
+  padding-bottom: var(--site-bottom-reserve);
 }
 
 .font-en {

@@ -15,8 +15,8 @@ type AdSenseUnitProps = {
   /** Ad format — maps to `data-ad-format`. */
   format?: AdSenseFormat;
   className?: string;
-  /** Reserved height to prevent CLS while the unit loads. */
-  minHeight?: number;
+  /** Reserved height to prevent CLS while the unit loads. Number (px) or CSS length. */
+  minHeight?: number | string;
   /** Dev-only label inside the placeholder. */
   placeholderLabel?: string;
 };
@@ -40,6 +40,8 @@ export function AdSenseUnit({
   const pushed = useRef(false);
   const adClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
   const isDev = process.env.NODE_ENV === "development";
+  const minHeightCss =
+    typeof minHeight === "number" ? `${minHeight}px` : minHeight;
 
   useEffect(() => {
     if (isDev || !adClient || pushed.current) return;
@@ -52,7 +54,7 @@ export function AdSenseUnit({
     }
   }, [isDev, adClient, slot]);
 
-  const shellStyle = { minHeight: `${minHeight}px` };
+  const shellStyle = { minHeight: minHeightCss };
 
   if (isDev || !adClient) {
     return (
@@ -77,7 +79,7 @@ export function AdSenseUnit({
     >
       <ins
         className="adsbygoogle block w-full"
-        style={{ display: "block", minHeight: `${minHeight}px` }}
+        style={{ display: "block", minHeight: minHeightCss }}
         data-ad-client={adClient}
         data-ad-slot={slot}
         data-ad-format={format}

@@ -11,7 +11,7 @@ export function ToolLegalFooter({ className = "" }: ToolLegalFooterProps) {
 
   return (
     <footer
-      className={`border-t-[0.5px] border-[#D9D9D3] bg-background px-5 py-6 md:px-8 ${className}`.trim()}
+      className={`site-bottom-offset border-t-[0.5px] border-[#D9D9D3] bg-background px-5 py-8 md:px-8 md:py-10 ${className}`.trim()}
     >
       <div className="mx-auto flex max-w-[1440px] flex-col gap-2 text-[11px] text-foreground/50 md:flex-row md:items-center md:justify-between">
         <p className="font-en">

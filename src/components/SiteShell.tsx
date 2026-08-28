@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { AdSenseAnchor } from "@/components/ads/AdSenseAnchor";
+import { PackSiteShell } from "@/components/PackSiteShell";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ToolsSiteShell } from "@/components/ToolsSiteShell";
@@ -22,16 +23,7 @@ export async function SiteShell({ children }: SiteShellProps) {
   }
 
   if (isPackHost(host)) {
-    return (
-      <div className="min-h-full bg-background">
-        {children}
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom,0px)]">
-          <div className="mx-auto w-full max-w-[1440px]">
-            <AdSenseAnchor className="pointer-events-auto" />
-          </div>
-        </div>
-      </div>
-    );
+    return <PackSiteShell>{children}</PackSiteShell>;
   }
 
   return (
