@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AboutBrandFaq } from "@/components/about/AboutBrandFaq";
+import { AboutPageJsonLd } from "@/components/about/AboutPageJsonLd";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { KoreanTextToggle } from "@/components/about/KoreanTextToggle";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
@@ -13,6 +15,8 @@ export default function AboutPage() {
   const about = loadAboutContent();
 
   return (
+    <>
+      <AboutPageJsonLd />
     <div className="md:col-span-12">
       <div className="mx-auto w-full max-w-[1440px] gap-0 p-4 md:grid md:grid-cols-12 md:p-8">
         <article
@@ -81,10 +85,13 @@ export default function AboutPage() {
               </a>
             </div>
           </div>
+
+          <AboutBrandFaq />
         </article>
 
         <LearnSidebar />
       </div>
     </div>
+    </>
   );
 }

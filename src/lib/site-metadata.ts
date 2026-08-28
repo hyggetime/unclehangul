@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_NAME } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-url";
 
-export const SITE_NAME = "Uncle Hangul";
+export { SITE_NAME } from "@/lib/brand";
 
 type PageMetadataOptions = {
   /** Short page title (layout template adds “ · Uncle Hangul”). */

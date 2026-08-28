@@ -103,7 +103,7 @@ Applying this structural lens to real-world vocabulary reveals immediate pattern
 
 ---
 
-## 4. UncleHangul's Natural Acquisition Guide
+## 4. Uncle Hangul's Natural Acquisition Guide
 
 Traditional language pedagogy often forces students to memorize complex phonetic transition rules, such as mapping English letter charts directly to Hangul equivalencies. This approach relies on conscious, analytical translation—a process that creates mental lag when trying to speak naturally.
 

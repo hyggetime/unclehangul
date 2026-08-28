@@ -50,6 +50,8 @@ export function loadMarkdownPost(slug: string): BlogPost | undefined {
   const sectionLabel = resolveSectionLabel(data);
   const status = parseStatus(data.status);
   const publishAt = data.publishAt ? String(data.publishAt) : undefined;
+  const tags = parseStringArray(data.tags);
+  const seoKeywords = parseStringArray(data.keywords);
 
   return {
     slug,
@@ -60,8 +62,24 @@ export function loadMarkdownPost(slug: string): BlogPost | undefined {
     sectionLabel,
     status,
     publishAt,
+    tags,
+    seoKeywords,
     blocks: markdownToBlocks(content.trim()),
   };
+}
+
+function parseStringArray(value: unknown): string[] | undefined {
+  if (!value) return undefined;
+  if (Array.isArray(value)) {
+    return value.map(String).filter(Boolean);
+  }
+  if (typeof value === "string") {
+    return value
+      .split(",")
+      .map((part) => part.trim())
+      .filter(Boolean);
+  }
+  return undefined;
 }
 
 function parseStatus(

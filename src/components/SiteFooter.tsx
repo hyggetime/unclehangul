@@ -11,7 +11,7 @@ export function SiteFooter() {
     <footer className="site-bottom-offset border-t-[0.5px] border-[#D9D9D3] bg-background px-5 py-6 md:px-8">
       <div className="flex flex-col items-center gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
         <p className="font-en text-[11px] leading-relaxed text-foreground/45">
-          © 2026 UncleHangul. All rights reserved.
+          © 2026 Unclehangul. All rights reserved.
         </p>
         <nav
           aria-label="Footer"

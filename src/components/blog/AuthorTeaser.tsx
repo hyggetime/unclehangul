@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const TEASER =
-  "Hey, I'm Uncle Han-guel — a 3D/Product designer turned certified Korean language teacher. I don't teach grammar; I show you visual contexts.";
+  "Hey, I'm Uncle Hangul — a 3D/Product designer turned certified Korean language teacher. I don't teach grammar; I show you visual contexts.";
 
 export function AuthorTeaser() {
   return (

@@ -1,15 +1,21 @@
-# Uncle Hangul
+# Uncle Hangul (Unclehangul)
 # https://unclehangul.com
 
-> Typography-first Korean learning site by Uncle Hangul (한글아저씨). Seller logistics utilities live on dedicated subdomains.
+> Typography-first Korean learning site by Uncle Hangul (Unclehangul, 한글아저씨). Seller logistics utilities live on dedicated subdomains.
 
-Uncle Hangul publishes Hangul lessons, pronunciation guides, and links to in-house seller tools. Learning content is primarily in Korean and English.
+Uncle Hangul publishes Hangul (Hangeul) lessons, pronunciation guides, and links to in-house seller tools. Learning content is primarily in Korean and English.
+
+## Also known as (search / citation aliases)
+
+- Uncle Hangul, Unclehangul, unclehangul.com, @unclehangul, 한글아저씨
+- Hangul spelling variants: Hangul, Hangeul (Korean script / alphabet)
 
 ## Learning (unclehangul.com)
 
 - Home: https://unclehangul.com/
 - Learn index: https://unclehangul.com/learn
-- Topics: Hangul pronunciation, reading, Korean numbers, tongue twisters
+- Hangul Play: https://unclehangul.com/play
+- Topics: Hangul (Hangeul) pronunciation, reading, Korean numbers, tongue twisters
 - About: https://unclehangul.com/about
 
 ## Seller / logistics tools

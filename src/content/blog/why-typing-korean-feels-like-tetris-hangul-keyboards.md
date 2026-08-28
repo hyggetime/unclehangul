@@ -1,7 +1,7 @@
 ---
 title: "Why Typing Korean Feels Like Playing Tetris: The Genius UX Behind Hangul Keyboards"
 description: "Discover how Hangul's modular Lego Bricks of Sound transform your digital keyboard into a responsive, real-time spatial Tetris game."
-date: "2026-08-28"
+publishedAt: "2026-08-28"
 category: "Hangul Design"
 tags: ["Hangul UX", "Korean Keyboard", "Sound Script", "Language Acquisition"]
 ---
@@ -161,11 +161,11 @@ When you type in English, you are performing manual transcription. When you type
 
 ---
 
-## 4. UncleHangul's Acquisition Guide: Playing with Sound Blocks
+## 4. Uncle Hangul's Acquisition Guide: Playing with Sound Blocks
 
 Learning to type in a new language is usually treated as a tedious chore of memorizing keymaps. If you approach the Korean keyboard as a mechanical chart to be memorized, you miss the underlying magic of the system.
 
-At **UncleHangul**, we teach learners to approach typing not as a exercise in rote memory, but as an intuitive game of spatial audio building.
+At **Uncle Hangul**, we teach learners to approach typing not as a exercise in rote memory, but as an intuitive game of spatial audio building.
 
 ### Rule 1: Recognize the Left-Right Spatial Split
 

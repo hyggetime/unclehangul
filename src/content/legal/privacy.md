@@ -1,16 +1,16 @@
 ---
 title: Privacy Policy
-description: Privacy Policy for UncleHangul (한글아저씨)—log data, cookies, Google AdSense, and contact information.
-heading: Privacy Policy for UncleHangul (한글아저씨)
+description: Privacy Policy for Uncle Hangul (Unclehangul, 한글아저씨)—log data, cookies, Google AdSense, and contact information.
+heading: Privacy Policy for Unclehangul (한글아저씨)
 lastUpdated: "Last Updated: July 25, 2026"
 sectionLabel: Legal
 ---
 
-Welcome to UncleHangul (한글아저씨). We value your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website [{{SITE_URL}}]({{SITE_URL}}).
+Welcome to Uncle Hangul (Unclehangul, 한글아저씨). We value your privacy. This Privacy Policy explains how we collect, use, and protect your information when you visit our website [{{SITE_URL}}]({{SITE_URL}}).
 
 ## 1. Information We Collect Automatically (Log Files and Cookies)
 
-Like most websites, UncleHangul automatically gathers certain information and stores it in log files. This includes internet protocol (IP) addresses, browser type, internet service provider (ISP), referring/exit pages, operating system, date/time stamp, and clickstream data. We use this information to analyze trends, administer the site, and track users' movements around the site.
+Like most websites, Uncle Hangul automatically gathers certain information and stores it in log files. This includes internet protocol (IP) addresses, browser type, internet service provider (ISP), referring/exit pages, operating system, date/time stamp, and clickstream data. We use this information to analyze trends, administer the site, and track users' movements around the site.
 
 ## 2. Google AdSense and Cookies
 

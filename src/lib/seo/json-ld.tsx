@@ -1,3 +1,10 @@
+import { BRAND_NAME, BRAND_NAME_COMPACT, BRAND_NAME_KO } from "@/lib/brand";
+import {
+  BRAND_ALTERNATE_NAMES,
+  ORGANIZATION_KNOWS_ABOUT,
+} from "@/lib/seo/keywords";
+import { getSiteUrl } from "@/lib/site-url";
+
 type JsonLdProps = {
   data: Record<string, unknown> | Record<string, unknown>[];
 };
@@ -40,6 +47,41 @@ type WebApplicationJsonLdOptions = {
   applicationCategory?: string;
 };
 
+function brandOrganizationRef() {
+  const siteUrl = getSiteUrl();
+  return {
+    "@type": "Organization" as const,
+    name: BRAND_NAME,
+    alternateName: [...BRAND_ALTERNATE_NAMES],
+    url: siteUrl,
+  };
+}
+
+export function buildOrganizationJsonLd() {
+  const siteUrl = getSiteUrl();
+  return [
+    {
+      "@context": "https://schema.org",
+      ...brandOrganizationRef(),
+      description: `${BRAND_NAME} (${BRAND_NAME_COMPACT}, ${BRAND_NAME_KO}) — typography-first Korean learning and seller utility tools.`,
+      knowsAbout: [...ORGANIZATION_KNOWS_ABOUT],
+      sameAs: [
+        "https://www.youtube.com/@unclehangul",
+        "https://www.instagram.com/uncle_hangul/",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: BRAND_NAME,
+      alternateName: [...BRAND_ALTERNATE_NAMES],
+      url: siteUrl,
+      inLanguage: ["en-US", "ko-KR"],
+      publisher: brandOrganizationRef(),
+    },
+  ];
+}
+
 export function buildWebApplicationJsonLd(options: WebApplicationJsonLdOptions) {
   return {
     "@context": "https://schema.org",
@@ -57,16 +99,8 @@ export function buildWebApplicationJsonLd(options: WebApplicationJsonLdOptions) 
       priceCurrency: "KRW",
     },
     featureList: options.featureList,
-    author: {
-      "@type": "Organization",
-      name: "Uncle Hangul",
-      url: "https://unclehangul.com",
-    },
-    provider: {
-      "@type": "Organization",
-      name: "Uncle Hangul",
-      url: "https://unclehangul.com",
-    },
+    author: brandOrganizationRef(),
+    provider: brandOrganizationRef(),
   };
 }
 

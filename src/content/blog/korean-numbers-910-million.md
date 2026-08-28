@@ -5,6 +5,7 @@ publishedAt: 2026-07-10
 publishedLabel: 10 JUL 2026
 sectionLabel: LEARN / KOREAN
 author: Uncle Hangul
+keywords: [Sino-Korean numerals, Korean numbers, 만, Hangul numbers, read Korean numbers]
 ---
 
 ## 1. The Core Concept of Counting in Korean

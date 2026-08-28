@@ -1,4 +1,7 @@
 import type { BlogPost } from "@/lib/blog/posts";
+import { BRAND_NAME } from "@/lib/brand";
+import { BRAND_ALTERNATE_NAMES } from "@/lib/seo/keywords";
+import { getSiteUrl } from "@/lib/site-url";
 
 type ArticleJsonLdProps = {
   post: BlogPost;
@@ -6,7 +9,7 @@ type ArticleJsonLdProps = {
 };
 
 export function ArticleJsonLd({ post, pageUrl }: ArticleJsonLdProps) {
-  const siteUrl = pageUrl.replace(/\/learn\/[^/]+$/, "");
+  const siteUrl = getSiteUrl();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -17,12 +20,14 @@ export function ArticleJsonLd({ post, pageUrl }: ArticleJsonLdProps) {
     inLanguage: "en",
     author: {
       "@type": "Organization",
-      name: "Uncle Hangul",
+      name: BRAND_NAME,
+      alternateName: [...BRAND_ALTERNATE_NAMES],
       url: siteUrl,
     },
     publisher: {
       "@type": "Organization",
-      name: "Uncle Hangul",
+      name: BRAND_NAME,
+      alternateName: [...BRAND_ALTERNATE_NAMES],
       url: siteUrl,
     },
     mainEntityOfPage: {

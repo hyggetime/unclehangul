@@ -6,6 +6,8 @@ import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { GoogleAnalyticsToolActions } from "@/components/GoogleAnalyticsToolActions";
 import { GoogleAnalyticsPageSection } from "@/components/GoogleAnalyticsPageSection";
 import { GoogleAnalyticsScrollDepth } from "@/components/GoogleAnalyticsScrollDepth";
+import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
+import { seoBrandPhrase, seoScriptPhrase, learningPageKeywords } from "@/lib/seo/keywords";
 import { getRootMetadataBase } from "@/lib/site-metadata";
 import "./globals.css";
 
@@ -21,8 +23,8 @@ export const metadata: Metadata = {
     default: "Uncle Hangul",
     template: "%s · Uncle Hangul",
   },
-  description:
-    "한국어를 배우는 이들을 위한 타이포그래피 중심의 학습 공간. Learn Hangul with clarity.",
+  description: `한국어를 배우는 이들을 위한 타이포그래피 중심의 학습 공간. Learn ${seoScriptPhrase()} with clarity — ${seoBrandPhrase()}.`,
+  keywords: learningPageKeywords(),
   metadataBase: getRootMetadataBase(),
   openGraph: {
     siteName: "Uncle Hangul",
@@ -51,6 +53,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased">
+        <SiteJsonLd />
         <GoogleAnalytics />
         <GoogleAnalyticsPageSection />
         <GoogleAnalyticsToolActions />

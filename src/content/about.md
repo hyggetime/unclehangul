@@ -1,7 +1,7 @@
 ---
-title: "About Me · Uncle Han-guel"
-description: "Meet Uncle Han-guel—a designer, creator, and certified Korean teacher. Learn how visual context and cultural nuance replace grammar drills for natural language acquisition."
-heading: "About Me: Hey, Call me 'Uncle Han-guel'!"
+title: "About Me · Uncle Hangul"
+description: "Meet Uncle Hangul (Unclehangul)—a designer, creator, and certified Korean teacher. Learn Hangul (Hangeul) through visual context and cultural nuance, not grammar drills."
+heading: "About Me: Hey, Call me 'Uncle Hangul'!"
 taglineEn: "The Maker Who Believes in Language Acquisition"
 taglineKo: "만들기를 좋아하는 디자이너, 언어 습득을 말하다"
 sectionLabel: "ABOUT / UNCLE HANGUL"
@@ -21,7 +21,7 @@ koreanBody: |
   잘 왔어. 이제 공부는 집어치우고, 그냥 자연스럽게 받아들여 봐.
 ---
 
-Hey, just call me "Uncle Han-guel."
+Hey, just call me "Uncle Hangul."
 
 I'm a creator and designer who gets a genuine thrill from conceiving, planning, and bringing things to life. My career has been a journey of making things move and take shape: I started with 3D character design, moved into animation and visual effects (VFX), expanded into product design and publishing, and these days, I'm building app services. To me, creating is a thrilling adventure.
 

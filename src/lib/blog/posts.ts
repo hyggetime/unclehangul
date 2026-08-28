@@ -5,6 +5,7 @@ import {
 } from "@/lib/blog/load-markdown-post";
 import { isPostPublic } from "@/lib/blog/publish";
 import { buildPageMetadata } from "@/lib/site-metadata";
+import { learningPageKeywords, seoBrandPhrase, seoScriptPhrase } from "@/lib/seo/keywords";
 
 export type BlogBlock =
   | { type: "paragraph"; content: string }
@@ -39,6 +40,10 @@ export type BlogPost = {
   status?: "draft" | "scheduled" | "published";
   /** ISO datetime; when set, overrides publishedAt for visibility. */
   publishAt?: string;
+  /** Frontmatter tags — merged into page SEO keywords. */
+  tags?: string[];
+  /** Optional extra SEO keywords from frontmatter. */
+  seoKeywords?: string[];
   blocks: BlogBlock[];
 };
 
@@ -124,9 +129,10 @@ export function getLearnIndexMetadata(): Metadata {
   return buildPageMetadata({
     title: "Learn Korean",
     description:
-      "Hangul lessons, pronunciation drills, and reading guides from Uncle Hangul — structured for clear, long-form study.",
+      `${seoScriptPhrase()} lessons, pronunciation drills, and reading guides from ${seoBrandPhrase()} — structured for clear, long-form study.`,
     path: "/learn",
     locale: "en_US",
+    keywords: learningPageKeywords(["Learn Korean", "Hangul lessons"]),
   });
 }
 
@@ -138,5 +144,10 @@ export function getPostMetadata(post: BlogPost): Metadata {
     openGraphType: "article",
     locale: "en_US",
     publishedTime: post.publishedAt,
+    keywords: learningPageKeywords([
+      post.title,
+      ...(post.tags ?? []),
+      ...(post.seoKeywords ?? []),
+    ]),
   });
 }
