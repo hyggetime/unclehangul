@@ -11,6 +11,7 @@ export function getPackOptimizerLandingMetadata() {
     path: "/tools/pack-optimizer",
     canonicalUrl: getPackOptimizerUrl(),
     absoluteTitle: true,
+    locale: "ko_KR",
     keywords: [
       "K-Packet 쪼개기",
       "K-Packet 분할 배송",
@@ -37,6 +38,7 @@ export function getPackOptimizerAppMetadata() {
     siteOrigin: getPackSiteUrl(),
     canonicalUrl: getPackOptimizerUrl(),
     absoluteTitle: true,
+    locale: "ko_KR",
     keywords: [
       "K-Packet 쪼개기",
       "K-Packet 분할 배송",

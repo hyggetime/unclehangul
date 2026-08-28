@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
+import { ShareButtons } from "@/components/share/ShareButtons";
 import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import { convertEnglishName } from "@/lib/name-to-hangul";
 import { NAME_CONVERTER_USAGE } from "@/lib/play/usage-guides";
+import { getSiteUrl } from "@/lib/site-url";
 
 /** Placeholder — swap for a dedicated Hangul structure post when published. */
 const LEARN_STRUCTURE_HREF = "/learn/tongue-twister-girin";
@@ -95,6 +97,14 @@ export function NameConverter() {
             {copied ? "Copied" : "Copy"}
           </button>
         </div>
+
+        <ShareButtons
+          track="play"
+          title="Name → Hangul · Uncle Hangul"
+          url={`${getSiteUrl()}/#name-converter`}
+          contentId="name-converter"
+          className="mt-6 md:mt-8"
+        />
 
         <ContentFeedback
           contentType="play"

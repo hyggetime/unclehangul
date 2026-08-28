@@ -9,6 +9,7 @@ export const metadata: Metadata = buildPageMetadata({
     "Free seller utilities for global shipping from Korea—EMS address parsing and links to the Pack Optimizer 3D calculator.",
   path: "/",
   siteOrigin: getToolsSiteUrl(),
+  locale: "ko_KR",
 });
 
 const TOOLS = [

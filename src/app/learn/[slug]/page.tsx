@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArticleJsonLd } from "@/components/blog/ArticleJsonLd";
 import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
+import { LearnPostJsonLd } from "@/components/blog/LearnPostJsonLd";
 import { ArticleChannelLinks } from "@/components/learn/ArticleChannelLinks";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
 import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
+import { ShareButtons } from "@/components/share/ShareButtons";
 import {
   getAllPostSlugsIncludingUnpublished,
   getPostBySlug,
   getPostMetadata,
 } from "@/lib/blog/posts";
+import { getSiteUrl } from "@/lib/site-url";
 
 type LearnPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -43,7 +45,7 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
 
   return (
     <>
-      <ArticleJsonLd post={post} />
+      <LearnPostJsonLd post={post} />
 
       <div className="md:col-span-12">
         <div className="mx-auto w-full max-w-[1440px] gap-0 p-4 md:grid md:grid-cols-12 md:p-8">
@@ -82,6 +84,13 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
 
             <ArticleChannelLinks slug={slug} />
             <AuthorTeaser />
+            <ShareButtons
+              track="learn"
+              title={post.title}
+              url={`${getSiteUrl()}/learn/${slug}`}
+              contentId={slug}
+              className="mx-5 max-w-3xl md:mx-8"
+            />
             <ContentFeedback
               contentType="learn"
               contentId={slug}

@@ -2,6 +2,7 @@ import { ToolPageAdSlot } from "@/components/ads/ToolPageAdSlot";
 import { PackOptimizerLaunchPanel } from "@/components/tools/PackOptimizerLaunchPanel";
 import { PackOptimizerSeoContent } from "@/components/tools/PackOptimizerSeoContent";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
+import { getPackOptimizerUrl } from "@/lib/domains";
 import { PACK_OPTIMIZER_USAGE } from "@/lib/tools/pack-optimizer/usage-guide";
 import { getPackOptimizerLandingMetadata } from "@/lib/tools/pack-optimizer-metadata";
 import type { Metadata } from "next";
@@ -29,6 +30,11 @@ export default function PackOptimizerLandingPage() {
         seo={<PackOptimizerSeoContent />}
         showDesktopSidebarAd={false}
         feedback={{ contentType: "tool", contentId: "pack-optimizer" }}
+        share={{
+          title: "국제 배송비 최적화 3D 계산기 | 한글아저씨",
+          url: getPackOptimizerUrl(),
+          contentId: "pack-optimizer",
+        }}
         usageGuide={PACK_OPTIMIZER_USAGE}
       />
     </div>

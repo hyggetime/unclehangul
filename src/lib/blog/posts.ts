@@ -126,6 +126,7 @@ export function getLearnIndexMetadata(): Metadata {
     description:
       "Hangul lessons, pronunciation drills, and reading guides from Uncle Hangul — structured for clear, long-form study.",
     path: "/learn",
+    locale: "en_US",
   });
 }
 
@@ -135,6 +136,7 @@ export function getPostMetadata(post: BlogPost): Metadata {
     description: post.description,
     path: `/learn/${post.slug}`,
     openGraphType: "article",
+    locale: "en_US",
     publishedTime: post.publishedAt,
   });
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
+import { ShareButtons } from "@/components/share/ShareButtons";
 import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
 
@@ -13,6 +14,10 @@ type PlayWidgetPageShellProps = {
   children: ReactNode;
   feedbackContentId?: string;
   usageGuide?: ToolUsageGuide;
+  share?: {
+    title: string;
+    url: string;
+  };
 };
 
 export function PlayWidgetPageShell({
@@ -24,6 +29,7 @@ export function PlayWidgetPageShell({
   children,
   feedbackContentId,
   usageGuide,
+  share,
 }: PlayWidgetPageShellProps) {
   return (
     <div className="md:col-span-12">
@@ -64,6 +70,15 @@ export function PlayWidgetPageShell({
 
         {feedbackContentId ? (
           <div className="border-t-[0.5px] border-[#D9D9D3] px-5 md:px-8">
+            {share ? (
+              <ShareButtons
+                track="play"
+                title={share.title}
+                url={share.url}
+                contentId={feedbackContentId}
+                className="pb-4 pt-8 md:pb-6"
+              />
+            ) : null}
             <ContentFeedback
               contentType="play"
               contentId={feedbackContentId}

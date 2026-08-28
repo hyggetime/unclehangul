@@ -5,6 +5,7 @@ import {
   ContentFeedback,
   type ContentFeedbackType,
 } from "@/components/feedback/ContentFeedback";
+import { ShareButtons } from "@/components/share/ShareButtons";
 import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import { ToolPageChrome } from "@/components/tools/ToolPageChrome";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
@@ -28,6 +29,12 @@ type UtilityToolLayoutProps = {
     contentType: ContentFeedbackType;
     contentId: string;
   };
+  /** Page share row (Kakao / X / copy). */
+  share?: {
+    title: string;
+    url: string;
+    contentId: string;
+  };
   usageGuide?: ToolUsageGuide;
 };
 
@@ -47,6 +54,7 @@ export function UtilityToolLayout({
   seo,
   showDesktopSidebarAd = true,
   feedback,
+  share,
   usageGuide,
 }: UtilityToolLayoutProps) {
   return (
@@ -80,6 +88,15 @@ export function UtilityToolLayout({
               <ContentFeedback
                 contentType={feedback.contentType}
                 contentId={feedback.contentId}
+                className="mt-8 md:mt-10"
+              />
+            ) : null}
+            {share ? (
+              <ShareButtons
+                track="tool"
+                title={share.title}
+                url={share.url}
+                contentId={share.contentId}
                 className="mt-8 md:mt-10"
               />
             ) : null}

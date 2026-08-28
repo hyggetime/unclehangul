@@ -14,6 +14,8 @@ type PageMetadataOptions = {
   /** Full canonical URL override (takes precedence over siteOrigin + path). */
   canonicalUrl?: string;
   openGraphType?: "website" | "article" | "profile";
+  /** Open Graph locale — Learn/Play default en_US; seller tools ko_KR. */
+  locale?: "en_US" | "ko_KR";
   publishedTime?: string;
   noIndex?: boolean;
   /** When true, document title is exactly `title` (no layout suffix). */
@@ -53,7 +55,7 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
       description: options.description,
       url,
       siteName: SITE_NAME,
-      locale: "en_US",
+      locale: options.locale ?? "en_US",
       ...(options.publishedTime
         ? { publishedTime: options.publishedTime }
         : {}),

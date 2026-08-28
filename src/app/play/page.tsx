@@ -9,6 +9,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Short interactive Hangul widgets — name converter, city names, jamo builder, and more.",
   path: "/play",
+  locale: "en_US",
 });
 
 export default function PlayIndexPage() {

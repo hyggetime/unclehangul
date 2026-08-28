@@ -58,12 +58,23 @@ export const GA4_TOOL_ACTION_EVENT = "tool_action";
 
 export const GA4_CONTENT_FEEDBACK_EVENT = "content_feedback";
 
+export const GA4_CONTENT_SHARE_EVENT = "content_share";
+
 /** Register content_type, content_id, reaction in GA4 Admin — docs/GA4-SETUP.md */
 export const GA4_FEEDBACK_PARAMS = {
   CONTENT_TYPE: "content_type",
   CONTENT_ID: "content_id",
   REACTION: "reaction",
 } as const;
+
+/** Register share_platform in GA4 Admin — docs/GA4-SETUP.md */
+export const GA4_SHARE_PARAMS = {
+  CONTENT_TYPE: "content_type",
+  CONTENT_ID: "content_id",
+  SHARE_PLATFORM: "share_platform",
+} as const;
+
+export type ShareContentType = "learn" | "tool" | "play";
 
 export const GA4_TOOL_PARAMS = {
   TOOL_NAME: "tool_name",
@@ -122,6 +133,22 @@ export function sendContentFeedbackEvent(detail: {
     [GA4_FEEDBACK_PARAMS.CONTENT_TYPE]: detail.contentType,
     [GA4_FEEDBACK_PARAMS.CONTENT_ID]: detail.contentId,
     [GA4_FEEDBACK_PARAMS.REACTION]: detail.reaction,
+    page_path: window.location.pathname,
+    page_title: document.title,
+  });
+}
+
+export function sendContentShareEvent(detail: {
+  contentType: ShareContentType;
+  contentId: string;
+  platform: "x" | "reddit" | "kakao" | "copy" | "native";
+}): void {
+  if (!isGaTrackingEnabled() || typeof window.gtag !== "function") return;
+
+  window.gtag("event", GA4_CONTENT_SHARE_EVENT, {
+    [GA4_SHARE_PARAMS.CONTENT_TYPE]: detail.contentType,
+    [GA4_SHARE_PARAMS.CONTENT_ID]: detail.contentId,
+    [GA4_SHARE_PARAMS.SHARE_PLATFORM]: detail.platform,
     page_path: window.location.pathname,
     page_title: document.title,
   });

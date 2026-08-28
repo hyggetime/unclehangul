@@ -1,6 +1,7 @@
 import { EmsAddressConverter } from "@/components/tools/EmsAddressConverter";
 import { EmsAddressSeoContent } from "@/components/tools/EmsAddressSeoContent";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
+import { getEmsAddressUrl } from "@/lib/domains";
 import { EMS_ADDRESS_USAGE } from "@/lib/tools/ems-address/usage-guide";
 
 type EmsAddressToolViewProps = {
@@ -33,6 +34,11 @@ export function EmsAddressToolView({
       primary={<EmsAddressConverter />}
       seo={<EmsAddressSeoContent />}
       feedback={{ contentType: "tool", contentId: "ems-address" }}
+      share={{
+        title: "해외 주소 EMS 변환기 | 한글아저씨",
+        url: getEmsAddressUrl(),
+        contentId: "ems-address",
+      }}
       usageGuide={EMS_ADDRESS_USAGE}
     />
   );

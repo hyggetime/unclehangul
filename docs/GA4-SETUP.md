@@ -25,6 +25,15 @@ For each row: **Dimension name** = display label (any), **Scope** = **Event**, *
 **`content_id` examples:** `graphic-blueprint-hangul-loanwords`, `ems-address`, `name-converter`  
 **`reaction` values:** `helpful` · `not_helpful`
 
+### Required for share buttons
+
+| Event parameter | Suggested dimension name | Scope | Used by event |
+|-----------------|--------------------------|-------|---------------|
+| `share_platform` | Share platform | Event | `content_share` |
+
+**`content_type` values (share):** `learn` · `tool` · `play` (same as feedback)  
+**`share_platform` values:** `x` · `reddit` · `kakao` · `copy` · `native`
+
 ### Recommended (already sent by the site)
 
 | Event parameter | Suggested dimension name | Scope | Used by event |

@@ -3,8 +3,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
+import { ShareButtons } from "@/components/share/ShareButtons";
 import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
-import { getEmsAddressUrl, getMainSiteUrl } from "@/lib/domains";
+import { getEmsAddressUrl, getMainSiteUrl, getPackOptimizerUrl } from "@/lib/domains";
 import { PACK_OPTIMIZER_USAGE } from "@/lib/tools/pack-optimizer/usage-guide";
 
 type PackOptimizerAppViewProps = {
@@ -56,6 +57,13 @@ export function PackOptimizerAppView({ children }: PackOptimizerAppViewProps) {
           contentType="tool"
           contentId="pack-optimizer"
           className="mt-10 md:mt-12"
+        />
+        <ShareButtons
+          track="tool"
+          title="국제 배송비 최적화 3D 계산기 | 한글아저씨"
+          url={getPackOptimizerUrl()}
+          contentId="pack-optimizer"
+          className="mt-8 md:mt-10"
         />
       </main>
     </div>

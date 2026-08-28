@@ -13,6 +13,7 @@ export function getEmsAddressMetadata() {
     siteOrigin: toolsOrigin,
     canonicalUrl: getEmsAddressUrl(),
     absoluteTitle: true,
+    locale: "ko_KR",
     keywords: [
       "EMS 주소 변환",
       "계약EMS",

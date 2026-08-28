@@ -7,6 +7,7 @@ import { PlayWidgetPageShell } from "@/components/play/PlayWidgetPageShell";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { getPlayUsageGuide } from "@/lib/play/usage-guides";
 import { PLAY_WIDGETS, getPlayWidget } from "@/lib/play/catalog";
+import { getSiteUrl } from "@/lib/site-url";
 
 type PlayWidgetPageProps = {
   params: Promise<{ slug: string }>;
@@ -29,6 +30,7 @@ export async function generateMetadata({
     title: widget.title,
     description: widget.descriptionEn,
     path: `/play/${slug}`,
+    locale: "en_US",
     noIndex: widget.status === "coming-soon",
   });
 }
@@ -48,6 +50,8 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
   }
 
   if (widget.status === "live") {
+    const shareUrl = `${getSiteUrl()}/play/${slug}`;
+
     if (slug === "city-names") {
       return (
         <PlayWidgetPageShell
@@ -57,6 +61,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           descriptionKo={widget.descriptionKo}
           feedbackContentId={slug}
           usageGuide={getPlayUsageGuide(slug)}
+          share={{ title: widget.title, url: shareUrl }}
         >
           <CityNamesWidget />
         </PlayWidgetPageShell>
@@ -72,6 +77,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           descriptionKo={widget.descriptionKo}
           feedbackContentId={slug}
           usageGuide={getPlayUsageGuide(slug)}
+          share={{ title: widget.title, url: shareUrl }}
         >
           <JamoBuilderWidget />
         </PlayWidgetPageShell>
