@@ -14,6 +14,7 @@ export type BlogBlock =
   | { type: "ordered-list"; items: string[] }
   | { type: "table"; headers: string[]; rows: string[][] }
   | { type: "code"; content: string }
+  | { type: "blockquote"; lines: string[] }
   | { type: "divider" }
   | {
       type: "youtube";

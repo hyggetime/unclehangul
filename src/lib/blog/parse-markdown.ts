@@ -28,6 +28,7 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
   let orderedItems: string[] = [];
   let inCode = false;
   let codeLines: string[] = [];
+  let blockquoteLines: string[] = [];
 
   function flushParagraph() {
     const text = paragraph.join(" ").trim();
@@ -55,6 +56,13 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
     if (!codeLines.length) return;
     blocks.push({ type: "code", content: codeLines.join("\n").trimEnd() });
     codeLines = [];
+  }
+
+  function flushBlockquote() {
+    const lines = blockquoteLines.map((entry) => entry.trim()).filter(Boolean);
+    if (!lines.length) return;
+    blocks.push({ type: "blockquote", lines });
+    blockquoteLines = [];
   }
 
   for (let index = 0; index < lines.length; index += 1) {
@@ -120,6 +128,18 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
       if (line.trim() !== "") flushListBuffer();
     }
 
+    const blockquoteMatch = line.match(/^>\s?(.*)$/);
+    if (blockquoteMatch) {
+      flushParagraph();
+      flushListBuffer();
+      blockquoteLines.push(blockquoteMatch[1]);
+      continue;
+    }
+
+    if (blockquoteLines.length > 0) {
+      flushBlockquote();
+    }
+
     if (line.trim() === "---") {
       flushParagraph();
       flushListBuffer();
@@ -174,6 +194,7 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
 
   flushParagraph();
   flushListBuffer();
+  flushBlockquote();
   if (inCode) flushCode();
 
   return blocks;

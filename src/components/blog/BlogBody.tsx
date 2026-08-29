@@ -141,6 +141,22 @@ function BlogBlockRenderer({
         </pre>
       );
 
+    case "blockquote":
+      return (
+        <blockquote className="my-8 border-l-[3px] border-[#FF4B3E] bg-[#EBEBE5]/35 px-5 py-4 md:px-6 md:py-5">
+          {block.lines.map((line, lineIndex) => (
+            <p
+              key={lineIndex}
+              className={`font-en text-base leading-relaxed text-foreground/80 ${
+                lineIndex > 0 ? "mt-3" : ""
+              }`}
+            >
+              {richText ? <InlineMarkdown text={line} /> : line}
+            </p>
+          ))}
+        </blockquote>
+      );
+
     case "heading":
       if (block.level === 2) {
         if (legalProse) {
