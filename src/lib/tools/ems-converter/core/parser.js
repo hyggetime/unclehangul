@@ -73,8 +73,15 @@ function looksLikeStreet(line, rule) {
   return /\d/.test(line);
 }
 
+function looksLikeBuilding(line) {
+  return /\b(cottage|house|building|flat|apt|suite|floor|tower|manor|villa|mansion|block|unit|bldg|residence|lodge|court|place)\b/i.test(
+    line,
+  );
+}
+
 function looksLikeRecipient(line, rule) {
   if (!line || /\d/.test(line)) return false;
+  if (looksLikeBuilding(line)) return false;
   if (rule.street.test(line)) return false;
   if (rule.state && rule.state.test(line)) return false;
   return true;
@@ -121,25 +128,39 @@ function peelCityFromStreet(line, rule) {
   return { city: cityWords.join(" "), street: words.join(" ") };
 }
 
+/**
+ * Merge building, house number, and street into one string, then split only on overflow.
+ * Line 2 is used only when the combined address exceeds EMS_LINE_MAX (35 chars).
+ */
 function wrapEmsLines(parts) {
-  const words = parts.join(" ").split(/\s+/).filter(Boolean);
-  const line1 = [];
-  const line2 = [];
-  let bucket = line1;
+  const combined = parts
+    .map((part) => String(part ?? "").trim())
+    .filter(Boolean)
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
 
-  for (const word of words) {
-    const preview = bucket.length ? `${bucket.join(" ")} ${word}` : word;
-    if (bucket === line1 && preview.length > EMS_LINE_MAX && line1.length) {
-      bucket = line2;
-      bucket.push(word);
-    } else {
-      bucket.push(word);
-    }
+  if (!combined) {
+    return { line1: "", line2: "" };
+  }
+
+  if (combined.length <= EMS_LINE_MAX) {
+    return { line1: combined, line2: "" };
+  }
+
+  const withinLimit = combined.slice(0, EMS_LINE_MAX);
+  const lastSpace = withinLimit.lastIndexOf(" ");
+
+  if (lastSpace <= 0) {
+    return {
+      line1: combined.slice(0, EMS_LINE_MAX).trim(),
+      line2: combined.slice(EMS_LINE_MAX).trim(),
+    };
   }
 
   return {
-    line1: line1.join(" "),
-    line2: line2.join(" "),
+    line1: combined.slice(0, lastSpace).trim(),
+    line2: combined.slice(lastSpace + 1).trim(),
   };
 }
 
