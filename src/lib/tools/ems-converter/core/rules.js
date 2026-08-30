@@ -247,3 +247,211 @@ export function formatPostalCode(raw, country) {
       return compact;
   }
 }
+
+/** GB outward-code prefix → county / nation region (EMS State field). */
+const GB_OUTCODE_STATE = {
+  EH: "SCOTLAND",
+  G: "SCOTLAND",
+  AB: "SCOTLAND",
+  DD: "SCOTLAND",
+  FK: "SCOTLAND",
+  IV: "SCOTLAND",
+  KA: "SCOTLAND",
+  KW: "SCOTLAND",
+  KY: "SCOTLAND",
+  PA: "SCOTLAND",
+  PH: "SCOTLAND",
+  TD: "SCOTLAND",
+  ZE: "SCOTLAND",
+  CF: "WALES",
+  LD: "WALES",
+  LL: "WALES",
+  NP: "WALES",
+  SA: "WALES",
+  SY: "WALES",
+  BT: "NORTHERN IRELAND",
+  TW: "GREATER LONDON",
+  SW: "GREATER LONDON",
+  SE: "GREATER LONDON",
+  W: "GREATER LONDON",
+  WC: "GREATER LONDON",
+  EC: "GREATER LONDON",
+  E: "GREATER LONDON",
+  N: "GREATER LONDON",
+  NW: "GREATER LONDON",
+  EN: "GREATER LONDON",
+  HA: "GREATER LONDON",
+  UB: "GREATER LONDON",
+  IG: "GREATER LONDON",
+  RM: "GREATER LONDON",
+  KT: "GREATER LONDON",
+  SM: "GREATER LONDON",
+  CR: "GREATER LONDON",
+  DA: "GREATER LONDON",
+  BR: "GREATER LONDON",
+  WD: "GREATER LONDON",
+  B: "WEST MIDLANDS",
+  M: "GREATER MANCHESTER",
+  L: "MERSEYSIDE",
+  LS: "WEST YORKSHIRE",
+  S: "SOUTH YORKSHIRE",
+  BS: "BRISTOL",
+  EH1: "SCOTLAND",
+};
+
+/** FR département (first 2 digits) → department name. */
+const FR_DEPT_STATE = {
+  "10": "AUBE",
+  "13": "BOUCHES DU RHONE",
+  "31": "HAUTE GARONNE",
+  "33": "GIRONDE",
+  "38": "ISERE",
+  "44": "LOIRE ATLANTIQUE",
+  "59": "NORD",
+  "69": "RHONE",
+  "75": "PARIS",
+  "92": "HAUTS DE SEINE",
+  "93": "SEINE SAINT DENIS",
+  "94": "VAL DE MARNE",
+};
+
+/** BE province (first digit of postcode). */
+const BE_PROVINCE_STATE = {
+  "1": "BRUSSELS",
+  "2": "ANTWERP",
+  "3": "WEST FLANDERS",
+  "4": "EAST FLANDERS",
+  "5": "HAINAUT",
+  "6": "LIEGE",
+  "7": "LIMBURG",
+  "8": "LUXEMBOURG",
+  "9": "NAMUR",
+};
+
+/** SE postcode first-2-digit band → län (major regions). */
+const SE_POSTAL_BANDS = [
+  [10, 19, "STOCKHOLM"],
+  [40, 49, "VASTRA GOTALAND"],
+  [50, 59, "SKANE"],
+  [70, 89, "OSTERGOTLAND"],
+  [90, 98, "VASTERBOTTEN"],
+];
+
+/** CA FSA first letter → province. */
+const CA_FSA_STATE = {
+  A: "NL",
+  B: "NS",
+  C: "PE",
+  E: "NB",
+  G: "QC",
+  H: "QC",
+  J: "QC",
+  K: "ON",
+  L: "ON",
+  M: "ON",
+  N: "ON",
+  P: "ON",
+  R: "MB",
+  S: "SK",
+  T: "AB",
+  V: "BC",
+  X: "NT",
+  Y: "YT",
+};
+
+/** AU postcode numeric band → state. */
+const AU_POSTAL_BANDS = [
+  [200, 299, "NSW"],
+  [260, 261, "ACT"],
+  [300, 399, "VIC"],
+  [400, 499, "QLD"],
+  [500, 599, "SA"],
+  [600, 699, "WA"],
+  [700, 799, "TAS"],
+  [800, 899, "NT"],
+];
+
+/** US ZIP3 prefix → state (common gaps only; full table omitted). */
+const US_ZIP3_STATE = {
+  100: "NY",
+  101: "NY",
+  102: "NY",
+  900: "CA",
+  901: "CA",
+  902: "CA",
+  606: "IL",
+  770: "TX",
+  787: "TX",
+  331: "FL",
+  981: "WA",
+};
+
+function lookupLongestPrefix(key, table) {
+  const normalized = String(key ?? "").toUpperCase();
+  if (!normalized) return "";
+  const prefixes = Object.keys(table).sort((a, b) => b.length - a.length);
+  for (const prefix of prefixes) {
+    if (normalized.startsWith(prefix)) return table[prefix];
+  }
+  return "";
+}
+
+function lookupNumericBand(value, bands) {
+  const num = Number.parseInt(String(value ?? ""), 10);
+  if (Number.isNaN(num)) return "";
+  for (const [min, max, label] of bands) {
+    if (num >= min && num <= max) return label;
+  }
+  return "";
+}
+
+function gbOutcode(postalCode) {
+  const compact = String(postalCode ?? "")
+    .replace(/\s+/g, "")
+    .toUpperCase();
+  if (compact.length < 5) return compact;
+  return compact.slice(0, -3);
+}
+
+/**
+ * Infer State/County from postal code when missing from the source address.
+ * @param {string} country ISO 3166-1 alpha-2
+ * @param {string} postalCode formatted postal code
+ * @returns {string}
+ */
+export function lookupStateByZipcode(country, postalCode) {
+  const iso = String(country ?? "").toUpperCase();
+  const postal = String(postalCode ?? "").trim();
+  if (!postal) return "";
+
+  switch (iso) {
+    case "GB":
+      return lookupLongestPrefix(gbOutcode(postal), GB_OUTCODE_STATE);
+    case "FR": {
+      const dept = postal.replace(/\D/g, "").slice(0, 2);
+      return FR_DEPT_STATE[dept] ?? "";
+    }
+    case "BE": {
+      const digit = postal.replace(/\D/g, "").charAt(0);
+      return BE_PROVINCE_STATE[digit] ?? "";
+    }
+    case "SE": {
+      const band = postal.replace(/\D/g, "").slice(0, 2);
+      return lookupNumericBand(band, SE_POSTAL_BANDS);
+    }
+    case "CA": {
+      const letter = postal.replace(/\s+/g, "").charAt(0).toUpperCase();
+      return CA_FSA_STATE[letter] ?? "";
+    }
+    case "AU": {
+      const band = postal.replace(/\D/g, "").slice(0, 3);
+      return lookupNumericBand(band, AU_POSTAL_BANDS);
+    }
+    case "US": {
+      const zip3 = postal.replace(/\D/g, "").slice(0, 3);
+      return US_ZIP3_STATE[zip3] ?? "";
+    }
+    default:
+      return "";
+  }
+}

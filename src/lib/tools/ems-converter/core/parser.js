@@ -1,6 +1,6 @@
 import { postcodeValidator } from "postcode-validator";
 import { splitSanitizedLines } from "./sanitizer.js";
-import { formatPostalCode, getCountryRule } from "./rules.js";
+import { formatPostalCode, getCountryRule, lookupStateByZipcode } from "./rules.js";
 
 const EMS_LINE_MAX = 35;
 
@@ -213,11 +213,16 @@ export function parseAddress(rawText, selectedCountry) {
     }
   }
 
+  let state = withState.state;
+  if (!state && postal.formatted) {
+    state = lookupStateByZipcode(rule.iso, postal.formatted);
+  }
+
   return {
     country: rule.iso,
     postalCode: postal.formatted,
     city,
-    state: withState.state,
+    state,
     ...wrapEmsLines(streets),
   };
 }
