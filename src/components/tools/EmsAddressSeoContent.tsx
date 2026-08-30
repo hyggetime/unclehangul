@@ -24,8 +24,8 @@ const SUPPORTED_COUNTRIES = [
 const EMS_FIELDS = [
   { field: "Country", labelKo: "국가", example: "UNITED STATES" },
   { field: "Zipcode", labelKo: "우편번호", example: "10118" },
-  { field: "City", labelKo: "도시", example: "New York" },
   { field: "State", labelKo: "주·도", example: "NY" },
+  { field: "City", labelKo: "도시", example: "New York" },
   { field: "Line1", labelKo: "주소 1", example: "350 Fifth Avenue" },
   { field: "Line2", labelKo: "주소 2", example: "Apt 4B" },
 ] as const;
@@ -240,10 +240,10 @@ export function EmsAddressSeoContent() {
                     <dt className="inline font-bold">Zipcode:</dt> 10118
                   </div>
                   <div>
-                    <dt className="inline font-bold">City:</dt> New York
+                    <dt className="inline font-bold">State:</dt> NY
                   </div>
                   <div>
-                    <dt className="inline font-bold">State:</dt> NY
+                    <dt className="inline font-bold">City:</dt> New York
                   </div>
                   <div>
                     <dt className="inline font-bold">Line1:</dt> 350 Fifth

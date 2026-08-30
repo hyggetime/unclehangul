@@ -4,8 +4,8 @@ import { COUNTRY_LIST, getCountryRule } from "../core/rules.js";
 const FIELD_KEYS = [
   { key: "country", label: "Country", hint: "국가" },
   { key: "postalCode", label: "Zipcode", hint: "우편번호" },
-  { key: "city", label: "City", hint: "도시" },
   { key: "state", label: "State", hint: "주 / 도" },
+  { key: "city", label: "City", hint: "도시" },
   { key: "line1", label: "Line1", hint: "주소 1" },
   { key: "line2", label: "Line2", hint: "주소 2" },
 ];
