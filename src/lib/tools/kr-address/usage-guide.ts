@@ -4,39 +4,39 @@ export const KR_ADDRESS_USAGE: ToolUsageGuide = {
   ko: {
     title: "한국 주소 영문 변환기 사용법",
     intro:
-      "한글 도로명 주소를 검색하면 해외 쇼핑몰 폼(Address Line 1·2, City, State, ZIP)에 맞게 나눕니다. 박스에는 한글·영문 이중 라벨을 붙이세요.",
+      "외국인 시점의 영문 한국 주소를 붙여 넣으면 시·도 → 구 → 읍·면·동 → 세부주소 순으로 나누고, 한글 주소도 함께 보여줍니다.",
     steps: [
       {
-        title: "1. 한글 도로명으로 검색",
-        body: "예: 마포구 서강로 19-4. 행정안전부 주소 API 결과에서 정확한 항목을 선택합니다.",
+        title: "1. 영문 주소 붙여넣기",
+        body: "예: 1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul, Korea. 줄바꿈·쉼표가 있어도 됩니다.",
       },
       {
-        title: "2. 상세주소 입력",
-        body: "동·층·호수를 입력하면 Line 2가 영문으로 정리됩니다. 예: 8층 801호 → 8F, Room 801.",
+        title: "2. 필드 확인",
+        body: "Province(시·도), District(구), Locality(읍·면·동), Detail(세부주소), ZIP, Korean address(한글)가 자동 분할됩니다.",
       },
       {
-        title: "3. 필드 복사 · 라벨 출력",
-        body: "각 칸 옆 Copy로 Amazon·iHerb 등에 붙여 넣고, 배송 라벨을 복사하거나 인쇄합니다.",
+        title: "3. 복사 · 라벨",
+        body: "각 칸 Copy로 해외 쇼핑몰·배송 폼에 붙여 넣거나, 하단 Dual-language label을 인쇄하세요.",
       },
     ],
-    tip: "한국에서 해외로 보내는 경우에는 상단 배너의 EMS Overseas Address Parser를 사용하세요.",
+    tip: "한국에서 해외로 보낼 때는 EMS Overseas Address Parser를 사용하세요.",
   },
   en: {
     title: "How to use the Korean address formatter",
     intro:
-      "Search a Korean street address, then copy the five overseas form fields. Print a bilingual label so local couriers can read the Korean line.",
+      "Paste a Korean address written in English. The tool splits it into Province → District → Locality → Detail and shows the Hangul version beside it.",
     steps: [
       {
-        title: "1. Search in Korean",
-        body: "Type a road-name address (e.g. 마포구 서강로 19-4) and pick the official result.",
+        title: "1. Paste the English address",
+        body: "Example: 1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul, Korea. Line breaks and commas are fine.",
       },
       {
-        title: "2. Add unit / floor / room",
-        body: "Line 2 is romanized automatically — 8층 801호 becomes 8F, Room 801.",
+        title: "2. Review the split fields",
+        body: "Check Province / Metro, District, Town·Dong, Detail, ZIP, and the combined Korean address line.",
       },
       {
-        title: "3. Copy fields or print the label",
-        body: "Copy each field into Amazon, iHerb, or any checkout form. Attach the dual-language label to the box.",
+        title: "3. Copy or print",
+        body: "Copy each field into your checkout form, or print the dual-language label for the box.",
       },
     ],
     tip: "Shipping FROM Korea to another country? Use the EMS Overseas Address Parser in the banner above.",

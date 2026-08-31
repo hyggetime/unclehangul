@@ -9,7 +9,7 @@ export function getKrAddressFormatterMetadata() {
     title:
       "Korean Address in English Converter & Form Splitter | UncleHangul",
     description:
-      "Easily convert South Korean addresses into English format. Automatically splits into Address Line 1, Line 2, City, and Zip Code for Amazon, iHerb, and international shipping.",
+      "Easily convert South Korean addresses written in English. Split into Province, District, Locality, and Detail—with the Hangul address line for inbound shipping.",
     path: "/kr-address-formatter",
     siteOrigin: toolsOrigin,
     canonicalUrl: getKrAddressFormatterUrl(),

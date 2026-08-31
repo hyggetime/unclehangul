@@ -21,9 +21,9 @@ export function KrAddressFormatterToolView({
       backHref={backHref}
       backLabel={backLabel}
       title="Korean Address in English"
-      subtitleEn="Converter · Form splitter · Inbound label"
-      descriptionEn="Search a Korean street address, split it into Line 1, Line 2, City, State, and ZIP, then print a bilingual label for deliveries into Korea."
-      descriptionKo="한글 도로명 주소를 검색하면 해외 쇼핑몰 입력칸에 맞게 나눕니다. 박스에는 국내 택배기사님용 한글 줄을 함께 인쇄하세요."
+      subtitleEn="Paste parser · Admin split · Hangul line"
+      descriptionEn="Paste a Korean address written in English—like 1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul. Split it into Province, District, Locality, and Detail, with the Hangul address beside it."
+      descriptionKo="외국인 시점의 영문 한국 주소를 붙여 넣으면 시·도 → 구 → 읍·면·동 → 세부주소 순으로 나누고 한글 주소를 함께 보여줍니다. EMS 변환기의 inbound 버전입니다."
       banner={
         <a
           href={getEmsAddressUrl()}

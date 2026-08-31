@@ -17,9 +17,9 @@ const TOOLS = [
     href: "/kr-address-formatter",
     title: "KR Address Formatter",
     descriptionKo:
-      "한글 도로명 주소 → 해외 폼 Line 1·2, City, State, ZIP + 한글·영문 배송 라벨.",
+      "영문 한국 주소 → 시·도·구·읍면동·세부주소 분할 + 한글 주소.",
     descriptionEn:
-      "Split a Korean address into English Line 1, Line 2, City, State, and ZIP.",
+      "Paste an English-format Korean address and split it into Province, District, Locality, Detail, plus Hangul.",
   },
   {
     href: "/ems-address",

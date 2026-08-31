@@ -73,7 +73,7 @@ export const TOOLS_CATALOG: ToolEntry[] = [
     descriptionEn:
       "Convert a Korean street address into English Line 1, Line 2, City, State, and ZIP for inbound shipping forms.",
     descriptionKo:
-      "한글 도로명 주소를 해외 쇼핑몰 폼(Line 1·2, City, State, ZIP)과 이중 언어 배송 라벨로 나눕니다.",
+      "영문 한국 주소를 시·도·구·세부주소로 나누고 한글 주소를 함께 표시합니다.",
     href: getKrAddressFormatterUrl(),
     external: true,
   },
