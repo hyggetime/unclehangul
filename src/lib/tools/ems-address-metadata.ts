@@ -6,25 +6,23 @@ export function getEmsAddressMetadata() {
   const toolsOrigin = getToolsSiteUrl();
 
   return buildPageMetadata({
-    title:
-      "해외 주소 EMS 변환기 (계약EMS Country·Zipcode·City·State·Line1·Line2) | 한글아저씨",
+    title: "우체국 EMS 해외 주소 변환기 및 배송 라벨 생성기 | UncleHangul",
     description:
-      "해외 영문 주소를 우체국 계약EMS 입력 폼(Country, Zipcode, City, State, Line1, Line2) 규격으로 실시간 분할·정제. 영국·미국·일본 등 10개국 지원. Uncle Hangul (Unclehangul) 무료 웹 도구.",
+      "영문 주소를 우체국 EMS, DHL, FedEx 전용 입력 필드(Line 1, Line 2, Zip)로 자동 분할하고 박스 부착용 라벨을 즉시 출력하세요.",
     path: "/ems-address",
     siteOrigin: toolsOrigin,
     canonicalUrl: getEmsAddressUrl(),
     absoluteTitle: true,
     locale: "ko_KR",
     keywords: sellerToolKeywords([
+      "우체국 EMS 주소 입력",
+      "해외주소 쪼개기",
+      "영문주소 Line1 Line2",
+      "EMS 배송라벨 출력",
       "EMS 주소 변환",
       "계약EMS",
-      "우체국 EMS",
-      "해외주소 입력",
-      "영문주소 분할",
-      "Contract EMS",
-      "Country Zipcode City State Line1 Line2",
       "해외배송 주소",
-      "우편번호 검증",
+      "배송 라벨 생성",
       "Korea Post EMS",
     ]),
   });

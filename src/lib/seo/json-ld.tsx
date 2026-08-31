@@ -82,6 +82,28 @@ export function buildOrganizationJsonLd() {
   ];
 }
 
+export function buildSoftwareApplicationJsonLd(options: WebApplicationJsonLdOptions) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: options.name,
+    description: options.description,
+    url: options.url,
+    applicationCategory: options.applicationCategory ?? "BusinessApplication",
+    operatingSystem: "Any",
+    browserRequirements: "Requires JavaScript",
+    inLanguage: ["ko-KR", "en-US"],
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "KRW",
+    },
+    featureList: options.featureList,
+    author: brandOrganizationRef(),
+    provider: brandOrganizationRef(),
+  };
+}
+
 export function buildWebApplicationJsonLd(options: WebApplicationJsonLdOptions) {
   return {
     "@context": "https://schema.org",

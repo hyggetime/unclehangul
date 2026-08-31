@@ -223,3 +223,39 @@ body.pack-widget-embed {
   background: transparent !important;
   min-height: 0 !important;
 }
+
+/* EMS outbound shipping label — print label only (A4 top) */
+@media print {
+  body.ems-label-print * {
+    visibility: hidden !important;
+  }
+
+  body.ems-label-print #ems-outbound-label,
+  body.ems-label-print #ems-outbound-label * {
+    visibility: visible !important;
+  }
+
+  body.ems-label-print #ems-outbound-label {
+    position: fixed;
+    top: 12mm;
+    left: 12mm;
+    right: 12mm;
+    width: auto;
+    max-width: 180mm;
+    margin: 0;
+    padding: 10mm;
+    border: 0.5pt solid #111 !important;
+    background: #fff !important;
+    color: #111 !important;
+    font-family: Inter, "Pretendard Variable", sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    box-shadow: none;
+  }
+
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+}

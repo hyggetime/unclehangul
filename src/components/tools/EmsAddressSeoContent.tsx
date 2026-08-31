@@ -4,7 +4,7 @@ import {
   JsonLd,
   buildFaqPageJsonLd,
   buildHowToJsonLd,
-  buildWebApplicationJsonLd,
+  buildSoftwareApplicationJsonLd,
 } from "@/lib/seo/json-ld";
 import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
 
@@ -31,6 +31,21 @@ const EMS_FIELDS = [
 ] as const;
 
 const FAQ_ITEMS = [
+  {
+    question: "EMS 주소 입력 시 Address Line 1과 Line 2는 어떻게 나눠야 하나요?",
+    answer:
+      "건물명과 도로명, 번지수를 Line 1에 우선 합성하고, 35자가 넘는 초과분만 Line 2로 넘겨 분할합니다. Uncle Hangul EMS 변환기는 이 규칙을 자동 적용하며, 박스 부착용 배송 라벨에도 동일한 Line 1·Line 2가 반영됩니다.",
+  },
+  {
+    question: "영문 주소 표기 순서가 반대로 나와도 배송에 문제가 없나요?",
+    answer:
+      "서구권 주소 체계는 [건물명 → 번지수/도로명 → 도시 → 우편번호] 순서가 표준이므로 정상 배송됩니다. 배송 라벨(Shipping Label) 뷰는 박스 부착용으로 이 순서에 맞춰 Country, Zip, Address Line 1·2, City/State를 정리해 보여줍니다.",
+  },
+  {
+    question: "배송 라벨은 어떻게 출력하나요?",
+    answer:
+      "주소를 붙여 넣으면 파싱 결과 하단에 실물 박스 부착용 Shipping Label이 생성됩니다. [라벨 텍스트 전체 복사]로 클립보드에 복사하거나, [라벨 인쇄 / PDF]로 A4 상단에 라벨만 깔끔하게 인쇄·PDF 저장할 수 있습니다.",
+  },
   {
     question: "우체국 계약EMS 해외주소 입력 형식은 무엇인가요?",
     answer:
@@ -85,22 +100,28 @@ const HOWTO_STEPS = [
     name: "우체국 시스템에 복사",
     text: "각 필드 옆 [복사] 버튼으로 e-Post·계약EMS 발송 화면에 순서대로 붙여 넣습니다.",
   },
+  {
+    name: "배송 라벨 출력",
+    text: "파싱 결과 하단 Shipping Label에서 [라벨 텍스트 전체 복사] 또는 [라벨 인쇄 / PDF]로 박스 부착용 라벨을 저장합니다.",
+  },
 ] as const;
 
 function EmsAddressStructuredData({ pageUrl }: { pageUrl: string }) {
   const schemas = [
     buildFaqPageJsonLd(pageUrl, [...FAQ_ITEMS]),
-    buildWebApplicationJsonLd({
-      name: "해외 주소 EMS 변환기",
+    buildSoftwareApplicationJsonLd({
+      name: "우체국 EMS 해외 주소 변환기 및 배송 라벨 생성기",
       description:
-        "해외 영문 주소를 우체국 계약EMS 입력 폼(Country, Zipcode, City, State, Line1, Line2) 규격으로 실시간 분할·정제하는 무료 웹 도구.",
+        "영문 주소를 우체국 EMS, DHL, FedEx 전용 입력 필드(Line 1, Line 2, Zip)로 자동 분할하고 박스 부착용 배송 라벨을 즉시 출력하는 무료 웹 도구.",
       url: pageUrl,
       featureList: [
         "10개국 우편번호 검증(postcode-validator)",
-        "Country / Zipcode / City / State / Line1 / Line2 자동 분할",
-        "특수문자·유럽 악센트 ASCII 정규화",
-        "필드별 클립보드 복사",
-        "실시간 파싱(프론트엔드 전용, 데이터 미전송)",
+        "Country / Zipcode / State / City / Line1 / Line2 자동 분할",
+        "35자 초과분 Line 2 overflow 분할",
+        "실물 박스 부착용 Shipping Label 생성",
+        "라벨 전체 복사 및 인쇄/PDF 저장",
+        "우편번호 prefix 기반 State/County 자동 보완",
+        "프론트엔드 전용(주소 데이터 미전송)",
       ],
     }),
     buildHowToJsonLd(
@@ -129,10 +150,10 @@ export function EmsAddressSeoContent() {
               id="ems-address-seo-heading"
               className="font-ko text-xl font-black tracking-tight text-foreground md:text-2xl"
             >
-              해외 주소 EMS 변환기
+              우체국 EMS 해외 주소 변환기 및 배송 라벨 생성기
             </h2>
             <p className="font-en mt-1 text-sm text-foreground/50">
-              Contract EMS · Address parsing · 10 countries
+              Contract EMS · Shipping label · 10 countries
             </p>
           </header>
 

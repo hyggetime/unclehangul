@@ -1,5 +1,10 @@
 import { parseAddress } from "../core/parser.js";
 import { COUNTRY_LIST, getCountryRule } from "../core/rules.js";
+import {
+  bindOutboundLabelActions,
+  renderOutboundLabelMarkup,
+  updateOutboundLabel,
+} from "./OutboundLabelPrinter.js";
 
 const FIELD_KEYS = [
   { key: "country", label: "Country", hint: "국가" },
@@ -72,6 +77,7 @@ function renderMarkup() {
           <p class="font-ko mt-1 text-xs text-foreground/50">우체국 계약EMS 입력 규격으로 분할됩니다.</p>
         </div>
         ${fields}
+        ${renderOutboundLabelMarkup()}
       </section>
     </div>
   `;
@@ -157,6 +163,7 @@ export function mountEmsConverter(root) {
       button.disabled = !value;
       if (button.dataset.copied !== "1") button.textContent = "복사";
     }
+    updateOutboundLabel(host, view, countryInput.value);
   }
 
   function run() {
@@ -210,6 +217,13 @@ export function mountEmsConverter(root) {
 
   mobileMq.addEventListener("change", syncMobileOutput);
   syncMobileOutput();
+
+  bindOutboundLabelActions(host, {
+    getView: () => ({
+      view: toEmsView(parseAddress(rawInput.value, countryInput.value)),
+      countryCode: countryInput.value,
+    }),
+  });
 
   run();
 

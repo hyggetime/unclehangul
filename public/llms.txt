@@ -22,10 +22,12 @@ Uncle Hangul publishes Hangul (Hangeul) lessons, pronunciation guides, and links
 
 ### EMS Address Converter (canonical)
 - URL: https://tools.unclehangul.com/ems-address
-- Purpose: Split overseas English addresses into Korea Post Contract EMS input fields.
-- Output fields: Country, Zipcode, City, State, Line1, Line2
+- Purpose: Split overseas English addresses into Korea Post Contract EMS input fields and generate box-ready shipping labels.
+- Output fields: Country, Zipcode, State, City, Line1, Line2
+- Shipping label: [SHIP TO] block with Country, Zip/Postal Code, Address Line 1/2, City/State — copy all or print/PDF (A4).
+- Line 1/2 rule: merge building + street into Line 1; overflow beyond 35 chars goes to Line 2.
 - Supported countries: GB, FR, NL, BE, SE, DE, US, JP, CA, AU
-- Features: Real-time parsing, postcode validation, diacritic/special-char normalization, per-field clipboard copy. Runs entirely in the browser (no address data sent to a server).
+- Features: Real-time parsing, postcode validation, state lookup from zip prefix, shipping label print. Browser-only (no server upload).
 
 ### Pack Optimizer (canonical app)
 - URL: https://pack.unclehangul.com/pack-optimizer
