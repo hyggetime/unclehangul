@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Seller Tools · Uncle Hangul",
   description:
-    "Free seller utilities for shipping to and from Korea—Korean address English conversion, EMS address parsing, and the Pack Optimizer.",
+    "Free seller utilities for shipping to and from Korea—Korean address English conversion, overseas address parsing for EMS/DHL/FedEx, and the Pack Optimizer.",
   path: "/",
   siteOrigin: getToolsSiteUrl(),
   locale: "ko_KR",
@@ -14,19 +14,20 @@ export const metadata: Metadata = buildPageMetadata({
 
 const TOOLS = [
   {
-    href: "/kr-address-formatter",
-    title: "KR Address Formatter",
+    href: "/korean-address-converter",
+    title: "Korean Address Converter",
     descriptionKo:
-      "영문 한국 주소 → 시·도·구·읍면동·세부주소 분할 + 한글 주소.",
+      "영문 한국 주소 → 시·도·구·읍면동·세부주소 분할 + 한글 주소 (inbound).",
     descriptionEn:
       "Paste an English-format Korean address and split it into Province, District, Locality, Detail, plus Hangul.",
   },
   {
-    href: "/ems-address",
-    title: "EMS Address Converter",
+    href: "/overseas-address-converter",
+    title: "Overseas Address Converter",
     descriptionKo:
-      "해외 영문 주소 → 우체국 계약EMS 6칸(Country, Zipcode, City, State, Line1, Line2).",
-    descriptionEn: "Split overseas addresses into Contract EMS fields.",
+      "해외 영문 주소 → EMS·DHL·FedEx 6칸(Country, Zipcode, City, State, Line1, Line2).",
+    descriptionEn:
+      "Split overseas addresses into Contract EMS and international carrier form fields.",
   },
   {
     href: getPackOptimizerUrl(),

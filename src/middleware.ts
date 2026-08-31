@@ -1,15 +1,24 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import {
+  LEGACY_EMS_ADDRESS_PATH,
+  LEGACY_KR_ADDRESS_FORMATTER_PATH,
   PACK_SITE_PATH_PREFIX,
   TOOLS_SITE_PATH_PREFIX,
-  getEmsAddressUrl,
-  getKrAddressFormatterUrl,
+  getKoreanAddressConverterUrl,
+  getOverseasAddressConverterUrl,
   getPackSiteUrl,
   getToolsSiteUrl,
   isPackHost,
   isToolsHost,
 } from "@/lib/domains";
+
+const TOOLS_LEGACY_REDIRECTS: Readonly<Record<string, string>> = {
+  [LEGACY_KR_ADDRESS_FORMATTER_PATH]: getKoreanAddressConverterUrl(),
+  [LEGACY_EMS_ADDRESS_PATH]: getOverseasAddressConverterUrl(),
+  "/tools/kr-address-formatter": getKoreanAddressConverterUrl(),
+  "/tools/ems-address": getOverseasAddressConverterUrl(),
+};
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host");
@@ -48,6 +57,11 @@ export function middleware(request: NextRequest) {
   }
 
   if (onToolsHost) {
+    const legacyTarget = TOOLS_LEGACY_REDIRECTS[pathname];
+    if (legacyTarget) {
+      return NextResponse.redirect(legacyTarget, 301);
+    }
+
     if (pathname === "/sitemap.xml") {
       return NextResponse.rewrite(
         new URL("/tools-site/sitemap.xml", request.url),
@@ -58,14 +72,6 @@ export function middleware(request: NextRequest) {
       pathname === "/"
         ? TOOLS_SITE_PATH_PREFIX
         : `${TOOLS_SITE_PATH_PREFIX}${pathname}`;
-
-    if (pathname === "/tools/ems-address") {
-      return NextResponse.redirect(getEmsAddressUrl(), 301);
-    }
-
-    if (pathname === "/tools/kr-address-formatter") {
-      return NextResponse.redirect(getKrAddressFormatterUrl(), 301);
-    }
 
     return NextResponse.rewrite(new URL(internalPath, request.url));
   }

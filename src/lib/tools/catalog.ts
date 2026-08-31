@@ -1,6 +1,6 @@
 import {
-  getEmsAddressUrl,
-  getKrAddressFormatterUrl,
+  getKoreanAddressConverterUrl,
+  getOverseasAddressConverterUrl,
   getPackOptimizerUrl,
 } from "@/lib/domains";
 import { getPublishedCatalogEntries } from "@/lib/tools/launch-rules";
@@ -57,24 +57,24 @@ export const TOOLS_CATALOG: ToolEntry[] = [
     number: "03",
     category: "UTIL",
     section: "seller",
-    title: "EMS Address Converter",
+    title: "Overseas Address Converter",
     descriptionEn:
-      "Split overseas English addresses into Korea Post contract-EMS fields in real time.",
+      "Split overseas English addresses into EMS, DHL, and FedEx form fields in real time.",
     descriptionKo:
-      "해외 영문 주소를 우체국 계약EMS 입력 규격(Country, Zipcode, City, State, Line1, Line2)으로 분할합니다.",
-    href: getEmsAddressUrl(),
+      "해외 영문 주소를 EMS·DHL·FedEx 입력 규격(Country, Zipcode, City, State, Line1, Line2)으로 분할합니다.",
+    href: getOverseasAddressConverterUrl(),
     external: true,
   },
   {
     number: "04",
     category: "UTIL",
     section: "seller",
-    title: "KR Address Formatter",
+    title: "Korean Address Converter",
     descriptionEn:
       "Convert a Korean street address into English Line 1, Line 2, City, State, and ZIP for inbound shipping forms.",
     descriptionKo:
       "영문 한국 주소를 시·도·구·세부주소로 나누고 한글 주소를 함께 표시합니다.",
-    href: getKrAddressFormatterUrl(),
+    href: getKoreanAddressConverterUrl(),
     external: true,
   },
 ];

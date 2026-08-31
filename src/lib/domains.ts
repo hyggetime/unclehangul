@@ -30,12 +30,14 @@ export function getPackOptimizerUrl(): string {
   return `${getPackSiteUrl()}/pack-optimizer`;
 }
 
-export function getEmsAddressUrl(): string {
-  return `${getToolsSiteUrl()}/ems-address`;
+/** Inbound: Korean address written in English → admin split + Hangul. */
+export function getKoreanAddressConverterUrl(): string {
+  return `${getToolsSiteUrl()}/korean-address-converter`;
 }
 
-export function getKrAddressFormatterUrl(): string {
-  return `${getToolsSiteUrl()}/kr-address-formatter`;
+/** Outbound: overseas English address → EMS / DHL / FedEx form fields. */
+export function getOverseasAddressConverterUrl(): string {
+  return `${getToolsSiteUrl()}/overseas-address-converter`;
 }
 
 export function isToolsHost(host: string | null | undefined): boolean {
@@ -70,3 +72,9 @@ export const PACK_SITE_PATH_PREFIX = "/pack-site";
 export function getMainSiteUrl(): string {
   return getSiteUrl();
 }
+
+/** Legacy slug — use getOverseasAddressConverterUrl(). */
+export const LEGACY_EMS_ADDRESS_PATH = "/ems-address";
+
+/** Legacy slug — use getKoreanAddressConverterUrl(). */
+export const LEGACY_KR_ADDRESS_FORMATTER_PATH = "/kr-address-formatter";

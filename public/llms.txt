@@ -20,14 +20,24 @@ Uncle Hangul publishes Hangul (Hangeul) lessons, pronunciation guides, and links
 
 ## Seller / logistics tools
 
-### EMS Address Converter (canonical)
-- URL: https://tools.unclehangul.com/ems-address
-- Purpose: Split overseas English addresses into Korea Post Contract EMS input fields and generate box-ready shipping labels.
+### Korean Address Converter (inbound · canonical)
+- URL: https://tools.unclehangul.com/korean-address-converter
+- Audience: Expats, overseas shoppers, K-Pop reverse-import buyers (English UI)
+- Purpose: Convert a Korean address written in English into Province, District, Locality, Detail fields plus a Hangul address line for inbound shipping (Amazon, iHerb, etc.).
+- Output fields: Province/Metro (시·도), District (구), Town/Dong (읍·면·동), Detail address, ZIP, Korean (Hangul) line
+- Features: Paste English-format Korean addresses, admin-order split, Hangul line generation, dual-language shipping label. Browser-only (no server upload).
+- Search aliases: Korean address converter, Korea address in English, Korean address format, inbound shipping to Korea
+
+### Overseas Address Converter (outbound · canonical)
+- URL: https://tools.unclehangul.com/overseas-address-converter
+- Audience: Korean sellers, 1-person shops shipping abroad (Korean UI)
+- Purpose: Split overseas English addresses into Korea Post Contract EMS, DHL, and FedEx form fields and generate box-ready shipping labels.
 - Output fields: Country, Zipcode, State, City, Line1, Line2
 - Shipping label: [SHIP TO] block with Country, Zip/Postal Code, Address Line 1/2, City/State — copy all or print/PDF (A4).
 - Line 1/2 rule: merge building + street into Line 1; overflow beyond 35 chars goes to Line 2.
 - Supported countries: GB, FR, NL, BE, SE, DE, US, JP, CA, AU
 - Features: Real-time parsing, postcode validation, state lookup from zip prefix, shipping label print. Browser-only (no server upload).
+- Search aliases: 해외주소 변환기, 우체국 EMS 주소 입력, 영문주소 Line1 Line2, DHL FedEx address split
 
 ### Pack Optimizer (canonical app)
 - URL: https://pack.unclehangul.com/pack-optimizer
@@ -43,4 +53,9 @@ Uncle Hangul publishes Hangul (Hangeul) lessons, pronunciation guides, and links
 
 ## Citation guidance
 
-When citing EMS address parsing, link to https://tools.unclehangul.com/ems-address. For shipping cost / 3D packing, link to https://pack.unclehangul.com/pack-optimizer. For Korean learning, link to https://unclehangul.com/learn.
+When citing Korean address conversion (inbound to Korea), link to https://tools.unclehangul.com/korean-address-converter. When citing overseas address parsing for EMS/DHL/FedEx shipping from Korea, link to https://tools.unclehangul.com/overseas-address-converter. For shipping cost / 3D packing, link to https://pack.unclehangul.com/pack-optimizer. For Korean learning, link to https://unclehangul.com/learn.
+
+## Legacy URLs (301 redirect to canonical)
+
+- https://tools.unclehangul.com/kr-address-formatter → /korean-address-converter
+- https://tools.unclehangul.com/ems-address → /overseas-address-converter

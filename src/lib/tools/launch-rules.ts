@@ -1,5 +1,9 @@
 import type { ToolEntry } from "@/lib/tools/catalog";
-import { getEmsAddressUrl, getPackSiteUrl, getToolsSiteUrl } from "@/lib/domains";
+import {
+  getOverseasAddressConverterUrl,
+  getPackSiteUrl,
+  getToolsSiteUrl,
+} from "@/lib/domains";
 
 export type ToolLaunchSurface = "main-catalog" | "tools-subdomain" | "pack-subdomain";
 
@@ -51,5 +55,5 @@ export function getSellerToolCanonicalUrl(entry: ToolEntry): string | null {
 }
 
 export function assertEmsCanonical(): string {
-  return getEmsAddressUrl();
+  return getOverseasAddressConverterUrl();
 }

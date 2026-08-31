@@ -2,9 +2,9 @@ import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
 
 export const EMS_ADDRESS_USAGE: ToolUsageGuide = {
   ko: {
-    title: "EMS Address Converter 사용법",
+    title: "Overseas Address Converter 사용법",
     intro:
-      "해외 영문 주소를 붙여 넣으면 우체국 계약 EMS 여섯 칸으로 나눕니다. 필드별 복사로 발송 화면에 바로 붙여 넣으세요.",
+      "해외 영문 주소를 붙여 넣으면 EMS·DHL·FedEx 여섯 칸(Country, Zipcode, City, State, Line1, Line2)으로 나눕니다. 필드별 복사로 발송 화면에 바로 붙여 넣으세요.",
     steps: [
       {
         title: "1. 주소 붙여넣기",
@@ -16,15 +16,15 @@ export const EMS_ADDRESS_USAGE: ToolUsageGuide = {
       },
       {
         title: "3. 특수문자·악센트",
-        body: "EMS 입력에 맞게 악센트 등이 정리됩니다. 우체국 화면과 다르면 Line1/2만 수동 조정하세요.",
+        body: "EMS·DHL·FedEx 입력에 맞게 악센트 등이 정리됩니다. 택배사 화면과 다르면 Line1/2만 수동 조정하세요.",
       },
     ],
-    tip: "GB·FR·DE·US·JP 등 주요국 규칙을 반영하지만, 최종 접수는 우체국 시스템 기준입니다.",
+    tip: "GB·FR·DE·US·JP 등 주요국 규칙을 반영하지만, 최종 접수는 우체국·택배사 시스템 기준입니다.",
   },
   en: {
-    title: "How to use EMS Address Converter",
+    title: "How to use Overseas Address Converter",
     intro:
-      "Paste an overseas address in English. The tool splits it into Korea Post Contract EMS fields—copy each one into your shipping form.",
+      "Paste an overseas address in English. The tool splits it into EMS, DHL, and FedEx form fields—copy each one into your shipping form.",
     steps: [
       {
         title: "1. Paste the address",
@@ -36,9 +36,9 @@ export const EMS_ADDRESS_USAGE: ToolUsageGuide = {
       },
       {
         title: "3. Accents & cleanup",
-        body: "Accents are normalized for EMS entry. If the post office UI differs, tweak Line1/Line2 only.",
+        body: "Accents are normalized for carrier entry. If the shipping UI differs, tweak Line1/Line2 only.",
       },
     ],
-    tip: "Rules cover GB, FR, DE, US, JP, and more—but always confirm in the official post system.",
+    tip: "Rules cover GB, FR, DE, US, JP, and more—but always confirm in the official carrier system.",
   },
 };

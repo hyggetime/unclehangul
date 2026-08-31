@@ -2,7 +2,7 @@ import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
 
 export const KR_ADDRESS_USAGE: ToolUsageGuide = {
   ko: {
-    title: "한국 주소 영문 변환기 사용법",
+    title: "Korean Address Converter 사용법",
     intro:
       "외국인 시점의 영문 한국 주소를 붙여 넣으면 시·도 → 구 → 읍·면·동 → 세부주소 순으로 나누고, 한글 주소도 함께 보여줍니다.",
     steps: [
@@ -19,10 +19,10 @@ export const KR_ADDRESS_USAGE: ToolUsageGuide = {
         body: "각 칸 Copy로 해외 쇼핑몰·배송 폼에 붙여 넣거나, 하단 Dual-language label을 인쇄하세요.",
       },
     ],
-    tip: "한국에서 해외로 보낼 때는 EMS Overseas Address Parser를 사용하세요.",
+    tip: "한국에서 해외로 보낼 때는 Overseas Address Converter를 사용하세요.",
   },
   en: {
-    title: "How to use the Korean address formatter",
+    title: "How to use Korean Address Converter",
     intro:
       "Paste a Korean address written in English. The tool splits it into Province → District → Locality → Detail and shows the Hangul version beside it.",
     steps: [
@@ -39,6 +39,6 @@ export const KR_ADDRESS_USAGE: ToolUsageGuide = {
         body: "Copy each field into your checkout form, or print the dual-language label for the box.",
       },
     ],
-    tip: "Shipping FROM Korea to another country? Use the EMS Overseas Address Parser in the banner above.",
+    tip: "Shipping FROM Korea to another country? Use the Overseas Address Converter in the banner above.",
   },
 };

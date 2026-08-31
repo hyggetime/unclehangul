@@ -20,7 +20,7 @@ export const PACK_OPTIMIZER_USAGE: ToolUsageGuide = {
       },
       {
         title: "4. 박스 추천·발송 전",
-        body: "하단 ‘물류 조달’에서 주문제작 치수·우체국 박스 규격을 봅니다. 출고 전 우체국 견적과 대조하고, 주소는 EMS Address Converter로 나눕니다.",
+        body: "하단 ‘물류 조달’에서 주문제작 치수·우체국 박스 규격을 봅니다. 출고 전 우체국 견적과 대조하고, 주소는 Overseas Address Converter로 나눕니다.",
       },
     ],
     tip: "결과는 참고용입니다. 통관·할증·수령국 규정은 반영되지 않을 수 있습니다.",
@@ -44,7 +44,7 @@ export const PACK_OPTIMIZER_USAGE: ToolUsageGuide = {
       },
       {
         title: "4. Box sourcing & before ship",
-        body: "Check custom vs post-office box sizes at the bottom. Confirm rates with Korea Post before dispatch; split addresses with EMS Address Converter.",
+        body: "Check custom vs post-office box sizes at the bottom. Confirm rates with Korea Post before dispatch; split addresses with Overseas Address Converter.",
       },
     ],
     tip: "Outputs are planning estimates only—not official quotes. Customs, surcharges, and country rules may differ.",

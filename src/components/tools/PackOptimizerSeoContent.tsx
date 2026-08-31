@@ -6,7 +6,7 @@ import {
   buildHowToJsonLd,
   buildWebApplicationJsonLd,
 } from "@/lib/seo/json-ld";
-import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
+import { getOverseasAddressConverterUrl, getPackOptimizerUrl } from "@/lib/domains";
 
 const FAQ_ITEMS = [
   {
@@ -37,7 +37,7 @@ const FAQ_ITEMS = [
   {
     question: "EMS 발송 전 해외 주소 입력은 어떻게 준비하나요?",
     answer:
-      "계약EMS 발송 시 수취인 주소는 Country, Zipcode, City, State, Line1, Line2 여섯 필드로 나눠 입력합니다. Uncle Hangul EMS Address Converter(tools.unclehangul.com/ems-address)에서 영문 주소를 붙여 넣으면 필드별로 자동 분할·복사할 수 있습니다.",
+      "계약EMS 발송 시 수취인 주소는 Country, Zipcode, City, State, Line1, Line2 여섯 필드로 나눠 입력합니다. Uncle Hangul Overseas Address Converter(tools.unclehangul.com/overseas-address-converter)에서 영문 주소를 붙여 넣으면 EMS·DHL·FedEx 필드별로 자동 분할·복사할 수 있습니다.",
   },
 ] as const;
 
@@ -56,7 +56,7 @@ const HOWTO_STEPS = [
   },
   {
     name: "발송 전 견적 대조",
-    text: "선택한 전략을 우체국·EMS 공식 견적과 대조한 뒤, 해외 주소는 EMS Address Converter로 입력 필드를 준비합니다.",
+    text: "선택한 전략을 우체국·EMS 공식 견적과 대조한 뒤, 해외 주소는 Overseas Address Converter로 입력 필드를 준비합니다.",
   },
 ] as const;
 
@@ -133,8 +133,8 @@ export function PackOptimizerSeoContent() {
             heading="Related tools"
             links={[
               {
-                href: getEmsAddressUrl(),
-                title: "EMS Address Converter · 해외 주소 EMS 변환기",
+                href: getOverseasAddressConverterUrl(),
+                title: "Overseas Address Converter · EMS · DHL · FedEx",
                 descriptionKo:
                   "해외 영문 주소를 계약EMS Country, Zipcode, City, State, Line1, Line2 필드로 실시간 분할합니다.",
                 external: true,

@@ -6,7 +6,10 @@ import {
   buildHowToJsonLd,
   buildSoftwareApplicationJsonLd,
 } from "@/lib/seo/json-ld";
-import { getEmsAddressUrl, getKrAddressFormatterUrl } from "@/lib/domains";
+import {
+  getKoreanAddressConverterUrl,
+  getOverseasAddressConverterUrl,
+} from "@/lib/domains";
 
 const FORM_FIELDS = [
   { field: "Province / Metro (시·도)", example: "Seoul" },
@@ -29,9 +32,9 @@ const FAQ_ITEMS = [
       "Local Korean delivery couriers read Korean much faster and more accurately, preventing lost packages once the shipment arrives in South Korea.",
   },
   {
-    question: "How is this different from the EMS Address Converter?",
+    question: "How is this different from the Overseas Address Converter?",
     answer:
-      "EMS Address Converter splits an overseas English address for Korea Post outbound shipping. This tool does the reverse—it takes a Korean address written in English and reorganizes it into Korean administrative levels plus a Hangul line for inbound delivery.",
+      "Overseas Address Converter splits an overseas English address for Korea Post EMS, DHL, and FedEx outbound shipping. This tool does the reverse—it takes a Korean address written in English and reorganizes it into Korean administrative levels plus a Hangul line for inbound delivery.",
   },
   {
     question: "Do I need to search in Korean?",
@@ -92,7 +95,7 @@ function KrAddressStructuredData({ pageUrl }: { pageUrl: string }) {
 }
 
 export function KrAddressSeoContent() {
-  const pageUrl = getKrAddressFormatterUrl();
+  const pageUrl = getKoreanAddressConverterUrl();
 
   return (
     <section
@@ -105,10 +108,10 @@ export function KrAddressSeoContent() {
         <article className="mx-auto max-w-2xl">
           <header className="border-b-[0.5px] border-[#D9D9D3] pb-8">
             <h2
-              id="kr-address-seo-heading"
+              id="korean-address-seo-heading"
               className="font-en text-xl font-black tracking-tight text-foreground md:text-2xl"
             >
-              Korean address in English — split &amp; convert
+              Korean Address Converter — split &amp; convert
             </h2>
             <p className="font-en mt-1 text-sm text-foreground/50">
               Inbound · Paste parser · Hangul companion
@@ -128,12 +131,12 @@ export function KrAddressSeoContent() {
               </strong>
               ) and shows the Hangul line beside it—mirroring our{" "}
               <a
-                href={getEmsAddressUrl()}
+                href={getOverseasAddressConverterUrl()}
                 className="font-en underline decoration-[#D9D9D3] underline-offset-4"
               >
-                EMS Address Converter
+                Overseas Address Converter
               </a>{" "}
-              for outbound shipping.
+              (EMS · DHL · FedEx) for outbound shipping.
             </p>
           </div>
 
@@ -199,10 +202,10 @@ export function KrAddressSeoContent() {
             heading="Related tools"
             links={[
               {
-                href: getEmsAddressUrl(),
-                title: "EMS Overseas Address Parser",
+                href: getOverseasAddressConverterUrl(),
+                title: "Overseas Address Converter · EMS · DHL · FedEx",
                 descriptionKo:
-                  "Shipping FROM Korea? Split an overseas English address into Korea Post Contract EMS fields.",
+                  "한국에서 해외로 발송할 때 영문 주소를 EMS·DHL·FedEx 입력 필드로 나눕니다.",
                 external: true,
               },
             ]}

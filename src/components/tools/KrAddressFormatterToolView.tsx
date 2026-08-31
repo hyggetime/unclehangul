@@ -1,7 +1,10 @@
 import { KrAddressFormatter } from "@/components/tools/KrAddressFormatter";
 import { KrAddressSeoContent } from "@/components/tools/KrAddressSeoContent";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
-import { getEmsAddressUrl, getKrAddressFormatterUrl } from "@/lib/domains";
+import {
+  getKoreanAddressConverterUrl,
+  getOverseasAddressConverterUrl,
+} from "@/lib/domains";
 import { KR_ADDRESS_USAGE } from "@/lib/tools/kr-address/usage-guide";
 
 type KrAddressFormatterToolViewProps = {
@@ -15,25 +18,27 @@ export function KrAddressFormatterToolView({
 }: KrAddressFormatterToolViewProps) {
   return (
     <UtilityToolLayout
-      category="KR Address"
+      category="Korean Address"
       primaryLang="en"
       usageDefaultLocale="en"
       backHref={backHref}
       backLabel={backLabel}
-      title="Korean Address in English"
-      subtitleEn="Paste parser · Admin split · Hangul line"
+      title="Korean Address Converter"
+      subtitleEn="Paste · Split · Hangul line"
       descriptionEn="Paste a Korean address written in English—like 8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul. Split it into Province, District, Locality, and Detail, with the Hangul address beside it."
-      descriptionKo="외국인 시점의 영문 한국 주소를 붙여 넣으면 시·도 → 구 → 읍·면·동 → 세부주소 순으로 나누고 한글 주소를 함께 보여줍니다. EMS 변환기의 inbound 버전입니다."
+      descriptionKo="외국인 시점의 영문 한국 주소를 붙여 넣으면 시·도 → 구 → 읍·면·동 → 세부주소 순으로 나누고 한글 주소를 함께 보여줍니다. 해외→한국(inbound) 배송용 변환기입니다."
       banner={
         <a
-          href={getEmsAddressUrl()}
+          href={getOverseasAddressConverterUrl()}
           className="flex items-center justify-between gap-3 border-b-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-5 py-3 text-sm transition-colors hover:bg-[#EBEBE5] md:px-8"
         >
           <span className="font-en min-w-0 text-foreground/75">
-            Sending shipping FROM Korea to abroad? Use our{" "}
+            Shipping FROM Korea to abroad? Use our{" "}
             <span className="font-bold text-foreground underline decoration-[#D9D9D3] underline-offset-4">
-              EMS Overseas Address Parser
+              Overseas Address Converter
             </span>
+            {" "}
+            (EMS · DHL · FedEx)
           </span>
           <span
             className="font-en shrink-0 text-[11px] font-bold uppercase tracking-[0.12em] text-[#FF4B3E]"
@@ -45,8 +50,8 @@ export function KrAddressFormatterToolView({
       }
       crossLinks={[
         {
-          href: getEmsAddressUrl(),
-          label: "EMS Parser ↗",
+          href: getOverseasAddressConverterUrl(),
+          label: "Overseas Converter ↗",
           external: true,
         },
       ]}
@@ -54,8 +59,8 @@ export function KrAddressFormatterToolView({
       seo={<KrAddressSeoContent />}
       feedback={{ contentType: "tool", contentId: "kr-address-formatter" }}
       share={{
-        title: "Korean Address in English Converter & Form Splitter | UncleHangul",
-        url: getKrAddressFormatterUrl(),
+        title: "Korean Address Converter & Form Splitter | UncleHangul",
+        url: getKoreanAddressConverterUrl(),
         contentId: "kr-address-formatter",
       }}
       usageGuide={KR_ADDRESS_USAGE}

@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
 import {
-  getEmsAddressUrl,
+  getOverseasAddressConverterUrl,
   getPackOptimizerUrl,
   getToolsSiteUrl,
 } from "@/lib/domains";
@@ -32,8 +32,8 @@ export function PackOptimizerAppView({ children }: PackOptimizerAppViewProps) {
       descriptionEn="Enter product dimensions, weight, and quantity to compare K-Packet split vs EMS bundle shipping—volumetric weight included."
       crossLinks={[
         {
-          href: getEmsAddressUrl(),
-          label: "EMS Address ↗",
+          href: getOverseasAddressConverterUrl(),
+          label: "Overseas Address ↗",
           external: true,
         },
       ]}

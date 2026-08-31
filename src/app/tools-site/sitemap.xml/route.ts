@@ -1,6 +1,6 @@
 import {
-  getEmsAddressUrl,
-  getKrAddressFormatterUrl,
+  getKoreanAddressConverterUrl,
+  getOverseasAddressConverterUrl,
   getToolsSiteUrl,
 } from "@/lib/domains";
 
@@ -10,8 +10,8 @@ export async function GET(): Promise<Response> {
 
   const urls = [
     { loc: `${base}/`, priority: "0.9" },
-    { loc: getEmsAddressUrl(), priority: "0.85" },
-    { loc: getKrAddressFormatterUrl(), priority: "0.85" },
+    { loc: getKoreanAddressConverterUrl(), priority: "0.9" },
+    { loc: getOverseasAddressConverterUrl(), priority: "0.9" },
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

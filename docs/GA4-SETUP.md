@@ -22,7 +22,9 @@ For each row: **Dimension name** = display label (any), **Scope** = **Event**, *
 | `reaction` | Feedback reaction | Event | `content_feedback` |
 
 **`content_type` values:** `learn` · `tool` · `play`  
-**`content_id` examples:** `graphic-blueprint-hangul-loanwords`, `ems-address`, `name-converter`  
+**`content_id` examples:** `graphic-blueprint-hangul-loanwords`, `ems-address`, `kr-address-formatter`, `name-converter`  
+
+> **Note:** `content_id` is stable for analytics and may differ from the public URL slug (e.g. `ems-address` → `/overseas-address-converter`, `kr-address-formatter` → `/korean-address-converter`).
 **`reaction` values:** `helpful` · `not_helpful`
 
 ### Required for share buttons

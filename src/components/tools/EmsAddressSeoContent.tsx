@@ -7,8 +7,8 @@ import {
   buildSoftwareApplicationJsonLd,
 } from "@/lib/seo/json-ld";
 import {
-  getEmsAddressUrl,
-  getKrAddressFormatterUrl,
+  getKoreanAddressConverterUrl,
+  getOverseasAddressConverterUrl,
   getPackOptimizerUrl,
 } from "@/lib/domains";
 
@@ -58,7 +58,7 @@ const FAQ_ITEMS = [
   {
     question: "영문 주소를 EMS 입력 칸에 맞게 자동으로 나눌 수 있나요?",
     answer:
-      "Uncle Hangul EMS Address Converter는 해외 구매자·수취인이 보낸 영문 주소 텍스트를 붙여 넣으면 우편번호·도시·주·도로명을 실시간으로 분석해 EMS 6필드로 분할합니다. 각 필드 옆 복사 버튼으로 우체국 입력창에 바로 붙여 넣을 수 있습니다.",
+      "Uncle Hangul Overseas Address Converter는 해외 구매자·수취인이 보낸 영문 주소 텍스트를 붙여 넣으면 우편번호·도시·주·도로명을 실시간으로 분석해 EMS·DHL·FedEx 6필드로 분할합니다. 각 필드 옆 복사 버튼으로 우체국·택배사 입력창에 바로 붙여 넣을 수 있습니다.",
   },
   {
     question: "어떤 국가 주소를 지원하나요?",
@@ -83,7 +83,7 @@ const FAQ_ITEMS = [
   {
     question: "Pack Optimizer와 함께 쓰면 좋은 이유는?",
     answer:
-      "Pack Optimizer는 K-Packet 분할·EMS 부피무게(체적중량)를 3D로 계산하고, EMS Address Converter는 해외 수취인 주소를 계약EMS 입력 규격으로 나눕니다. 박스·요금 최적화와 주소 입력을 함께 쓰면 해외 발송 준비 시간을 줄일 수 있습니다.",
+      "Pack Optimizer는 K-Packet 분할·EMS 부피무게(체적중량)를 3D로 계산하고, Overseas Address Converter는 해외 수취인 주소를 EMS·DHL·FedEx 입력 규격으로 나눕니다. 박스·요금 최적화와 주소 입력을 함께 쓰면 해외 발송 준비 시간을 줄일 수 있습니다.",
   },
 ] as const;
 
@@ -114,9 +114,9 @@ function EmsAddressStructuredData({ pageUrl }: { pageUrl: string }) {
   const schemas = [
     buildFaqPageJsonLd(pageUrl, [...FAQ_ITEMS]),
     buildSoftwareApplicationJsonLd({
-      name: "우체국 EMS 해외 주소 변환기 및 배송 라벨 생성기",
+      name: "Overseas Address Converter — EMS · DHL · FedEx",
       description:
-        "영문 주소를 우체국 EMS, DHL, FedEx 전용 입력 필드(Line 1, Line 2, Zip)로 자동 분할하고 박스 부착용 배송 라벨을 즉시 출력하는 무료 웹 도구.",
+        "영문 해외 주소를 우체국 EMS, DHL, FedEx 입력 필드(Country, Zipcode, City, State, Line1, Line2)로 자동 분할하고 박스 부착용 배송 라벨을 즉시 출력하는 무료 웹 도구.",
       url: pageUrl,
       featureList: [
         "10개국 우편번호 검증(postcode-validator)",
@@ -139,32 +139,35 @@ function EmsAddressStructuredData({ pageUrl }: { pageUrl: string }) {
 }
 
 export function EmsAddressSeoContent() {
-  const pageUrl = getEmsAddressUrl();
+  const pageUrl = getOverseasAddressConverterUrl();
 
   return (
     <section
       className="border-t-[0.5px] border-[#D9D9D3] bg-[#F2F2F0]"
-      aria-label="EMS Address Converter guide and FAQ"
+      aria-label="Overseas Address Converter guide and FAQ"
     >
       <EmsAddressStructuredData pageUrl={pageUrl} />
       <div className="mx-auto w-full max-w-[1440px] px-5 section-y md:px-8">
         <article className="mx-auto max-w-2xl">
           <header className="hidden border-b-[0.5px] border-[#D9D9D3] pb-8 md:block">
             <h2
-              id="ems-address-seo-heading"
+              id="overseas-address-seo-heading"
               className="font-ko text-xl font-black tracking-tight text-foreground md:text-2xl"
             >
-              우체국 EMS 해외 주소 변환기 및 배송 라벨 생성기
+              해외 주소 변환기 — EMS · DHL · FedEx
             </h2>
             <p className="font-en mt-1 text-sm text-foreground/50">
-              Contract EMS · Shipping label · 10 countries
+              Overseas Address Converter · Contract EMS · Shipping label · 10
+              countries
             </p>
           </header>
 
           <div className="space-y-4 border-b-[0.5px] border-[#D9D9D3] py-8 text-sm leading-relaxed text-foreground/70 md:text-base">
             <p className="font-ko">
               해외 D2C·마켓플레이스 셀러가 우체국{" "}
-              <span className="font-en">Contract EMS</span>(계약EMS)로 발송할
+              <span className="font-en">Contract EMS</span>(계약EMS),{" "}
+              <span className="font-en">DHL</span>,{" "}
+              <span className="font-en">FedEx</span> 등 해외 택배로 발송할
               때, 수취인 영문 주소를 시스템 칸에 맞게 나누는 작업은 반복적이고
               오류가 나기 쉽습니다. 이 도구는 붙여 넣은 주소를{" "}
               <strong className="font-normal text-foreground">
@@ -174,9 +177,9 @@ export function EmsAddressSeoContent() {
             </p>
             <p className="font-en hidden md:block">
               Paste a buyer&apos;s overseas English address and get Korea Post
-              contract-EMS fields in real time. Supports GB, FR, NL, BE, SE, DE,
-              US, JP, CA, and AU with postcode validation—runs entirely in your
-              browser.
+              EMS, DHL, and FedEx form fields in real time. Supports GB, FR,
+              NL, BE, SE, DE, US, JP, CA, and AU with postcode validation—runs
+              entirely in your browser.
             </p>
           </div>
 
@@ -285,10 +288,10 @@ export function EmsAddressSeoContent() {
             heading="Related tools"
             links={[
               {
-                href: getKrAddressFormatterUrl(),
-                title: "KR Address Formatter · inbound to Korea",
+                href: getKoreanAddressConverterUrl(),
+                title: "Korean Address Converter · inbound to Korea",
                 descriptionKo:
-                  "해외에서 한국으로 보낼 때 한글 주소를 영문 Line 1·2, City, ZIP으로 나눕니다.",
+                  "해외에서 한국으로 보낼 때 영문 한국 주소를 Province, District, Detail, Hangul로 나눕니다.",
                 external: true,
               },
               {

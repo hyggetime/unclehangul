@@ -28,12 +28,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/tools/ems-address",
-        destination: "https://tools.unclehangul.com/ems-address",
+        destination: "https://tools.unclehangul.com/overseas-address-converter",
         permanent: true,
       },
       {
         source: "/tools/kr-address-formatter",
-        destination: "https://tools.unclehangul.com/kr-address-formatter",
+        destination: "https://tools.unclehangul.com/korean-address-converter",
         permanent: true,
       },
     ];
