@@ -10,11 +10,11 @@ import { getEmsAddressUrl, getKrAddressFormatterUrl } from "@/lib/domains";
 
 const FORM_FIELDS = [
   { field: "Province / Metro (시·도)", example: "Seoul" },
-  { field: "District (구)", example: "Yangcheon-gu" },
+  { field: "District (구)", example: "Mapo-gu" },
   { field: "Town / Village / Dong (읍·면·동)", example: "—" },
-  { field: "Detail address (세부주소)", example: "1F, Nambusunhwan-ro 57-gil 17" },
-  { field: "ZIP / Postal Code", example: "07997" },
-  { field: "Korean address (한글)", example: "서울특별시 양천구 남부순환로57길 17 1층" },
+  { field: "Detail address (세부주소)", example: "8F Room 801, 19-4 Seogang-ro" },
+  { field: "ZIP / Postal Code", example: "04058" },
+  { field: "Korean address (한글)", example: "서울특별시 마포구 서강로 19-4 8층 801호" },
 ] as const;
 
 const FAQ_ITEMS = [
@@ -48,7 +48,7 @@ const FAQ_ITEMS = [
 const HOWTO_STEPS = [
   {
     name: "Paste the English Korean address",
-    text: "Copy the full address from a marketplace, lease, or form—e.g. 1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul, Korea.",
+    text: "Copy the full address from a marketplace, lease, or form—e.g. 8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul, 04058.",
   },
   {
     name: "Read the Korean admin split",
@@ -120,7 +120,7 @@ export function KrAddressSeoContent() {
               Expats and overseas shoppers often have a Korean address only in
               English—{" "}
               <strong className="font-normal text-foreground">
-                1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul
+                8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul
               </strong>
               . This tool parses that text into Korean administrative levels (
               <strong className="font-normal text-foreground">
@@ -179,7 +179,7 @@ export function KrAddressSeoContent() {
                   English input
                 </p>
                 <pre className="font-en mt-3 whitespace-pre-wrap text-xs leading-relaxed text-foreground/70">
-                  {`1F, Nambusunhwan-ro 57-gil 17\nYangcheon, Seoul, Korea`}
+                  {`8F Room 801, 19-4 Seogang-ro\nMapo-gu, Seoul, 04058`}
                 </pre>
               </div>
               <div className="border-[0.5px] border-[#D9D9D3] p-4">
@@ -187,7 +187,7 @@ export function KrAddressSeoContent() {
                   한글 출력
                 </p>
                 <pre className="font-ko mt-3 whitespace-pre-wrap text-xs leading-relaxed text-foreground/70">
-                  {`서울특별시 양천구\n남부순환로57길 17 1층`}
+                  {`서울특별시 마포구\n서강로 19-4 8층 801호`}
                 </pre>
               </div>
             </div>

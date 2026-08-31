@@ -8,7 +8,7 @@ export const KR_ADDRESS_USAGE: ToolUsageGuide = {
     steps: [
       {
         title: "1. 영문 주소 붙여넣기",
-        body: "예: 1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul, Korea. 줄바꿈·쉼표가 있어도 됩니다.",
+        body: "예: 8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul, 04058. 줄바꿈·쉼표가 있어도 됩니다.",
       },
       {
         title: "2. 필드 확인",
@@ -28,7 +28,7 @@ export const KR_ADDRESS_USAGE: ToolUsageGuide = {
     steps: [
       {
         title: "1. Paste the English address",
-        body: "Example: 1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul, Korea. Line breaks and commas are fine.",
+        body: "Example: 8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul, 04058. Line breaks and commas are fine.",
       },
       {
         title: "2. Review the split fields",

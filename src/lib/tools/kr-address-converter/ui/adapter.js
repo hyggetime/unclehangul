@@ -14,7 +14,7 @@ const FIELD_KEYS = [
   { key: "koreanAddress", label: "Korean address", hint: "한글 주소" },
 ];
 
-const SAMPLE_ADDRESS = `1F, Nambusunhwan-ro 57-gil 17, Yangcheon, Seoul, Korea`;
+const SAMPLE_ADDRESS = `8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul, 04058`;
 
 const inputClass =
   "font-en w-full min-w-0 rounded-none border-[0.5px] border-[#D9D9D3] bg-background px-3 py-3 text-sm text-foreground shadow-none outline-none ring-0 placeholder:text-foreground/35 focus:border-[#FF4B3E] focus:outline-none focus:ring-0";
@@ -46,7 +46,7 @@ function renderMarkup() {
         </div>
         <label class="block p-4 md:p-5">
           <span class="font-en mb-2 block text-[10px] font-bold uppercase tracking-widest text-foreground/35">Raw address</span>
-          <textarea data-kr-raw rows="6" spellcheck="false" placeholder="1F, Nambusunhwan-ro 57-gil 17&#10;Yangcheon-gu, Seoul, Korea" class="${inputClass} min-h-[160px] resize-y leading-relaxed md:min-h-[280px]"></textarea>
+          <textarea data-kr-raw rows="6" spellcheck="false" placeholder="8F Room 801, 19-4 Seogang-ro&#10;Mapo-gu, Seoul, 04058" class="${inputClass} min-h-[160px] resize-y leading-relaxed md:min-h-[280px]"></textarea>
         </label>
         <div class="border-t-[0.5px] border-[#D9D9D3] px-4 py-3 md:px-5">
           <button type="button" data-kr-sample class="font-en touch-target border-[0.5px] border-[#D9D9D3] bg-transparent px-3 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]">
