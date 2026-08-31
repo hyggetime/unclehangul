@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import { getMainSiteUrl } from "@/lib/domains";
-import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
+import type { ToolUsageGuide, UsageGuideLocale } from "@/lib/tools/usage-guide";
 
 export type ToolCrossLink = {
   href: string;
@@ -11,6 +11,7 @@ export type ToolCrossLink = {
 
 type ToolActionBarProps = {
   usageGuide?: ToolUsageGuide;
+  usageDefaultLocale?: UsageGuideLocale;
   crossLinks?: ToolCrossLink[];
   showMainSiteLink?: boolean;
   className?: string;
@@ -22,6 +23,7 @@ const actionLinkClass =
 /** Usage help + sibling tool links + main site — shared across seller tool apps. */
 export function ToolActionBar({
   usageGuide,
+  usageDefaultLocale,
   crossLinks = [],
   showMainSiteLink = true,
   className = "",
@@ -36,7 +38,12 @@ export function ToolActionBar({
     <div
       className={`flex shrink-0 flex-col gap-2 sm:flex-row sm:flex-wrap md:justify-end ${className}`.trim()}
     >
-      {usageGuide ? <UsageHelpDialog guide={usageGuide} /> : null}
+      {usageGuide ? (
+        <UsageHelpDialog
+          guide={usageGuide}
+          defaultLocale={usageDefaultLocale}
+        />
+      ) : null}
       {crossLinks.map((link) => (
         <Link
           key={link.href}

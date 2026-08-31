@@ -6,13 +6,21 @@ import { buildPageMetadata } from "@/lib/site-metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Seller Tools · Uncle Hangul",
   description:
-    "Free seller utilities for global shipping from Korea—EMS address parsing and links to the Pack Optimizer 3D calculator.",
+    "Free seller utilities for shipping to and from Korea—Korean address English conversion, EMS address parsing, and the Pack Optimizer.",
   path: "/",
   siteOrigin: getToolsSiteUrl(),
   locale: "ko_KR",
 });
 
 const TOOLS = [
+  {
+    href: "/kr-address-formatter",
+    title: "KR Address Formatter",
+    descriptionKo:
+      "한글 도로명 주소 → 해외 폼 Line 1·2, City, State, ZIP + 한글·영문 배송 라벨.",
+    descriptionEn:
+      "Split a Korean address into English Line 1, Line 2, City, State, and ZIP.",
+  },
   {
     href: "/ems-address",
     title: "EMS Address Converter",

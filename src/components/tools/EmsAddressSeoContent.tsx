@@ -6,7 +6,11 @@ import {
   buildHowToJsonLd,
   buildSoftwareApplicationJsonLd,
 } from "@/lib/seo/json-ld";
-import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
+import {
+  getEmsAddressUrl,
+  getKrAddressFormatterUrl,
+  getPackOptimizerUrl,
+} from "@/lib/domains";
 
 const SUPPORTED_COUNTRIES = [
   { code: "GB", nameKo: "영국", nameEn: "United Kingdom" },
@@ -280,6 +284,13 @@ export function EmsAddressSeoContent() {
           <ToolCrossLinks
             heading="Related tools"
             links={[
+              {
+                href: getKrAddressFormatterUrl(),
+                title: "KR Address Formatter · inbound to Korea",
+                descriptionKo:
+                  "해외에서 한국으로 보낼 때 한글 주소를 영문 Line 1·2, City, ZIP으로 나눕니다.",
+                external: true,
+              },
               {
                 href: getPackOptimizerUrl(),
                 title: "Pack Optimizer · 국제 배송비 3D 계산기",

@@ -3,10 +3,12 @@ import type { ReactNode } from "react";
 type ToolPageHeaderProps = {
   title: string;
   titleLang?: "ko" | "en";
-  /** English subtitle — desktop only. */
+  /** When `en`, English copy stays visible on mobile. */
+  primaryLang?: "ko" | "en";
+  /** English subtitle — desktop only unless primaryLang is en. */
   subtitleEn?: string;
   descriptionKo?: ReactNode;
-  /** English body copy — desktop only. */
+  /** English body copy — desktop only unless primaryLang is en. */
   descriptionEn?: ReactNode;
   /** When true, omits bottom border (used inside sticky seller-tool header). */
   embedded?: boolean;
@@ -16,13 +18,16 @@ type ToolPageHeaderProps = {
 export function ToolPageHeader({
   title,
   titleLang = "ko",
+  primaryLang = "ko",
   subtitleEn,
   descriptionKo,
   descriptionEn,
   embedded = false,
   className = "",
 }: ToolPageHeaderProps) {
-  const titleClass = titleLang === "ko" ? "font-ko" : "font-en";
+  const englishFirst = primaryLang === "en";
+  const resolvedTitleLang = englishFirst ? "en" : titleLang;
+  const titleClass = resolvedTitleLang === "ko" ? "font-ko" : "font-en";
 
   return (
     <header
@@ -34,20 +39,39 @@ export function ToolPageHeader({
         {title}
       </h1>
       {subtitleEn ? (
-        <p className="font-en mt-2 hidden text-sm font-bold tracking-tight text-foreground/45 md:block">
+        <p
+          className={`font-en mt-2 text-sm font-bold tracking-tight text-foreground/45 ${englishFirst ? "" : "hidden md:block"}`}
+        >
           {subtitleEn}
         </p>
       ) : null}
-      {descriptionKo ? (
-        <p className="font-ko mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65 md:mt-4 md:text-base">
-          {descriptionKo}
-        </p>
-      ) : null}
-      {descriptionEn ? (
-        <p className="font-en mt-2 hidden max-w-2xl text-sm leading-relaxed text-foreground/55 md:block">
-          {descriptionEn}
-        </p>
-      ) : null}
+      {englishFirst ? (
+        <>
+          {descriptionEn ? (
+            <p className="font-en mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65 md:mt-4 md:text-base">
+              {descriptionEn}
+            </p>
+          ) : null}
+          {descriptionKo ? (
+            <p className="font-ko mt-2 hidden max-w-2xl text-sm leading-relaxed text-foreground/55 md:block">
+              {descriptionKo}
+            </p>
+          ) : null}
+        </>
+      ) : (
+        <>
+          {descriptionKo ? (
+            <p className="font-ko mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65 md:mt-4 md:text-base">
+              {descriptionKo}
+            </p>
+          ) : null}
+          {descriptionEn ? (
+            <p className="font-en mt-2 hidden max-w-2xl text-sm leading-relaxed text-foreground/55 md:block">
+              {descriptionEn}
+            </p>
+          ) : null}
+        </>
+      )}
     </header>
   );
 }

@@ -34,6 +34,10 @@ export function getEmsAddressUrl(): string {
   return `${getToolsSiteUrl()}/ems-address`;
 }
 
+export function getKrAddressFormatterUrl(): string {
+  return `${getToolsSiteUrl()}/kr-address-formatter`;
+}
+
 export function isToolsHost(host: string | null | undefined): boolean {
   if (!host) return false;
   const normalized = host.split(":")[0]?.toLowerCase() ?? "";

@@ -8,16 +8,18 @@ import type {
 
 type UsageHelpDialogProps = {
   guide: ToolUsageGuide;
+  defaultLocale?: UsageGuideLocale;
   /** Shown on the trigger button. */
   triggerLabel?: { en: string; ko: string };
 };
 
 export function UsageHelpDialog({
   guide,
+  defaultLocale = "ko",
   triggerLabel = { en: "How to use", ko: "사용법" },
 }: UsageHelpDialogProps) {
   const [open, setOpen] = useState(false);
-  const [locale, setLocale] = useState<UsageGuideLocale>("ko");
+  const [locale, setLocale] = useState<UsageGuideLocale>(defaultLocale);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
   const content = guide[locale];
@@ -40,9 +42,9 @@ export function UsageHelpDialog({
         className="font-en touch-target inline-flex min-h-12 items-center justify-center gap-2 border-[0.5px] border-[#D9D9D3] bg-background px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"
       >
         <span aria-hidden>?</span>
-        {triggerLabel.ko}
+        {defaultLocale === "en" ? triggerLabel.en : triggerLabel.ko}
         <span className="font-en text-[9px] font-bold uppercase tracking-widest text-foreground/35">
-          / {triggerLabel.en}
+          / {defaultLocale === "en" ? triggerLabel.ko : triggerLabel.en}
         </span>
       </button>
 

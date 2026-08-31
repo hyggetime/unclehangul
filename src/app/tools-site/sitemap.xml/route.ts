@@ -1,4 +1,8 @@
-import { getEmsAddressUrl, getToolsSiteUrl } from "@/lib/domains";
+import {
+  getEmsAddressUrl,
+  getKrAddressFormatterUrl,
+  getToolsSiteUrl,
+} from "@/lib/domains";
 
 export async function GET(): Promise<Response> {
   const base = getToolsSiteUrl();
@@ -7,6 +11,7 @@ export async function GET(): Promise<Response> {
   const urls = [
     { loc: `${base}/`, priority: "0.9" },
     { loc: getEmsAddressUrl(), priority: "0.85" },
+    { loc: getKrAddressFormatterUrl(), priority: "0.85" },
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

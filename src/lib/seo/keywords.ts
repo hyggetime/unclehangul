@@ -54,6 +54,9 @@ export const ORGANIZATION_KNOWS_ABOUT = [
   "English to Hangul transliteration",
   "Korea Post EMS",
   "international shipping from Korea",
+  "Korean address in English",
+  "South Korea postal code",
+  "inbound shipping to Korea",
   BRAND_NAME,
   BRAND_NAME_COMPACT,
   BRAND_NAME_KO,
@@ -77,6 +80,8 @@ export const SELLER_TOOL_KEYWORDS = [
   "글로벌 셀러",
   "K-Packet",
   "EMS volumetric weight",
+  "Korean address format",
+  "Korea address in English",
 ] as const;
 
 export function mergeSeoKeywords(...groups: string[][]): string[] {

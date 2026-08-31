@@ -17,8 +17,9 @@ type SiteShellProps = {
 export async function SiteShell({ children }: SiteShellProps) {
   const headerList = await headers();
   const host = headerList.get("host");
+  const surface = headerList.get("x-unclehangul-surface");
 
-  if (isToolsHost(host)) {
+  if (isToolsHost(host) || surface === "tools") {
     return <ToolsSiteShell>{children}</ToolsSiteShell>;
   }
 

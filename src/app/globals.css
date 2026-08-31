@@ -224,18 +224,22 @@ body.pack-widget-embed {
   min-height: 0 !important;
 }
 
-/* EMS outbound shipping label — print label only (A4 top) */
+/* Shipping labels — print label only (A4 top) */
 @media print {
-  body.ems-label-print * {
+  body.ems-label-print *,
+  body.kr-label-print * {
     visibility: hidden !important;
   }
 
   body.ems-label-print #ems-outbound-label,
-  body.ems-label-print #ems-outbound-label * {
+  body.ems-label-print #ems-outbound-label *,
+  body.kr-label-print #kr-inbound-label,
+  body.kr-label-print #kr-inbound-label * {
     visibility: visible !important;
   }
 
-  body.ems-label-print #ems-outbound-label {
+  body.ems-label-print #ems-outbound-label,
+  body.kr-label-print #kr-inbound-label {
     position: fixed;
     top: 12mm;
     left: 12mm;

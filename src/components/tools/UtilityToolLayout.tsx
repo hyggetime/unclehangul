@@ -9,7 +9,7 @@ import { ShareButtons } from "@/components/share/ShareButtons";
 import { ToolActionBar, type ToolCrossLink } from "@/components/tools/ToolActionBar";
 import { ToolPageChrome } from "@/components/tools/ToolPageChrome";
 import { ToolPageHeader } from "@/components/tools/ToolPageHeader";
-import type { ToolUsageGuide } from "@/lib/tools/usage-guide";
+import type { ToolUsageGuide, UsageGuideLocale } from "@/lib/tools/usage-guide";
 
 type UtilityToolLayoutProps = {
   category: string;
@@ -19,6 +19,11 @@ type UtilityToolLayoutProps = {
   subtitleEn: string;
   descriptionKo: ReactNode;
   descriptionEn: string;
+  /** English-first seller tools keep EN copy visible on mobile. */
+  primaryLang?: "ko" | "en";
+  /** Full-width strip above the sticky tool header (cross-nav, alerts). */
+  banner?: ReactNode;
+  usageDefaultLocale?: UsageGuideLocale;
   /** Core widget UI or launch CTA panel. */
   primary: ReactNode;
   /** Collapsed FAQ, cross-links, JSON-LD block. */
@@ -51,6 +56,9 @@ export function UtilityToolLayout({
   subtitleEn,
   descriptionKo,
   descriptionEn,
+  primaryLang = "ko",
+  banner,
+  usageDefaultLocale,
   primary,
   seo,
   crossLinks,
@@ -61,6 +69,7 @@ export function UtilityToolLayout({
 }: UtilityToolLayoutProps) {
   return (
     <div className="min-w-0 w-full">
+      {banner ?? null}
       <div className="sticky top-0 z-40 border-b-[0.5px] border-[#D9D9D3] bg-background">
         <ToolPageChrome
           category={category}
@@ -70,6 +79,7 @@ export function UtilityToolLayout({
         <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 py-4 md:flex-row md:items-start md:justify-between md:px-8 md:py-5">
           <ToolPageHeader
             embedded
+            primaryLang={primaryLang}
             title={title}
             subtitleEn={subtitleEn}
             descriptionKo={descriptionKo}
@@ -77,6 +87,7 @@ export function UtilityToolLayout({
           />
           <ToolActionBar
             usageGuide={usageGuide}
+            usageDefaultLocale={usageDefaultLocale}
             crossLinks={crossLinks}
           />
         </div>

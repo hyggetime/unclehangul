@@ -4,6 +4,7 @@ import {
   PACK_SITE_PATH_PREFIX,
   TOOLS_SITE_PATH_PREFIX,
   getEmsAddressUrl,
+  getKrAddressFormatterUrl,
   getPackSiteUrl,
   getToolsSiteUrl,
   isPackHost,
@@ -25,7 +26,18 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const hostname = host?.split(":")[0] ?? "";
+  const isLocalDevHost =
+    hostname === "localhost" || hostname === "127.0.0.1";
+
   if (!onToolsHost && !onPackHost && pathname.startsWith(TOOLS_SITE_PATH_PREFIX)) {
+    if (isLocalDevHost) {
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set("x-unclehangul-surface", "tools");
+      return NextResponse.next({
+        request: { headers: requestHeaders },
+      });
+    }
     const suffix = pathname.slice(TOOLS_SITE_PATH_PREFIX.length) || "/";
     return NextResponse.redirect(new URL(suffix, getToolsSiteUrl()), 301);
   }
@@ -49,6 +61,10 @@ export function middleware(request: NextRequest) {
 
     if (pathname === "/tools/ems-address") {
       return NextResponse.redirect(getEmsAddressUrl(), 301);
+    }
+
+    if (pathname === "/tools/kr-address-formatter") {
+      return NextResponse.redirect(getKrAddressFormatterUrl(), 301);
     }
 
     return NextResponse.rewrite(new URL(internalPath, request.url));

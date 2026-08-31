@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
         destination: "https://tools.unclehangul.com/ems-address",
         permanent: true,
       },
+      {
+        source: "/tools/kr-address-formatter",
+        destination: "https://tools.unclehangul.com/kr-address-formatter",
+        permanent: true,
+      },
     ];
   },
 };

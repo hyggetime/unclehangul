@@ -1,7 +1,11 @@
 import { EmsAddressConverter } from "@/components/tools/EmsAddressConverter";
 import { EmsAddressSeoContent } from "@/components/tools/EmsAddressSeoContent";
 import { UtilityToolLayout } from "@/components/tools/UtilityToolLayout";
-import { getEmsAddressUrl, getPackOptimizerUrl } from "@/lib/domains";
+import {
+  getEmsAddressUrl,
+  getKrAddressFormatterUrl,
+  getPackOptimizerUrl,
+} from "@/lib/domains";
 import { EMS_ADDRESS_USAGE } from "@/lib/tools/ems-address/usage-guide";
 
 type EmsAddressToolViewProps = {
@@ -30,6 +34,11 @@ export function EmsAddressToolView({
       }
       descriptionEn="Split overseas addresses into Korea Post contract-EMS fields and print a box-ready shipping label—GB, FR, NL, BE, SE, DE, US, JP, CA, AU."
       crossLinks={[
+        {
+          href: getKrAddressFormatterUrl(),
+          label: "KR Address ↗",
+          external: true,
+        },
         {
           href: getPackOptimizerUrl(),
           label: "Pack Optimizer ↗",
