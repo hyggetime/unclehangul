@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
+import { TextSelectionSpeak } from "@/components/speech/TextSelectionSpeak";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
 import { LearnPostJsonLd } from "@/components/blog/LearnPostJsonLd";
@@ -79,7 +80,9 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
             <LearnRecommendedToolsChips />
 
             <div itemProp="articleBody" className="min-w-0 overflow-x-clip">
-              <BlogBody blocks={post.blocks} constrainWidth richText />
+              <TextSelectionSpeak>
+                <BlogBody blocks={post.blocks} constrainWidth richText />
+              </TextSelectionSpeak>
             </div>
 
             <ArticleChannelLinks slug={slug} />

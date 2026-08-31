@@ -8,6 +8,7 @@ import { UsageHelpDialog } from "@/components/tools/UsageHelpDialog";
 import { convertEnglishName } from "@/lib/name-to-hangul";
 import { NAME_CONVERTER_USAGE } from "@/lib/play/usage-guides";
 import { getSiteUrl } from "@/lib/site-url";
+import { speakText } from "@/utils/speak";
 
 /** Placeholder — swap for a dedicated Hangul structure post when published. */
 const LEARN_STRUCTURE_HREF = "/learn/tongue-twister-girin";
@@ -87,7 +88,15 @@ export function NameConverter() {
           ) : null}
         </div>
 
-        <div className="mt-4 flex justify-end">
+        <div className="mt-4 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => result?.hangul && speakText(result.hangul, "ko-KR")}
+            disabled={!result?.hangul}
+            className="font-en touch-target border-[0.5px] border-[#111111] bg-[#111111] px-4 text-xs font-bold uppercase tracking-[0.14em] text-[#F2F2F0] transition-colors duration-200 hover:border-[#FF4B3E] hover:bg-[#FF4B3E] disabled:pointer-events-none disabled:opacity-35"
+          >
+            Listen ↗
+          </button>
           <button
             type="button"
             onClick={handleCopy}
