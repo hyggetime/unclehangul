@@ -1,9 +1,50 @@
+import { buildJusoSearchKeyword } from "../core/juso-keyword.js";
 import { parseKrAddress } from "../core/parser.js";
 import {
   bindInboundLabelActions,
   renderInboundLabelMarkup,
   updateInboundLabel,
 } from "./InboundLabelPrinter.js";
+
+const VALIDATE_DEBOUNCE_MS = 500;
+
+const VERIFY_BADGE = {
+  idle: { text: "", className: "hidden" },
+  local: {
+    text: "Instant parse",
+    className:
+      "font-en inline-flex items-center gap-1 rounded-none border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/60 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-foreground/45 transition-opacity duration-300",
+  },
+  validating: {
+    text: "Auto-verifying…",
+    className:
+      "font-en inline-flex items-center gap-1 rounded-none border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/80 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-foreground/55 transition-opacity duration-300",
+  },
+  verified: {
+    text: "Official DB verified",
+    className:
+      "font-en inline-flex items-center gap-1 rounded-none border-[0.5px] border-[#FF4B3E]/40 bg-[#FF4B3E]/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-[#FF4B3E] transition-opacity duration-300",
+  },
+  partial: {
+    text: "Similar address found",
+    className:
+      "font-en inline-flex items-center gap-1 rounded-none border-[0.5px] border-amber-600/30 bg-amber-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-amber-800 transition-opacity duration-300",
+  },
+  not_found: {
+    text: "Not in official DB",
+    className:
+      "font-en inline-flex items-center gap-1 rounded-none border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/40 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-foreground/40 transition-opacity duration-300",
+  },
+  skipped: {
+    text: "",
+    className: "hidden",
+  },
+  error: {
+    text: "Verification unavailable",
+    className:
+      "font-en inline-flex items-center gap-1 rounded-none border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/40 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-foreground/40 transition-opacity duration-300",
+  },
+};
 
 const FIELD_KEYS = [
   { key: "province", label: "Province / Metro", hint: "시·도" },
@@ -22,14 +63,29 @@ const inputClass =
 const copyClass =
   "font-en touch-target shrink-0 border-[0.5px] border-[#D9D9D3] bg-transparent px-3 text-[10px] font-bold uppercase tracking-[0.14em] text-foreground transition-colors duration-200 hover:border-[#FF4B3E] hover:bg-[#FF4B3E] hover:text-[#F2F2F0] active:border-[#FF4B3E] active:bg-[#FF4B3E] active:text-[#F2F2F0] disabled:pointer-events-none disabled:opacity-35";
 
+function renderFieldLabel(field) {
+  if (field.key === "koreanAddress") {
+    return `
+        <span class="mb-2 flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+          <span class="flex items-baseline gap-2">
+            <span class="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/35">${field.label}</span>
+            <span class="font-ko text-[10px] text-foreground/40">${field.hint}</span>
+          </span>
+          <span data-kr-verify-badge class="hidden" aria-live="polite"></span>
+        </span>`;
+  }
+  return `
+        <span class="mb-2 flex items-baseline justify-between gap-2">
+          <span class="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/35">${field.label}</span>
+          <span class="font-ko text-[10px] text-foreground/40">${field.hint}</span>
+        </span>`;
+}
+
 function renderMarkup() {
   const fields = FIELD_KEYS.map(
     (field) => `
       <label class="block border-b-[0.5px] border-[#D9D9D3] p-4 md:p-5">
-        <span class="mb-2 flex items-baseline justify-between gap-2">
-          <span class="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/35">${field.label}</span>
-          <span class="font-ko text-[10px] text-foreground/40">${field.hint}</span>
-        </span>
+        ${renderFieldLabel(field)}
         <div class="flex items-stretch gap-2">
           <input data-kr-field="${field.key}" type="text" readonly class="${inputClass}${field.key === "koreanAddress" ? " font-ko" : ""}" />
           <button type="button" data-kr-copy="${field.key}" class="${copyClass}" disabled>Copy</button>
@@ -106,8 +162,20 @@ export function mountKrAddressConverter(root) {
   }));
 
   const timers = new Map();
+  const verifyBadge = host.querySelector("[data-kr-verify-badge]");
   let mobileOutputOpen = false;
+  let validateTimer = null;
+  let validateAbort = null;
+  let validateGeneration = 0;
   const mobileMq = window.matchMedia("(max-width: 767px)");
+
+  function setVerifyBadge(state) {
+    if (!verifyBadge) return;
+    const spec = VERIFY_BADGE[state] ?? VERIFY_BADGE.idle;
+    verifyBadge.className = spec.className;
+    verifyBadge.textContent = spec.text;
+    verifyBadge.dataset.state = state;
+  }
 
   function syncMobileOutput() {
     if (!outputSection) return;
@@ -138,8 +206,73 @@ export function mountKrAddressConverter(root) {
     updateInboundLabel(host, parsed);
   }
 
-  function run() {
-    fill(parseKrAddress(rawInput.value));
+  function runLocal() {
+    const parsed = parseKrAddress(rawInput.value);
+    fill(parsed);
+    if (parsed.koreanAddress?.trim()) {
+      setVerifyBadge("local");
+    } else {
+      setVerifyBadge("idle");
+    }
+    scheduleValidate();
+  }
+
+  function scheduleValidate() {
+    if (validateTimer) window.clearTimeout(validateTimer);
+    const generation = ++validateGeneration;
+
+    validateTimer = window.setTimeout(async () => {
+      const parsed = parseKrAddress(rawInput.value);
+      const keyword = buildJusoSearchKeyword(parsed);
+      if (!keyword) {
+        if (generation === validateGeneration) setVerifyBadge("skipped");
+        return;
+      }
+
+      if (generation === validateGeneration) setVerifyBadge("validating");
+
+      if (validateAbort) validateAbort.abort();
+      validateAbort = new AbortController();
+
+      try {
+        const response = await fetch("/api/v1/juso/search", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ keyword, parsed }),
+          signal: validateAbort.signal,
+        });
+
+        if (generation !== validateGeneration) return;
+
+        const data = await response.json();
+
+        if (!response.ok || data.status === "error") {
+          setVerifyBadge("error");
+          return;
+        }
+
+        if (data.verification === "verified" && data.fields) {
+          fill(data.fields);
+          setVerifyBadge("verified");
+          return;
+        }
+
+        if (data.verification === "partial") {
+          setVerifyBadge("partial");
+          return;
+        }
+
+        if (data.verification === "not_found") {
+          setVerifyBadge("not_found");
+          return;
+        }
+
+        setVerifyBadge("skipped");
+      } catch (error) {
+        if (error?.name === "AbortError") return;
+        if (generation === validateGeneration) setVerifyBadge("error");
+      }
+    }, VALIDATE_DEBOUNCE_MS);
   }
 
   async function onCopy(event) {
@@ -173,10 +306,10 @@ export function mountKrAddressConverter(root) {
     }
   }
 
-  rawInput.addEventListener("input", run);
+  rawInput.addEventListener("input", runLocal);
   sampleBtn?.addEventListener("click", () => {
     rawInput.value = SAMPLE_ADDRESS;
-    run();
+    runLocal();
   });
 
   for (const { button } of fieldInputs) {
@@ -198,10 +331,12 @@ export function mountKrAddressConverter(root) {
     getView: () => parseKrAddress(rawInput.value),
   });
 
-  run();
+  runLocal();
 
   return () => {
     for (const timeout of timers.values()) window.clearTimeout(timeout);
+    if (validateTimer) window.clearTimeout(validateTimer);
+    validateAbort?.abort();
     mobileMq.removeEventListener("change", syncMobileOutput);
     host.innerHTML = "";
   };

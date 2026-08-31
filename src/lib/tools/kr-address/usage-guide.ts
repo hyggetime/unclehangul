@@ -11,8 +11,8 @@ export const KR_ADDRESS_USAGE: ToolUsageGuide = {
         body: "예: 8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul, 04058. 줄바꿈·쉼표가 있어도 됩니다.",
       },
       {
-        title: "2. 필드 확인",
-        body: "Province(시·도), District(구), Locality(읍·면·동), Detail(세부주소), ZIP, Korean address(한글)가 자동 분할됩니다.",
+        title: "2. 필드 확인 · 자동 검증",
+        body: "입력 즉시 필드가 나뉩니다. 0.5초 후 행정안전부 도로명주소 DB로 자동 검증하며, 한글 주소 옆 뱃지로 상태를 표시합니다. 검증 시 검색어가 서버로 전송됩니다.",
       },
       {
         title: "3. 복사 · 라벨",
@@ -31,8 +31,8 @@ export const KR_ADDRESS_USAGE: ToolUsageGuide = {
         body: "Example: 8F Room 801, 19-4 Seogang-ro, Mapo-gu, Seoul, 04058. Line breaks and commas are fine.",
       },
       {
-        title: "2. Review the split fields",
-        body: "Check Province / Metro, District, Town·Dong, Detail, ZIP, and the combined Korean address line.",
+        title: "2. Review fields · auto-verify",
+        body: "Fields appear instantly. After 0.5s the tool checks the MOIS road-name address database; a badge beside Korean address shows the status. The search keyword is sent to our server for verification.",
       },
       {
         title: "3. Copy or print",
