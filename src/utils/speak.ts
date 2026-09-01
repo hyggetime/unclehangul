@@ -23,8 +23,11 @@ function speakUtterance(utterance: SpeechSynthesisUtterance): void {
 export function speakText(text: string, lang: SpeakLang): void {
   if (typeof window === "undefined" || !text.trim()) return;
 
+  const spokenText = text.trim().replace(/-/g, " ");
+  if (!spokenText.trim()) return;
+
   const run = () => {
-    const utterance = new SpeechSynthesisUtterance(text.trim());
+    const utterance = new SpeechSynthesisUtterance(spokenText);
     utterance.lang = lang;
     utterance.rate = 0.9;
 
