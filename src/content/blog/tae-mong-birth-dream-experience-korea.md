@@ -137,5 +137,5 @@ A Birth dream is not about rigid superstition or scientific accuracy. At its hea
 
 If you found this look into Korean Birth dream culture interesting, let us know by clicking the reaction buttons below!
 
-* **Visual Stories:** Want to see more artwork inspired by life in Korea? Check out illustrator Sofie Fribo’s work on Instagram: `@sofiefribo_illustration`.
+* **Visual Stories:** Want to see more artwork inspired by life in Korea? Check out illustrator Sofie Fribo’s work on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Up Next on UncleHangul:** How do Korean parents choose a baby's temporary "womb name" before their official legal name is decided? Stay tuned for our upcoming guide on **Tae-myeong (태명 - Baby Nickname)**!
