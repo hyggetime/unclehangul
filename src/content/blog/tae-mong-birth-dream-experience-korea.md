@@ -3,6 +3,7 @@ title: "What is Tae-mong (태몽)? A Foreigner’s Real Birth Dream Experience i
 description: "Discover the fascinating Korean tradition of Tae-mong (Birth dream) through a real-life story of a Danish wife dreaming of giant blue-eyed elephants in Seoul."
 date: "2026-09-02"
 category: "Korean Culture"
+author: Uncle Hangul
 tags: ["Tae-mong", "Birth Dream", "Korean Traditions", "Culture Shock", "Family Culture"]
 ---
 
