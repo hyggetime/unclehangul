@@ -43,9 +43,9 @@ Korea is one of the very few societies in the world where a Tae-mong (태몽 - B
 
 > **🇰🇷 Korean Vocabulary Card**
 >
-> **태몽 (Tae-mong - Birth dream)** 🔊 Listen — *Noun.* A conception or birth dream believed to announce the arrival of a new life, often foretelling the child's gender, personality, or future path.
+> **태몽 (Tae-mong - Birth dream)** — *Noun.* A conception or birth dream believed to announce the arrival of a new life, often foretelling the child's gender, personality, or future path.
 >
-> **태명 (Tae-myeong - Baby Nickname)** 🔊 Listen — *Noun.* A temporary, affectionate nickname given to an unborn baby during pregnancy, often inspired by the Tae-mong itself.
+> **태명 (Tae-myeong - Baby Nickname)** — *Noun.* A temporary, affectionate nickname given to an unborn baby during pregnancy, often inspired by the Tae-mong itself.
 
 ### An Active Cultural Milestone
 
@@ -82,21 +82,21 @@ Massive Trees)                 Fresh Fruits)
 
 Dreams predicting a boy typically feature fierce animals, massive natural landforms, or symbols associated with strength, high status, and bold leadership:
 
-* **호랑이 (Ho-rang-i / Tiger)** 🔊 Listen — Symbolizes immense courage, authority, and high social standing.
-* **용 (Yong / Dragon)** 🔊 Listen — The ultimate heraldic symbol of grandeur, wisdom, and exceptional achievement.
-* **사자 (Sa-ja / Lion)** 🔊 Listen — Represents protection, independence, and strong willpower.
-* **코끼리 (Ko-kki-ri / Elephant)** 🔊 Listen — Represents reliable strength, deep intelligence, and noble stability.
-* **소나무 (So-na-mu / Pine Tree)** 🔊 Listen — Symbolizes resilience, honor, and a long, healthy life.
+* **호랑이 (Ho-rang-i / Tiger)** — Symbolizes immense courage, authority, and high social standing.
+* **용 (Yong / Dragon)** — The ultimate heraldic symbol of grandeur, wisdom, and exceptional achievement.
+* **사자 (Sa-ja / Lion)** — Represents protection, independence, and strong willpower.
+* **코끼리 (Ko-kki-ri / Elephant)** — Represents reliable strength, deep intelligence, and noble stability.
+* **소나무 (So-na-mu / Pine Tree)** — Symbolizes resilience, honor, and a long, healthy life.
 
 ### Traditional Symbols for Girls (딸)
 
 Dreams predicting a girl traditionally lean toward bright, elegant, precious, or quiet objects associated with grace and creativity:
 
-* **꽃 (Kkot / Flower)** 🔊 Listen — Represents beauty, artistic sensitivity, and warmth.
-* **과일 (Gwa-il / Fruit)** 🔊 Listen — Symbolizes abundance, charm, sweet nature, and fertility (especially when ripe and colorful).
-* **보석 (Bo-seok / Jewelry, Gem)** 🔊 Listen — Points to refined elegance, intelligence, and a cherished life.
-* **물고기 (Mul-go-gi / Fish)** 🔊 Listen — Symbolizes peace, adaptability, and smooth prosperity.
-* **거울 (Geo-ul / Mirror)** 🔊 Listen — Represents clarity of mind, honesty, and deep wisdom.
+* **꽃 (Kkot / Flower)** — Represents beauty, artistic sensitivity, and warmth.
+* **과일 (Gwa-il / Fruit)** — Symbolizes abundance, charm, sweet nature, and fertility (especially when ripe and colorful).
+* **보석 (Bo-seok / Jewelry, Gem)** — Points to refined elegance, intelligence, and a cherished life.
+* **물고기 (Mul-go-gi / Fish)** — Symbolizes peace, adaptability, and smooth prosperity.
+* **거울 (Geo-ul / Mirror)** — Represents clarity of mind, honesty, and deep wisdom.
 
 ---
 
@@ -104,7 +104,7 @@ Dreams predicting a girl traditionally lean toward bright, elegant, precious, or
 
 If you consult a traditional Korean dream dictionary, my wife's dream presented a fun puzzle.
 
-Old-school Korean interpretation would point straight to the animal: **코끼리 (Ko-kki-ri / Elephant)** 🔊 Listen. Elephants are massive, grounded, powerful land animals. According to classic Korean folklore, dreaming of three giant elephants almost universally indicates a strong, bold boy!
+Old-school Korean interpretation would point straight to the animal: **코끼리 (Ko-kki-ri / Elephant)**. Elephants are massive, grounded, powerful land animals. According to classic Korean folklore, dreaming of three giant elephants almost universally indicates a strong, bold boy!
 
 However, cultural traditions often meet something even stronger: a mother’s instinct.
 
