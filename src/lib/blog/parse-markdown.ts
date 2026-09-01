@@ -183,6 +183,27 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
       continue;
     }
 
+    const imageMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageMatch) {
+      flushParagraph();
+      flushListBuffer();
+      let caption = imageMatch[1].trim();
+      const nextLine = lines[index + 1]?.trim() ?? "";
+      const captionMatch = nextLine.match(/^\*(.+)\*$/);
+      if (captionMatch) {
+        caption = captionMatch[1].trim();
+        index += 1;
+      }
+      blocks.push({
+        type: "image",
+        src: imageMatch[2],
+        alt: caption,
+        width: 1200,
+        height: 900,
+      });
+      continue;
+    }
+
     if (line.trim() === "") {
       flushParagraph();
       flushListBuffer();
