@@ -133,4 +133,4 @@ It is the exact inverse of Western spatial logic, which usually starts small and
 If you enjoyed learning about Korea's **Tae-myeong (태명)** culture, let us know by clicking the reaction buttons below!
 
 * **Visual Insights:** Want to see illustrations inspired by our family's multicultural journey in Korea? Follow illustrator Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
-* **Coming Up Next:** Why does Korean address logic, date formatting, and Hangul sentence structure always start big and zoom in? Stay tuned for our upcoming deep dive into **Korea's Macro-to-Micro Spatial Logic**!
+* **Continue Reading:** Why does Korean address logic, date formatting, and Hangul sentence structure always start big and zoom in? Read [From the Universe to Your Doorstep: Decoding Korea's Big-to-Small Logic](/learn/from-universe-to-doorstep-korea-big-to-small-logic).
