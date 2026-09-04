@@ -127,4 +127,4 @@ Use this reference table to select the correct male title in daily life:
 If this guide clarified how Korean titles work, let us know by selecting a reaction below.
 
 * **Visual Stories:** For artwork, illustrations, and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
-* **Up Next:** Ever wondered why Koreans call restaurant servers **"Imo" (이모 - Maternal Aunt)** instead of **"Gomo" (고모 - Paternal Aunt)**? In our next article, we will break down the practical social spectrum behind Korean women's titles: **Imo (이모)**, **Gomo (고모)**, and **Ajumma (아줌마)**.
+* **Continue the Series:** Ever wondered why Koreans call restaurant servers **"Imo" (이모 - Maternal Aunt)** instead of **"Gomo" (고모 - Paternal Aunt)**? Read [Why Korean Restaurant Workers Are Called 'Aunt': Eoni, Imo, and Ajumma Explained](/learn/why-korean-restaurant-workers-called-aunt-eoni-imo-ajumma).
