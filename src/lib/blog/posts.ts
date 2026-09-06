@@ -3,13 +3,14 @@ import {
   getMarkdownSlugs,
   loadMarkdownPost,
 } from "@/lib/blog/load-markdown-post";
+import { assignHeadingSlugs } from "@/lib/blog/assign-heading-slugs";
 import { isPostPublic } from "@/lib/blog/publish";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { learningPageKeywords, seoBrandPhrase, seoScriptPhrase } from "@/lib/seo/keywords";
 
 export type BlogBlock =
   | { type: "paragraph"; content: string }
-  | { type: "heading"; level: 2 | 3; content: string }
+  | { type: "heading"; level: 2 | 3; content: string; id: string }
   | { type: "list"; items: string[] }
   | { type: "ordered-list"; items: string[] }
   | { type: "table"; headers: string[]; rows: string[][] }
@@ -57,7 +58,7 @@ const POSTS: BlogPost[] = [
     publishedAt: "2022-12-29",
     publishedLabel: "29 DEC 2022",
     sectionLabel: "LEARN / KOREAN",
-    blocks: [
+    blocks: assignHeadingSlugs([
       {
         type: "paragraph",
         content:
@@ -84,7 +85,7 @@ const POSTS: BlogPost[] = [
         content:
           "「목 긴」과 「목 안 긴」의 대비에 귀를 기울이세요. 비슷해 보이는 문장도 모음 길이와 경음 위치가 다릅니다.",
       },
-    ],
+    ]),
   },
 ];
 

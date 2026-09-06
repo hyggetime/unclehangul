@@ -1,4 +1,8 @@
 import type { BlogBlock } from "@/lib/blog/posts";
+import {
+  assignHeadingSlugs,
+  type BlogBlockDraft,
+} from "@/lib/blog/assign-heading-slugs";
 
 const YOUTUBE_LINE =
   /^@youtube\s+(\S+)\s*\|\s*(short|long)\s*\|\s*(.+)\s*$/i;
@@ -21,7 +25,7 @@ function isTableRow(line: string): boolean {
 }
 
 export function markdownToBlocks(markdown: string): BlogBlock[] {
-  const blocks: BlogBlock[] = [];
+  const blocks: BlogBlockDraft[] = [];
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   let paragraph: string[] = [];
   let listItems: string[] = [];
@@ -218,5 +222,5 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
   flushBlockquote();
   if (inCode) flushCode();
 
-  return blocks;
+  return assignHeadingSlugs(blocks);
 }

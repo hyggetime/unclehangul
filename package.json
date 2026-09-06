@@ -12,6 +12,7 @@
     "@keystatic/core": "^0.6.0",
     "@keystatic/next": "^5.0.4",
     "@markdoc/markdoc": "^0.5.8",
+    "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
     "next": "16.2.10",
     "postcode-validator": "^3.10.22",

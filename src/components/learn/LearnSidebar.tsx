@@ -1,18 +1,34 @@
 import Link from "next/link";
 import { AdSenseUnit } from "@/components/AdSenseUnit";
+import { LearnTocDesktop } from "@/components/learn/toc/LearnTocDesktop";
+import type { TocItem } from "@/lib/blog/extract-toc";
+import { shouldShowToc } from "@/lib/blog/extract-toc";
 import { LEARN_RECOMMENDED_LINKS } from "@/lib/learn/recommended-links";
 
 type LearnSidebarProps = {
   /** Show the tall desktop AdSense slot (hidden on mobile). */
   showDesktopAd?: boolean;
+  /** When set and ≥3 entries, renders sticky TOC above Explore. */
+  tocItems?: TocItem[];
 };
 
-export function LearnSidebar({ showDesktopAd = true }: LearnSidebarProps) {
+export function LearnSidebar({
+  showDesktopAd = true,
+  tocItems,
+}: LearnSidebarProps) {
+  const showToc = tocItems ? shouldShowToc(tocItems) : false;
+
   return (
     <aside
-      aria-label="Recommended links"
+      aria-label={showToc ? "Article sidebar" : "Recommended links"}
       className="hidden min-w-0 border-t-[0.5px] border-[#D9D9D3] p-4 md:block md:col-span-3 md:border-l-[0.5px] md:border-t-0"
     >
+      {showToc && tocItems ? (
+        <section aria-label="Table of contents" className="mb-8">
+          <LearnTocDesktop items={tocItems} />
+        </section>
+      ) : null}
+
       <section aria-labelledby="learn-links-heading">
         <h2
           id="learn-links-heading"

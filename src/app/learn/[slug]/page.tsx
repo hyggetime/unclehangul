@@ -9,12 +9,17 @@ import { ArticleChannelLinks } from "@/components/learn/ArticleChannelLinks";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
 import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
+import { LearnTocMobile } from "@/components/learn/toc/LearnTocMobile";
 import { ShareButtons } from "@/components/share/ShareButtons";
 import {
   getAllPostSlugsIncludingUnpublished,
   getPostBySlug,
   getPostMetadata,
 } from "@/lib/blog/posts";
+import {
+  extractTocFromBlocks,
+  shouldShowToc,
+} from "@/lib/blog/extract-toc";
 import { getSiteUrl } from "@/lib/site-url";
 
 type LearnPostPageProps = {
@@ -43,6 +48,9 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  const tocItems = extractTocFromBlocks(post.blocks);
+  const showToc = shouldShowToc(tocItems);
 
   return (
     <>
@@ -79,6 +87,8 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
 
             <LearnRecommendedToolsChips />
 
+            {showToc ? <LearnTocMobile items={tocItems} /> : null}
+
             <div itemProp="articleBody" className="min-w-0 overflow-x-clip">
               <TextSelectionSpeak>
                 <BlogBody blocks={post.blocks} constrainWidth richText />
@@ -101,7 +111,7 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
             />
           </article>
 
-          <LearnSidebar />
+          <LearnSidebar tocItems={showToc ? tocItems : undefined} />
         </div>
       </div>
     </>

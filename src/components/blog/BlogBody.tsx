@@ -161,19 +161,28 @@ function BlogBlockRenderer({
       if (block.level === 2) {
         if (legalProse) {
           return (
-            <h2 className="font-en mb-3 mt-10 text-base font-bold leading-snug text-foreground first:mt-0 md:mt-12 md:text-lg">
+            <h2
+              id={block.id}
+              className="font-en mb-3 mt-10 scroll-mt-20 text-base font-bold leading-snug text-foreground first:mt-0 md:mt-12 md:scroll-mt-24 md:text-lg"
+            >
               {block.content}
             </h2>
           );
         }
         return (
-          <h2 className="font-en blog-heading-2 mb-4 mt-10 border-t-[0.5px] border-[#D9D9D3] pt-8 text-xl font-bold leading-tight tracking-[-0.02em] text-foreground first:mt-0 first:border-t-0 first:pt-0 md:text-2xl md:tracking-tight">
+          <h2
+            id={block.id}
+            className="font-en blog-heading-2 mb-4 mt-10 scroll-mt-20 border-t-[0.5px] border-[#D9D9D3] pt-8 text-xl font-bold leading-tight tracking-[-0.02em] text-foreground first:mt-0 first:border-t-0 first:pt-0 md:scroll-mt-24 md:text-2xl md:tracking-tight"
+          >
             {block.content}
           </h2>
         );
       }
       return (
-        <h3 className="font-en blog-heading-3 mb-3 mt-8 border-t-[0.5px] border-[#D9D9D3] pt-6 text-base font-bold leading-snug tracking-[-0.01em] text-foreground md:text-lg md:leading-tight">
+        <h3
+          id={block.id}
+          className="font-en blog-heading-3 mb-3 mt-8 scroll-mt-20 border-t-[0.5px] border-[#D9D9D3] pt-6 text-base font-bold leading-snug tracking-[-0.01em] text-foreground md:scroll-mt-24 md:text-lg md:leading-tight"
+        >
           {block.content}
         </h3>
       );
