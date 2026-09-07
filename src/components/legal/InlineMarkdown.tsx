@@ -3,39 +3,92 @@ import { Fragment, type ReactNode } from "react";
 
 const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
 const MARKDOWN_BOLD = /\*\*([^*]+)\*\*/g;
+const MARKDOWN_ITALIC = /\*([^*]+)\*/g;
+const MARKDOWN_CODE = /`([^`]+)`/g;
 
 const linkClassName =
   "text-foreground underline decoration-[0.5px] underline-offset-4 transition-colors hover:text-[#FF4B3E]";
+
+const codeClassName =
+  "font-mono text-[0.92em] rounded-sm bg-[#EBEBE5]/60 px-1 py-0.5 text-foreground/90";
 
 type InlineMarkdownProps = {
   text: string;
 };
 
-function renderBoldSegments(text: string, keyStart: number): ReactNode[] {
+type InlinePattern = {
+  regex: RegExp;
+  render: (content: string, key: number) => ReactNode;
+};
+
+const INLINE_PATTERNS: InlinePattern[] = [
+  {
+    regex: MARKDOWN_BOLD,
+    render: (content, key) => (
+      <strong key={key} className="font-semibold text-foreground">
+        {content}
+      </strong>
+    ),
+  },
+  {
+    regex: MARKDOWN_ITALIC,
+    render: (content, key) => (
+      <em key={key} className="italic text-foreground/90">
+        {content}
+      </em>
+    ),
+  },
+  {
+    regex: MARKDOWN_CODE,
+    render: (content, key) => (
+      <code key={key} className={codeClassName}>
+        {content}
+      </code>
+    ),
+  },
+];
+
+function renderInlinePatterns(
+  text: string,
+  patterns: InlinePattern[],
+  keyStart: number,
+): ReactNode[] {
+  if (!text) return [];
+
+  if (!patterns.length) {
+    return [<Fragment key={keyStart}>{text}</Fragment>];
+  }
+
+  const [current, ...rest] = patterns;
   const parts: ReactNode[] = [];
   let lastIndex = 0;
   let key = keyStart;
+  let matched = false;
 
-  for (const match of text.matchAll(MARKDOWN_BOLD)) {
+  for (const match of text.matchAll(current.regex)) {
+    matched = true;
     const index = match.index ?? 0;
+
     if (index > lastIndex) {
       parts.push(
-        <Fragment key={key++}>{text.slice(lastIndex, index)}</Fragment>,
+        ...renderInlinePatterns(text.slice(lastIndex, index), rest, key),
       );
+      key += 100;
     }
-    parts.push(
-      <strong key={key++} className="font-semibold text-foreground">
-        {match[1]}
-      </strong>,
-    );
+
+    parts.push(current.render(match[1], key++));
     lastIndex = index + match[0].length;
   }
 
-  if (lastIndex < text.length) {
-    parts.push(<Fragment key={key++}>{text.slice(lastIndex)}</Fragment>);
+  if (!matched) {
+    return renderInlinePatterns(text, rest, keyStart);
   }
 
-  return parts.length ? parts : [text];
+  if (lastIndex < text.length) {
+    parts.push(...renderInlinePatterns(text.slice(lastIndex), rest, key));
+  }
+
+  return parts.length ? parts : [<Fragment key={keyStart}>{text}</Fragment>];
 }
 
 export function InlineMarkdown({ text }: InlineMarkdownProps) {
@@ -48,7 +101,7 @@ export function InlineMarkdown({ text }: InlineMarkdownProps) {
     if (index > lastIndex) {
       parts.push(
         <Fragment key={key++}>
-          {renderBoldSegments(text.slice(lastIndex, index), key)}
+          {renderInlinePatterns(text.slice(lastIndex, index), INLINE_PATTERNS, key)}
         </Fragment>,
       );
       key += 10;
@@ -90,13 +143,13 @@ export function InlineMarkdown({ text }: InlineMarkdownProps) {
   if (lastIndex < text.length) {
     parts.push(
       <Fragment key={key++}>
-        {renderBoldSegments(text.slice(lastIndex), key)}
+        {renderInlinePatterns(text.slice(lastIndex), INLINE_PATTERNS, key)}
       </Fragment>,
     );
   }
 
   if (!parts.length) {
-    return <>{renderBoldSegments(text, 0)}</>;
+    return <>{renderInlinePatterns(text, INLINE_PATTERNS, 0)}</>;
   }
 
   return <>{parts}</>;
