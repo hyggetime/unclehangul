@@ -30,15 +30,18 @@ export function HangulTileStamp({
     if (cells) {
       const gridText =
         size === "md"
-          ? "text-[11px] md:text-xs"
-          : "text-[9px] md:text-[10px]";
+          ? "text-[17px] md:text-[20px]"
+          : "text-[15px] md:text-[17px]";
       return (
         <div
           aria-hidden
-          className={`grid grid-cols-2 grid-rows-2 place-items-center gap-0 ${base}`}
+          className={`grid grid-cols-2 grid-rows-2 overflow-hidden p-0 ${base}`}
         >
           {cells.map((cell, index) => (
-            <span key={`${cell}-${index}`} className={gridText}>
+            <span
+              key={`${cell}-${index}`}
+              className={`flex h-full w-full min-h-0 min-w-0 items-center justify-center leading-none ${gridText}`}
+            >
               {cell}
             </span>
           ))}
