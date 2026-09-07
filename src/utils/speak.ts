@@ -15,7 +15,11 @@ function pickVoice(lang: SpeakLang): SpeechSynthesisVoice | undefined {
 }
 
 function speakUtterance(utterance: SpeechSynthesisUtterance): void {
-  window.speechSynthesis.cancel();
+  // Cancel only when a queue is active — iOS Safari breaks on unconditional cancel().
+  if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+    window.speechSynthesis.cancel();
+  }
+  window.speechSynthesis.resume?.();
   window.speechSynthesis.speak(utterance);
 }
 
@@ -26,23 +30,13 @@ export function speakText(text: string, lang: SpeakLang): void {
   const spokenText = text.trim().replace(/-/g, " ");
   if (!spokenText.trim()) return;
 
-  const run = () => {
-    const utterance = new SpeechSynthesisUtterance(spokenText);
-    utterance.lang = lang;
-    utterance.rate = 0.9;
+  const utterance = new SpeechSynthesisUtterance(spokenText);
+  utterance.lang = lang;
+  utterance.rate = 0.9;
 
-    const voice = pickVoice(lang);
-    if (voice) utterance.voice = voice;
+  const voice = pickVoice(lang);
+  if (voice) utterance.voice = voice;
 
-    speakUtterance(utterance);
-  };
-
-  if (window.speechSynthesis.getVoices().length === 0) {
-    window.speechSynthesis.addEventListener("voiceschanged", run, {
-      once: true,
-    });
-    return;
-  }
-
-  run();
+  // Must call speak() synchronously inside the user gesture (mobile Safari/Android).
+  speakUtterance(utterance);
 }

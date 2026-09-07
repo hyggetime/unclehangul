@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { BlogPost } from "@/lib/blog/posts";
-import { getPostHangulTile } from "@/lib/blog/post-visuals";
+import { getPostHangulTileSpec } from "@/lib/blog/post-visuals";
+import { HangulTileStamp } from "@/components/learn/HangulTileStamp";
 
 type LearnArticleCardProps = {
   post: BlogPost;
@@ -17,19 +18,14 @@ export function LearnArticleCard({
   post,
   variant = "home",
 }: LearnArticleCardProps) {
-  const tile = getPostHangulTile(post.slug, post.title);
+  const tile = getPostHangulTileSpec(post.slug, post.title);
   const category = formatCategory(post.sectionLabel);
 
   if (variant === "index") {
     return (
       <article className="py-6 md:py-8">
         <div className="flex gap-4 md:gap-6">
-          <div
-            aria-hidden
-            className="font-ko flex h-14 w-14 shrink-0 items-center justify-center border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/40 text-xl font-black leading-none text-foreground md:h-16 md:w-16 md:text-2xl"
-          >
-            {tile}
-          </div>
+          <HangulTileStamp tile={tile} size="md" />
           <div className="min-w-0 flex-1">
             <p className="font-en mb-2 text-[10px] font-bold uppercase tracking-widest text-foreground/40">
               {category} ·{" "}
@@ -63,12 +59,11 @@ export function LearnArticleCard({
       href={`/learn/${post.slug}`}
       className="group touch-target flex gap-4 px-5 py-5 transition-colors hover:bg-[#EBEBE5]/30 active:bg-[#EBEBE5]/30 md:gap-5 md:px-8 md:py-6"
     >
-      <div
-        aria-hidden
-        className="font-ko flex h-12 w-12 shrink-0 items-center justify-center border-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/40 text-lg font-black leading-none text-foreground transition-colors group-hover:border-[#FF4B3E]/40 md:h-14 md:w-14 md:text-xl"
-      >
-        {tile}
-      </div>
+      <HangulTileStamp
+        tile={tile}
+        size="sm"
+        className="transition-colors group-hover:border-[#FF4B3E]/40"
+      />
       <div className="min-w-0 flex-1">
         <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
           {category} · {post.publishedLabel}

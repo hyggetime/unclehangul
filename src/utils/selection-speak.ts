@@ -19,7 +19,24 @@ export function getSelectionRangeRect(): DOMRect | null {
   if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
     return null;
   }
-  return selection.getRangeAt(0).getBoundingClientRect();
+
+  const range = selection.getRangeAt(0);
+  const rect = range.getBoundingClientRect();
+  if (rect.width > 0 || rect.height > 0) {
+    return rect;
+  }
+
+  const clientRects = range.getClientRects();
+  if (clientRects.length === 0) {
+    return null;
+  }
+
+  return clientRects[0] ?? null;
+}
+
+export function prefersTouchSelectionUi(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(pointer: coarse)").matches;
 }
 
 export function getTrimmedSelectionText(): string {
