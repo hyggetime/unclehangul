@@ -104,4 +104,4 @@ Recognizing this organizational pattern makes reading addresses, interpreting da
 If you found this explanation helpful, let us know by selecting a reaction below.
 
 * **Visual Stories:** For illustrations and stories of our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
-* **Up Next:** If Korean culture prioritizes group context over the individual, how does that shape daily speech? In our next post, we will look at why Koreans say **"Our House" (우리 집)** and **"Our Wife" (우리 아내)** instead of "My House" or "My Wife."
+* **Continue Reading:** If Korean culture prioritizes group context over the individual, how does that shape daily speech? Read [Why Solo Dwellers in Korea Still Say 'Our House'](/learn/why-solo-dwellers-korea-still-say-our-house).
