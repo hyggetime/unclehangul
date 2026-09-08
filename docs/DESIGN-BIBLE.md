@@ -48,6 +48,18 @@ Instagram  ←→  unclehangul.com  ←→  YouTube
 - Section spacing: `--space-section-mobile` / `--space-section-desktop`, `.section-y`
 - No drop shadows; hairline grids only
 
+### 4.1 Learn card Hangul tiles
+
+Square stamps on `/learn` cards (`HangulTileStamp`, registry in `src/lib/blog/post-visuals.ts`).
+
+| Length | Layout | Typography | When to use |
+|--------|--------|------------|-------------|
+| **2** | `single` | Largest — `text-lg`/`text-xl` (card) up to `text-2xl` | Default for short keywords: `우리`, `이모`, `반말`, `한글` |
+| **3** | `single` | Smaller — `text-xs`–`text-base` by breakpoint | e.g. future 3-syllable labels; add `insetXScale: 0.5` if still tight (`아저씨`) |
+| **4** | `grid2x2` | 2×2 grid, 18–24px per cell | One syllable per cell: `숫자읽기`, `소리글자` |
+
+Shared frame: `0.5px #D9D9D3` border, `#EBEBE5/40` fill, Pretendard black. Register every post slug in `POST_HANGUL_TILES` — do not rely on title fallback (first 2 Hangul chars only).
+
 ---
 
 ## 5. Mobile-first rules (mandatory)
