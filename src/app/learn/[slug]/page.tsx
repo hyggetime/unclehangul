@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
-import { TextSelectionSpeak } from "@/components/speech/TextSelectionSpeak";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
 import { LearnPostJsonLd } from "@/components/blog/LearnPostJsonLd";
+import { KoreanListenHint } from "@/components/learn/KoreanListenHint";
 import { ArticleChannelLinks } from "@/components/learn/ArticleChannelLinks";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
 import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
@@ -90,9 +90,13 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
             {showToc ? <LearnTocMobile items={tocItems} /> : null}
 
             <div itemProp="articleBody" className="min-w-0 overflow-x-clip">
-              <TextSelectionSpeak>
-                <BlogBody blocks={post.blocks} constrainWidth richText />
-              </TextSelectionSpeak>
+              <KoreanListenHint />
+              <BlogBody
+                blocks={post.blocks}
+                constrainWidth
+                richText
+                listenBoldHangul
+              />
             </div>
 
             <ArticleChannelLinks slug={slug} />

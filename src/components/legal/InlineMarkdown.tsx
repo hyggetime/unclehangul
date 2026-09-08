@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
+import { KoreanListenBold } from "@/components/speech/KoreanListenBold";
+import { hasHangul } from "@/utils/hangul-speak-text";
 
 const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
 const MARKDOWN_BOLD = /\*\*([^*]+)\*\*/g;
@@ -14,6 +16,8 @@ const codeClassName =
 
 type InlineMarkdownProps = {
   text: string;
+  /** Bold segments that contain Hangul become tap-to-listen controls. */
+  listenBoldHangul?: boolean;
 };
 
 type InlinePattern = {
@@ -21,32 +25,37 @@ type InlinePattern = {
   render: (content: string, key: number) => ReactNode;
 };
 
-const INLINE_PATTERNS: InlinePattern[] = [
-  {
-    regex: MARKDOWN_BOLD,
-    render: (content, key) => (
-      <strong key={key} className="font-semibold text-foreground">
-        {content}
-      </strong>
-    ),
-  },
-  {
-    regex: MARKDOWN_ITALIC,
-    render: (content, key) => (
-      <em key={key} className="italic text-foreground/90">
-        {content}
-      </em>
-    ),
-  },
-  {
-    regex: MARKDOWN_CODE,
-    render: (content, key) => (
-      <code key={key} className={codeClassName}>
-        {content}
-      </code>
-    ),
-  },
-];
+function getInlinePatterns(listenBoldHangul: boolean): InlinePattern[] {
+  return [
+    {
+      regex: MARKDOWN_BOLD,
+      render: (content, key) =>
+        listenBoldHangul && hasHangul(content) ? (
+          <KoreanListenBold key={key} label={content} />
+        ) : (
+          <strong key={key} className="font-semibold text-foreground">
+            {content}
+          </strong>
+        ),
+    },
+    {
+      regex: MARKDOWN_ITALIC,
+      render: (content, key) => (
+        <em key={key} className="italic text-foreground/90">
+          {content}
+        </em>
+      ),
+    },
+    {
+      regex: MARKDOWN_CODE,
+      render: (content, key) => (
+        <code key={key} className={codeClassName}>
+          {content}
+        </code>
+      ),
+    },
+  ];
+}
 
 function renderInlinePatterns(
   text: string,
@@ -91,7 +100,11 @@ function renderInlinePatterns(
   return parts.length ? parts : [<Fragment key={keyStart}>{text}</Fragment>];
 }
 
-export function InlineMarkdown({ text }: InlineMarkdownProps) {
+export function InlineMarkdown({
+  text,
+  listenBoldHangul = false,
+}: InlineMarkdownProps) {
+  const patterns = getInlinePatterns(listenBoldHangul);
   const parts: ReactNode[] = [];
   let lastIndex = 0;
   let key = 0;
@@ -101,7 +114,7 @@ export function InlineMarkdown({ text }: InlineMarkdownProps) {
     if (index > lastIndex) {
       parts.push(
         <Fragment key={key++}>
-          {renderInlinePatterns(text.slice(lastIndex, index), INLINE_PATTERNS, key)}
+          {renderInlinePatterns(text.slice(lastIndex, index), patterns, key)}
         </Fragment>,
       );
       key += 10;
@@ -143,13 +156,13 @@ export function InlineMarkdown({ text }: InlineMarkdownProps) {
   if (lastIndex < text.length) {
     parts.push(
       <Fragment key={key++}>
-        {renderInlinePatterns(text.slice(lastIndex), INLINE_PATTERNS, key)}
+        {renderInlinePatterns(text.slice(lastIndex), patterns, key)}
       </Fragment>,
     );
   }
 
   if (!parts.length) {
-    return <>{renderInlinePatterns(text, INLINE_PATTERNS, 0)}</>;
+    return <>{renderInlinePatterns(text, patterns, 0)}</>;
   }
 
   return <>{parts}</>;

@@ -11,6 +11,8 @@ type BlogBodyProps = {
   embedded?: boolean;
   /** Parse `[label](url)` in paragraphs and lists. */
   richText?: boolean;
+  /** Bold Hangul in rich text becomes tap-to-listen (Learn articles). */
+  listenBoldHangul?: boolean;
   /** Legal docs: EN typography, tighter section headings. */
   legalProse?: boolean;
 };
@@ -20,6 +22,7 @@ export function BlogBody({
   constrainWidth = false,
   embedded = false,
   richText = false,
+  listenBoldHangul = false,
   legalProse = false,
 }: BlogBodyProps) {
   const paddingClass = embedded
@@ -37,6 +40,7 @@ export function BlogBody({
           key={`${block.type}-${index}`}
           block={block}
           richText={richText}
+          listenBoldHangul={listenBoldHangul}
           legalProse={legalProse}
         />
       ))}
@@ -47,12 +51,17 @@ export function BlogBody({
 function BlogBlockRenderer({
   block,
   richText,
+  listenBoldHangul,
   legalProse,
 }: {
   block: BlogBlock;
   richText: boolean;
+  listenBoldHangul: boolean;
   legalProse: boolean;
 }) {
+  const mdProps = richText
+    ? { listenBoldHangul }
+    : { listenBoldHangul: false as const };
   const paragraphClass = legalProse
     ? "font-en mb-6 text-sm leading-relaxed text-foreground/70 md:text-base"
     : "font-en mb-6 text-base leading-relaxed text-foreground/80";
@@ -62,7 +71,7 @@ function BlogBlockRenderer({
       return (
         <p className={paragraphClass}>
           {richText ? (
-            <InlineMarkdown text={block.content} />
+            <InlineMarkdown text={block.content} {...mdProps} />
           ) : (
             block.content
           )}
@@ -74,7 +83,11 @@ function BlogBlockRenderer({
         <ul className={`${paragraphClass} mt-3 list-none space-y-2 pl-0`}>
           {block.items.map((item, index) => (
             <li key={index}>
-              {richText ? <InlineMarkdown text={item} /> : item}
+              {richText ? (
+                <InlineMarkdown text={item} {...mdProps} />
+              ) : (
+                item
+              )}
             </li>
           ))}
         </ul>
@@ -87,7 +100,11 @@ function BlogBlockRenderer({
         >
           {block.items.map((item, index) => (
             <li key={index}>
-              {richText ? <InlineMarkdown text={item} /> : item}
+              {richText ? (
+                <InlineMarkdown text={item} {...mdProps} />
+              ) : (
+                item
+              )}
             </li>
           ))}
         </ol>
@@ -105,7 +122,7 @@ function BlogBlockRenderer({
                     className="font-en px-4 py-3 text-[10px] font-bold uppercase tracking-widest text-foreground/45"
                   >
                     {richText ? (
-                      <InlineMarkdown text={header} />
+                      <InlineMarkdown text={header} {...mdProps} />
                     ) : (
                       header
                     )}
@@ -124,7 +141,11 @@ function BlogBlockRenderer({
                       key={cellIndex}
                       className="font-en px-4 py-3 align-top leading-relaxed text-foreground/75"
                     >
-                      {richText ? <InlineMarkdown text={cell} /> : cell}
+                      {richText ? (
+                        <InlineMarkdown text={cell} {...mdProps} />
+                      ) : (
+                        cell
+                      )}
                     </td>
                   ))}
                 </tr>
@@ -151,7 +172,11 @@ function BlogBlockRenderer({
                 lineIndex > 0 ? "mt-3" : ""
               }`}
             >
-              {richText ? <InlineMarkdown text={line} /> : line}
+              {richText ? (
+                <InlineMarkdown text={line} {...mdProps} />
+              ) : (
+                line
+              )}
             </p>
           ))}
         </blockquote>
