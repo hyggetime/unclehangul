@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Konglish syllable compression: six syllables trimmed to three">
+  <defs>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2A2926" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#6B6960"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="900" fill="#F7F6F2"/>
+
+  <!-- Header -->
+  <text x="600" y="72" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#2A2926" letter-spacing="0.04em">PHONOLOGICAL COMPRESSION</text>
+  <text x="600" y="108" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#6B6960">Long loanwords are clipped to the 23 syllable Korean cadence</text>
+
+  <!-- Example 1: Air Conditioner -->
+  <text x="80" y="168" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#8A877C" letter-spacing="0.06em">EXAMPLE 1</text>
+  <text x="80" y="196" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#2A2926">Air Conditioner</text>
+  <text x="80" y="222" font-family="system-ui, sans-serif" font-size="14" fill="#6B6960">6 syllables  disrupts daily speech rhythm</text>
+
+  <!-- Before blocks: Ð´ è  T  -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="248" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1.5"/>
+    <text x="124" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#2A2926">Ð´</text>
+
+    <rect x="184" y="248" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1.5"/>
+    <text x="228" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#2A2926">è</text>
+
+    <rect x="288" y="248" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#E8E4DC" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <line x1="288" y1="292" x2="376" y2="292" stroke="#C44E4E" stroke-width="2.5" opacity="0.7"/>
+    <text x="332" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#A8A59A"></text>
+
+    <rect x="392" y="248" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#E8E4DC" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <line x1="392" y1="292" x2="480" y2="292" stroke="#C44E4E" stroke-width="2.5" opacity="0.7"/>
+    <text x="436" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#A8A59A">T</text>
+
+    <rect x="496" y="248" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#E8E4DC" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <line x1="496" y1="292" x2="584" y2="292" stroke="#C44E4E" stroke-width="2.5" opacity="0.7"/>
+    <text x="540" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#A8A59A"></text>
+  </g>
+
+  <text x="332" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#C44E4E">tail clipped</text>
+
+  <!-- Arrow -->
+  <line x1="620" y1="292" x2="700" y2="292" stroke="#6B6960" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- After blocks: Ð´è -->
+  <g filter="url(#shadow)">
+    <rect x="720" y="248" width="100" height="88" rx="8" fill="#2A2926" stroke="#2A2926" stroke-width="1.5"/>
+    <text x="770" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#F7F6F2">Ð´è</text>
+  </g>
+
+  <text x="770" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#2A2926">Aircon · 3 syllables</text>
+  <text x="770" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B6960">Ð´èT ’ Ð´è</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="440" x2="1120" y2="440" stroke="#D9D9D3" stroke-width="1"/>
+
+  <!-- Example 2: Remote Controller -->
+  <text x="80" y="488" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#8A877C" letter-spacing="0.06em">EXAMPLE 2</text>
+  <text x="80" y="516" font-family="system-ui, sans-serif" font-size="18" font-weight="600" fill="#2A2926">Remote Controller</text>
+  <text x="80" y="542" font-family="system-ui, sans-serif" font-size="14" fill="#6B6960">6 syllables ’ 3 syllables</text>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="568" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1.5"/>
+    <text x="124" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#2A2926">¬</text>
+
+    <rect x="184" y="568" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1.5"/>
+    <text x="228" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#2A2926">¨</text>
+
+    <rect x="288" y="568" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1.5"/>
+    <text x="332" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#2A2926">è</text>
+
+    <rect x="392" y="568" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#E8E4DC" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <line x1="392" y1="612" x2="480" y2="612" stroke="#C44E4E" stroke-width="2.5" opacity="0.7"/>
+    <text x="436" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#A8A59A">¸</text>
+
+    <rect x="496" y="568" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#E8E4DC" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <line x1="496" y1="612" x2="584" y2="612" stroke="#C44E4E" stroke-width="2.5" opacity="0.7"/>
+    <text x="540" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#A8A59A">d</text>
+
+    <rect x="600" y="568" width="88" height="88" rx="8" fill="#FFFFFF" stroke="#E8E4DC" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <line x1="600" y1="612" x2="688" y2="612" stroke="#C44E4E" stroke-width="2.5" opacity="0.7"/>
+    <text x="644" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="700" fill="#A8A59A">ì</text>
+  </g>
+
+  <line x1="720" y1="612" x2="800" y2="612" stroke="#6B6960" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="820" y="568" width="100" height="88" rx="8" fill="#2A2926" stroke="#2A2926" stroke-width="1.5"/>
+    <text x="870" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#F7F6F2">¬¨è</text>
+  </g>
+
+  <text x="870" y="688" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#2A2926">Remocon · 3 syllables</text>
+  <text x="870" y="712" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B6960">¬¨è¸dì ’ ¬¨è</text>
+
+  <!-- Footer rule -->
+  <rect x="80" y="760" width="1040" height="96" rx="10" fill="#EEEDE8" stroke="#D9D9D3" stroke-width="1"/>
+  <text x="600" y="800" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#2A2926">The 23 Syllable Rule</text>
+  <text x="600" y="830" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B6960">High-frequency Konglish nouns keep the leading syllables and drop the tail for faster speech.</text>
+</svg>

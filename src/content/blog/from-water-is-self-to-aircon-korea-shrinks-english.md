@@ -1,8 +1,8 @@
 ---
 title: "From 'Water is Self' to 'Aircon': How Korea Shrinks the English Language"
 description: "Discover how English loanwords are truncated and re-engineered in Korea through phonological economy, functional grammar, and the iconic 'Water is Self' rule."
-date: "2026-09-18"
-publishAt: "2026-09-18T00:00:00+09:00"
+date: "2026-09-10"
+publishAt: "2026-09-10T00:00:00+09:00"
 category: "Korean Culture & Language"
 author: Uncle Hangul
 tags: ["Korean Language", "Konglish", "Hangul Logic", "Living in Korea"]
@@ -57,8 +57,8 @@ To solve this, Korean speakers chop off the trailing end of foreign words withou
 
 This process is not laziness or accidental slang; it is intentional phonological compression.
 
-![Syllable compression diagram — image placeholder](/images/posts/konglish-syllable-compression.placeholder.svg)
-*Placeholder — replace with an illustration of 에어컨디셔너 → 에어컨 at `/images/posts/konglish-syllable-compression.jpg`*
+![Konglish syllable compression: 에어컨디셔너 to 에어컨 and 리모컨트롤러 to 리모컨](/images/posts/konglish-syllable-compression.svg)
+*에어컨디셔너 (6 syllables) → 에어컨 (3 syllables); 리모컨트롤러 → 리모컨 — tail syllables clipped for Korean speech rhythm*
 
 ---
 
