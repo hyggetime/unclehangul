@@ -12,6 +12,12 @@ const SIZE_CLASS = {
   md: "h-14 w-14 md:h-16 md:w-16",
 } as const;
 
+const STAMP_GRID_CLASS = {
+  /** Outer inset and inner cross share one gutter — avoids doubled "+" thickness. */
+  sm: "[--stamp-gutter:2px] box-border p-[var(--stamp-gutter)] gap-[var(--stamp-gutter)] text-[18px] md:[--stamp-gutter:2.5px] md:text-[20px]",
+  md: "[--stamp-gutter:2.5px] box-border p-[var(--stamp-gutter)] gap-[var(--stamp-gutter)] text-[20px] md:[--stamp-gutter:3px] md:text-[24px]",
+} as const;
+
 function gridCells(text: string): [string, string, string, string] | null {
   const chars = [...text];
   if (chars.length !== 4) return null;
@@ -28,19 +34,15 @@ export function HangulTileStamp({
   if (tile.layout === "grid2x2") {
     const cells = gridCells(tile.text);
     if (cells) {
-      const gridText =
-        size === "md"
-          ? "text-[17px] md:text-[20px]"
-          : "text-[15px] md:text-[17px]";
       return (
         <div
           aria-hidden
-          className={`grid grid-cols-2 grid-rows-2 overflow-hidden p-0 ${base}`}
+          className={`grid grid-cols-2 grid-rows-2 overflow-hidden ${STAMP_GRID_CLASS[size]} ${base}`}
         >
           {cells.map((cell, index) => (
             <span
               key={`${cell}-${index}`}
-              className={`flex h-full w-full min-h-0 min-w-0 items-center justify-center leading-none ${gridText}`}
+              className="flex h-full w-full min-h-0 min-w-0 items-center justify-center leading-none"
             >
               {cell}
             </span>
