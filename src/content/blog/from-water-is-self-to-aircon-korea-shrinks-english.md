@@ -20,8 +20,8 @@ How did a complex foreign concept get squeezed into a three-syllable operational
 
 The answer lies in the pragmatic engineering of the Korean speech engine.
 
-![물은 셀프 restaurant sign — image placeholder](/images/posts/water-is-self-sign.placeholder.svg)
-*Placeholder — replace with a photo of a Korean restaurant "물은 셀프" sign at `/images/posts/water-is-self-sign.jpg`*
+![물은 셀프 sign above a self-service water dispenser in a Korean neighborhood restaurant](/images/posts/water-is-self-sign.jpg)
+*물은 셀프 (SELF) — taped above the water purifier in a Seoul 백반집; customers fetch their own cups and water*
 
 ---
 
