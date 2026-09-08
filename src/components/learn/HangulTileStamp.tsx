@@ -13,9 +13,9 @@ const SIZE_CLASS = {
 } as const;
 
 const STAMP_GRID_CLASS = {
-  /** Outer frame padding stays full; center cross gap is half for a roomier ㅁ edge. */
-  sm: "[--stamp-pad:2px] box-border p-[var(--stamp-pad)] gap-[calc(var(--stamp-pad)*0.5)] text-[18px] md:[--stamp-pad:2.5px] md:text-[20px]",
-  md: "[--stamp-pad:2.5px] box-border p-[var(--stamp-pad)] gap-[calc(var(--stamp-pad)*0.5)] text-[20px] md:[--stamp-pad:3px] md:text-[24px]",
+  /** Outer frame padding stays full; center cross gap at 30% of pad (60% of prior half-gap). */
+  sm: "[--stamp-pad:2px] box-border p-[var(--stamp-pad)] gap-[calc(var(--stamp-pad)*0.3)] text-[18px] md:[--stamp-pad:2.5px] md:text-[20px]",
+  md: "[--stamp-pad:2.5px] box-border p-[var(--stamp-pad)] gap-[calc(var(--stamp-pad)*0.3)] text-[20px] md:[--stamp-pad:3px] md:text-[24px]",
 } as const;
 
 const TRIPLE_CHAR_CLASS = {
@@ -23,10 +23,10 @@ const TRIPLE_CHAR_CLASS = {
   md: "text-sm md:text-base",
 } as const;
 
-/** Tighter horizontal inset (60%) with larger type to fill recovered width. */
+/** Tighter horizontal inset with larger type to fill recovered width. */
 const TRIPLE_CHAR_COMPACT_X_CLASS = {
-  sm: "px-[3.6px] text-[13.5px] md:px-[4.2px] md:text-[16px]",
-  md: "px-[4.2px] text-[16px] md:px-[4.8px] md:text-[18px]",
+  sm: "px-[1.8px] text-[14.5px] md:px-[2.1px] md:text-[17.5px]",
+  md: "px-[2.1px] text-[17.5px] md:px-[2.4px] md:text-[20px]",
 } as const;
 
 function gridCells(text: string): [string, string, string, string] | null {

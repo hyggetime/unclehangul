@@ -15,7 +15,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "how-to-say-uncle-in-korean-oppa-samchon-ahjussi": {
     text: "아저씨",
     layout: "single",
-    insetXScale: 0.6,
+    insetXScale: 0.5,
   },
   "why-korean-restaurant-workers-called-aunt-eoni-imo-ajumma": "이모",
   "why-solo-dwellers-korea-still-say-our-house": "우리",
