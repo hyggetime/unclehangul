@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Korean number grouping: 910,213,090 as 9? 1021? 3090">
+  <rect width="1200" height="630" fill="#F7F6F2"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#FF4B3E"/>
+
+  <text x="80" y="72" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#8A877C" letter-spacing="0.14em">UNCLE HANGUL · KOREAN NUMBERS</text>
+  <text x="80" y="118" font-family="system-ui, sans-serif" font-size="36" font-weight="700" fill="#2A2926">910,213,090 in Korean</text>
+  <text x="80" y="158" font-family="system-ui, sans-serif" font-size="22" fill="#6B6960">Western 10^3 triplets vs Korean 10^4 man/eok blocks</text>
+
+  <rect x="80" y="200" width="500" height="200" rx="10" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1"/>
+  <text x="110" y="238" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#8A877C" letter-spacing="0.08em">WESTERN (10^3)</text>
+  <text x="110" y="290" font-family="ui-monospace, monospace" font-size="42" font-weight="700" fill="#6B6960">910 | 213 | 090</text>
+  <text x="110" y="330" font-family="system-ui, sans-serif" font-size="16" fill="#A8A59A">thousand | thousand | ones</text>
+
+  <rect x="620" y="200" width="500" height="200" rx="10" fill="#2A2926" stroke="#2A2926"/>
+  <text x="650" y="238" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#A8A59A" letter-spacing="0.08em">KOREAN (10^4)</text>
+  <text x="650" y="290" font-family="system-ui, sans-serif" font-size="38" font-weight="700" fill="#F7F6F2">9? | 1021? | 3090</text>
+  <text x="650" y="330" font-family="system-ui, sans-serif" font-size="16" fill="#C8C6BE">eok | man | remainder</text>
+
+  <rect x="80" y="430" width="1040" height="120" rx="10" fill="#EEEDE8" stroke="#D9D9D3" stroke-width="1"/>
+  <text x="110" y="472" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#8A877C" letter-spacing="0.06em">FULL READING</text>
+  <text x="110" y="520" font-family="system-ui, sans-serif" font-size="40" font-weight="800" fill="#2A2926">?? ????? ????</text>
+
+  <text x="1120" y="590" text-anchor="end" font-family="system-ui, sans-serif" font-size="14" fill="#A8A59A">unclehangul.com/learn/korean-numbers-910-million</text>
+</svg>

@@ -52,6 +52,8 @@ export function loadMarkdownPost(slug: string): BlogPost | undefined {
   const publishAt = data.publishAt ? String(data.publishAt) : undefined;
   const tags = parseStringArray(data.tags);
   const seoKeywords = parseStringArray(data.keywords);
+  const author = data.author ? String(data.author) : undefined;
+  const ogImage = data.ogImage ? String(data.ogImage) : undefined;
 
   return {
     slug,
@@ -64,6 +66,8 @@ export function loadMarkdownPost(slug: string): BlogPost | undefined {
     publishAt,
     tags,
     seoKeywords,
+    author,
+    ogImage,
     blocks: markdownToBlocks(content.trim()),
   };
 }

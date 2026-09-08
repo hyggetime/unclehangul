@@ -8,8 +8,43 @@ type ArticleJsonLdProps = {
   pageUrl: string;
 };
 
+function resolveSiteAssetUrl(path: string, siteUrl: string): string {
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    return path;
+  }
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${siteUrl.replace(/\/+$/, "")}${normalized}`;
+}
+
+function buildAuthorJsonLd(post: BlogPost, siteUrl: string) {
+  const publisher = {
+    "@type": "Organization" as const,
+    name: BRAND_NAME,
+    alternateName: [...BRAND_ALTERNATE_NAMES],
+    url: siteUrl,
+  };
+
+  if (post.author) {
+    return {
+      author: {
+        "@type": "Person" as const,
+        name: post.author,
+        url: siteUrl,
+        worksFor: publisher,
+      },
+      publisher,
+    };
+  }
+
+  return {
+    author: publisher,
+    publisher,
+  };
+}
+
 export function ArticleJsonLd({ post, pageUrl }: ArticleJsonLdProps) {
   const siteUrl = getSiteUrl();
+  const { author, publisher } = buildAuthorJsonLd(post, siteUrl);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -18,22 +53,15 @@ export function ArticleJsonLd({ post, pageUrl }: ArticleJsonLdProps) {
     description: post.description,
     datePublished: post.publishedAt,
     inLanguage: "en",
-    author: {
-      "@type": "Organization",
-      name: BRAND_NAME,
-      alternateName: [...BRAND_ALTERNATE_NAMES],
-      url: siteUrl,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: BRAND_NAME,
-      alternateName: [...BRAND_ALTERNATE_NAMES],
-      url: siteUrl,
-    },
+    author,
+    publisher,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": pageUrl,
     },
+    ...(post.ogImage
+      ? { image: resolveSiteAssetUrl(post.ogImage, siteUrl) }
+      : {}),
   };
 
   return (

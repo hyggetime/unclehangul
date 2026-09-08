@@ -46,6 +46,10 @@ export type BlogPost = {
   tags?: string[];
   /** Optional extra SEO keywords from frontmatter. */
   seoKeywords?: string[];
+  /** Article byline — used in JSON-LD author when set. */
+  author?: string;
+  /** Open Graph / Twitter card image path (e.g. /images/og/...). */
+  ogImage?: string;
   blocks: BlogBlock[];
 };
 
@@ -146,6 +150,8 @@ export function getPostMetadata(post: BlogPost): Metadata {
     openGraphType: "article",
     locale: "en_US",
     publishedTime: post.publishedAt,
+    image: post.ogImage,
+    imageAlt: post.title,
     keywords: learningPageKeywords([
       post.title,
       ...(post.tags ?? []),

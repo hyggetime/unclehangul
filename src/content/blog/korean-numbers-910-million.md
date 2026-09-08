@@ -6,6 +6,7 @@ publishedAt: "2026-07-10"
 publishedLabel: 10 JUL 2026
 sectionLabel: LEARN / KOREAN
 author: Uncle Hangul
+ogImage: /images/og/learn/korean-numbers-chunking.svg
 tags: ["Korean numbers", "Sino-Korean numerals", "Hangul", "만", "억"]
 keywords: [Sino-Korean numerals, Korean numbers, 만, Hangul numbers, read Korean numbers, 구억, Korean number grouping]
 ---
@@ -133,6 +134,9 @@ For this lesson's target number, **910,213,090** lives entirely in the **억 + �
 Western learners group digits in **threes** (base 10³: thousand, million).
 
 Korean groups digits in **fours** after the first chunk (base 10⁴: **만**, **억**).
+
+![Western vs Korean number grouping for 910,213,090](/images/og/learn/korean-numbers-chunking.svg)
+*910,213,090 — Western 10³ triplets vs Korean **9**억 · **1021**만 · **3090** blocks*
 
 > **Visual chunking: 910,213,090** — Western triplets vs Korean **만/억** blocks.
 

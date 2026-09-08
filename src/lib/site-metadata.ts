@@ -23,6 +23,9 @@ type PageMetadataOptions = {
   absoluteTitle?: boolean;
   /** Optional SEO/AEO keywords (comma-joined in metadata). */
   keywords?: string[];
+  /** Absolute or site-relative OG/Twitter image path (starts with `/`). */
+  image?: string;
+  imageAlt?: string;
 };
 
 function absoluteUrl(path: string, siteOrigin?: string): string {
@@ -43,6 +46,10 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
     ? options.title
     : openGraphTitle(options.title);
 
+  const imageUrl = options.image
+    ? absoluteUrl(options.image, options.siteOrigin)
+    : undefined;
+
   return {
     title: options.absoluteTitle
       ? { absolute: options.title }
@@ -60,11 +67,24 @@ export function buildPageMetadata(options: PageMetadataOptions): Metadata {
       ...(options.publishedTime
         ? { publishedTime: options.publishedTime }
         : {}),
+      ...(imageUrl
+        ? {
+            images: [
+              {
+                url: imageUrl,
+                width: 1200,
+                height: 630,
+                alt: options.imageAlt ?? options.title,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
       title: ogTitle,
       description: options.description,
+      ...(imageUrl ? { images: [imageUrl] } : {}),
     },
     ...(options.noIndex
       ? { robots: { index: false, follow: false } }
