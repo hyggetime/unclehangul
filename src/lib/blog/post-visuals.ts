@@ -3,6 +3,8 @@ export type HangulTileLayout = "single" | "grid2x2";
 export type HangulTileSpec = {
   text: string;
   layout: HangulTileLayout;
+  /** Horizontal inset scale for long single-line labels (default 1). */
+  insetXScale?: number;
 };
 
 type TileEntry = string | HangulTileSpec;
@@ -10,7 +12,11 @@ type TileEntry = string | HangulTileSpec;
 /** Hangul stamp on Learn cards — slug → display text (and optional 2×2 layout). */
 export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "from-universe-to-doorstep-korea-big-to-small-logic": "주소",
-  "how-to-say-uncle-in-korean-oppa-samchon-ahjussi": "아저씨",
+  "how-to-say-uncle-in-korean-oppa-samchon-ahjussi": {
+    text: "아저씨",
+    layout: "single",
+    insetXScale: 0.6,
+  },
   "why-korean-restaurant-workers-called-aunt-eoni-imo-ajumma": "이모",
   "why-solo-dwellers-korea-still-say-our-house": "우리",
   "korean-numbers-910-million": { text: "숫자읽기", layout: "grid2x2" },

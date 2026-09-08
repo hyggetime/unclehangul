@@ -18,6 +18,17 @@ const STAMP_GRID_CLASS = {
   md: "[--stamp-pad:2.5px] box-border p-[var(--stamp-pad)] gap-[calc(var(--stamp-pad)*0.5)] text-[20px] md:[--stamp-pad:3px] md:text-[24px]",
 } as const;
 
+const TRIPLE_CHAR_CLASS = {
+  sm: "text-xs md:text-sm",
+  md: "text-sm md:text-base",
+} as const;
+
+/** Tighter horizontal inset (60%) with larger type to fill recovered width. */
+const TRIPLE_CHAR_COMPACT_X_CLASS = {
+  sm: "px-[3.6px] text-[13.5px] md:px-[4.2px] md:text-[16px]",
+  md: "px-[4.2px] text-[16px] md:px-[4.8px] md:text-[18px]",
+} as const;
+
 function gridCells(text: string): [string, string, string, string] | null {
   const chars = [...text];
   if (chars.length !== 4) return null;
@@ -55,9 +66,9 @@ export function HangulTileStamp({
   const length = [...tile.text].length;
   const singleText =
     length >= 3
-      ? size === "md"
-        ? "text-sm md:text-base"
-        : "text-xs md:text-sm"
+      ? tile.insetXScale !== undefined && tile.insetXScale < 1
+        ? TRIPLE_CHAR_COMPACT_X_CLASS[size]
+        : TRIPLE_CHAR_CLASS[size]
       : size === "md"
         ? "text-xl md:text-2xl"
         : "text-lg md:text-xl";
