@@ -1,6 +1,5 @@
-import Script from "next/script";
-
-const adClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+/** AdSense site verification / auto-ads loader — production only, requires env. */
+const adClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim();
 
 export function AdSenseScript() {
   if (!adClient || process.env.NODE_ENV === "development") {
@@ -8,12 +7,10 @@ export function AdSenseScript() {
   }
 
   return (
-    <Script
-      id="adsbygoogle-init"
+    <script
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adClient}`}
       crossOrigin="anonymous"
-      strategy="afterInteractive"
     />
   );
 }

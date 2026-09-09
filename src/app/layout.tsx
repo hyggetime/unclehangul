@@ -51,6 +51,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
         />
+        <AdSenseScript />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased">
         <SiteJsonLd />
@@ -58,7 +59,6 @@ export default function RootLayout({
         <GoogleAnalyticsPageSection />
         <GoogleAnalyticsToolActions />
         <GoogleAnalyticsScrollDepth />
-        <AdSenseScript />
         <SiteShell>{children}</SiteShell>
       </body>
     </html>
