@@ -44,7 +44,7 @@ export const CONTENT_PAIRINGS: readonly ContentPairing[] = [
   },
   {
     learnSlug: "tongue-twister-girin",
-    title: "Tongue twister drill",
+    title: "Korean Tongue Twisters: Giraffe Pictures",
     youtube: {
       videoId: UNCLE_HANGUL_VIDEOS.tongueTwisterShort.id,
       label: "Shorts · 기린 그림",
