@@ -22,9 +22,20 @@ Instead of pushing continuous air or exploding consonants, Korean drills test yo
 
 ## Why Korean Twisters Break Western Mouths
 
-**The benchmark sentence** for testing Korean articulation is **내가 그린 기린 그림** ("The picture of a giraffe that I drew").
+Before breaking down the phonetics, listen to the complete target sentence at normal speed:
 
-While it looks harmless on paper, reciting it at native speed causes non-native speakers to trip immediately.
+> **The Full Challenge Sentence**
+>
+> **내가 그린 기린 그림은 목이 긴 기린 그림인가, 목이 안 긴 기린 그림인가?**
+>
+> (*nae-ga geu-rin gi-rin geu-ri-meun mog-i gin gi-rin geu-ri-min-ga, mog-i an gin gi-rin geu-ri-min-ga?*)
+>
+> — "Is the picture of a giraffe that I drew a long-necked giraffe picture, or a non-long-necked giraffe picture?"
+
+![Long-neck vs short-neck giraffe tongue twister illustration — 목 긴 기린 그림 vs 목 안 긴 기린 그림](/images/posts/tongue-twister-giraffe-long-neck.png)
+*목 긴 기린 그림 (long-neck) vs 목 안 긴 기린 그림 (not long-neck) — the visual contrast behind the full drill*
+
+On paper, it appears to be a simple repetition of recurring syllables, yet non-native speakers routinely trip over it.
 
 **The difficulty stems** from executing three consecutive consonant transitions without opening the jaw wider than a finger's width.
 
