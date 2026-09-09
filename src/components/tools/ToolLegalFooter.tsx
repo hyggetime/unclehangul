@@ -24,6 +24,9 @@ export function ToolLegalFooter({ className = "" }: ToolLegalFooterProps) {
           aria-label="Legal"
           className="font-en flex flex-wrap gap-x-4 gap-y-1 uppercase tracking-[0.12em]"
         >
+          <Link href={`${main}/about`} className="hover:text-[#FF4B3E]">
+            About
+          </Link>
           <Link href={`${main}/privacy`} className="hover:text-[#FF4B3E]">
             Privacy
           </Link>
