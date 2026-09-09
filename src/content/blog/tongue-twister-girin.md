@@ -1,7 +1,9 @@
 ---
 title: "Korean Tongue Twisters: Training Vocal Muscles with \"Giraffe Pictures\""
 description: "Deconstruct the phonetic logic of \"내가 그린 기린 그림\" (ㄱ·ㄹ·ㅁ clusters, ㅡ vs ㅣ shifts) and build muscle memory with Uncle Hangul's 2-step Shorts drills."
-date: "2026-09-09"
+date: "2022-12-29"
+publishedAt: "2022-12-29"
+publishedLabel: 29 DEC 2022
 category: "Korean Phonetics & Pronunciation"
 author: Uncle Hangul
 tags: ["Korean Pronunciation", "Korean Tongue Twisters", "Hangul Logic", "Learn Korean"]
