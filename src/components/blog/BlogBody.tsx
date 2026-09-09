@@ -231,9 +231,13 @@ function BlogBlockRenderer({
         </figure>
       );
 
-    case "image":
+    case "image": {
+      const scale = block.displayScale ?? 1;
       return (
-        <figure className="my-8">
+        <figure
+          className={`my-8 ${scale < 1 ? "mx-auto" : ""}`}
+          style={scale < 1 ? { width: `${scale * 100}%` } : undefined}
+        >
           <MediaFrame>
             <div className="relative aspect-[4/3] w-full">
               <Image
@@ -253,6 +257,7 @@ function BlogBlockRenderer({
           ) : null}
         </figure>
       );
+    }
 
     default:
       return null;

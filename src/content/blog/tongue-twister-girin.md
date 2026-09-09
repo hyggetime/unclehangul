@@ -32,7 +32,7 @@ Before breaking down the phonetics, listen to the complete target sentence at no
 >
 > — "Is the picture of a giraffe that I drew a long-necked giraffe picture, or a non-long-necked giraffe picture?"
 
-![Long-neck vs short-neck giraffe tongue twister illustration — 목 긴 기린 그림 vs 목 안 긴 기린 그림](/images/posts/tongue-twister-giraffe-long-neck.png)
+![Long-neck vs short-neck giraffe tongue twister illustration — 목 긴 기린 그림 vs 목 안 긴 기린 그림](/images/posts/tongue-twister-giraffe-long-neck.png){scale=0.6}
 *목 긴 기린 그림 (long-neck) vs 목 안 긴 기린 그림 (not long-neck) — the visual contrast behind the full drill*
 
 On paper, it appears to be a simple repetition of recurring syllables, yet non-native speakers routinely trip over it.

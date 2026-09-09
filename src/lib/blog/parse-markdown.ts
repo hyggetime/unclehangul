@@ -187,7 +187,9 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
       continue;
     }
 
-    const imageMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    const imageMatch = line
+      .trim()
+      .match(/^!\[([^\]]*)\]\(([^)]+)\)(?:\s*\{scale=([\d.]+)\})?$/);
     if (imageMatch) {
       flushParagraph();
       flushListBuffer();
@@ -198,12 +200,18 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
         caption = captionMatch[1].trim();
         index += 1;
       }
+      const displayScale = imageMatch[3]
+        ? Number.parseFloat(imageMatch[3])
+        : undefined;
       blocks.push({
         type: "image",
         src: imageMatch[2],
         alt: caption,
         width: 1200,
         height: 900,
+        ...(displayScale && displayScale > 0 && displayScale < 1
+          ? { displayScale }
+          : {}),
       });
       continue;
     }
