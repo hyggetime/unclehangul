@@ -48,6 +48,10 @@ type TileEntry = string | HangulTileSpec;
  * explicit entries below instead.
  */
 export const POST_HANGUL_TILES: Record<string, TileEntry> = {
+  "from-water-is-self-to-aircon-korea-shrinks-english": {
+    text: "물은셀프",
+    layout: "grid2x2",
+  },
   "from-universe-to-doorstep-korea-big-to-small-logic": "주소",
   "how-to-say-uncle-in-korean-oppa-samchon-ahjussi": {
     text: "아저씨",
