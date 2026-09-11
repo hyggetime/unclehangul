@@ -19,6 +19,14 @@ export const UNCLE_HANGUL_VIDEOS = {
       "Do you know how to say 910,213,090 in Korean? | Uncle Hangul",
     href: "https://www.youtube.com/watch?v=crpmZ-bjcsU",
   },
+  /** Long-form — big numbers / 4-digit blocks */
+  numbersBigLong: {
+    id: "hQvnzHO1IIY",
+    layout: "long" as const,
+    title:
+      "How to read the numbers in Korean? (큰 숫자 : Big numbers) | Uncle Hangul",
+    href: "https://www.youtube.com/watch?v=hQvnzHO1IIY",
+  },
 } as const;
 
 /** Known Uncle Hangul Shorts — auto `layout="short"` when ID matches. */

@@ -62,6 +62,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "why-korean-restaurant-workers-called-aunt-eoni-imo-ajumma": "이모",
   "why-solo-dwellers-korea-still-say-our-house": "우리",
   "korean-numbers-910-million": { text: "숫자읽기", layout: "grid2x2" },
+  "4-digit-shift-reading-big-korean-numbers": { text: "십백천만", layout: "grid2x2" },
   "12-years-grammar-language-lab-manifesto": "습득",
   "why-foreign-linguists-study-ancient-korean-books": {
     text: "소리글자",
