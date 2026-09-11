@@ -72,6 +72,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "graphic-blueprint-hangul-loanwords": "버스",
   "tongue-twister-girin": { text: "기린그림", layout: "grid2x2" },
   "why-you-are-reading-korean-clocks-backwards": "시간",
+  "beyond-grammar-unlock-korean-days-rhythmic-chunking": "요일",
 };
 
 function normalizeTileEntry(entry: TileEntry): HangulTileSpec {

@@ -27,6 +27,13 @@ export const UNCLE_HANGUL_VIDEOS = {
       "How to read the numbers in Korean? (큰 숫자 : Big numbers) | Uncle Hangul",
     href: "https://www.youtube.com/watch?v=hQvnzHO1IIY",
   },
+  /** Long-form — days of the week / 4-3 rhythm */
+  daysOfWeekLong: {
+    id: "xqbRMEXyn8Y",
+    layout: "long" as const,
+    title: "From Monday to Sunday, in Korean? | Uncle Hangul",
+    href: "https://www.youtube.com/watch?v=xqbRMEXyn8Y",
+  },
 } as const;
 
 /** Known Uncle Hangul Shorts — auto `layout="short"` when ID matches. */
