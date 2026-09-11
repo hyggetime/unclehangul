@@ -165,7 +165,7 @@ function renderInlinePatterns(
   if (!matched) {
     return rest.length
       ? renderInlinePatterns(text, rest, listenBoldHangul, keyStart)
-      : renderBoldSegments(text, listenBoldHangul, keyStart);
+      : [<Fragment key={keyStart}>{text}</Fragment>];
   }
 
   if (lastIndex < text.length) {
