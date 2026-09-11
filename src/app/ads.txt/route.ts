@@ -1,9 +1,12 @@
+import { normalizeAdSenseClientId } from "@/lib/ads/client-id";
 import { NextResponse } from "next/server";
 
 /** AdSense ads.txt — served when publisher id is configured. */
 export function GET() {
-  const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim();
-  if (!clientId?.startsWith("ca-pub-")) {
+  const clientId = normalizeAdSenseClientId(
+    process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID,
+  );
+  if (!clientId) {
     return new NextResponse("Not configured", { status: 404 });
   }
 

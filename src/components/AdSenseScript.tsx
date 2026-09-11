@@ -1,5 +1,9 @@
+import { normalizeAdSenseClientId } from "@/lib/ads/client-id";
+
 /** AdSense site verification / auto-ads loader — production only, requires env. */
-const adClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim();
+const adClient = normalizeAdSenseClientId(
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID,
+);
 
 export function AdSenseScript() {
   if (!adClient || process.env.NODE_ENV === "development") {
