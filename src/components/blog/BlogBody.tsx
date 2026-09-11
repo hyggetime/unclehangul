@@ -251,8 +251,12 @@ function BlogBlockRenderer({
             </div>
           </MediaFrame>
           {block.alt ? (
-            <figcaption className="font-ko mt-3 text-xs leading-relaxed text-foreground/50">
-              {block.alt}
+            <figcaption className="font-ko mt-3 text-xs italic leading-relaxed text-foreground/50">
+              {richText ? (
+                <InlineMarkdown text={block.alt} {...mdProps} />
+              ) : (
+                block.alt
+              )}
             </figcaption>
           ) : null}
         </figure>

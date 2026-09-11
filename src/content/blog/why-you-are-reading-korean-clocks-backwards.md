@@ -48,7 +48,7 @@ The mind identifies the largest temporal container first, then steadily zooms in
 
 Korean time uses two parallel number tracks depending on the specific unit you are measuring.
 
-**Years (**년**), months (**월**), days (**일**), minutes (**분**), and seconds (**초**)** rely exclusively on Sino-Korean numbers (**일**, **이**, **삼**…).
+**Years (년), months (월), days (일), minutes (분), and seconds (초)** rely exclusively on Sino-Korean numbers (**일**, **이**, **삼**…).
 
 If you need a refresher on Sino-Korean math, review our [guide to reading large numbers](/learn/korean-numbers-910-million).
 

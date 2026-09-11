@@ -4,7 +4,6 @@ import { KoreanListenBold } from "@/components/speech/KoreanListenBold";
 import { hasHangul } from "@/utils/hangul-speak-text";
 
 const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
-const MARKDOWN_BOLD = /\*\*([^*]+)\*\*/g;
 const MARKDOWN_ITALIC = /\*([^*]+)\*/g;
 const MARKDOWN_CODE = /`([^`]+)`/g;
 
@@ -25,24 +24,93 @@ type InlinePattern = {
   render: (content: string, key: number) => ReactNode;
 };
 
-function getInlinePatterns(listenBoldHangul: boolean): InlinePattern[] {
+type BoldPair = {
+  start: number;
+  end: number;
+  inner: string;
+};
+
+/** Innermost **…** span first — fixes nested bold like **Years (**년**)**. */
+function findShortestBoldPair(text: string): BoldPair | null {
+  let best: (BoldPair & { span: number }) | null = null;
+
+  for (let searchFrom = 0; searchFrom < text.length; ) {
+    const start = text.indexOf("**", searchFrom);
+    if (start === -1) break;
+
+    const close = text.indexOf("**", start + 2);
+    if (close === -1) break;
+
+    const inner = text.slice(start + 2, close);
+    const span = close + 2 - start;
+
+    if (!best || span < best.span) {
+      best = { start, end: close + 2, inner, span };
+    }
+
+    searchFrom = start + 2;
+  }
+
+  return best;
+}
+
+function renderBoldNode(
+  content: string,
+  listenBoldHangul: boolean,
+  key: number,
+): ReactNode {
+  if (listenBoldHangul && hasHangul(content)) {
+    return <KoreanListenBold key={key} label={content} />;
+  }
+
+  return (
+    <strong key={key} className="font-semibold text-foreground">
+      {renderItalicAndCode(content, listenBoldHangul, key + 1)}
+    </strong>
+  );
+}
+
+function renderBoldSegments(
+  text: string,
+  listenBoldHangul: boolean,
+  keyStart: number,
+): ReactNode[] {
+  const pair = findShortestBoldPair(text);
+  if (!pair) {
+    return renderItalicAndCode(text, listenBoldHangul, keyStart);
+  }
+
+  const parts: ReactNode[] = [];
+  let key = keyStart;
+
+  if (pair.start > 0) {
+    parts.push(
+      ...renderItalicAndCode(
+        text.slice(0, pair.start),
+        listenBoldHangul,
+        key,
+      ),
+    );
+    key += 100;
+  }
+
+  parts.push(renderBoldNode(pair.inner, listenBoldHangul, key++));
+  parts.push(
+    ...renderBoldSegments(text.slice(pair.end), listenBoldHangul, key),
+  );
+
+  return parts;
+}
+
+function getItalicAndCodePatterns(
+  listenBoldHangul: boolean,
+): InlinePattern[] {
   return [
-    {
-      regex: MARKDOWN_BOLD,
-      render: (content, key) =>
-        listenBoldHangul && hasHangul(content) ? (
-          <KoreanListenBold key={key} label={content} />
-        ) : (
-          <strong key={key} className="font-semibold text-foreground">
-            {content}
-          </strong>
-        ),
-    },
     {
       regex: MARKDOWN_ITALIC,
       render: (content, key) => (
         <em key={key} className="italic text-foreground/90">
-          {content}
+          {renderBoldSegments(content, listenBoldHangul, key + 1)}
         </em>
       ),
     },
@@ -60,6 +128,7 @@ function getInlinePatterns(listenBoldHangul: boolean): InlinePattern[] {
 function renderInlinePatterns(
   text: string,
   patterns: InlinePattern[],
+  listenBoldHangul: boolean,
   keyStart: number,
 ): ReactNode[] {
   if (!text) return [];
@@ -80,7 +149,11 @@ function renderInlinePatterns(
 
     if (index > lastIndex) {
       parts.push(
-        ...renderInlinePatterns(text.slice(lastIndex, index), rest, key),
+        ...renderBoldSegments(
+          text.slice(lastIndex, index),
+          listenBoldHangul,
+          key,
+        ),
       );
       key += 100;
     }
@@ -90,21 +163,41 @@ function renderInlinePatterns(
   }
 
   if (!matched) {
-    return renderInlinePatterns(text, rest, keyStart);
+    return rest.length
+      ? renderInlinePatterns(text, rest, listenBoldHangul, keyStart)
+      : renderBoldSegments(text, listenBoldHangul, keyStart);
   }
 
   if (lastIndex < text.length) {
-    parts.push(...renderInlinePatterns(text.slice(lastIndex), rest, key));
+    parts.push(
+      ...renderBoldSegments(
+        text.slice(lastIndex),
+        listenBoldHangul,
+        key,
+      ),
+    );
   }
 
   return parts.length ? parts : [<Fragment key={keyStart}>{text}</Fragment>];
+}
+
+function renderItalicAndCode(
+  text: string,
+  listenBoldHangul: boolean,
+  keyStart: number,
+): ReactNode[] {
+  return renderInlinePatterns(
+    text,
+    getItalicAndCodePatterns(listenBoldHangul),
+    listenBoldHangul,
+    keyStart,
+  );
 }
 
 export function InlineMarkdown({
   text,
   listenBoldHangul = false,
 }: InlineMarkdownProps) {
-  const patterns = getInlinePatterns(listenBoldHangul);
   const parts: ReactNode[] = [];
   let lastIndex = 0;
   let key = 0;
@@ -114,7 +207,11 @@ export function InlineMarkdown({
     if (index > lastIndex) {
       parts.push(
         <Fragment key={key++}>
-          {renderInlinePatterns(text.slice(lastIndex, index), patterns, key)}
+          {renderBoldSegments(
+            text.slice(lastIndex, index),
+            listenBoldHangul,
+            key,
+          )}
         </Fragment>,
       );
       key += 10;
@@ -156,13 +253,17 @@ export function InlineMarkdown({
   if (lastIndex < text.length) {
     parts.push(
       <Fragment key={key++}>
-        {renderInlinePatterns(text.slice(lastIndex), patterns, key)}
+        {renderBoldSegments(
+          text.slice(lastIndex),
+          listenBoldHangul,
+          key,
+        )}
       </Fragment>,
     );
   }
 
   if (!parts.length) {
-    return <>{renderInlinePatterns(text, patterns, 0)}</>;
+    return <>{renderBoldSegments(text, listenBoldHangul, 0)}</>;
   }
 
   return <>{parts}</>;
