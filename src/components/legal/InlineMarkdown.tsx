@@ -54,30 +54,71 @@ function findShortestBoldPair(text: string): BoldPair | null {
   return best;
 }
 
+function renderLinkNode(
+  label: string,
+  href: string,
+  key: number,
+  listenBoldHangul: boolean,
+): ReactNode {
+  const external = /^https?:\/\//i.test(href);
+  const child = renderRichText(label, listenBoldHangul, key + 1);
+
+  if (external) {
+    return (
+      <a
+        key={key}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkClassName}
+      >
+        {child}
+      </a>
+    );
+  }
+
+  if (href.startsWith("mailto:")) {
+    return (
+      <a key={key} href={href} className={linkClassName}>
+        {child}
+      </a>
+    );
+  }
+
+  return (
+    <Link key={key} href={href} className={linkClassName}>
+      {child}
+    </Link>
+  );
+}
+
 function renderBoldNode(
   content: string,
   listenBoldHangul: boolean,
   key: number,
 ): ReactNode {
+  const inner = renderLinksAndEmphasis(content, listenBoldHangul, key + 1);
+
   if (listenBoldHangul && hasHangul(content)) {
     return <KoreanListenBold key={key} label={content} />;
   }
 
   return (
     <strong key={key} className="font-semibold text-foreground">
-      {renderItalicAndCode(content, listenBoldHangul, key + 1)}
+      {inner}
     </strong>
   );
 }
 
-function renderBoldSegments(
+/** Bold before links so **text [link](url)** parses correctly. */
+function renderRichText(
   text: string,
   listenBoldHangul: boolean,
   keyStart: number,
 ): ReactNode[] {
   const pair = findShortestBoldPair(text);
   if (!pair) {
-    return renderItalicAndCode(text, listenBoldHangul, keyStart);
+    return renderLinksAndEmphasis(text, listenBoldHangul, keyStart);
   }
 
   const parts: ReactNode[] = [];
@@ -85,21 +126,68 @@ function renderBoldSegments(
 
   if (pair.start > 0) {
     parts.push(
-      ...renderItalicAndCode(
-        text.slice(0, pair.start),
-        listenBoldHangul,
-        key,
-      ),
+      ...renderRichText(text.slice(0, pair.start), listenBoldHangul, key),
     );
     key += 100;
   }
 
   parts.push(renderBoldNode(pair.inner, listenBoldHangul, key++));
   parts.push(
-    ...renderBoldSegments(text.slice(pair.end), listenBoldHangul, key),
+    ...renderRichText(text.slice(pair.end), listenBoldHangul, key),
   );
 
   return parts;
+}
+
+function renderLinksAndEmphasis(
+  text: string,
+  listenBoldHangul: boolean,
+  keyStart: number,
+): ReactNode[] {
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  let key = keyStart;
+  let matched = false;
+
+  for (const match of text.matchAll(MARKDOWN_LINK)) {
+    matched = true;
+    const index = match.index ?? 0;
+
+    if (index > lastIndex) {
+      parts.push(
+        ...renderRichText(
+          text.slice(lastIndex, index),
+          listenBoldHangul,
+          key,
+        ),
+      );
+      key += 100;
+    }
+
+    parts.push(renderLinkNode(match[1], match[2], key++, listenBoldHangul));
+    lastIndex = index + match[0].length;
+  }
+
+  if (!matched) {
+    return renderInlinePatterns(
+      text,
+      getItalicAndCodePatterns(listenBoldHangul),
+      listenBoldHangul,
+      keyStart,
+    );
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(
+      ...renderRichText(
+        text.slice(lastIndex),
+        listenBoldHangul,
+        key,
+      ),
+    );
+  }
+
+  return parts.length ? parts : [<Fragment key={keyStart}>{text}</Fragment>];
 }
 
 function getItalicAndCodePatterns(
@@ -110,7 +198,7 @@ function getItalicAndCodePatterns(
       regex: MARKDOWN_ITALIC,
       render: (content, key) => (
         <em key={key} className="italic text-foreground/90">
-          {renderBoldSegments(content, listenBoldHangul, key + 1)}
+          {renderRichText(content, listenBoldHangul, key + 1)}
         </em>
       ),
     },
@@ -149,7 +237,7 @@ function renderInlinePatterns(
 
     if (index > lastIndex) {
       parts.push(
-        ...renderBoldSegments(
+        ...renderRichText(
           text.slice(lastIndex, index),
           listenBoldHangul,
           key,
@@ -170,101 +258,16 @@ function renderInlinePatterns(
 
   if (lastIndex < text.length) {
     parts.push(
-      ...renderBoldSegments(
-        text.slice(lastIndex),
-        listenBoldHangul,
-        key,
-      ),
+      ...renderRichText(text.slice(lastIndex), listenBoldHangul, key),
     );
   }
 
   return parts.length ? parts : [<Fragment key={keyStart}>{text}</Fragment>];
 }
 
-function renderItalicAndCode(
-  text: string,
-  listenBoldHangul: boolean,
-  keyStart: number,
-): ReactNode[] {
-  return renderInlinePatterns(
-    text,
-    getItalicAndCodePatterns(listenBoldHangul),
-    listenBoldHangul,
-    keyStart,
-  );
-}
-
 export function InlineMarkdown({
   text,
   listenBoldHangul = false,
 }: InlineMarkdownProps) {
-  const parts: ReactNode[] = [];
-  let lastIndex = 0;
-  let key = 0;
-
-  for (const match of text.matchAll(MARKDOWN_LINK)) {
-    const index = match.index ?? 0;
-    if (index > lastIndex) {
-      parts.push(
-        <Fragment key={key++}>
-          {renderBoldSegments(
-            text.slice(lastIndex, index),
-            listenBoldHangul,
-            key,
-          )}
-        </Fragment>,
-      );
-      key += 10;
-    }
-
-    const label = match[1];
-    const href = match[2];
-    const external = /^https?:\/\//i.test(href);
-
-    if (external) {
-      parts.push(
-        <a
-          key={key++}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={linkClassName}
-        >
-          {label}
-        </a>,
-      );
-    } else if (href.startsWith("mailto:")) {
-      parts.push(
-        <a key={key++} href={href} className={linkClassName}>
-          {label}
-        </a>,
-      );
-    } else {
-      parts.push(
-        <Link key={key++} href={href} className={linkClassName}>
-          {label}
-        </Link>,
-      );
-    }
-
-    lastIndex = index + match[0].length;
-  }
-
-  if (lastIndex < text.length) {
-    parts.push(
-      <Fragment key={key++}>
-        {renderBoldSegments(
-          text.slice(lastIndex),
-          listenBoldHangul,
-          key,
-        )}
-      </Fragment>,
-    );
-  }
-
-  if (!parts.length) {
-    return <>{renderBoldSegments(text, listenBoldHangul, 0)}</>;
-  }
-
-  return <>{parts}</>;
+  return <>{renderRichText(text, listenBoldHangul, 0)}</>;
 }
