@@ -233,22 +233,22 @@ function BlogBlockRenderer({
 
     case "image": {
       const scale = block.displayScale ?? 1;
+      const figureStyle =
+        scale < 1
+          ? { maxWidth: `${scale * 100}%`, marginInline: "auto" as const }
+          : undefined;
+
       return (
-        <figure
-          className={`my-8 ${scale < 1 ? "mx-auto" : ""}`}
-          style={scale < 1 ? { width: `${scale * 100}%` } : undefined}
-        >
+        <figure className="my-8 w-full max-w-full" style={figureStyle}>
           <MediaFrame>
-            <div className="relative aspect-[4/3] w-full">
-              <Image
-                src={block.src}
-                alt={block.alt}
-                width={block.width}
-                height={block.height}
-                className="h-full w-full rounded-none object-cover"
-                sizes="(max-width: 448px) 100vw, 448px"
-              />
-            </div>
+            <Image
+              src={block.src}
+              alt={block.alt}
+              width={block.width}
+              height={block.height}
+              className="block h-auto w-full max-w-full rounded-none object-contain max-h-[min(70vh,720px)] md:max-h-none"
+              sizes="(max-width: 768px) 100vw, min(768px, 100vw)"
+            />
           </MediaFrame>
           {block.alt ? (
             <figcaption className="font-ko mt-3 text-xs italic leading-relaxed text-foreground/50">

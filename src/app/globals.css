@@ -182,30 +182,44 @@ body {
   color: rgb(17 17 17 / 0.8);
 }
 
+.blog-prose figure,
+.blog-prose-html figure {
+  margin: 2rem 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.blog-prose figure img,
 .blog-prose-html img,
 .blog-prose-html iframe {
   display: block;
   width: 100%;
   max-width: 100%;
+  height: auto;
   border-radius: 0;
   border: 0.5px solid #d9d9d3;
   filter: grayscale(100%);
   opacity: 0.8;
+  object-fit: contain;
   transition:
     filter 300ms ease,
     opacity 300ms ease;
 }
 
+@media (max-width: 767px) {
+  .blog-prose figure img {
+    max-height: min(70vh, 720px);
+  }
+}
+
+.blog-prose figure:hover img,
 .blog-prose-html figure:hover img,
 .blog-prose-html figure:hover iframe,
+.blog-prose figure:active img,
 .blog-prose-html figure:active img,
 .blog-prose-html figure:active iframe {
   filter: grayscale(0%);
   opacity: 1;
-}
-
-.blog-prose-html figure {
-  margin: 2rem 0;
 }
 
 .blog-prose-html figcaption {
