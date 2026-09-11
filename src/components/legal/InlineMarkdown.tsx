@@ -4,7 +4,8 @@ import { KoreanListenBold } from "@/components/speech/KoreanListenBold";
 import { hasHangul } from "@/utils/hangul-speak-text";
 
 const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
-const MARKDOWN_ITALIC = /\*([^*]+)\*/g;
+/** Single-asterisk italic only — must not match the inner `*…*` of `**bold**`. */
+const MARKDOWN_ITALIC = /(?<!\*)\*(?!\*)([^*]+)(?<!\*)\*(?!\*)/g;
 const MARKDOWN_CODE = /`([^`]+)`/g;
 
 const linkClassName =
@@ -42,6 +43,11 @@ function findShortestBoldPair(text: string): BoldPair | null {
     if (close === -1) break;
 
     const inner = text.slice(start + 2, close);
+    if (!inner.length) {
+      searchFrom = start + 1;
+      continue;
+    }
+
     const span = close + 2 - start;
 
     if (!best || span < best.span) {
@@ -97,15 +103,13 @@ function renderBoldNode(
   listenBoldHangul: boolean,
   key: number,
 ): ReactNode {
-  const inner = renderLinksAndEmphasis(content, listenBoldHangul, key + 1);
-
   if (listenBoldHangul && hasHangul(content)) {
     return <KoreanListenBold key={key} label={content} />;
   }
 
   return (
     <strong key={key} className="font-semibold text-foreground">
-      {inner}
+      {renderLinksAndEmphasis(content, listenBoldHangul, key + 1)}
     </strong>
   );
 }
