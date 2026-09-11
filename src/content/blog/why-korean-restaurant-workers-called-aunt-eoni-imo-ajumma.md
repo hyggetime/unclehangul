@@ -84,7 +84,7 @@ In commercial settings, clothing shop owners and market vendors routinely addres
 
 On YouTube, Instagram, and TikTok, female content creators frequently adopt *Unnie* or *Eoni* in their channel branding (e.g., "Beauty Unnie") to establish an approachable, trendy older-sister persona.
 
-While the Korean internet has plenty of "Unnie" and "Oppa" creators highlighting youth culture, I chose **한글 아저씨 (Uncle Hangul)** for this platform. It reflects a grounded, dependable, and practical neighbor standing outside social trends to explain how real Korean language and life operate.
+While the Korean internet has plenty of "Unnie" and "Oppa" creators highlighting youth culture, I chose **한글아저씨 (Uncle Hangul)** for this platform. It reflects a grounded, dependable, and practical neighbor standing outside social trends to explain how real Korean language and life operate.
 
 > **🇰🇷 Korean Vocabulary Card: Female Titles**
 >

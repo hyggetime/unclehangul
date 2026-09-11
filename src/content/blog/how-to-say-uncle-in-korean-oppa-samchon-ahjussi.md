@@ -91,11 +91,11 @@ Today, calling a city restaurant owner or vendor *Samchon* sounds old-fashioned,
 
 ---
 
-## 5. Why I Chose the Name "Uncle Hangul" (한글 아저씨)
+## 5. Why I Chose the Name "Uncle Hangul" (한글아저씨)
 
 When establishing 'Uncle Hangul', selecting the brand name required balancing these social nuances.
 
-In Korean, 'Uncle Hangul' translates directly to **한글 아저씨 (Hangul Ahjussi)**.
+In Korean, 'Uncle Hangul' translates directly to **한글아저씨 (Hangul Ahjussi)**.
 
 I chose *Ahjussi* intentionally over the alternatives:
 

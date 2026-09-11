@@ -6,7 +6,7 @@ taglineEn: "The Maker Who Believes in Language Acquisition"
 taglineKo: "만들기를 좋아하는 디자이너, 언어 습득을 말하다"
 sectionLabel: "ABOUT / UNCLE HANGUL"
 koreanBody: |
-  헤이, 그냥 '한글 아저씨'라고 불러줘.
+  헤이, 그냥 '한글아저씨'라고 불러줘.
 
   나는 무언가를 구상하고, 기획하고, 끝내 눈앞에 구현해 낼 때 짜릿한 스릴을 느끼는 만드는 사람이야. 본업은 디자이너고. 3D 캐릭터 디자인으로 시작해서 애니메이션을 만들고, 영상 특수효과(VFX) 일을 거쳐 제품 디자인과 출판, 그리고 지금은 앱 서비스를 만드는 일까지 손대고 있어. 나에게 무언가를 창조하는 건 늘 심장을 뛰게 하는 일이니까.
 
