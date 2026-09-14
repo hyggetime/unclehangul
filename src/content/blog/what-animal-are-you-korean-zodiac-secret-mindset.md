@@ -12,7 +12,7 @@ keywords: [Korean zodiac animal, 띠, 십이지신, Korean age, 설날, zodiac c
 
 **If you spend time around Koreans**, you will quickly notice that direct questions about age can feel slightly blunt. Instead of asking "How old are you?", people often ask "What year were you born?" or "What is your zodiac animal?" (**무슨 띠예요?**).
 
-**This question serves a practical social purpose.** In Korea, social hierarchy and speech levels (**[존댓말](/learn/when-do-koreans-switch-jondaetmal-to-banmal)** and **[반말](/learn/when-do-koreans-switch-jondaetmal-to-banmal)**) depend heavily on age relative to others. Knowing your zodiac animal allows Koreans to establish social standing instantly without making anyone feel singled out about their exact birth year.
+**This question serves a practical social purpose.** In Korea, [social hierarchy and speech levels](/learn/when-do-koreans-switch-jondaetmal-to-banmal) (**존댓말** and **반말**) depend heavily on age relative to others. Knowing your zodiac animal allows Koreans to establish social standing instantly without making anyone feel singled out about their exact birth year.
 
 **Your zodiac animal**, known as **띠** (*tti*), is rooted in the 12 Earthly Branches (**십이지신**), an ancient East Asian lunar cycle. Every year in the 12-year cycle belongs to a specific guardian animal, repeating sequentially from the Rat to the Pig.
 

@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import { getZodiacAnimalForYmd } from "@/lib/zodiac/korean-zodiac";
 import {
   daysInMonth,
-  formatSolarDateKo,
   isValidBirthDate,
   solarToLunar,
   type BirthDateParts,
@@ -42,13 +41,12 @@ export function KoreanZodiacWidget() {
   const result = useMemo(() => {
     if (!revealed || !canCalculate) return null;
 
-    const solar = formatSolarDateKo(parts);
     const lunar = solarToLunar(parts);
     const animal = getZodiacAnimalForYmd(parts.year, parts.month, parts.day);
 
     if (!lunar || !animal) return null;
 
-    return { solar, lunar, animal };
+    return { lunar, animal };
   }, [revealed, canCalculate, parts]);
 
   function updatePart(key: keyof BirthDateParts, raw: string) {
@@ -156,16 +154,7 @@ export function KoreanZodiacWidget() {
         >
           <div className="border-b-[0.5px] border-[#D9D9D3] pb-4">
             <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-              1 · Solar birthday
-            </p>
-            <p className="font-ko mt-1 text-lg font-semibold text-foreground">
-              {result.solar.labelKo}
-            </p>
-          </div>
-
-          <div className="border-b-[0.5px] border-[#D9D9D3] pb-4">
-            <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-              2 · Lunar birthday
+              1 · Lunar birthday
             </p>
             <p className="font-ko mt-1 text-lg font-semibold text-foreground">
               {result.lunar.labelKo}
@@ -174,7 +163,7 @@ export function KoreanZodiacWidget() {
 
           <div className="border-b-[0.5px] border-[#D9D9D3] pb-4 text-center">
             <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-              3 · Zodiac animal (띠)
+              2 · Zodiac animal (띠)
             </p>
             <p className="mt-2 text-5xl leading-none" aria-hidden>
               {result.animal.emoji}
@@ -189,7 +178,7 @@ export function KoreanZodiacWidget() {
 
           <div className="text-center">
             <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-              4 · Korean sentence
+              3 · Korean sentence
             </p>
             <p className="font-ko mt-3 text-2xl font-black leading-snug tracking-tight text-foreground md:text-3xl">
               {result.animal.sentence}
