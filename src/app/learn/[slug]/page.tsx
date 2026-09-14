@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
 import { BlogBody } from "@/components/blog/BlogBody";
@@ -82,6 +83,23 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
               >
                 {post.description}
               </p>
+              {post.author ? (
+                <p
+                  itemProp="author"
+                  itemScope
+                  itemType="https://schema.org/Person"
+                  className="font-en mt-6 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground/40 md:mt-7"
+                >
+                  By{" "}
+                  <Link
+                    href="/about"
+                    itemProp="url"
+                    className="border-b-[0.5px] border-[#D9D9D3] pb-0.5 text-foreground/70 transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E] active:border-[#FF4B3E] active:text-[#FF4B3E]"
+                  >
+                    <span itemProp="name">{post.author}</span>
+                  </Link>
+                </p>
+              ) : null}
               <meta itemProp="datePublished" content={post.publishedAt} />
             </header>
 

@@ -3,7 +3,6 @@ import {
   getOverseasAddressConverterUrl,
   getToolsSiteUrl,
 } from "@/lib/domains";
-import { sellerToolKeywords } from "@/lib/seo/keywords";
 
 export function getOverseasAddressConverterMetadata() {
   const toolsOrigin = getToolsSiteUrl();
@@ -18,18 +17,5 @@ export function getOverseasAddressConverterMetadata() {
     canonicalUrl: getOverseasAddressConverterUrl(),
     absoluteTitle: true,
     locale: "ko_KR",
-    keywords: sellerToolKeywords([
-      "해외주소 변환기",
-      "우체국 EMS 주소 입력",
-      "해외주소 쪼개기",
-      "영문주소 Line1 Line2",
-      "EMS 배송라벨 출력",
-      "EMS 주소 변환",
-      "DHL 주소 입력",
-      "FedEx 주소 변환",
-      "계약EMS",
-      "해외배송 주소",
-      "Korea Post EMS",
-    ]),
   });
 }

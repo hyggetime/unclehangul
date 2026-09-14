@@ -83,6 +83,8 @@ Use the table below to map the physical mouth action required for each block:
 | 3 | **기린** | *gi-rin* | giraffe | High tongue elevation to alveolar tap |
 | 4 | **그림** | *geu-rim* | picture / drawing | Flat tongue retraction to firm lip closure |
 
+Notice that each block stacks its consonants and vowels into one square tile. That packing rule is not a coincidence—[the graphic blueprint of sound](/learn/graphic-blueprint-hangul-loanwords) explains how Hangul assembles every syllable on the same modular grid.
+
 ---
 
 ## Guided 2-Step Practice (Shorts Drills)
@@ -127,3 +129,4 @@ If this drill helped you train **ㄱ·ㄹ·ㅁ** transitions, let us know by sel
 
 * **Visual Stories:** For artwork and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **More pronunciation:** Try the [Name → Hangul converter](/) on the homepage to build syllable-block muscle memory between drill sessions.
+* **Next drill:** Once your mouth handles **ㄱ·ㄹ·ㅁ** transitions, apply the same rhythm-first approach to vocabulary in [Beyond Grammar: Unlock Korean Days through Rhythmic Chunking](/learn/beyond-grammar-unlock-korean-days-rhythmic-chunking).

@@ -5,7 +5,7 @@ import {
 } from "@/lib/blog/load-markdown-post";
 import { isPostPublic } from "@/lib/blog/publish";
 import { buildPageMetadata } from "@/lib/site-metadata";
-import { learningPageKeywords, seoBrandPhrase, seoScriptPhrase } from "@/lib/seo/keywords";
+import { seoBrandPhrase, seoScriptPhrase } from "@/lib/seo/keywords";
 
 export type BlogBlock =
   | { type: "paragraph"; content: string }
@@ -102,7 +102,6 @@ export function getLearnIndexMetadata(): Metadata {
       `${seoScriptPhrase()} lessons, pronunciation drills, and reading guides from ${seoBrandPhrase()} — structured for clear, long-form study.`,
     path: "/learn",
     locale: "en_US",
-    keywords: learningPageKeywords(["Learn Korean", "Hangul lessons"]),
   });
 }
 
@@ -116,10 +115,5 @@ export function getPostMetadata(post: BlogPost): Metadata {
     publishedTime: post.publishedAt,
     image: post.ogImage,
     imageAlt: post.title,
-    keywords: learningPageKeywords([
-      post.title,
-      ...(post.tags ?? []),
-      ...(post.seoKeywords ?? []),
-    ]),
   });
 }

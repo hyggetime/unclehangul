@@ -51,6 +51,8 @@ Korean also has **native numerals** (**하나**, **둘**, **셋**…) used for h
 
 This lesson focuses on Sino-Korean because that is what you need for **910,213,090** and for Uncle Hangul's classroom-style drills.
 
+The two systems collide most often when telling time, where a single sentence can switch tracks mid-way—[why you are reading Korean clocks backwards](/learn/why-you-are-reading-korean-clocks-backwards) walks through that exact handoff.
+
 ---
 
 ## 2. The Atomic Units: 일, 십, 백, 천 (1, 10, 100, 1,000)
@@ -95,6 +97,8 @@ A Korean speaker thinks **백만**—"one hundred units of ten thousand."
 Both are correct mathematically, but the **chunking** differs.
 
 When you convert mentally, **divide by 10,000 first**, not by 1,000,000.
+
+If the mental arithmetic still slows you down at a checkout counter, [the 4-Digit Slash Method](/learn/4-digit-shift-reading-big-korean-numbers) turns this same rule into a pen-and-paper habit you can use on a price tag.
 
 **Mini drill:**
 

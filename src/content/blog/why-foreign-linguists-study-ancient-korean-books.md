@@ -3,13 +3,14 @@ title: "Why Foreign Linguists Study Ancient Korean Books to Hear Their Old Sound
 date: "2026-08-30"
 description: "Discover how 15th-century Joseon diplomatic textbooks preserved the lost sounds of East Asian languages through the phonetic design of Hangul."
 category: "Insights"
+author: Uncle Hangul
 tags: ["Hangul", "History", "Phonetics", "Culture", "Sayeokwon"]
 featured: false
 ---
 
 ## Introduction: Foreign Words in Korea Are Not New
 
-If you take a quiet walk through the streets of Seoul today, the visual landscape is filled with familiar global terms rendered in Hangul script: 커피 (Coffee), 피자 (Pizza), 파스타 (Pasta). It is easy to view this constant transliteration as a purely modern phenomenon—a byproduct of 21st-century globalization and digital connectivity.
+If you take a quiet walk through the streets of Seoul today, the visual landscape is filled with familiar global terms rendered in Hangul script: 커피 (Coffee), 피자 (Pizza), 파스타 (Pasta). It is easy to view this constant transliteration as a purely modern phenomenon—a byproduct of 21st-century globalization and digital connectivity. ([The graphic blueprint of sound](/learn/graphic-blueprint-hangul-loanwords) breaks down the grid logic behind those modern spellings.)
 
 However, the Korean Peninsula has always sat at a dynamic geopolitical crossroads. For centuries, its geography made it a natural converging point for diverse cultures, trade routes, and diplomatic networks.
 
@@ -67,3 +68,5 @@ Examining these 15th-century diplomatic manuscripts offers a perspective on Hang
 From a design perspective, the appeal of Hangul lies in its geometric simplicity. Sounds are not hidden behind arbitrary spelling rules or layered grammar conventions; instead, spoken input maps directly into clean visual frames. The shape of a character reflects the physical space where a sound is formed in the mouth and throat.
 
 Viewing Hangul through this lens allows learners to appreciate it not as a list of grammar rules to be memorized, but as a thoughtfully structured design system—one built centuries ago to bring clarity and visual form to human speech.
+
+That same design still holds up on a modern touchscreen: [why typing Korean feels like playing Tetris](/learn/why-typing-korean-feels-like-tetris-hangul-keyboards) shows the 15th-century blueprint running as live keyboard UX.

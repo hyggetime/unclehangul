@@ -3,6 +3,7 @@ title: "12 Years of Grammar Couldn't Make Me Speak: Why I'm Turning Uncle Hangul
 date: "2026-08-31"
 description: "Not a guru, but an experimenter. Why I'm rebuilding Uncle Hangul using Instagram reels, YouTube loops, and interactive web tools to make Korean acquisition intuitive and fun."
 category: "Manifesto"
+author: Uncle Hangul
 tags: ["Hangul", "LanguageAcquisition", "Pedagogy", "PersonalStory", "UncleHangul", "Experiments"]
 featured: true
 ---
@@ -68,3 +69,5 @@ Over the coming months, Uncle Hangul will launch a series of experimental conten
 Uncle Hangul is an evolving laboratory for natural language acquisition. I build the tools, curate the visuals, and test the methods—so you can enjoy the most intuitive way to acquire Korean.
 
 If you are ready to drop the heavy textbooks, turn off your internal grammar police, and test a new way of absorbing Korean, welcome aboard. Let's build this playground together.
+
+**Start here:** [Why typing Korean feels like playing Tetris](/learn/why-typing-korean-feels-like-tetris-hangul-keyboards) shows the acquisition-first approach applied to something you already do every day, and [Beyond Grammar: Unlock Korean Days through Rhythmic Chunking](/learn/beyond-grammar-unlock-korean-days-rhythmic-chunking) replaces a memorization list with a rhythm you can feel.

@@ -3,6 +3,7 @@ title: "The Graphic Blueprint of Sound: Why English Words Look and Sound Differe
 description: "Discover how Hangul re-engineers English loanwords into a modular visual grid system. Learn Korean naturally through design logic."
 date: "2026-08-27"
 category: "Visual Vocabulary"
+author: Uncle Hangul
 tags: ["Konglish", "Loanwords", "Hangul Design", "Language Acquisition"]
 ---
 
@@ -122,11 +123,15 @@ Stop trying to spell English words using Korean letters character-by-character. 
 
 Because Korean uses syllable-timed rhythm, count the physical blocks on paper before speaking. If a word has three blocks like 라-디-오, clap three steady beats. This simple spatial exercise eliminates English stress accents and immediately improves your native pronunciation flow.
 
+If you want to feel that block-by-block assembly in your fingers rather than your mouth, [typing Korean works the same way](/learn/why-typing-korean-feels-like-tetris-hangul-keyboards)—the keyboard stacks each tile in real time as you type.
+
 ### Trust Your Prior Knowledge
 
 You already know thousands of Korean loanwords. Terms related to technology, fashion, modern cuisine, and sports are packed with familiar vocabulary waiting to be unlocked. By tuning your ear to how Hangul restructures audio streams into grid frames, you can absorb hundreds of new words purely through context during daily exposure.
 
 Try the [Name → Hangul converter](/#name-converter) on the Uncle Hangul homepage to feel how English names map into syllable blocks—the same spatial logic applies to loanwords like 커피 and 택시.
+
+Once a loanword enters Korean, it often keeps shrinking. [From 'Water is Self' to 'Aircon'](/learn/from-water-is-self-to-aircon-korea-shrinks-english) follows what happens after the blueprint stage, when speakers start trimming the blocks they no longer need.
 
 ---
 

@@ -3,6 +3,7 @@ title: "Why Typing Korean Feels Like Playing Tetris: The Genius UX Behind Hangul
 description: "Discover how Hangul's modular Lego Bricks of Sound transform your digital keyboard into a responsive, real-time spatial Tetris game."
 publishedAt: "2026-08-28"
 category: "Hangul Design"
+author: Uncle Hangul
 tags: ["Hangul UX", "Korean Keyboard", "Sound Script", "Language Acquisition"]
 ---
 
@@ -200,6 +201,8 @@ Do not start by trying to type long formal sentences. Start by assembling two-ti
 * **구 - 름** (*Gu - reum* / Cloud): Left-Right, Left-Right-Left.
 
 By treating the keyboard as a tactile sound synthesizer rather than a list of letters, you bypass conscious translation lag. You learn to connect the sound in your ear directly to the spatial block on your screen.
+
+The same stacking rule governs how foreign words get rebuilt in Korean—see [the graphic blueprint of sound](/learn/graphic-blueprint-hangul-loanwords) for why "Latte" becomes 라떼 and not something longer.
 
 ---
 

@@ -1,6 +1,5 @@
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { getPackOptimizerUrl, getPackSiteUrl } from "@/lib/domains";
-import { sellerToolKeywords } from "@/lib/seo/keywords";
 
 /** SEO landing on unclehangul.com — canonical points to pack.unclehangul.com. */
 export function getPackOptimizerLandingMetadata() {
@@ -13,18 +12,6 @@ export function getPackOptimizerLandingMetadata() {
     canonicalUrl: getPackOptimizerUrl(),
     absoluteTitle: true,
     locale: "ko_KR",
-    keywords: sellerToolKeywords([
-      "K-Packet 쪼개기",
-      "K-Packet 분할 배송",
-      "EMS 부피무게",
-      "체적중량",
-      "3D packing",
-      "해외 배송비 절감",
-      "국제 배송비 계산기",
-      "우체국 EMS",
-      "박스 적재 최적화",
-      "volumetric weight",
-    ]),
   });
 }
 
@@ -40,17 +27,5 @@ export function getPackOptimizerAppMetadata() {
     canonicalUrl: getPackOptimizerUrl(),
     absoluteTitle: true,
     locale: "ko_KR",
-    keywords: sellerToolKeywords([
-      "K-Packet 쪼개기",
-      "K-Packet 분할 배송",
-      "EMS 부피무게",
-      "체적중량",
-      "3D packing",
-      "해외 배송비 절감",
-      "국제 배송비 계산기",
-      "우체국 EMS",
-      "박스 적재 최적화",
-      "volumetric weight",
-    ]),
   });
 }

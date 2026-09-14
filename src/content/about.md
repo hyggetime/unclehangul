@@ -1,5 +1,5 @@
 ---
-title: "About Me · Uncle Hangul"
+title: "About Me"
 description: "Meet Uncle Hangul — a designer, creator, and certified Korean teacher. Learn Hangul through visual context and cultural nuance, not grammar drills."
 heading: "About Me: Hey, Call me 'Uncle Hangul'!"
 taglineEn: "The Maker Who Believes in Language Acquisition"
