@@ -206,11 +206,23 @@ export function getZodiacAnimalForBirthDate(input: Date): ZodiacAnimal | null {
   const y = input.getFullYear();
   const m = input.getMonth() + 1;
   const d = input.getDate();
-  const birth = new Date(`${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}T12:00:00+09:00`);
 
-  let zodiacYear = y;
-  if (birth < seollalOf(y)) {
-    zodiacYear = y - 1;
+  return getZodiacAnimalForYmd(y, m, d);
+}
+
+export function getZodiacAnimalForYmd(
+  year: number,
+  month: number,
+  day: number,
+): ZodiacAnimal | null {
+  const birth = new Date(
+    `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T12:00:00+09:00`,
+  );
+  if (Number.isNaN(birth.getTime())) return null;
+
+  let zodiacYear = year;
+  if (birth < seollalOf(year)) {
+    zodiacYear = year - 1;
   }
 
   if (zodiacYear < 1900 || zodiacYear > 2100) return null;

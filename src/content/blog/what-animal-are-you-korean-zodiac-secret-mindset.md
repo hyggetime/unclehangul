@@ -12,7 +12,7 @@ keywords: [Korean zodiac animal, 띠, 십이지신, Korean age, 설날, zodiac c
 
 **If you spend time around Koreans**, you will quickly notice that direct questions about age can feel slightly blunt. Instead of asking "How old are you?", people often ask "What year were you born?" or "What is your zodiac animal?" (**무슨 띠예요?**).
 
-**This question serves a practical social purpose.** In Korea, social hierarchy and speech levels (**존댓말** and **반말**) depend heavily on age relative to others. Knowing your zodiac animal allows Koreans to establish social standing instantly without making anyone feel singled out about their exact birth year.
+**This question serves a practical social purpose.** In Korea, social hierarchy and speech levels (**[존댓말](/learn/when-do-koreans-switch-jondaetmal-to-banmal)** and **[반말](/learn/when-do-koreans-switch-jondaetmal-to-banmal)**) depend heavily on age relative to others. Knowing your zodiac animal allows Koreans to establish social standing instantly without making anyone feel singled out about their exact birth year.
 
 **Your zodiac animal**, known as **띠** (*tti*), is rooted in the 12 Earthly Branches (**십이지신**), an ancient East Asian lunar cycle. Every year in the 12-year cycle belongs to a specific guardian animal, repeating sequentially from the Rat to the Pig.
 
@@ -90,3 +90,10 @@ For example, if you were born in the year of the Dragon (**용**):
 **Use the calculator widget above** to find your exact zodiac animal, tap **Listen pronunciation ↗**, and practice saying the sentence out loud three times.
 
 **Then type your full Korean sentence** (for example, **저는 용띠예요**) in the feedback section at the bottom of this page — Uncle Hangul reviews learner answers there.
+
+---
+
+### Reactions & Next Steps
+
+* **Continue Reading:** Once you know someone's 띠, the next social layer is speech level. Read [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) to see how age and closeness change Korean honorifics in real life.
+* **Related:** [What is Tae-mong (태몽)? A Foreigner's Real Birth Dream Experience in Korea](/learn/tae-mong-birth-dream-experience-korea) — how animal symbols appear even before birth.
