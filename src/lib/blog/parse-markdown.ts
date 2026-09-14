@@ -8,6 +8,8 @@ import { getPublicImageDimensions } from "@/lib/blog/image-dimensions";
 const YOUTUBE_LINE =
   /^@youtube\s+(\S+)\s*\|\s*(short|long)\s*\|\s*(.+)\s*$/i;
 
+const WIDGET_LINE = /^@widget\s+(\S+)\s*$/;
+
 const TABLE_SEPARATOR =
   /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?\s*$/;
 
@@ -185,6 +187,14 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
         layout: yt[2].toLowerCase() as "short" | "long",
         title: yt[3].trim(),
       });
+      continue;
+    }
+
+    const widget = line.trim().match(WIDGET_LINE);
+    if (widget) {
+      flushParagraph();
+      flushListBuffer();
+      blocks.push({ type: "widget", id: widget[1] });
       continue;
     }
 

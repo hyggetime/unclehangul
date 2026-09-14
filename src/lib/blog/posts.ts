@@ -30,7 +30,8 @@ export type BlogBlock =
       height: number;
       /** Display width as a fraction of content column (default 1). */
       displayScale?: number;
-    };
+    }
+  | { type: "widget"; id: string };
 
 export type BlogPost = {
   slug: string;

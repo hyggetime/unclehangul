@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { KoreanZodiacWidget } from "@/components/learn/KoreanZodiacWidget";
 import { MediaFrame } from "@/components/MediaFrame";
 import { InlineMarkdown } from "@/components/legal/InlineMarkdown";
 import { YoutubeEmbed } from "@/components/media/YoutubeEmbed";
@@ -230,6 +231,12 @@ function BlogBlockRenderer({
           </figcaption>
         </figure>
       );
+
+    case "widget":
+      if (block.id === "korean-zodiac") {
+        return <KoreanZodiacWidget />;
+      }
+      return null;
 
     case "image": {
       const scale = block.displayScale ?? 1;

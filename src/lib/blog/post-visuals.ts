@@ -73,6 +73,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "tongue-twister-girin": { text: "기린그림", layout: "grid2x2" },
   "why-you-are-reading-korean-clocks-backwards": "시간",
   "beyond-grammar-unlock-korean-days-rhythmic-chunking": "요일",
+  "what-animal-are-you-korean-zodiac-secret-mindset": "띠",
 };
 
 function normalizeTileEntry(entry: TileEntry): HangulTileSpec {
