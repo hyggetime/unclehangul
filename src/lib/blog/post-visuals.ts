@@ -76,8 +76,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "what-animal-are-you-korean-zodiac-secret-mindset": "띠",
   "korean-zodiac-completed-animal-chemistry-hangul-rhythms-asian-neighbors": {
     text: "용띠쥐띠",
-    layout: "single",
-    insetXScale: 0.5,
+    layout: "grid2x2",
   },
 };
 
