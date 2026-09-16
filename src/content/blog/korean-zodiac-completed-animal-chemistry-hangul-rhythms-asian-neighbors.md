@@ -67,5 +67,5 @@ keywords: [Korean zodiac compatibility, 띠 궁합, 십이지신, Hangul rhythm,
 
 ### Reactions & Next Steps
 
-* **Continue Reading:** Calculate your exact lunar animal with the 설날-aware widget in [What Animal Are You? Find Your Korean Zodiac & Secret Mindset](/learn/what-animal-are-you-korean-zodiac-secret-mindset).
+* **Continue Reading:** [What Animal Are You? Find Your Korean Zodiac & Secret Mindset](/learn/what-animal-are-you-korean-zodiac-secret-mindset) — calculate your 설날-aware lunar animal, hear **저는 ○○띠예요**, and practice with the interactive widget.
 * **Related:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — how age and zodiac clues shape Korean speech levels in real conversations.

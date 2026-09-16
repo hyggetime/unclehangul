@@ -14,7 +14,7 @@ keywords: [Korean zodiac animal, 띠, 십이지신, Korean age, 설날, zodiac c
 
 **This question serves a practical social purpose.** In Korea, [social hierarchy and speech levels](/learn/when-do-koreans-switch-jondaetmal-to-banmal) (**존댓말** and **반말**) depend heavily on age relative to others. Knowing your zodiac animal allows Koreans to establish social standing instantly without making anyone feel singled out about their exact birth year.
 
-**Your zodiac animal**, known as **띠** (*tti*), is rooted in the 12 Earthly Branches (**십이지신**), an ancient East Asian lunar cycle. Every year in the 12-year cycle belongs to a specific guardian animal, repeating sequentially from the Rat to the Pig.
+**Your zodiac animal**, known as **띠** (*tti*), is rooted in the 12 Earthly Branches (**십이지신**), an ancient East Asian lunar cycle. Every year in the 12-year cycle belongs to a specific guardian animal, repeating sequentially from the Rat to the Pig. For animal chemistry, Hangul recitation rhythms, and how Korea compares to its neighbors, read [The Korean Zodiac Completed: Animal Chemistry, Hangul Rhythms, and Asian Neighbors](/learn/korean-zodiac-completed-animal-chemistry-hangul-rhythms-asian-neighbors).
 
 **In Korean culture**, your connection to your birth animal begins even before you are born. Parents pay close attention to **태몽** (*taemong*), or conception dreams, where animals like pigs, dragons, or tigers appear as prophetic symbols for the child's future. If you want to explore how parents interpret these dreams before a child arrives, read our deep dive on the [Korean Taemong Experience](/learn/tae-mong-birth-dream-experience-korea).
 
@@ -95,5 +95,6 @@ For example, if you were born in the year of the Dragon (**용**):
 
 ### Reactions & Next Steps
 
-* **Continue Reading:** Once you know someone's 띠, the next social layer is speech level. Read [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) to see how age and closeness change Korean honorifics in real life.
+* **Continue Reading:** [The Korean Zodiac Completed: Animal Chemistry, Hangul Rhythms, and Asian Neighbors](/learn/korean-zodiac-completed-animal-chemistry-hangul-rhythms-asian-neighbors) — zodiac compatibility pairings, the 5-4-3 recitation rhythm, and East Asian neighbor twists.
+* **Related:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — how age and closeness change Korean honorifics in real life.
 * **Related:** [What is Tae-mong (태몽)? A Foreigner's Real Birth Dream Experience in Korea](/learn/tae-mong-birth-dream-experience-korea) — how animal symbols appear even before birth.
