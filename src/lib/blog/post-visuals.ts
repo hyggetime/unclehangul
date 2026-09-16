@@ -74,6 +74,8 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "why-you-are-reading-korean-clocks-backwards": "시간",
   "beyond-grammar-unlock-korean-days-rhythmic-chunking": "요일",
   "what-animal-are-you-korean-zodiac-secret-mindset": "띠",
+  "korean-zodiac-completed-animal-chemistry-hangul-rhythms-asian-neighbors":
+    "궁합",
 };
 
 function normalizeTileEntry(entry: TileEntry): HangulTileSpec {
