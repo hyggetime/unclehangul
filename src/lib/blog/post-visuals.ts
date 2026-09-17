@@ -78,6 +78,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
     text: "용띠쥐띠",
     layout: "grid2x2",
   },
+  "ten-months-in-womb-korean-taegyo-never-about-iq": "태교",
 };
 
 function normalizeTileEntry(entry: TileEntry): HangulTileSpec {

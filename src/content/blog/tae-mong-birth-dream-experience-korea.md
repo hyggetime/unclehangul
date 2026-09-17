@@ -138,4 +138,5 @@ A Birth dream is not about rigid superstition or scientific accuracy. At its hea
 If you found this look into Korean Birth dream culture interesting, let us know by clicking the reaction buttons below!
 
 * **Visual Stories:** Want to see more artwork inspired by life in Korea? Check out illustrator Sofie Fribo’s work on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
-* **Continue the Story:** How do Korean parents choose a baby's temporary "womb name" before their official legal name is decided? Read [From 'Womb Name(태명)' to Legal Name: How Ella Fitzgerald Named Our Daughter](/learn/from-womb-name-to-legal-name-ella).
+* **Continue the Story:** [Ten Months in the Womb: Why Korean Taegyo Was Never About IQ](/learn/ten-months-in-womb-korean-taegyo-never-about-iq) — the 200-year-old philosophy of **태교** prenatal care, **태담** talk, and why it was never about forcing early intelligence.
+* **Related:** [From 'Womb Name(태명)' to Legal Name: How Ella Fitzgerald Named Our Daughter](/learn/from-womb-name-to-legal-name-ella) — how Korean parents choose a temporary womb name before the official legal name.
