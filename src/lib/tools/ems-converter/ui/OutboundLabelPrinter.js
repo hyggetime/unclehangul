@@ -1,4 +1,5 @@
-import { getCountryRule } from "../core/rules.js";
+import { getCountryMetadata } from "../core/country-metadata.js";
+import { COUNTRY_RULES } from "../core/rules.js";
 
 const btnClass =
   "font-en touch-target border-[0.5px] border-[#D9D9D3] bg-transparent px-3 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-foreground transition-colors duration-200 hover:border-[#FF4B3E] hover:bg-[#FF4B3E] hover:text-[#F2F2F0] active:border-[#FF4B3E] active:bg-[#FF4B3E] active:text-[#F2F2F0] disabled:pointer-events-none disabled:opacity-35";
@@ -8,8 +9,8 @@ const btnClass =
  * @param {string} countryCode ISO 3166-1 alpha-2
  */
 export function formatOutboundLabelText(view, countryCode) {
-  const rule = getCountryRule(countryCode);
-  const countryLine = rule ? `${rule.nameKo} (${rule.emsName})` : view.country || "";
+  const meta = getCountryMetadata(countryCode, COUNTRY_RULES);
+  const countryLine = meta ? `${meta.nameKo} (${meta.emsName})` : view.country || "";
   const cityState = [view.city, view.state].filter(Boolean).join(", ");
 
   return [
@@ -23,8 +24,8 @@ export function formatOutboundLabelText(view, countryCode) {
 }
 
 function countryDisplay(view, countryCode) {
-  const rule = getCountryRule(countryCode);
-  if (rule) return `${rule.nameKo} (${rule.emsName})`;
+  const meta = getCountryMetadata(countryCode, COUNTRY_RULES);
+  if (meta) return `${meta.nameKo} (${meta.emsName})`;
   return view.country || "—";
 }
 

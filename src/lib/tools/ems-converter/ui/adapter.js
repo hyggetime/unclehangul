@@ -1,5 +1,6 @@
 import { parseAddress } from "../core/parser.js";
-import { COUNTRY_LIST, getCountryRule } from "../core/rules.js";
+import { COUNTRY_LIST, COUNTRY_RULES } from "../core/rules.js";
+import { getCountryMetadata } from "../core/country-metadata.js";
 import { detectCountry } from "../core/auto-detector.js";
 import {
   bindOutboundLabelActions,
@@ -30,11 +31,29 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+function renderCountryOptions() {
+  const precision = COUNTRY_LIST.filter((country) => country.isPrecision);
+  const generic = COUNTRY_LIST.filter((country) => !country.isPrecision);
+
+  const precisionOptions = precision
+    .map(
+      (country) =>
+        `<option value="${country.code}">★ ${escapeHtml(country.nameKo)} · ${escapeHtml(country.nameEn)}</option>`,
+    )
+    .join("");
+
+  const genericOptions = generic
+    .map(
+      (country) =>
+        `<option value="${country.code}">${escapeHtml(country.nameKo)} · ${escapeHtml(country.nameEn)}</option>`,
+    )
+    .join("");
+
+  return `<optgroup label="정밀 지원">${precisionOptions}</optgroup><optgroup label="기본 지원">${genericOptions}</optgroup>`;
+}
+
 function renderMarkup() {
-  const options = COUNTRY_LIST.map(
-    (country) =>
-      `<option value="${country.code}">${escapeHtml(country.nameKo)} · ${escapeHtml(country.nameEn)}</option>`,
-  ).join("");
+  const options = renderCountryOptions();
 
   const fields = FIELD_KEYS.map(
     (field) => `
@@ -62,6 +81,7 @@ function renderMarkup() {
           <select data-ems-country class="${inputClass}">
             ${options}
           </select>
+          <p data-ems-detect-hint class="font-ko mt-2 hidden text-xs text-[#FF4B3E]" role="status"></p>
         </label>
         <label class="block p-4 md:p-5">
           <span class="font-en mb-2 block text-[10px] font-bold uppercase tracking-widest text-foreground/35">Raw address</span>
@@ -84,10 +104,10 @@ function renderMarkup() {
   `;
 }
 
-function toEmsView(parsed) {
-  const rule = getCountryRule(parsed.country);
+function toEmsView(parsed, countryCode) {
+  const meta = getCountryMetadata(countryCode || parsed.country, COUNTRY_RULES);
   return {
-    country: rule?.emsName ?? parsed.country,
+    country: meta?.emsName ?? parsed.country,
     postalCode: parsed.postalCode,
     city: parsed.city,
     state: parsed.state,
@@ -124,6 +144,7 @@ export function mountEmsConverter(root) {
 
   const rawInput = host.querySelector("[data-ems-raw]");
   const countryInput = host.querySelector("[data-ems-country]");
+  const detectHint = host.querySelector("[data-ems-detect-hint]");
   const outputSection = host.querySelector("[data-ems-output]");
   const showFieldsBtn = host.querySelector("[data-ems-show-fields]");
   const showFieldsLabel = host.querySelector("[data-ems-show-fields-label]");
@@ -157,7 +178,7 @@ export function mountEmsConverter(root) {
   }
 
   function fill(parsed) {
-    const view = toEmsView(parsed);
+    const view = toEmsView(parsed, countryInput.value);
     for (const { key, input, button } of fieldInputs) {
       const value = view[key] ?? "";
       input.value = value;
@@ -167,23 +188,46 @@ export function mountEmsConverter(root) {
     updateOutboundLabel(host, view, countryInput.value);
   }
 
+  function showDetectHint(detectedIso, previousIso) {
+    if (!detectHint) return;
+    if (!detectedIso || detectedIso === previousIso) {
+      detectHint.textContent = "";
+      detectHint.classList.add("hidden");
+      return;
+    }
+    const meta = getCountryMetadata(detectedIso, COUNTRY_RULES);
+    if (!meta) {
+      detectHint.textContent = "";
+      detectHint.classList.add("hidden");
+      return;
+    }
+    detectHint.textContent = `주소에서 ${meta.nameKo}(${meta.code})로 자동 선택되었습니다.`;
+    detectHint.classList.remove("hidden");
+  }
+
   function run() {
     const rawText = rawInput.value;
-    
-    // Auto-detect country if possible
+    const previousCountry = countryInput.value;
+
     if (rawText.trim()) {
       const detected = detectCountry(rawText);
       if (detected && detected !== countryInput.value) {
-        // Only update if detection is confident and different
         const detectedOption = Array.from(countryInput.options).find(
-          (opt) => opt.value === detected
+          (opt) => opt.value === detected,
         );
         if (detectedOption) {
           countryInput.value = detected;
+          showDetectHint(detected, previousCountry);
         }
+      } else if (detectHint) {
+        detectHint.textContent = "";
+        detectHint.classList.add("hidden");
       }
+    } else if (detectHint) {
+      detectHint.textContent = "";
+      detectHint.classList.add("hidden");
     }
-    
+
     fill(parseAddress(rawText, countryInput.value));
   }
 
@@ -237,7 +281,7 @@ export function mountEmsConverter(root) {
 
   bindOutboundLabelActions(host, {
     getView: () => ({
-      view: toEmsView(parseAddress(rawInput.value, countryInput.value)),
+      view: toEmsView(parseAddress(rawInput.value, countryInput.value), countryInput.value),
       countryCode: countryInput.value,
     }),
   });

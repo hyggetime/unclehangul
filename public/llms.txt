@@ -36,8 +36,8 @@ Uncle Hangul publishes Hangul (Hangeul) lessons, pronunciation guides, and links
 - Output fields: Country, Zipcode, State, City, Line1, Line2
 - Shipping label: [SHIP TO] block with Country, Zip/Postal Code, Address Line 1/2, City/State — copy all or print/PDF (A4).
 - Line 1/2 rule: merge building + street into Line 1; overflow beyond 35 chars goes to Line 2.
-- Supported countries: GB, FR, NL, BE, SE, DE, US, JP, CA, AU
-- Features: Real-time parsing, postcode validation, state lookup from zip prefix, shipping label print. Browser-only (no server upload).
+- Supported countries: 150+ (37 precision: GB, FR, NL, BE, SE, DE, US, JP, CA, AU, ES, PT, IT, IE, AT, CH, DK, NO, FI, IS, PL, CZ, SK, HU, RO, GR, NZ, MX, BR, AR, CL, SG, CN, IN, TH, IL, TR + 110+ generic fallback)
+- Features: Real-time parsing, precision/generic hybrid routing, auto country detection, postcode validation, state lookup from zip prefix, shipping label print. Browser-only (no server upload).
 - Search aliases: 해외주소 변환기, 우체국 EMS 주소 입력, 영문주소 Line1 Line2, DHL FedEx address split
 
 ### Pack Optimizer (canonical app)

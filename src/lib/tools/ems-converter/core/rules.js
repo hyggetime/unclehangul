@@ -245,6 +245,9 @@ const PT_DISTRICTS = [
   "Madeira",
 ].join("|");
 
+const BR_STATES =
+  "AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RN|RS|RO|RR|SC|SP|SE|TO";
+
 const MX_STATES = [
   "Aguascalientes",
   "Baja California",
@@ -796,6 +799,87 @@ export const COUNTRY_RULES = {
     state: new RegExp(`\\b(${TH_PROVINCES})\\b`, "i"),
     cityLine: /^[A-Z][A-Z\s\-']+$/i,
   },
+  CZ: {
+    iso: "CZ",
+    emsName: "CZECH REPUBLIC",
+    nameEn: "Czech Republic",
+    nameKo: "체코",
+    extract: /\b\d{3}\s*\d{2}\b/,
+    validate: /^\d{3}\s?\d{2}$/,
+    street: STREET_DE,
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
+  SK: {
+    iso: "SK",
+    emsName: "SLOVAKIA",
+    nameEn: "Slovakia",
+    nameKo: "슬로바키아",
+    extract: /\b\d{3}\s*\d{2}\b/,
+    validate: /^\d{3}\s?\d{2}$/,
+    street: STREET_DE,
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
+  HU: {
+    iso: "HU",
+    emsName: "HUNGARY",
+    nameEn: "Hungary",
+    nameKo: "헝가리",
+    extract: /\b\d{4}\b/,
+    validate: /^\d{4}$/,
+    street: STREET_DE,
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
+  RO: {
+    iso: "RO",
+    emsName: "ROMANIA",
+    nameEn: "Romania",
+    nameKo: "루마니아",
+    extract: /\b\d{6}\b/,
+    validate: /^\d{6}$/,
+    street: STREET_DE,
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
+  GR: {
+    iso: "GR",
+    emsName: "GREECE",
+    nameEn: "Greece",
+    nameKo: "그리스",
+    extract: /\b\d{3}\s*\d{2}\b/,
+    validate: /^\d{3}\s?\d{2}$/,
+    street: STREET_EN,
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
+  BR: {
+    iso: "BR",
+    emsName: "BRAZIL",
+    nameEn: "Brazil",
+    nameKo: "브라질",
+    extract: /\b\d{5}\s*-?\s*\d{3}\b/,
+    validate: /^\d{5}-?\d{3}$/,
+    street: STREET_PT,
+    state: new RegExp(`\\b(${BR_STATES})\\b`, "i"),
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
+  AR: {
+    iso: "AR",
+    emsName: "ARGENTINA",
+    nameEn: "Argentina",
+    nameKo: "아르헨티나",
+    extract: /\b([A-Z]\d{4}[A-Z]{3}|\d{4})\b/i,
+    validate: /^([A-Z]\d{4}[A-Z]{3}|\d{4})$/i,
+    street: STREET_ES,
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
+  CL: {
+    iso: "CL",
+    emsName: "CHILE",
+    nameEn: "Chile",
+    nameKo: "칠레",
+    extract: /\b\d{7}\b/,
+    validate: /^\d{7}$/,
+    street: STREET_ES,
+    cityLine: /^[A-Z][A-Z\s\-']+$/i,
+  },
 };
 
 export const COUNTRY_LIST = getAllCountries(COUNTRY_RULES);
@@ -853,6 +937,16 @@ export function formatPostalCode(raw, country) {
       if (digits.length >= 5) return `${digits.slice(0, 2)}-${digits.slice(2, 5)}`;
       return compact;
     }
+    case "BR": {
+      if (digits.length >= 8) return `${digits.slice(0, 5)}-${digits.slice(5, 8)}`;
+      return compact;
+    }
+    case "CZ":
+    case "SK":
+    case "GR": {
+      if (digits.length >= 5) return `${digits.slice(0, 3)} ${digits.slice(3, 5)}`;
+      return compact;
+    }
     case "IE": {
       const cleaned = compact.replace(/\s+/g, "");
       if (cleaned.length >= 7) return `${cleaned.slice(0, 3)} ${cleaned.slice(3)}`;
@@ -872,6 +966,10 @@ export function formatPostalCode(raw, country) {
     case "IS":
     case "NZ":
     case "MX":
+    case "HU":
+    case "RO":
+    case "CL":
+    case "AR":
       return digits;
     default:
       return compact;

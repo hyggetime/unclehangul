@@ -12,7 +12,7 @@ import {
   getPackOptimizerUrl,
 } from "@/lib/domains";
 
-const SUPPORTED_COUNTRIES = [
+const PRECISION_COUNTRIES = [
   { code: "GB", nameKo: "영국", nameEn: "United Kingdom" },
   { code: "FR", nameKo: "프랑스", nameEn: "France" },
   { code: "NL", nameKo: "네덜란드", nameEn: "Netherlands" },
@@ -23,6 +23,33 @@ const SUPPORTED_COUNTRIES = [
   { code: "JP", nameKo: "일본", nameEn: "Japan" },
   { code: "CA", nameKo: "캐나다", nameEn: "Canada" },
   { code: "AU", nameKo: "호주", nameEn: "Australia" },
+  { code: "ES", nameKo: "스페인", nameEn: "Spain" },
+  { code: "PT", nameKo: "포르투갈", nameEn: "Portugal" },
+  { code: "IT", nameKo: "이탈리아", nameEn: "Italy" },
+  { code: "IE", nameKo: "아일랜드", nameEn: "Ireland" },
+  { code: "AT", nameKo: "오스트리아", nameEn: "Austria" },
+  { code: "CH", nameKo: "스위스", nameEn: "Switzerland" },
+  { code: "DK", nameKo: "덴마크", nameEn: "Denmark" },
+  { code: "NO", nameKo: "노르웨이", nameEn: "Norway" },
+  { code: "FI", nameKo: "핀란드", nameEn: "Finland" },
+  { code: "IS", nameKo: "아이슬란드", nameEn: "Iceland" },
+  { code: "PL", nameKo: "폴란드", nameEn: "Poland" },
+  { code: "CZ", nameKo: "체코", nameEn: "Czech Republic" },
+  { code: "SK", nameKo: "슬로바키아", nameEn: "Slovakia" },
+  { code: "HU", nameKo: "헝가리", nameEn: "Hungary" },
+  { code: "RO", nameKo: "루마니아", nameEn: "Romania" },
+  { code: "GR", nameKo: "그리스", nameEn: "Greece" },
+  { code: "NZ", nameKo: "뉴질랜드", nameEn: "New Zealand" },
+  { code: "MX", nameKo: "멕시코", nameEn: "Mexico" },
+  { code: "BR", nameKo: "브라질", nameEn: "Brazil" },
+  { code: "AR", nameKo: "아르헨티나", nameEn: "Argentina" },
+  { code: "CL", nameKo: "칠레", nameEn: "Chile" },
+  { code: "SG", nameKo: "싱가포르", nameEn: "Singapore" },
+  { code: "CN", nameKo: "중국", nameEn: "China" },
+  { code: "IN", nameKo: "인도", nameEn: "India" },
+  { code: "TH", nameKo: "태국", nameEn: "Thailand" },
+  { code: "IL", nameKo: "이스라엘", nameEn: "Israel" },
+  { code: "TR", nameKo: "튀르키예", nameEn: "Turkey" },
 ] as const;
 
 const EMS_FIELDS = [
@@ -63,7 +90,12 @@ const FAQ_ITEMS = [
   {
     question: "어떤 국가 주소를 지원하나요?",
     answer:
-      "현재 영국(GB), 프랑스(FR), 네덜란드(NL), 벨기에(BE), 스웨덴(SE), 독일(DE), 미국(US), 일본(JP), 캐나다(CA), 호주(AU) 10개국을 지원합니다. 국가별 우편번호 패턴과 도로명 키워드를 기준으로 파싱하며, postcode-validator로 우편번호를 검증합니다.",
+      "150개국 이상을 지원합니다. 37개국은 정밀 모드(국가별 우편번호·도로명·State 규칙)로 Zipcode·City·State·Line1/2를 세밀하게 분할하고, 나머지는 기본 모드(postcode-validator + 공통 휴리스틱)로 최소 Zipcode·Line1을 채웁니다. 드롭다운에서 ★ 표시는 정밀 지원 국가입니다.",
+  },
+  {
+    question: "정밀 지원과 기본 지원의 차이는?",
+    answer:
+      "정밀 지원(★)은 Rua·Calle·Via 등 국가별 도로명 키워드, 우편번호 prefix State lookup, 수취인/건물명 구분까지 적용합니다. 기본 지원은 우편번호 검증과 공통 주소 분할만 수행하므로 City·State가 비어 있을 수 있습니다. 출고 전 필드를 한 번 더 확인하세요.",
   },
   {
     question: "특수문자(쉼표, 하이픈, #)와 악센트(Ö, É, Ç)는 어떻게 처리되나요?",
@@ -90,7 +122,7 @@ const FAQ_ITEMS = [
 const HOWTO_STEPS = [
   {
     name: "국가 선택",
-    text: "수취인 주소 국가(영국, 미국, 일본 등 10개국)를 드롭다운에서 선택합니다.",
+    text: "수취인 주소 국가를 드롭다운에서 선택합니다. 주소 붙여넣기 시 국가가 자동 감지될 수 있습니다.",
   },
   {
     name: "영문 주소 붙여넣기",
@@ -119,7 +151,9 @@ function EmsAddressStructuredData({ pageUrl }: { pageUrl: string }) {
         "영문 해외 주소를 우체국 EMS, DHL, FedEx 입력 필드(Country, Zipcode, City, State, Line1, Line2)로 자동 분할하고 박스 부착용 배송 라벨을 즉시 출력하는 무료 웹 도구.",
       url: pageUrl,
       featureList: [
-        "10개국 우편번호 검증(postcode-validator)",
+        "150+ 국가 지원(37개국 정밀 + 기본 fallback)",
+        "우편번호 검증(postcode-validator)",
+        "주소 붙여넣기 시 국가 자동 감지",
         "Country / Zipcode / State / City / Line1 / Line2 자동 분할",
         "35자 초과분 Line 2 overflow 분할",
         "실물 박스 부착용 Shipping Label 생성",
@@ -157,7 +191,7 @@ export function EmsAddressSeoContent() {
               해외 주소 변환기 — EMS · DHL · FedEx
             </h2>
             <p className="font-en mt-1 text-sm text-foreground/50">
-              Overseas Address Converter · Contract EMS · Shipping label · 10
+              Overseas Address Converter · Contract EMS · Shipping label · 150+
               countries
             </p>
           </header>
@@ -177,9 +211,8 @@ export function EmsAddressSeoContent() {
             </p>
             <p className="font-en hidden md:block">
               Paste a buyer&apos;s overseas English address and get Korea Post
-              EMS, DHL, and FedEx form fields in real time. Supports GB, FR,
-              NL, BE, SE, DE, US, JP, CA, and AU with postcode validation—runs
-              entirely in your browser.
+              EMS, DHL, and FedEx form fields in real time. Supports 150+
+              countries (37 with precision rules)—runs entirely in your browser.
             </p>
           </div>
 
@@ -223,10 +256,14 @@ export function EmsAddressSeoContent() {
 
           <div className="border-b-[0.5px] border-[#D9D9D3] py-8">
             <h3 className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/45">
-              Supported countries
+              Precision countries (★)
             </h3>
+            <p className="font-ko mt-2 text-sm text-foreground/60">
+              아래 37개국은 국가별 규칙으로 정밀 분할합니다. 그 외 110여 개국은
+              기본 모드로 Zipcode·Line1 중심 지원합니다.
+            </p>
             <ul className="mt-4 grid grid-cols-2 gap-2 border-[0.5px] border-[#D9D9D3] p-4 sm:grid-cols-3">
-              {SUPPORTED_COUNTRIES.map((country) => (
+              {PRECISION_COUNTRIES.map((country) => (
                 <li
                   key={country.code}
                   className="font-ko text-sm text-foreground/70"

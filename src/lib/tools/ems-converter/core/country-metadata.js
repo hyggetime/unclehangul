@@ -23,10 +23,7 @@ export const GENERIC_COUNTRIES = {
   NI: { iso: "NI", emsName: "NICARAGUA", nameEn: "Nicaragua", nameKo: "니카라과" },
   SV: { iso: "SV", emsName: "EL SALVADOR", nameEn: "El Salvador", nameKo: "엘살바도르" },
 
-  // South America
-  BR: { iso: "BR", emsName: "BRAZIL", nameEn: "Brazil", nameKo: "브라질" },
-  AR: { iso: "AR", emsName: "ARGENTINA", nameEn: "Argentina", nameKo: "아르헨티나" },
-  CL: { iso: "CL", emsName: "CHILE", nameEn: "Chile", nameKo: "칠레" },
+  // South America (BR, AR, CL moved to precision rules)
   CO: { iso: "CO", emsName: "COLOMBIA", nameEn: "Colombia", nameKo: "콜롬비아" },
   PE: { iso: "PE", emsName: "PERU", nameEn: "Peru", nameKo: "페루" },
   UY: { iso: "UY", emsName: "URUGUAY", nameEn: "Uruguay", nameKo: "우루과이" },
@@ -43,17 +40,14 @@ export const GENERIC_COUNTRIES = {
   AD: { iso: "AD", emsName: "ANDORRA", nameEn: "Andorra", nameKo: "안도라" },
   SM: { iso: "SM", emsName: "SAN MARINO", nameEn: "San Marino", nameKo: "산마리노" },
   VA: { iso: "VA", emsName: "VATICAN CITY", nameEn: "Vatican City", nameKo: "바티칸" },
-  GR: { iso: "GR", emsName: "GREECE", nameEn: "Greece", nameKo: "그리스" },
+  // GR moved to precision rules
   MT: { iso: "MT", emsName: "MALTA", nameEn: "Malta", nameKo: "몰타" },
   CY: { iso: "CY", emsName: "CYPRUS", nameEn: "Cyprus", nameKo: "키프로스" },
 
   // Central & Eastern Europe
-  // PL moved to precision rules
-  CZ: { iso: "CZ", emsName: "CZECH REPUBLIC", nameEn: "Czech Republic", nameKo: "체코" },
-  HU: { iso: "HU", emsName: "HUNGARY", nameEn: "Hungary", nameKo: "헝가리" },
-  RO: { iso: "RO", emsName: "ROMANIA", nameEn: "Romania", nameKo: "루마니아" },
+  // PL, CZ, HU, RO moved to precision rules
   BG: { iso: "BG", emsName: "BULGARIA", nameEn: "Bulgaria", nameKo: "불가리아" },
-  SK: { iso: "SK", emsName: "SLOVAKIA", nameEn: "Slovakia", nameKo: "슬로바키아" },
+  // SK moved to precision rules
   SI: { iso: "SI", emsName: "SLOVENIA", nameEn: "Slovenia", nameKo: "슬로베니아" },
   HR: { iso: "HR", emsName: "CROATIA", nameEn: "Croatia", nameKo: "크로아티아" },
   RS: { iso: "RS", emsName: "SERBIA", nameEn: "Serbia", nameKo: "세르비아" },
@@ -173,6 +167,7 @@ export const GENERIC_COUNTRIES = {
  * @returns {Array<{code: string, emsName: string, nameEn: string, nameKo: string, isPrecision: boolean}>}
  */
 export function getAllCountries(precisionRules) {
+  const precisionCodes = new Set(Object.keys(precisionRules));
   const precision = Object.values(precisionRules).map((rule) => ({
     code: rule.iso,
     emsName: rule.emsName,
@@ -181,15 +176,16 @@ export function getAllCountries(precisionRules) {
     isPrecision: true,
   }));
 
-  const generic = Object.values(GENERIC_COUNTRIES).map((meta) => ({
-    code: meta.iso,
-    emsName: meta.emsName,
-    nameEn: meta.nameEn,
-    nameKo: meta.nameKo,
-    isPrecision: false,
-  }));
+  const generic = Object.values(GENERIC_COUNTRIES)
+    .filter((meta) => !precisionCodes.has(meta.iso))
+    .map((meta) => ({
+      code: meta.iso,
+      emsName: meta.emsName,
+      nameEn: meta.nameEn,
+      nameKo: meta.nameKo,
+      isPrecision: false,
+    }));
 
-  // Combine and sort by nameKo
   return [...precision, ...generic].sort((a, b) => a.nameKo.localeCompare(b.nameKo, "ko"));
 }
 

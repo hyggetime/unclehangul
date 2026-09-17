@@ -89,11 +89,14 @@ function hasDigits(text) {
   return /\d/.test(text);
 }
 
+const GENERIC_STREET_EN =
+  /\b(street|st|road|rd|avenue|ave|boulevard|blvd|drive|dr|lane|ln|way|place|pl|court|ct|square|sq|highway|hwy|terrace|close|crescent|loop|parkway|pkwy|trail|circle|unit|apt|suite|floor|bldg|building|po box|pobox|box|number|no)\b/i;
+
+const GENERIC_STREET_ROMANCE =
+  /\b(rua|avenida|avda|av|calle|c|via|viale|corso|piazza|rue|boulevard|bd|allee|chemin|strasse|str|weg|platz|ulica|ul|aleja|plac)\b/i;
+
 function looksLikeStreetGeneric(line) {
-  // Basic English street patterns
-  const streetPattern =
-    /\b(street|st|road|rd|avenue|ave|boulevard|blvd|drive|dr|lane|ln|way|place|pl|court|ct|square|sq|highway|hwy|terrace|close|crescent|loop|parkway|pkwy|trail|circle|unit|apt|suite|floor|bldg|building|po box|pobox|box)\b/i;
-  return streetPattern.test(line) || hasDigits(line);
+  return GENERIC_STREET_EN.test(line) || GENERIC_STREET_ROMANCE.test(line) || hasDigits(line);
 }
 
 /**

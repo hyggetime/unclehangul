@@ -87,6 +87,13 @@ function looksLikeRecipient(line, rule) {
   return true;
 }
 
+/** Reject country names mistaken for city (e.g. "New Zealand" in address tail). */
+function isLikelyCountryName(text) {
+  return /^(new zealand|australia|united states|united kingdom|great britain|canada|france|germany|spain|portugal|italy|brazil|argentina|chile|mexico|japan|china|india|singapore|thailand|south korea|korea)$/i.test(
+    String(text ?? "").trim(),
+  );
+}
+
 function takeState(lines, rule) {
   if (!rule.state) return { state: "", lines };
   const next = [...lines];
@@ -107,7 +114,7 @@ function takeCity(lines, rule) {
     const line = next[i];
     if (looksLikeStreet(line, rule) && !rule.cityLine?.test(line)) continue;
     const city = line.trim();
-    if (!city) continue;
+    if (!city || isLikelyCountryName(city)) continue;
     next.splice(i, 1);
     return { city, lines: next };
   }
@@ -205,9 +212,9 @@ export function parseAddressPrecision(rawText, selectedCountry) {
     streets = taken.lines;
   }
 
-  if (!city && streets.length && rule.state) {
+  if (!city && streets.length) {
     const peeled = peelCityFromStreet(streets[streets.length - 1], rule);
-    if (peeled.city) {
+    if (peeled.city && !isLikelyCountryName(peeled.city)) {
       city = peeled.city;
       streets = [...streets.slice(0, -1), peeled.street].filter(Boolean);
     }

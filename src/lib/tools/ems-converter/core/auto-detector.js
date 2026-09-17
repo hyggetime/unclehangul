@@ -43,11 +43,43 @@ export function detectCountry(rawText) {
     return precisionMatches[0].iso;
   }
 
+  // Street-keyword hints when postal code is absent or ambiguous
+  const streetHint = detectCountryFromStreetKeywords(blob);
+  if (streetHint) return streetHint;
+
   // Fallback: try to match common generic patterns
   const genericMatches = detectGenericPattern(blob);
   if (genericMatches.length > 0) {
-    // Return first match from generic detection
     return genericMatches[0];
+  }
+
+  return null;
+}
+
+/**
+ * Detect country from distinctive street keywords (e.g. Rua → PT).
+ * @param {string} text
+ * @returns {string|null}
+ */
+function detectCountryFromStreetKeywords(text) {
+  const hints = [
+    { iso: "PT", regex: /\b(rua|avenida|av\.|praca|praceta|largo|travessa|calcada|estrada|alameda)\b/i },
+    { iso: "ES", regex: /\b(calle|c\/|avenida|avda|paseo|plaza|camino|travesia|ronda)\b/i },
+    { iso: "IT", regex: /\b(via|viale|corso|piazza|piazzale|vicolo|strada)\b/i },
+    { iso: "FR", regex: /\b(rue|avenue|boulevard|bd|allee|chemin|impasse|quai)\b/i },
+    { iso: "DE", regex: /(strasse|str\.|\bstr\b|weg|platz|gasse)/i },
+    { iso: "NL", regex: /(straat|laan|\bweg\b|plein|gracht|kade)/i },
+    { iso: "SE", regex: /(gatan|gata|vagen|vag|torg)/i },
+    { iso: "BR", regex: /\b(rua|avenida|av\.|travessa|alameda|logradouro)\b/i },
+    { iso: "JP", regex: /\b(chome|banchi|ku|shi|ken|to|do)\b/i },
+    { iso: "TH", regex: /\b(thanon|soi|moo)\b/i },
+    { iso: "CN", regex: /\b(lu|jie|dao|xiang|district|road|avenue)\b/i },
+  ];
+
+  for (const hint of hints) {
+    if (hint.regex.test(text) && getCountryRule(hint.iso)) {
+      return hint.iso;
+    }
   }
 
   return null;
@@ -81,6 +113,9 @@ function calculatePatternScore(matched, rule, fullText) {
   if (rule.iso === "JP") score += 15; // Japanese postcodes are distinctive (000-0000)
   if (rule.iso === "SE") score += 12; // Swedish postcodes often have SE prefix
   if (rule.iso === "PT") score += 12; // Portuguese postcodes are distinctive (0000-000)
+  if (rule.iso === "BR") score += 18; // Brazilian CEP (00000-000) is more specific than bare 5 digits
+  if (rule.iso === "CL") score += 15; // Chilean 7-digit codes
+  if (rule.iso === "AR") score += 14; // Argentine CPA (A0000AAA)
   if (rule.iso === "IE") score += 12; // Irish Eircode is distinctive
   if (rule.iso === "PL") score += 10; // Polish postcodes are distinctive (00-000)
 

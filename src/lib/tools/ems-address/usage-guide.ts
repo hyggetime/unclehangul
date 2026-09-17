@@ -19,7 +19,7 @@ export const EMS_ADDRESS_USAGE: ToolUsageGuide = {
         body: "EMS·DHL·FedEx 입력에 맞게 악센트 등이 정리됩니다. 택배사 화면과 다르면 Line1/2만 수동 조정하세요.",
       },
     ],
-    tip: "GB·FR·DE·US·JP 등 주요국 규칙을 반영하지만, 최종 접수는 우체국·택배사 시스템 기준입니다.",
+    tip: "★ 정밀 지원 37개국은 국가별 규칙을 적용하고, 나머지는 기본 모드입니다. 주소 붙여넣기 시 국가가 자동 감지될 수 있습니다. 출고 전 필드를 확인하세요.",
   },
   en: {
     title: "How to use Overseas Address Converter",
@@ -39,6 +39,6 @@ export const EMS_ADDRESS_USAGE: ToolUsageGuide = {
         body: "Accents are normalized for carrier entry. If the shipping UI differs, tweak Line1/Line2 only.",
       },
     ],
-    tip: "Rules cover GB, FR, DE, US, JP, and more—but always confirm in the official carrier system.",
+    tip: "37 precision countries plus 110+ generic fallback—always confirm in the official carrier system before shipping.",
   },
 };
