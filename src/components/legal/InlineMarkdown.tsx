@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Fragment, type ReactNode } from "react";
 import { KoreanListenBold } from "@/components/speech/KoreanListenBold";
-import { hasHangul } from "@/utils/hangul-speak-text";
+import { findNextBoldPair } from "@/lib/markdown/bold-pairs";
+import {
+  hasHangul,
+  segmentForSpeech,
+} from "@/utils/hangul-speak-text";
 
 const MARKDOWN_LINK = /\[([^\]]+)\]\(([^)]+)\)/g;
 /** Single-asterisk italic only — must not match the inner `*…*` of `**bold**`. */
@@ -14,6 +18,8 @@ const linkClassName =
 const codeClassName =
   "font-mono text-[0.92em] rounded-sm bg-[#EBEBE5]/60 px-1 py-0.5 text-foreground/90";
 
+const strongClassName = "font-semibold text-foreground";
+
 type InlineMarkdownProps = {
   text: string;
   /** Bold segments that contain Hangul become tap-to-listen controls. */
@@ -24,41 +30,6 @@ type InlinePattern = {
   regex: RegExp;
   render: (content: string, key: number) => ReactNode;
 };
-
-type BoldPair = {
-  start: number;
-  end: number;
-  inner: string;
-};
-
-/** Innermost **…** span first — fixes nested bold like **Years (**년**)**. */
-function findShortestBoldPair(text: string): BoldPair | null {
-  let best: (BoldPair & { span: number }) | null = null;
-
-  for (let searchFrom = 0; searchFrom < text.length; ) {
-    const start = text.indexOf("**", searchFrom);
-    if (start === -1) break;
-
-    const close = text.indexOf("**", start + 2);
-    if (close === -1) break;
-
-    const inner = text.slice(start + 2, close);
-    if (!inner.length) {
-      searchFrom = start + 1;
-      continue;
-    }
-
-    const span = close + 2 - start;
-
-    if (!best || span < best.span) {
-      best = { start, end: close + 2, inner, span };
-    }
-
-    searchFrom = start + 2;
-  }
-
-  return best;
-}
 
 function renderLinkNode(
   label: string,
@@ -103,12 +74,48 @@ function renderBoldNode(
   listenBoldHangul: boolean,
   key: number,
 ): ReactNode {
+  if (listenBoldHangul && content.includes("**")) {
+    return (
+      <strong key={key} className={strongClassName}>
+        {renderRichText(content, listenBoldHangul, key + 1)}
+      </strong>
+    );
+  }
+
   if (listenBoldHangul && hasHangul(content)) {
-    return <KoreanListenBold key={key} label={content} />;
+    const segments = segmentForSpeech(content);
+    const hasSpeak = segments.some((segment) => segment.kind === "speak");
+
+    if (hasSpeak) {
+      return (
+        <strong key={key} className={strongClassName}>
+          {segments.map((segment, index) => {
+            if (segment.kind === "speak") {
+              return (
+                <KoreanListenBold
+                  key={`${key}-speak-${index}`}
+                  label={segment.value}
+                />
+              );
+            }
+
+            return (
+              <Fragment key={`${key}-text-${index}`}>
+                {renderLinksAndEmphasis(
+                  segment.value,
+                  listenBoldHangul,
+                  key + index + 1,
+                )}
+              </Fragment>
+            );
+          })}
+        </strong>
+      );
+    }
   }
 
   return (
-    <strong key={key} className="font-semibold text-foreground">
+    <strong key={key} className={strongClassName}>
       {renderLinksAndEmphasis(content, listenBoldHangul, key + 1)}
     </strong>
   );
@@ -120,7 +127,7 @@ function renderRichText(
   listenBoldHangul: boolean,
   keyStart: number,
 ): ReactNode[] {
-  const pair = findShortestBoldPair(text);
+  const pair = findNextBoldPair(text);
   if (!pair) {
     return renderLinksAndEmphasis(text, listenBoldHangul, keyStart);
   }
