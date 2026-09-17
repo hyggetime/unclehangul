@@ -1,6 +1,6 @@
 import { postcodeValidator } from "postcode-validator";
 import { splitSanitizedLines } from "./sanitizer.js";
-import { formatPostalCode, lookupStateByZipcode } from "./rules.js";
+import { formatPostalCode, getCountryRule, lookupStateByZipcode } from "./rules.js";
 
 const EMS_LINE_MAX = 35;
 
@@ -165,12 +165,15 @@ function wrapEmsLines(parts) {
 }
 
 /**
- * Parse address using country-specific precision rules.
+ * Parse a raw overseas address into Korea Post contract-EMS fields using precision rules.
  * @param {string} rawText
- * @param {object} rule Country rule from COUNTRY_RULES
+ * @param {string} selectedCountry ISO 3166-1 alpha-2 (GB, FR, NL, …)
  * @returns {{ country: string, postalCode: string, city: string, state: string, line1: string, line2: string }}
  */
-export function parseAddressPrecision(rawText, rule) {
+export function parseAddressPrecision(rawText, selectedCountry) {
+  const rule = getCountryRule(selectedCountry);
+  if (!rule) return emptyResult(String(selectedCountry ?? "").toUpperCase());
+
   const lines = splitSanitizedLines(rawText);
   if (!lines.length) return emptyResult(rule.iso);
 

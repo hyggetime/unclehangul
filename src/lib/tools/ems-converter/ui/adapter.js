@@ -1,5 +1,6 @@
 import { parseAddress } from "../core/parser.js";
 import { COUNTRY_LIST, getCountryRule } from "../core/rules.js";
+import { detectCountry } from "../core/auto-detector.js";
 import {
   bindOutboundLabelActions,
   renderOutboundLabelMarkup,
@@ -167,7 +168,23 @@ export function mountEmsConverter(root) {
   }
 
   function run() {
-    fill(parseAddress(rawInput.value, countryInput.value));
+    const rawText = rawInput.value;
+    
+    // Auto-detect country if possible
+    if (rawText.trim()) {
+      const detected = detectCountry(rawText);
+      if (detected && detected !== countryInput.value) {
+        // Only update if detection is confident and different
+        const detectedOption = Array.from(countryInput.options).find(
+          (opt) => opt.value === detected
+        );
+        if (detectedOption) {
+          countryInput.value = detected;
+        }
+      }
+    }
+    
+    fill(parseAddress(rawText, countryInput.value));
   }
 
   async function onCopy(event) {
