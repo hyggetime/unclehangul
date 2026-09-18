@@ -1,8 +1,8 @@
 ---
 title: "23 Hours on the Highway: The Story Behind Korea's Thanksgiving (Chuseok) Traffic"
 description: "Why millions of Koreans once spent 23 hours in traffic jams to reach home for Chuseok, and what it tells us about Korean family culture."
-date: "2026-09-20"
-publishAt: "2026-09-20T00:00:00+09:00"
+date: "2026-09-19"
+publishAt: "2026-09-19T00:00:00+09:00"
 category: "Korean Culture"
 author: Uncle Hangul
 tags: ["Chuseok", "추석", "Korean Holidays", "Korean Culture", "Family Culture"]
