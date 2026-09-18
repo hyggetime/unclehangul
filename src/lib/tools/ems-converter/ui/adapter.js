@@ -156,6 +156,7 @@ export function mountEmsConverter(root) {
 
   const timers = new Map();
   let mobileOutputOpen = false;
+  let countryLockedByUser = false;
   const mobileMq = window.matchMedia("(max-width: 767px)");
 
   function syncMobileOutput() {
@@ -201,15 +202,29 @@ export function mountEmsConverter(root) {
       detectHint.classList.add("hidden");
       return;
     }
-    detectHint.textContent = `주소에서 ${meta.nameKo}(${meta.code})로 자동 선택되었습니다.`;
+    detectHint.textContent = `주소에서 ${meta.nameKo}(${meta.iso})로 자동 선택되었습니다.`;
     detectHint.classList.remove("hidden");
   }
 
-  function run() {
+  function runParseOnly() {
+    fill(parseAddress(rawInput.value, countryInput.value));
+  }
+
+  function runWithAutoDetect() {
     const rawText = rawInput.value;
     const previousCountry = countryInput.value;
 
-    if (rawText.trim()) {
+    if (!rawText.trim()) {
+      countryLockedByUser = false;
+      if (detectHint) {
+        detectHint.textContent = "";
+        detectHint.classList.add("hidden");
+      }
+      runParseOnly();
+      return;
+    }
+
+    if (!countryLockedByUser) {
       const detected = detectCountry(rawText);
       if (detected && detected !== countryInput.value) {
         const detectedOption = Array.from(countryInput.options).find(
@@ -223,12 +238,18 @@ export function mountEmsConverter(root) {
         detectHint.textContent = "";
         detectHint.classList.add("hidden");
       }
-    } else if (detectHint) {
+    }
+
+    runParseOnly();
+  }
+
+  function onCountryChange() {
+    countryLockedByUser = true;
+    if (detectHint) {
       detectHint.textContent = "";
       detectHint.classList.add("hidden");
     }
-
-    fill(parseAddress(rawText, countryInput.value));
+    runParseOnly();
   }
 
   async function onCopy(event) {
@@ -262,8 +283,8 @@ export function mountEmsConverter(root) {
     }
   }
 
-  rawInput.addEventListener("input", run);
-  countryInput.addEventListener("change", run);
+  rawInput.addEventListener("input", runWithAutoDetect);
+  countryInput.addEventListener("change", onCountryChange);
   for (const { button } of fieldInputs) {
     button.addEventListener("click", onCopy);
   }
@@ -286,7 +307,7 @@ export function mountEmsConverter(root) {
     }),
   });
 
-  run();
+  runWithAutoDetect();
 
   return () => {
     for (const timeout of timers.values()) window.clearTimeout(timeout);

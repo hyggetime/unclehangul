@@ -1,6 +1,7 @@
 import { postcodeValidator } from "postcode-validator";
 import { splitSanitizedLines } from "./sanitizer.js";
-import { formatPostalCode, getCountryRule, lookupStateByZipcode } from "./rules.js";
+import { getCountryMetadata } from "./country-metadata.js";
+import { COUNTRY_RULES, formatPostalCode, getCountryRule, lookupStateByZipcode } from "./rules.js";
 
 const EMS_LINE_MAX = 35;
 
@@ -98,10 +99,22 @@ function takeState(lines, rule) {
   if (!rule.state) return { state: "", lines };
   const next = [...lines];
   for (let i = next.length - 1; i >= 0; i -= 1) {
-    const match = next[i].match(rule.state);
+    const line = next[i];
+
+    // US state codes collide with common words ("La" in hotel names). Require ", ST" shape.
+    if (rule.iso === "US") {
+      const commaMatch = line.match(/,\s*([A-Z]{2})\b/);
+      if (!commaMatch) continue;
+      const state = commaMatch[1];
+      next[i] = line.replace(/,\s*[A-Z]{2}\b/, "").replace(/\s+/g, " ").trim();
+      if (!next[i]) next.splice(i, 1);
+      return { state, lines: next.filter(Boolean) };
+    }
+
+    const match = line.match(rule.state);
     if (!match) continue;
     const state = match[1] ? match[1].toUpperCase() : match[0].toUpperCase();
-    next[i] = next[i].replace(match[0], " ").replace(/\s+/g, " ").trim();
+    next[i] = line.replace(match[0], " ").replace(/\s+/g, " ").trim();
     if (!next[i]) next.splice(i, 1);
     return { state, lines: next.filter(Boolean) };
   }
@@ -177,11 +190,25 @@ function wrapEmsLines(parts) {
  * @param {string} selectedCountry ISO 3166-1 alpha-2 (GB, FR, NL, …)
  * @returns {{ country: string, postalCode: string, city: string, state: string, line1: string, line2: string }}
  */
+function stripExplicitCountryLines(lines, countryIso) {
+  const meta = getCountryMetadata(countryIso, COUNTRY_RULES);
+  if (!meta) return lines;
+
+  const names = [meta.nameKo, meta.nameEn, meta.emsName].filter(Boolean);
+  return lines.filter((line) => {
+    const trimmed = line.trim();
+    if (!trimmed || /\d/.test(trimmed)) return true;
+    return !names.some(
+      (name) => trimmed.localeCompare(name, undefined, { sensitivity: "accent" }) === 0,
+    );
+  });
+}
+
 export function parseAddressPrecision(rawText, selectedCountry) {
   const rule = getCountryRule(selectedCountry);
   if (!rule) return emptyResult(String(selectedCountry ?? "").toUpperCase());
 
-  const lines = splitSanitizedLines(rawText);
+  const lines = stripExplicitCountryLines(splitSanitizedLines(rawText), rule.iso);
   if (!lines.length) return emptyResult(rule.iso);
 
   const restLooksLikeAddress = lines

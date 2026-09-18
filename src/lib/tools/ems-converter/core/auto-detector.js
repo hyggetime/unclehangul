@@ -1,6 +1,9 @@
 import { COUNTRY_RULES, getCountryRule } from "./rules.js";
-import { GENERIC_COUNTRIES } from "./country-metadata.js";
+import { GENERIC_COUNTRIES, getAllCountries } from "./country-metadata.js";
 import { splitSanitizedLines } from "./sanitizer.js";
+
+const US_STATES_FOR_HINT =
+  "AL|AK|AZ|AR|CA|CO|CT|DC|DE|FL|GA|HI|IA|ID|IL|IN|KS|KY|LA|MA|MD|ME|MI|MN|MO|MS|MT|NC|ND|NE|NH|NJ|NM|NV|NY|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VA|VT|WA|WI|WV|WY";
 
 /**
  * Auto-detect country from raw address text by analyzing postal code patterns.
@@ -10,6 +13,10 @@ import { splitSanitizedLines } from "./sanitizer.js";
 export function detectCountry(rawText) {
   const lines = splitSanitizedLines(rawText);
   if (!lines.length) return null;
+
+  // Explicit country names (e.g. "프랑스", "France") override postal heuristics
+  const fromName = detectCountryFromExplicitNames(lines);
+  if (fromName) return fromName;
 
   // Join all lines to search for postal codes
   const blob = lines.join(" ");
@@ -66,7 +73,7 @@ function detectCountryFromStreetKeywords(text) {
     { iso: "PT", regex: /\b(rua|avenida|av\.|praca|praceta|largo|travessa|calcada|estrada|alameda)\b/i },
     { iso: "ES", regex: /\b(calle|c\/|avenida|avda|paseo|plaza|camino|travesia|ronda)\b/i },
     { iso: "IT", regex: /\b(via|viale|corso|piazza|piazzale|vicolo|strada)\b/i },
-    { iso: "FR", regex: /\b(rue|avenue|boulevard|bd|allee|chemin|impasse|quai)\b/i },
+    { iso: "FR", regex: /\b(rue|avenue|boulevard|bd|allee|chemin|impasse|quai|route)\b/i },
     { iso: "DE", regex: /(strasse|str\.|\bstr\b|weg|platz|gasse)/i },
     { iso: "NL", regex: /(straat|laan|\bweg\b|plein|gracht|kade)/i },
     { iso: "SE", regex: /(gatan|gata|vagen|vag|torg)/i },
@@ -144,9 +151,49 @@ function calculatePatternScore(matched, rule, fullText) {
 /**
  * Check if the text contains context hints for the given country rule.
  */
+/**
+ * Detect country when the user wrote the country name explicitly (often the last line).
+ * @param {string[]} lines sanitized address lines
+ * @returns {string|null}
+ */
+function detectCountryFromExplicitNames(lines) {
+  const countries = getAllCountries(COUNTRY_RULES);
+
+  for (let i = lines.length - 1; i >= 0; i -= 1) {
+    const line = lines[i].trim();
+    if (!line) continue;
+
+    for (const country of countries) {
+      const names = [country.nameKo, country.nameEn, country.emsName].filter(Boolean);
+      for (const name of names) {
+        if (line.localeCompare(name, undefined, { sensitivity: "accent" }) === 0) {
+          return country.code;
+        }
+      }
+    }
+
+    // Only check dedicated country-name lines (short, no digits)
+    if (/\d/.test(line) || line.split(/\s+/).length > 4) break;
+  }
+
+  return null;
+}
+
+function hasUsStateHint(text) {
+  const commaState = text.match(/,\s*([A-Z]{2})\b(?:\s+\d{5})?/);
+  if (commaState && US_STATES_FOR_HINT.includes(commaState[1])) return true;
+
+  const stateZip = text.match(/\b([A-Z]{2})\s+\d{5}\b/);
+  if (stateZip && US_STATES_FOR_HINT.includes(stateZip[1])) return true;
+
+  return false;
+}
+
 function hasContextHints(text, rule) {
-  // Check for state/province matches
-  if (rule.state && rule.state.test(text)) {
+  // US state codes collide with common words ("La" → LA). Require US address shape.
+  if (rule.iso === "US") {
+    if (hasUsStateHint(text)) return true;
+  } else if (rule.state && rule.state.test(text)) {
     return true;
   }
 
@@ -155,7 +202,7 @@ function hasContextHints(text, rule) {
     // Only count as strong hint for distinctive patterns
     const streetHints = {
       GB: /\b(street|road|avenue|lane|close|way)\b/i,
-      FR: /\b(rue|avenue|boulevard|place)\b/i,
+      FR: /\b(rue|avenue|boulevard|place|route)\b/i,
       ES: /\b(calle|avenida|plaza|paseo)\b/i,
       PT: /\b(rua|avenida|praca|largo)\b/i,
       IT: /\b(via|viale|corso|piazza)\b/i,

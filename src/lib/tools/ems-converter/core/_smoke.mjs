@@ -53,6 +53,24 @@ const tests = [
     expectCity: "Ericeira",
   },
   {
+    name: "FR - Guemar with country name line",
+    address: "Hotel La Clairiere\n50 route d illhaeusern\nguemar, 68970\nFrance",
+    country: "FR",
+    expectDetect: "FR",
+    requirePostal: true,
+    expectCity: "guemar",
+    rejectState: /^LA$/i,
+  },
+  {
+    name: "FR - Guemar with Korean country name",
+    address: "Hotel La Clairiere\n50 route d illhaeusern\nguemar, 68970\n프랑스",
+    country: "FR",
+    expectDetect: "FR",
+    requirePostal: true,
+    expectCity: "guemar",
+    rejectState: /^LA$/i,
+  },
+  {
     name: "IT - Rome",
     address: "Via del Corso 506\n00186 Roma",
     country: "IT",
@@ -134,8 +152,9 @@ for (const test of tests) {
       ? parsed.postalCode.includes(test.expectPostalPrefix)
       : true;
     const rejectCityOk = test.rejectCity ? !test.rejectCity.test(parsed.city) : true;
+    const rejectStateOk = test.rejectState ? !test.rejectState.test(parsed.state) : true;
 
-    if (detectionOk && postalOk && lineOk && cityOk && postalPrefixOk && rejectCityOk) {
+    if (detectionOk && postalOk && lineOk && cityOk && postalPrefixOk && rejectCityOk && rejectStateOk) {
       console.log(`✅ ${test.name}`);
       console.log(`   Detected: ${detected || "(none)"} → parsed as ${country}`);
       console.log(`   Postal: ${parsed.postalCode || "(none)"}`);
