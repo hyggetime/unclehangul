@@ -119,5 +119,6 @@ Welcome to Volume 2 of Uncle Hangul's K-Dictionary! Today, we are diving into fi
 
 ### Reactions & Next Steps
 
-* **Continue Reading:** [Uncle Hangul's K-Dictionary Vol. 1: 5 Untranslatable Words You Need to Know](/learn/uncle-hangul-k-dictionary-vol-1-5-untranslatable-korean-words) — **눈치**, **정**, **꼰대**, and more words Google Translate misses.
+* **Continue Reading:** [Uncle Hangul's K-Dictionary Vol. 3: 5 Words for Deep Korean Emotions](/learn/uncle-hangul-k-dictionary-vol-3-5-words-deep-korean-emotions) — **한**, **흥**, **답답해**, **억울해**, and **서운해** for the inner heart of Korean culture.
+* **Related:** [Uncle Hangul's K-Dictionary Vol. 1: 5 Untranslatable Words You Need to Know](/learn/uncle-hangul-k-dictionary-vol-1-5-untranslatable-korean-words) — **눈치**, **정**, **꼰대**, and more words Google Translate misses.
 * **Related:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — how office hierarchy shapes speech after **회식**.
