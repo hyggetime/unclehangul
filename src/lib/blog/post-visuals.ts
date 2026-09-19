@@ -81,6 +81,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "ten-months-in-womb-korean-taegyo-never-about-iq": "태교",
   "23-hours-highway-korea-chuseok-thanksgiving-traffic": "추석",
   "uncle-hangul-k-dictionary-vol-1-5-untranslatable-korean-words": "눈치",
+  "uncle-hangul-k-dictionary-vol-2-5-words-korean-social-dynamics": "식구",
 };
 
 function normalizeTileEntry(entry: TileEntry): HangulTileSpec {

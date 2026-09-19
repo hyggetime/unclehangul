@@ -119,5 +119,6 @@ Welcome to Volume 1 of Uncle Hangul's K-Dictionary, where we unpack Korean words
 
 ### Reactions & Next Steps
 
-* **Continue Reading:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — how **눈치** and social reading shape everyday speech levels.
+* **Continue Reading:** [Uncle Hangul's K-Dictionary Vol. 2: 5 Words That Explain Korean Social Dynamics](/learn/uncle-hangul-k-dictionary-vol-2-5-words-korean-social-dynamics) — **식구**, **회식**, **갑질**, **애교**, and **썸** for workplace and dating life.
+* **Related:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — how **눈치** and social reading shape everyday speech levels.
 * **Related:** [23 Hours on the Highway: The Story Behind Korea's Thanksgiving (Chuseok) Traffic](/learn/23-hours-highway-korea-chuseok-thanksgiving-traffic) — how holiday travel reveals Korean family **정**.
