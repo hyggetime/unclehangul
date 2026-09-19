@@ -83,6 +83,11 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "uncle-hangul-k-dictionary-vol-1-5-untranslatable-korean-words": "눈치",
   "uncle-hangul-k-dictionary-vol-2-5-words-korean-social-dynamics": "애교",
   "uncle-hangul-k-dictionary-vol-3-5-words-deep-korean-emotions": "흥",
+  "uncle-hangul-k-dictionary-vol-4-5-modern-slang-korean-young-people": {
+    text: "내돈내산",
+    layout: "single",
+    insetXScale: 0.5,
+  },
 };
 
 function normalizeTileEntry(entry: TileEntry): HangulTileSpec {

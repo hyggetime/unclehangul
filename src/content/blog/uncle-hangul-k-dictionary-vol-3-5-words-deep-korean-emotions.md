@@ -119,5 +119,6 @@ Welcome to Volume 3 of Uncle Hangul's K-Dictionary! Today, we are unpacking five
 
 ### Reactions & Next Steps
 
-* **Continue Reading:** [Uncle Hangul's K-Dictionary Vol. 2: 5 Words That Explain Korean Social Dynamics](/learn/uncle-hangul-k-dictionary-vol-2-5-words-korean-social-dynamics) — **식구**, **회식**, **갑질**, **애교**, and **썸** for workplace and dating life.
+* **Continue Reading:** [Uncle Hangul's K-Dictionary Vol. 4: 5 Modern Slang Words Korean Young People Use](/learn/uncle-hangul-k-dictionary-vol-4-5-modern-slang-korean-young-people) — **갓생**, **치맥**, **불금**, **내돈내산**, and **내로남불**.
+* **Related:** [Uncle Hangul's K-Dictionary Vol. 2: 5 Words That Explain Korean Social Dynamics](/learn/uncle-hangul-k-dictionary-vol-2-5-words-korean-social-dynamics) — **식구**, **회식**, **갑질**, **애교**, and **썸** for workplace and dating life.
 * **Related:** [Uncle Hangul's K-Dictionary Vol. 1: 5 Untranslatable Words You Need to Know](/learn/uncle-hangul-k-dictionary-vol-1-5-untranslatable-korean-words) — **눈치**, **정**, **꼰대**, and more words Google Translate misses.
