@@ -126,6 +126,5 @@ So the word crossed into Korean, kept its spelling, and swapped its meaning. It 
 
 Four of these five describe how people manage each other's feelings in a group. That is not a coincidence, and it is a reasonable next thing to go read about.
 
-* **Related:** [From the Dinner Table to the Group Chat](/learn/uncle-hangul-k-dictionary-vol-2-5-words-korean-social-dynamics) — **식구**, **회식**, **갑질**, **애교**, and **썸**, in the order a relationship actually moves through them.
 * **Related:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — 눈치 applied to the single highest-stakes decision in Korean speech.
 * **Related:** [23 Hours on the Highway: The Story Behind Korea's Chuseok Traffic](/learn/23-hours-highway-korea-chuseok-thanksgiving-traffic) — 정 at national scale, measured in hours of gridlock.

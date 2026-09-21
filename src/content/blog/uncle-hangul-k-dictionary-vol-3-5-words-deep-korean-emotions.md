@@ -107,6 +107,5 @@ Using the wrong one is not a grammar error, it is a relationship statement. Sayi
 
 If one of these five finally put a name on something you have felt but never labeled, that is the whole point of the exercise.
 
-* **Related:** [Korean Slang Is Built, Not Borrowed](/learn/uncle-hangul-k-dictionary-vol-4-5-modern-slang-korean-young-people) — the four construction rules behind **갓생**, **치맥**, and **내로남불**.
-* **Related:** [From the Dinner Table to the Group Chat](/learn/uncle-hangul-k-dictionary-vol-2-5-words-korean-social-dynamics) — **식구**, **회식**, **갑질**, **애교**, and **썸**.
 * **Related:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — the same closeness rule that governs **서운해**, applied to speech level.
+* **Related:** [Why Solo Dwellers in Korea Still Say 우리 집](/learn/why-solo-dwellers-korea-still-say-our-house) — another case where Korean grammar encodes who counts as close.

@@ -99,5 +99,5 @@ The safer play is to **recognize** all of them and **use** the first two until y
 
 Try running the four rules on slang you encounter this week. Most of it will decompose.
 
-* **Related:** [한, 흥, and the Three Complaints](/learn/uncle-hangul-k-dictionary-vol-3-5-words-deep-korean-emotions) — **한**, **흥**, **답답해**, **억울해**, and **서운해**.
 * **Related:** [From Water is Self to Aircon: How Korea Shrinks English](/learn/from-water-is-self-to-aircon-korea-shrinks-english) — Rule 2 applied to loanwords like **에어컨** and **아파트**.
+* **Related:** [The Graphic Blueprint of Hangul Loanwords](/learn/graphic-blueprint-hangul-loanwords) — what happens to a borrowed word before any of these rules can touch it.

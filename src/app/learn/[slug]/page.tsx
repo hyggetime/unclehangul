@@ -5,6 +5,8 @@ import { AuthorTeaser } from "@/components/blog/AuthorTeaser";
 import { BlogBody } from "@/components/blog/BlogBody";
 import { BlogPostHeader } from "@/components/blog/BlogPostHeader";
 import { LearnPostJsonLd } from "@/components/blog/LearnPostJsonLd";
+import { SeriesBadge } from "@/components/blog/SeriesBadge";
+import { SeriesNav } from "@/components/blog/SeriesNav";
 import { KoreanListenHint } from "@/components/learn/KoreanListenHint";
 import { ArticleChannelLinks } from "@/components/learn/ArticleChannelLinks";
 import { ContentFeedback } from "@/components/feedback/ContentFeedback";
@@ -14,9 +16,11 @@ import { LearnTocMobile } from "@/components/learn/toc/LearnTocMobile";
 import { ShareButtons } from "@/components/share/ShareButtons";
 import {
   getAllPostSlugsIncludingUnpublished,
+  getAllPosts,
   getPostBySlug,
   getPostMetadata,
 } from "@/lib/blog/posts";
+import { getSeriesContext } from "@/lib/blog/series";
 import {
   extractTocFromBlocks,
   shouldShowToc,
@@ -52,6 +56,10 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
 
   const tocItems = extractTocFromBlocks(post.blocks);
   const showToc = shouldShowToc(tocItems);
+  const seriesContext = getSeriesContext(slug);
+  const availableSlugs = seriesContext
+    ? new Set(getAllPosts().map((item) => item.slug))
+    : new Set<string>();
 
   return (
     <>
@@ -71,6 +79,11 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
             />
 
             <header className="border-b-[0.5px] border-[#D9D9D3] px-5 py-8 md:px-8 md:py-10">
+              {seriesContext ? (
+                <div className="mb-5">
+                  <SeriesBadge {...seriesContext} />
+                </div>
+              ) : null}
               <h1
                 itemProp="headline"
                 className="font-en max-w-3xl break-words text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl"
@@ -116,6 +129,10 @@ export default async function LearnPostPage({ params }: LearnPostPageProps) {
                 listenBoldHangul
               />
             </div>
+
+            {seriesContext ? (
+              <SeriesNav {...seriesContext} availableSlugs={availableSlugs} />
+            ) : null}
 
             <ArticleChannelLinks slug={slug} />
             <AuthorTeaser />

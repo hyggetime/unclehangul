@@ -97,6 +97,5 @@ What is notable is that Korean bothered to name this at all. Having a word for t
 
 Read in order, these five sketch a full social map: how closeness is built, enforced, abused, performed, and left deliberately vague.
 
-* **Related:** [Five Korean Words English Keeps Getting Wrong](/learn/uncle-hangul-k-dictionary-vol-1-5-untranslatable-korean-words) — **눈치**, **정**, **꼰대**, and exactly where the dictionary translation fails.
-* **Related:** [한, 흥, and the Three Complaints](/learn/uncle-hangul-k-dictionary-vol-3-5-words-deep-korean-emotions) — the emotional vocabulary underneath these social ones.
 * **Related:** [When Do Koreans Switch from Jondaetmal (존댓말) to Banmal (반말)?](/learn/when-do-koreans-switch-jondaetmal-to-banmal) — what actually changes in speech after a **회식**.
+* **Related:** [Why Korean Restaurant Workers Are Called 이모 and 아줌마](/learn/why-korean-restaurant-workers-called-aunt-eoni-imo-ajumma) — the same family vocabulary as **식구**, applied to total strangers.
