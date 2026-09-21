@@ -12,6 +12,8 @@ type PlayWidgetPageShellProps = {
   descriptionEn: string;
   descriptionKo: string;
   children: ReactNode;
+  /** Long-form explainer rendered under the widget. */
+  guide?: ReactNode;
   feedbackContentId?: string;
   usageGuide?: ToolUsageGuide;
   share?: {
@@ -27,6 +29,7 @@ export function PlayWidgetPageShell({
   descriptionEn,
   descriptionKo,
   children,
+  guide,
   feedbackContentId,
   usageGuide,
   share,
@@ -67,6 +70,8 @@ export function PlayWidgetPageShell({
         </header>
 
         <div className="px-5 py-8 md:px-8 md:py-10">{children}</div>
+
+        {guide}
 
         {feedbackContentId ? (
           <div className="border-t-[0.5px] border-[#D9D9D3] px-5 md:px-8">

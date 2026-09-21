@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PlayHubGuide } from "@/components/play/PlayHubGuide";
 import { PlayWidgetCard } from "@/components/play/PlayWidgetCard";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { getPlayHubWidgets } from "@/lib/play/catalog";
@@ -47,6 +48,8 @@ export default function PlayIndexPage() {
             <PlayWidgetCard key={widget.slug} widget={widget} />
           ))}
         </div>
+
+        <PlayHubGuide />
       </div>
     </div>
   );

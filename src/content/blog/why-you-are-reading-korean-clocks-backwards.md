@@ -109,7 +109,7 @@ Uncle Hangul checks the comments directly to evaluate your work and offer feedba
 
 ### Reactions & Next Steps
 
-If this lesson helped you read Korean time in macro-to-micro order, let us know by selecting a reaction below.
+For the next week, read every clock you pass in macro-to-micro order before your brain reverts to English. On this one, habit beats comprehension.
 
 * **Visual Stories:** For artwork and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Continue Reading:** Need the address version of this logic? See [From the Universe to Your Doorstep: Decoding Korea's Big-to-Small Logic](/learn/from-universe-to-doorstep-korea-big-to-small-logic).

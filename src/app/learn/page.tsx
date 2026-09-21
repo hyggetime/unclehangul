@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LearnArticleCard } from "@/components/learn/LearnArticleCard";
+import { LearnIndexIntro } from "@/components/learn/LearnIndexIntro";
 import { LearnIndexJsonLd } from "@/components/learn/LearnIndexJsonLd";
 import { LearnRecommendedToolsChips } from "@/components/learn/LearnRecommendedToolsChips";
 import { LearnSidebar } from "@/components/learn/LearnSidebar";
@@ -37,6 +38,8 @@ export default function LearnIndexPage() {
                 두었습니다.
               </p>
             </header>
+
+            <LearnIndexIntro />
 
             <LearnRecommendedToolsChips />
 

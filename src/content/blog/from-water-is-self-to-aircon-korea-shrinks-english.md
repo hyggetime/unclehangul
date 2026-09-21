@@ -140,7 +140,7 @@ It is a remarkably efficient, streamlined vocabulary system built specifically f
 
 ### Reactions & Next Steps
 
-If this breakdown helped you understand the mechanics behind Korean loanwords, let us know by selecting a reaction below!
+Once the clipping rule is audible to you, Korean signage turns into a puzzle you can solve on sight. Most of it is English wearing four fewer syllables.
 
 * **Visual Stories:** For artwork, illustrations, and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Up Next:** Ever wondered why Koreans use the word "fighting!" (파이팅) to cheer someone on? In our next article, we will analyze the linguistic shift from physical conflict to social encouragement.

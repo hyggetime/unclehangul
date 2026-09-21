@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HomeApproach } from "@/components/home/HomeApproach";
 import { HomeChannelsBand } from "@/components/home/HomeChannelsBand";
 import { HomeHero } from "@/components/home/HomeHero";
 import { HomeLearnRail } from "@/components/home/HomeLearnRail";
@@ -20,6 +21,7 @@ export default function Home() {
     <div className={MAIN_COLUMN}>
       <HomeHero />
       <HomeLearnRail posts={posts} />
+      <HomeApproach />
 
       <div id="hangul-play">
         <NameConverter />

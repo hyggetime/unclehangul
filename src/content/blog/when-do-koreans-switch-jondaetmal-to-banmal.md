@@ -116,7 +116,7 @@ It is about understanding social boundaries and knowing precisely when both peop
 
 ### Reactions & Next Steps
 
-If this guide clarified how speech transitions work in Korea, let us know by selecting a reaction below!
+When in doubt, stay in **존댓말** and let the other person move first. Being slightly too formal has never damaged a relationship in Korea. The reverse has.
 
 * **Visual Stories:** For artwork, illustrations, and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Up Next:** Ever wondered why Koreans ask for your birth year within five minutes of meeting you? In our next article, we will examine the **"Social Age Calculator"** that determines your default speech level.

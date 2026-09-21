@@ -3,9 +3,11 @@ import { notFound, redirect } from "next/navigation";
 import { CityNamesWidget } from "@/components/play/CityNamesWidget";
 import { ComingSoonShell } from "@/components/play/ComingSoonShell";
 import { JamoBuilderWidget } from "@/components/play/JamoBuilderWidget";
+import { PlayWidgetGuide } from "@/components/play/PlayWidgetGuide";
 import { PlayWidgetPageShell } from "@/components/play/PlayWidgetPageShell";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { getPlayUsageGuide } from "@/lib/play/usage-guides";
+import { getPlayWidgetGuide } from "@/lib/play/widget-guides";
 import { PLAY_WIDGETS, getPlayWidget } from "@/lib/play/catalog";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -51,6 +53,14 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
 
   if (widget.status === "live") {
     const shareUrl = `${getSiteUrl()}/play/${slug}`;
+    const widgetGuide = getPlayWidgetGuide(slug);
+    const guide = widgetGuide ? (
+      <PlayWidgetGuide
+        guide={widgetGuide}
+        pageUrl={shareUrl}
+        faqId={`${slug}-faq`}
+      />
+    ) : undefined;
 
     if (slug === "city-names") {
       return (
@@ -59,6 +69,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           titleKo={widget.titleKo}
           descriptionEn={widget.descriptionEn}
           descriptionKo={widget.descriptionKo}
+          guide={guide}
           feedbackContentId={slug}
           usageGuide={getPlayUsageGuide(slug)}
           share={{ title: widget.title, url: shareUrl }}
@@ -75,6 +86,7 @@ export default async function PlayWidgetPage({ params }: PlayWidgetPageProps) {
           titleKo={widget.titleKo}
           descriptionEn={widget.descriptionEn}
           descriptionKo={widget.descriptionKo}
+          guide={guide}
           feedbackContentId={slug}
           usageGuide={getPlayUsageGuide(slug)}
           share={{ title: widget.title, url: shareUrl }}

@@ -116,7 +116,7 @@ Convert this common Korean price into spoken Hangul: **250,000원**
 
 ### Reactions & Next Steps
 
-If the 4-Digit Slash Method clicked for you, let us know by selecting a reaction below.
+Try it on the next price tag you see with more than six digits. The slash goes in before the arithmetic does — that order is the whole trick.
 
 * **Visual Stories:** For artwork and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Go deeper:** Ready for a full **억**-scale walkthrough? Read [How to read 910,213,090 in Korean](/learn/korean-numbers-910-million).

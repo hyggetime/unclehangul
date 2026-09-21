@@ -101,7 +101,7 @@ Recognizing this organizational pattern makes reading addresses, interpreting da
 
 ### Reactions & Next Steps
 
-If you found this explanation helpful, let us know by selecting a reaction below.
+Check the big-to-small order against addresses, dates, names, and numbers in turn. It holds for all four, and that consistency is the actual lesson here.
 
 * **Visual Stories:** For illustrations and stories of our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Continue Reading:** If Korean culture prioritizes group context over the individual, how does that shape daily speech? Read [Why Solo Dwellers in Korea Still Say 'Our House'](/learn/why-solo-dwellers-korea-still-say-our-house).

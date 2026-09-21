@@ -135,7 +135,7 @@ A Birth dream is not about rigid superstition or scientific accuracy. At its hea
 
 ### Enjoyed This Story?
 
-If you found this look into Korean Birth dream culture interesting, let us know by clicking the reaction buttons below!
+Ask an older relative whether anyone dreamed before you were born. In Korean families the answer is rarely no, and the retelling is usually better than the dream itself.
 
 * **Visual Stories:** Want to see more artwork inspired by life in Korea? Check out illustrator Sofie Fribo’s work on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Continue the Story:** [Ten Months in the Womb: Why Korean Taegyo Was Never About IQ](/learn/ten-months-in-womb-korean-taegyo-never-about-iq) — the 200-year-old philosophy of **태교** prenatal care, **태담** talk, and why it was never about forcing early intelligence.

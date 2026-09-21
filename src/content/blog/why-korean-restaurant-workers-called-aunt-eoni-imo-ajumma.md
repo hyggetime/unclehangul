@@ -111,7 +111,7 @@ Use this reference table to select the right female title in daily life:
 
 ### Reactions & Next Steps
 
-If this guide clarified how female titles work in Korea, let us know by selecting a reaction below.
+When you cannot tell which title fits, **저기요** is always available and never rude. Use it until the room gives you a better signal.
 
 * **Visual Stories:** For artwork, illustrations, and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Up Next:** Ever wondered why Koreans ask for your age within five minutes of meeting you? In our next article, we will explore the **"Social Age Calculator"** that powers Korean honorifics and speech levels.

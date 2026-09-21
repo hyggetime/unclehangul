@@ -125,7 +125,7 @@ Integrate these three focused steps into your routine:
 
 ### Reactions & Next Steps
 
-If this drill helped you train **ㄱ·ㄹ·ㅁ** transitions, let us know by selecting a reaction below.
+Record yourself once now and once after a week of this drill. That gap is the only progress report worth trusting on **ㄱ·ㄹ·ㅁ** transitions.
 
 * **Visual Stories:** For artwork and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **More pronunciation:** Try the [Name → Hangul converter](/) on the homepage to build syllable-block muscle memory between drill sessions.

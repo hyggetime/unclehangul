@@ -1,35 +1,63 @@
 ---
 title: Terms of Service
-description: Terms of Service for Uncle Hangul (Unclehangul, 한글아저씨)—use license, intellectual property, and liability.
+description: Terms of Service for Uncle Hangul (Unclehangul, 한글아저씨)—classroom use permission, intellectual property, tool accuracy disclaimers, and liability.
 heading: Terms of Service for Uncle Hangul (한글아저씨)
-lastUpdated: "Last Updated: July 25, 2026"
+lastUpdated: "Last Updated: September 21, 2026"
 sectionLabel: Legal
 ---
 
-Welcome to Uncle Hangul (한글아저씨). By accessing this website [{{SITE_URL}}]({{SITE_URL}}), you agree to be bound by these Terms of Service. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
+By using [{{SITE_URL}}]({{SITE_URL}}) you agree to the terms below. They are written to be read, not to be skipped.
 
-## 1. Intellectual Property Rights
+## 1. What you may do without asking
 
-All content published on Uncle Hangul—including but not limited to English essays, Korean text scripts, visual graphics, diagrams, and media—is the intellectual property of Uncle Hangul (한글아저씨) and is protected by applicable copyright and trademark law. You may not copy, reproduce, or redistribute any content for commercial purposes without explicit written permission.
+**Teachers and learners may use the articles and Hangul Play widgets in a classroom or study group.** Show them on a screen, work through them with students, assign them as reading. No permission request is necessary; a link back to the source page is enough. This applies to paid tutoring as well as to schools.
 
-## 2. Use License
+You may also quote a reasonable excerpt in your own writing with attribution and a link, and link to any page here freely.
 
-You are granted permission to temporarily view the materials on Uncle Hangul for personal, non-commercial, and educational language acquisition purposes only. This is the grant of a license, not a transfer of title.
+## 2. What requires permission
 
-## 3. Disclaimer
+Republishing a full article elsewhere, translating one into another language for publication, bundling this material into a paid course or product, or reproducing the original graphics and diagrams outside an instructional setting all require written permission first. Write to the address below — the answer is usually yes, and it is usually quick.
 
-The materials on Uncle Hangul are provided on an 'as is' basis. Uncle Hangul makes no warranties, expressed or implied, and hereby disclaims all other warranties including, without limitation, implied warranties of merchantability or fitness for a particular purpose.
+Training machine learning models on this site's content is not permitted without a separate agreement.
 
-## 4. Limitations of Liability
+## 3. Intellectual property
 
-In no event shall Uncle Hangul or its creators be liable for any damages arising out of the use or inability to use the materials on this website.
+All content published here — English essays, Korean text, visual graphics, diagrams, widget design, and media — belongs to Uncle Hangul (한글아저씨) and is protected by applicable copyright and trademark law, except where third-party material is identified as such.
 
-## 5. Governing Law
+## 4. Accuracy of language content
 
-Any claim relating to Uncle Hangul shall be governed by the laws of South Korea without regard to its conflict of law provisions.
+This site explains how Korean is actually used, which means it frequently describes regional variation, generational difference, and usage that is common but not textbook-standard. Where that is the case, the article says so.
 
-## 6. Contact Us
+Nothing here should be treated as an authoritative ruling on standard Korean for examination or official purposes. If an article contains an error, please report it — corrections are made and credited.
 
-If you have any questions regarding these Terms, please contact us at:
+## 5. Accuracy of the tools
+
+The interactive tools are planning and learning aids, not authoritative systems.
+
+Hangul transliteration of names and places follows common transcription conventions and may differ from official romanization. Do not rely on it for passports, visas, tickets, or any legal document.
+
+The shipping and address tools produce estimates and formatting suggestions. Customs rules, surcharges, carrier policies, and destination-country restrictions are not fully modeled. Always confirm against the carrier's or post office's official quote before shipping.
+
+Speech playback uses your device's built-in voice synthesis. Quality varies by device and it is not a reference standard for pronunciation.
+
+## 6. Advertising
+
+Pages on this site display third-party advertising. Advertisements are not endorsements, and Uncle Hangul does not control and is not responsible for the content of advertisements or the sites they link to.
+
+## 7. Availability
+
+This site is provided on an "as is" and "as available" basis. Articles may be revised or withdrawn, widgets may change or be retired, and no guarantee of uninterrupted availability is offered. No warranties, express or implied, are made, including implied warranties of merchantability or fitness for a particular purpose.
+
+## 8. Limitation of liability
+
+To the maximum extent permitted by law, Uncle Hangul and its creator shall not be liable for any damages arising from use of, or inability to use, this website, its content, or its tools — including shipping costs, rejected documents, or losses resulting from reliance on tool output.
+
+## 9. Governing law
+
+Any claim relating to this site is governed by the laws of the Republic of Korea, without regard to conflict of law provisions.
+
+## 10. Contact
+
+Questions about these terms, or permission requests under section 2:
 
 - Email: [{{CONTACT_EMAIL}}](mailto:{{CONTACT_EMAIL}})

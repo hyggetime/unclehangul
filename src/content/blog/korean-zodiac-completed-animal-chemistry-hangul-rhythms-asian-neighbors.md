@@ -61,7 +61,7 @@ keywords: [Korean zodiac compatibility, 띠 궁합, 십이지신, Hangul rhythm,
 
 **In Korea, the zodiac system is not a rigid set of rules or strict fate.** It is simply a warm, approachable way to start a conversation, share a laugh over dinner, and build a quick connection with someone new.
 
-**Which animal pair do you belong to**, and have you tried saying the 5-4-3 rhythm out loud yet? Let us know in the feedback section at the bottom of this page.
+**Which animal pair do you belong to** — and have you said the 5-4-3 rhythm out loud yet? It does not land until you hear your own voice do it.
 
 ---
 

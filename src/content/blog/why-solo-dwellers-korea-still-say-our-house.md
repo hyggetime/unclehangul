@@ -106,7 +106,7 @@ It is a relational boundary—and the moment someone says *"Woori-jip,"* they ha
 
 ### Reactions & Next Steps
 
-If this breakdown helped you understand the logic behind *Woori*, let us know by selecting a reaction below!
+Count how often **우리** surfaces the next time you listen to a Korean conversation. Once you have counted it, it becomes difficult to unhear.
 
 * **Visual Stories:** For artwork, illustrations, and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
 * **Up Next:** Ever wondered why Koreans ask for your age within five minutes of meeting you? In our next article, we will explore the **"Social Age Calculator"** that powers Korean honorifics and speech levels.
