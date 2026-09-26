@@ -44,7 +44,7 @@ export function ToolsSiteShell({ children }: ToolsSiteShellProps) {
           </nav>
         </header>
 
-        <main className="mx-auto w-full max-w-[1440px]">{children}</main>
+        <main className="site-shell-scroll mx-auto w-full max-w-[1440px]">{children}</main>
 
         <ToolLegalFooter />
       </div>

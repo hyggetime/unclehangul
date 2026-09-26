@@ -4,15 +4,19 @@ type ToolPageChromeProps = {
   category: string;
   backHref?: string;
   backLabel?: string;
+  className?: string;
 };
 
 export function ToolPageChrome({
   category,
   backHref = "/tools",
   backLabel = "← Tools",
+  className = "",
 }: ToolPageChromeProps) {
   return (
-    <div className="flex h-10 shrink-0 items-center justify-between gap-4 border-b-[0.5px] border-[#D9D9D3] px-5 md:px-8">
+    <div
+      className={`flex h-10 shrink-0 items-center justify-between gap-4 border-b-[0.5px] border-[#D9D9D3] px-5 md:px-8 ${className}`.trim()}
+    >
       <p className="font-en text-[10px] font-bold uppercase tracking-widest text-foreground/45">
         Tools / {category}
       </p>

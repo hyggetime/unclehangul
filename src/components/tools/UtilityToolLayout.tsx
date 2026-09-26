@@ -70,13 +70,14 @@ export function UtilityToolLayout({
   return (
     <div className="min-w-0 w-full">
       {banner ?? null}
-      <div className="sticky top-0 z-40 border-b-[0.5px] border-[#D9D9D3] bg-background">
+      <div className="border-b-[0.5px] border-[#D9D9D3] bg-background md:sticky md:top-0 md:z-40">
         <ToolPageChrome
           category={category}
           backHref={backHref}
           backLabel={backLabel}
+          className="max-md:hidden"
         />
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 py-4 md:flex-row md:items-start md:justify-between md:px-8 md:py-5">
+        <div className="mx-auto flex max-w-[1440px] items-start justify-between gap-3 px-5 py-3 md:gap-4 md:px-8 md:py-5">
           <ToolPageHeader
             embedded
             primaryLang={primaryLang}
@@ -84,6 +85,7 @@ export function UtilityToolLayout({
             subtitleEn={subtitleEn}
             descriptionKo={descriptionKo}
             descriptionEn={descriptionEn}
+            className="min-w-0"
           />
           <ToolActionBar
             usageGuide={usageGuide}
@@ -93,11 +95,13 @@ export function UtilityToolLayout({
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1440px] p-4 md:p-8">
+      <div className="mx-auto w-full max-w-[1440px] px-4 py-3 md:p-8">
         <div className="grid grid-cols-1 items-start gap-0 md:grid-cols-12 md:gap-6">
           <div className="min-w-0 md:col-span-8">
-            <ToolPageAdSlot variant="action" className="px-0" />
-            <div className="pt-4 md:pt-6">{primary}</div>
+            <div className="hidden md:block">
+              <ToolPageAdSlot variant="action" className="px-0" />
+            </div>
+            <div className="md:pt-6">{primary}</div>
             <ToolPageAdSlot variant="result" className="px-0 pt-6 md:pt-8" />
             {feedback ? (
               <ContentFeedback

@@ -34,7 +34,7 @@ export function ToolPageHeader({
       className={`min-w-0 flex-1 ${embedded ? "" : "border-b-[0.5px] border-[#D9D9D3] pb-6 md:pb-8"} ${className}`.trim()}
     >
       <h1
-        className={`${titleClass} text-2xl font-black leading-tight tracking-tight text-foreground md:text-4xl`}
+        className={`${titleClass} text-lg font-black leading-snug tracking-tight text-foreground md:text-4xl md:leading-tight`}
       >
         {title}
       </h1>
@@ -48,7 +48,7 @@ export function ToolPageHeader({
       {englishFirst ? (
         <>
           {descriptionEn ? (
-            <p className="font-en mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65 md:mt-4 md:text-base">
+            <p className="font-en mt-3 hidden max-w-2xl text-sm leading-relaxed text-foreground/65 md:block md:mt-4 md:text-base">
               {descriptionEn}
             </p>
           ) : null}
@@ -61,7 +61,7 @@ export function ToolPageHeader({
       ) : (
         <>
           {descriptionKo ? (
-            <p className="font-ko mt-3 max-w-2xl text-sm leading-relaxed text-foreground/65 md:mt-4 md:text-base">
+            <p className="font-ko mt-3 hidden max-w-2xl text-sm leading-relaxed text-foreground/65 md:block md:mt-4 md:text-base">
               {descriptionKo}
             </p>
           ) : null}

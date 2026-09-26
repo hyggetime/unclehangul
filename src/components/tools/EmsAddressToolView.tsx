@@ -36,25 +36,41 @@ export function EmsAddressToolView({
       }
       descriptionEn="Split overseas addresses into Korea Post EMS, DHL, and FedEx form fields and print a box-ready shipping label—GB, FR, NL, BE, SE, DE, US, JP, CA, AU."
       banner={
-        <a
-          href={getKoreanAddressConverterUrl()}
-          className="flex items-center justify-between gap-3 border-b-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-5 py-3 text-sm transition-colors hover:bg-[#EBEBE5] md:px-8"
-        >
-          <span className="font-ko min-w-0 text-foreground/75">
-            해외에서 한국으로 보낼 때는{" "}
-            <span className="font-en font-bold text-foreground underline decoration-[#D9D9D3] underline-offset-4">
-              Korean Address Converter
-            </span>
-            {" "}
-            (inbound)
-          </span>
-          <span
-            className="font-en shrink-0 text-[11px] font-bold uppercase tracking-[0.12em] text-[#FF4B3E]"
-            aria-hidden
+        <>
+          <a
+            href={getKoreanAddressConverterUrl()}
+            className="font-ko flex items-center justify-between gap-2 border-b-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-5 py-2 text-xs text-foreground/75 transition-colors hover:bg-[#EBEBE5] md:hidden"
           >
-            →
-          </span>
-        </a>
+            <span className="min-w-0 truncate">
+              해외→한국:{" "}
+              <span className="font-en font-bold text-foreground">
+                Korean Address Converter
+              </span>
+            </span>
+            <span className="font-en shrink-0 text-[#FF4B3E]" aria-hidden>
+              →
+            </span>
+          </a>
+          <a
+            href={getKoreanAddressConverterUrl()}
+            className="hidden items-center justify-between gap-3 border-b-[0.5px] border-[#D9D9D3] bg-[#EBEBE5]/50 px-5 py-3 text-sm transition-colors hover:bg-[#EBEBE5] md:flex md:px-8"
+          >
+            <span className="font-ko min-w-0 text-foreground/75">
+              해외에서 한국으로 보낼 때는{" "}
+              <span className="font-en font-bold text-foreground underline decoration-[#D9D9D3] underline-offset-4">
+                Korean Address Converter
+              </span>
+              {" "}
+              (inbound)
+            </span>
+            <span
+              className="font-en shrink-0 text-[11px] font-bold uppercase tracking-[0.12em] text-[#FF4B3E]"
+              aria-hidden
+            >
+              →
+            </span>
+          </a>
+        </>
       }
       crossLinks={[
         {

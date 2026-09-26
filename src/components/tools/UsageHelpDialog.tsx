@@ -18,6 +18,7 @@ export function UsageHelpDialog({
   defaultLocale = "ko",
   triggerLabel = { en: "How to use", ko: "사용법" },
 }: UsageHelpDialogProps) {
+  const helpLabel = defaultLocale === "en" ? triggerLabel.en : triggerLabel.ko;
   const [open, setOpen] = useState(false);
   const [locale, setLocale] = useState<UsageGuideLocale>(defaultLocale);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -39,10 +40,18 @@ export function UsageHelpDialog({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="font-en touch-target inline-flex min-h-12 items-center justify-center gap-2 border-[0.5px] border-[#D9D9D3] bg-background px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E]"
+        aria-label={helpLabel}
+        className="font-en touch-target inline-flex h-11 w-11 shrink-0 items-center justify-center border-[0.5px] border-[#D9D9D3] bg-background text-base font-bold text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E] md:hidden"
       >
         <span aria-hidden>?</span>
-        {defaultLocale === "en" ? triggerLabel.en : triggerLabel.ko}
+      </button>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="font-en touch-target hidden min-h-12 items-center justify-center gap-2 border-[0.5px] border-[#D9D9D3] bg-background px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-foreground transition-colors hover:border-[#FF4B3E] hover:text-[#FF4B3E] md:inline-flex"
+      >
+        <span aria-hidden>?</span>
+        {helpLabel}
         <span className="font-en text-[9px] font-bold uppercase tracking-widest text-foreground/35">
           / {defaultLocale === "en" ? triggerLabel.ko : triggerLabel.en}
         </span>
