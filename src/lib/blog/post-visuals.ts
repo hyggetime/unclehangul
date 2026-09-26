@@ -36,11 +36,21 @@ type TileEntry = string | HangulTileSpec;
  *   - `sm`: `px-[1.8px] text-[14.5px]` → `md:px-[2.1px] md:text-[17.5px]`
  *   - `md`: `px-[2.1px] text-[17.5px]` → `md:px-[2.4px] md:text-[20px]`
  *
- * ### 4 characters → `layout: "grid2x2"`
- * One syllable per cell (2×2 grid). Never single-line — four glyphs overflow the stamp.
+ * ### 4 characters → `layout: "grid2x2"` (required)
+ * One syllable per cell (2×2 grid). **Never** use `layout: "single"` or `insetXScale` for
+ * four-syllable labels — single-line four glyphs overflow the stamp.
  * - Grid pad `sm`: 2px, gap 30% of pad; cell type 18px → 20px at md
  * - Grid pad `md`: 2.5px → 3px at md; cell type 20px → 24px at md
- * - Examples: `숫자읽기`, `소리글자`
+ * - Examples: `숫자읽기`, `소리글자`, `내돈내산`, `용띠쥐띠`
+ *
+ * ### Registration checklist (count Hangul **syllables**, not string bytes)
+ * 1. `[..."키워드"].length` — each `\uAC00–\uD7A3` syllable counts as 1.
+ * 2. **2 syllables** → plain string entry (e.g. `"추석"`) or `{ text, layout: "single" }`.
+ * 3. **3 syllables** → `layout: "single"`; add `insetXScale: 0.5` only if still cramped.
+ * 4. **4 syllables** → `{ text, layout: "grid2x2" }` — one glyph per cell, top-left → bottom-right.
+ * 5. **5+ syllables** → pick a shorter 2–4 syllable keyword instead; do not squeeze into one stamp.
+ *
+ * `normalizeTileEntry()` auto-upgrades any 4-syllable label to `grid2x2` even if mis-registered.
  *
  * ### Choosing label text
  * Pick the article's most memorable Korean keyword (2–4 syllables). Avoid title fallback
@@ -85,16 +95,23 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
   "uncle-hangul-k-dictionary-vol-3-5-words-deep-korean-emotions": "흥",
   "uncle-hangul-k-dictionary-vol-4-5-modern-slang-korean-young-people": {
     text: "내돈내산",
-    layout: "single",
-    insetXScale: 0.5,
+    layout: "grid2x2",
   },
 };
 
+function hangulSyllableCount(text: string): number {
+  return [...text].length;
+}
+
 function normalizeTileEntry(entry: TileEntry): HangulTileSpec {
-  if (typeof entry === "string") {
-    return { text: entry, layout: "single" };
+  const spec: HangulTileSpec =
+    typeof entry === "string" ? { text: entry, layout: "single" } : { ...entry };
+
+  if (hangulSyllableCount(spec.text) === 4) {
+    return { text: spec.text, layout: "grid2x2" };
   }
-  return entry;
+
+  return spec;
 }
 
 export function getPostHangulTileSpec(
