@@ -97,6 +97,10 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
     text: "내돈내산",
     layout: "grid2x2",
   },
+  "why-hangul-written-square-blocks-15th-century-digital-screen": {
+    text: "모아쓰기",
+    layout: "grid2x2",
+  },
 };
 
 function hangulSyllableCount(text: string): number {
