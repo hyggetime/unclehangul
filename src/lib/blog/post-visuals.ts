@@ -101,6 +101,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
     text: "모아쓰기",
     layout: "grid2x2",
   },
+  "uncle-in-korean-call-men-public-ahjussi-ajae-samchon": "아재",
 };
 
 function hangulSyllableCount(text: string): number {

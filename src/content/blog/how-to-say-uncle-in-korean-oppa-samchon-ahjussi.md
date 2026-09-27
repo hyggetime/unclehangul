@@ -127,4 +127,5 @@ Use this reference table to select the correct male title in daily life:
 Next time someone picks a title for you, notice which one they chose. That single word carries their read of the relationship, delivered before either of you says anything else.
 
 * **Visual Stories:** For artwork, illustrations, and daily glimpses into our multicultural family life in Seoul, follow Sofie Fribo on Instagram: [@sofiefribo_illustration](https://www.instagram.com/sofiefribo_illustration/).
-* **Continue the Series:** Ever wondered why Koreans call restaurant servers **"Imo" (이모 - Maternal Aunt)** instead of **"Gomo" (고모 - Paternal Aunt)**? Read [Why Korean Restaurant Workers Are Called 'Aunt': Eoni, Imo, and Ajumma Explained](/learn/why-korean-restaurant-workers-called-aunt-eoni-imo-ajumma).
+* **Continue the Series:** ["Uncle" in Korean: How to Call Men in Public (Ahjussi, Ajae, Samchon)](/learn/uncle-in-korean-call-men-public-ahjussi-ajae-samchon) — taxi, dad-joke, and street-food dialogues with **아저씨**, **아재**, and **삼촌**.
+* **Related:** Ever wondered why Koreans call restaurant servers **"Imo" (이모 - Maternal Aunt)** instead of **"Gomo" (고모 - Paternal Aunt)**? Read [Why Korean Restaurant Workers Are Called 'Aunt': Eoni, Imo, and Ajumma Explained](/learn/why-korean-restaurant-workers-called-aunt-eoni-imo-ajumma).
