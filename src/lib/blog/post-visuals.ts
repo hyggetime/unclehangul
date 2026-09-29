@@ -106,6 +106,10 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
     text: "잠시만요",
     layout: "grid2x2",
   },
+  "korean-numbers-giving-headache-native-sino-simple-guide": {
+    text: "일이삼사",
+    layout: "grid2x2",
+  },
 };
 
 function hangulSyllableCount(text: string): number {
