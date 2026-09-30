@@ -110,6 +110,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
     text: "일이삼사",
     layout: "grid2x2",
   },
+  "an-vs-mot-korean-i-dont-vs-i-cant": "안/못",
 };
 
 function hangulSyllableCount(text: string): number {
