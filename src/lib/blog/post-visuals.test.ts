@@ -19,4 +19,10 @@ describe("getPostHangulTileSpec", () => {
       ),
     ).toEqual({ text: "눈치", layout: "single" });
   });
+
+  it("uses compact inset for three-character 안/못 tile", () => {
+    expect(
+      getPostHangulTileSpec("an-vs-mot-korean-i-dont-vs-i-cant", "title"),
+    ).toEqual({ text: "안/못", layout: "single", insetXScale: 0.5 });
+  });
 });
