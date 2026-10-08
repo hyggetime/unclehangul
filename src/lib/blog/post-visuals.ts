@@ -115,6 +115,7 @@ export const POST_HANGUL_TILES: Record<string, TileEntry> = {
     layout: "single",
     insetXScale: 0.5,
   },
+  "hangul-day-100-years-gagya-day-korea-national-holiday": "한글날",
 };
 
 function hangulSyllableCount(text: string): number {
