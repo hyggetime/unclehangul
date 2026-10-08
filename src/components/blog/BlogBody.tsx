@@ -191,7 +191,11 @@ function BlogBlockRenderer({
               id={block.id}
               className="font-en mb-3 mt-10 scroll-mt-20 text-base font-bold leading-snug text-foreground first:mt-0 md:mt-12 md:scroll-mt-24 md:text-lg"
             >
-              {block.content}
+              {richText ? (
+                <InlineMarkdown text={block.content} {...mdProps} />
+              ) : (
+                block.content
+              )}
             </h2>
           );
         }
@@ -200,7 +204,11 @@ function BlogBlockRenderer({
             id={block.id}
             className="font-en blog-heading-2 mb-4 mt-10 scroll-mt-20 border-t-[0.5px] border-[#D9D9D3] pt-8 text-xl font-bold leading-tight tracking-[-0.02em] text-foreground first:mt-0 first:border-t-0 first:pt-0 md:scroll-mt-24 md:text-2xl md:tracking-tight"
           >
-            {block.content}
+            {richText ? (
+              <InlineMarkdown text={block.content} {...mdProps} />
+            ) : (
+              block.content
+            )}
           </h2>
         );
       }
@@ -209,7 +217,11 @@ function BlogBlockRenderer({
           id={block.id}
           className="font-en blog-heading-3 mb-3 mt-8 scroll-mt-20 border-t-[0.5px] border-[#D9D9D3] pt-6 text-base font-bold leading-snug tracking-[-0.01em] text-foreground md:scroll-mt-24 md:text-lg md:leading-tight"
         >
-          {block.content}
+          {richText ? (
+            <InlineMarkdown text={block.content} {...mdProps} />
+          ) : (
+            block.content
+          )}
         </h3>
       );
 

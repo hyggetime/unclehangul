@@ -18,9 +18,9 @@ describe("findNextBoldPair", () => {
     expect(pair?.inner).toBe("존댓말");
   });
 
-  it("returns the Hangul span inside nested markers", () => {
+  it("returns the leftmost fragment inside nested markers", () => {
     const pair = findNextBoldPair("**Years (**년**)**");
-    expect(pair?.inner).toBe("년");
+    expect(pair?.inner).toBe("Years (");
   });
 
   it("returns a full lead sentence when it has no nested markers", () => {

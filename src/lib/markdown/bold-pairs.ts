@@ -1,5 +1,3 @@
-import { hasHangul } from "@/utils/hangul-speak-text";
-
 export type BoldPair = {
   start: number;
   end: number;
@@ -28,18 +26,12 @@ export function findNonNestedBoldPairs(text: string): BoldPair[] {
   return pairs;
 }
 
-/**
- * Leftmost non-nested bold span. When several spans contain Hangul (nested markers),
- * prefer Hangul-bearing spans so `**Years (**년**)**` resolves to `년` first.
- */
+/** Leftmost non-nested bold span. */
 export function findNextBoldPair(text: string): BoldPair | null {
   const pairs = findNonNestedBoldPairs(text).filter((pair) => pair.inner.length > 0);
   if (!pairs.length) return null;
 
-  const hangulPairs = pairs.filter((pair) => hasHangul(pair.inner));
-  const candidates = hangulPairs.length > 0 ? hangulPairs : pairs;
-
-  return candidates.reduce((best, pair) =>
+  return pairs.reduce((best, pair) =>
     pair.start < best.start ? pair : best,
   );
 }

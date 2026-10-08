@@ -74,7 +74,7 @@ function renderBoldNode(
   listenBoldHangul: boolean,
   key: number,
 ): ReactNode {
-  if (listenBoldHangul && content.includes("**")) {
+  if (content.includes("**")) {
     return (
       <strong key={key} className={strongClassName}>
         {renderRichText(content, listenBoldHangul, key + 1)}
