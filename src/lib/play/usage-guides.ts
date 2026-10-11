@@ -109,31 +109,31 @@ export const JAMO_BUILDER_USAGE: ToolUsageGuide = {
         body: "가운데 큰 글자와 Listen으로 조합 결과를 확인합니다.",
       },
     ],
-    tip: "모바일에서는 버튼이 여러 줄로 줄바꿈됩니다. 한 줄씩 스크롤하며 눌러 보세요.",
+    tip: "큰 글자 아래 Start · Vowel · End 칸을 누르면 선택창이 열립니다. 기본 자모만 제공됩니다.",
   },
   en: {
     title: "How to use Jamo Builder",
     intro:
-      "Pick initial, medial, and final jamo to build one Hangul syllable. Use Listen to hear it.",
+      "Tap the three boxes under the big syllable—starting consonant, vowel, ending consonant—to build one block. Use Listen to hear it.",
     steps: [
       {
-        title: "1. Initial (cho)",
-        body: "Choose the first consonant—e.g. ㄱ, ㄴ, ㅎ.",
+        title: "1. Starting consonant (초성)",
+        body: "Tap Start, then pick a consonant—e.g. ㄱ, ㄴ, ㅎ.",
       },
       {
-        title: "2. Medial (jung)",
-        body: "Choose the vowel—e.g. ㅏ, ㅓ, ㅣ.",
+        title: "2. Vowel (중성)",
+        body: "Tap Vowel, then pick a vowel—e.g. ㅏ, ㅓ, ㅣ.",
       },
       {
-        title: "3. Final (jong)",
-        body: "Pick a final consonant, or ∅ for no batchim.",
+        title: "3. Ending consonant (종성)",
+        body: "Tap End, then pick a consonant or ∅ for no batchim.",
       },
       {
         title: "4. Listen",
-        body: "Read the large syllable in the center and tap Listen.",
+        body: "Read the large syllable at the top and tap Listen.",
       },
     ],
-    tip: "On mobile, jamo buttons wrap to multiple rows—scroll and tap one row at a time.",
+    tip: "Only basic jamo are listed. Tap a box to open the picker—no long button wall on the page.",
   },
 };
 

@@ -96,10 +96,10 @@ const JAMO_BUILDER_GUIDE: PlayWidgetGuide = {
     "한글 음절은 글자를 옆으로 늘어놓은 것이 아니라, 최대 세 부분을 한 칸에 조립한 것입니다. 이 칸을 직접 수십 번 쌓아 보면 설명만 읽어서는 잘 잡히지 않던 구조가 손에 붙습니다.",
   sections: [
     {
-      headingEn: "Three slots: initial, medial, final",
-      headingKo: "세 자리: 초성, 중성, 종성",
+      headingEn: "Three slots: consonant, vowel, consonant",
+      headingKo: "세 자리: 자음 · 모음 · (받침) 자음",
       bodyEn:
-        "Every block starts with a consonant (초성), takes a vowel (중성), and may close with another consonant (종성, also called batchim). The vowel is never optional — that is why ㅇ exists as a silent placeholder in words like 아, filling the initial slot so the vowel has something to sit beside. Choose ∅ in the final row when the syllable ends open.",
+        "Every block starts with a consonant (초성), always includes a vowel in the middle (중성), and may end with another consonant (종성, batchim). English letters do not use this three-part frame — it is specific to how Hangul maps one spoken syllable. The vowel is never optional — that is why ㅇ exists as a silent placeholder in words like 아. Choose ∅ in the ending slot when the syllable ends open.",
       bodyKo:
         "모든 블록은 초성 자음으로 시작해 중성 모음을 받고, 종성 자음으로 닫힐 수도 있습니다. 종성은 받침이라고 부릅니다. 중성은 생략할 수 없습니다. 아처럼 모음으로 시작하는 글자에 소리 없는 ㅇ이 들어가는 이유가 그것입니다. 초성 자리를 채워야 모음이 놓일 자리가 생깁니다. 받침 없이 열린 음절은 종성 줄에서 ∅을 고르세요.",
     },
@@ -139,7 +139,7 @@ const JAMO_BUILDER_GUIDE: PlayWidgetGuide = {
     {
       question: "모바일에서 버튼이 너무 많습니다.",
       answer:
-        "자모 버튼이 여러 줄로 줄바꿈됩니다. 초성, 중성, 종성 한 줄씩 가로로 훑으며 눌러 보세요. 가로 모드로 돌리면 한 번에 보이는 버튼이 늘어납니다.",
+        "큰 음절 아래 Start · Vowel · End 칸만 보입니다. 칸을 누르면 그때 해당 자음 또는 모음 목록이 아래에서 열립니다. 기본 자모만 포함되어 있습니다.",
     },
   ],
   related: [
