@@ -26,6 +26,10 @@ export function getPublicImageDimensions(src: string): {
       const jpeg = readJpegDimensions(buf);
       if (jpeg) return jpeg;
     }
+
+    const text = buf.toString("utf8", 0, Math.min(buf.length, 4096));
+    const svg = readSvgDimensions(text);
+    if (svg) return svg;
   } catch {
     /* missing file or unreadable — use fallback */
   }
@@ -52,5 +56,24 @@ function readJpegDimensions(buf: Buffer): { width: number; height: number } | nu
     offset += 2 + segmentLength;
   }
 
+  return null;
+}
+
+function readSvgDimensions(svg: string): { width: number; height: number } | null {
+  const viewBox = svg.match(/viewBox=["']([\d.+\s-]+)["']/i);
+  if (viewBox) {
+    const parts = viewBox[1].trim().split(/\s+/).map(Number);
+    if (parts.length === 4 && parts[2] > 0 && parts[3] > 0) {
+      return { width: Math.round(parts[2]), height: Math.round(parts[3]) };
+    }
+  }
+  const width = svg.match(/\bwidth=["']([\d.]+)/i);
+  const height = svg.match(/\bheight=["']([\d.]+)/i);
+  if (width && height) {
+    return {
+      width: Math.round(Number.parseFloat(width[1])),
+      height: Math.round(Number.parseFloat(height[1])),
+    };
+  }
   return null;
 }

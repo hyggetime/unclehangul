@@ -265,6 +265,7 @@ function BlogBlockRenderer({
         scale < 1
           ? { maxWidth: `${scale * 100}%`, marginInline: "auto" as const }
           : undefined;
+      const isSvg = block.src.toLowerCase().endsWith(".svg");
 
       return (
         <figure className="my-8 w-full max-w-full" style={figureStyle}>
@@ -274,6 +275,7 @@ function BlogBlockRenderer({
               alt={block.alt}
               width={block.width}
               height={block.height}
+              unoptimized={isSvg}
               className="block h-auto w-full max-w-full rounded-none object-contain max-h-[min(70vh,720px)] md:max-h-none"
               sizes="(max-width: 768px) 100vw, min(768px, 100vw)"
             />
