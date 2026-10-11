@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="English letters in a row versus Korean syllable blocks">
   <rect width="1200" height="520" fill="#F2F2F0"/>
-  <text x="80" y="64" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#111111" letter-spacing="0.08em">ENGLISH · LINEAR ROW</text>
+  <text x="80" y="64" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#111111" letter-spacing="0.08em">ENGLISH - LINEAR ROW</text>
   <text x="80" y="92" font-family="system-ui, sans-serif" font-size="15" fill="#6B6960">Each letter sits side by side; syllable edges are not boxed.</text>
   <g font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#111111">
     <rect x="80" y="120" width="48" height="56" fill="#EBEBE5" stroke="#D9D9D3" stroke-width="1"/>
@@ -20,15 +21,15 @@
     <rect x="472" y="120" width="48" height="56" fill="#EBEBE5" stroke="#D9D9D3" stroke-width="1"/>
     <text x="496" y="158" text-anchor="middle">e</text>
   </g>
-  <text x="80" y="248" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#111111" letter-spacing="0.08em">KOREAN · MOA-SSUGI (¨Dð0)</text>
+  <text x="80" y="248" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#111111" letter-spacing="0.08em">KOREAN - MOA-SSUGI</text>
   <text x="80" y="276" font-family="system-ui, sans-serif" font-size="15" fill="#6B6960">One spoken beat per square block.</text>
-  <g font-family="Pretendard, Malgun Gothic, sans-serif" font-size="36" font-weight="800" fill="#111111">
+  <g font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="36" font-weight="800" fill="#111111">
     <rect x="80" y="304" width="88" height="88" fill="#EBEBE5" stroke="#D9D9D3" stroke-width="1"/>
-    <text x="124" y="362" text-anchor="middle">¸</text>
+    <text x="124" y="362" text-anchor="middle">&#50616;</text>
     <rect x="184" y="304" width="88" height="88" fill="#EBEBE5" stroke="#D9D9D3" stroke-width="1"/>
-    <text x="228" y="362" text-anchor="middle">´</text>
+    <text x="228" y="362" text-anchor="middle">&#50612;</text>
     <rect x="320" y="304" width="88" height="88" fill="#EBEBE5" stroke="#D9D9D3" stroke-width="1"/>
-    <text x="364" y="362" text-anchor="middle">|</text>
+    <text x="364" y="362" text-anchor="middle">&#47484;</text>
   </g>
   <line x1="124" y1="420" x2="124" y2="448" stroke="#FF4B3E" stroke-width="1"/>
   <text x="124" y="468" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#FF4B3E">rest 1</text>

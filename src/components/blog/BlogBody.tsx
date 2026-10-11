@@ -266,19 +266,32 @@ function BlogBlockRenderer({
           ? { maxWidth: `${scale * 100}%`, marginInline: "auto" as const }
           : undefined;
       const isSvg = block.src.toLowerCase().endsWith(".svg");
+      const imgClassName =
+        "block h-auto w-full max-w-full rounded-none object-contain max-h-[min(70vh,720px)] md:max-h-none";
 
       return (
         <figure className="my-8 w-full max-w-full" style={figureStyle}>
           <MediaFrame>
-            <Image
-              src={block.src}
-              alt={block.alt}
-              width={block.width}
-              height={block.height}
-              unoptimized={isSvg}
-              className="block h-auto w-full max-w-full rounded-none object-contain max-h-[min(70vh,720px)] md:max-h-none"
-              sizes="(max-width: 768px) 100vw, min(768px, 100vw)"
-            />
+            {isSvg ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={block.src}
+                alt={block.alt}
+                width={block.width}
+                height={block.height}
+                className={imgClassName}
+                decoding="async"
+              />
+            ) : (
+              <Image
+                src={block.src}
+                alt={block.alt}
+                width={block.width}
+                height={block.height}
+                className={imgClassName}
+                sizes="(max-width: 768px) 100vw, min(768px, 100vw)"
+              />
+            )}
           </MediaFrame>
           {(block.captionNote ?? block.alt ?? block.credit) ? (
             <figcaption className="mt-3">
