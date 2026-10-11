@@ -9,39 +9,86 @@ tags: ["Hangul Design", "모아쓰기", "Korean Script", "Learn Korean", "Hangul
 keywords: [Hangul square blocks, 모아쓰기, Hunminjeongeum, syllable block, Korean typography, digital screen]
 ---
 
-When you look at the Latin alphabet, letters line up side-by-side in a horizontal row. Hangul takes a completely different approach by grouping consonants and vowels together inside compact square blocks, a method known as **모아쓰기** (*moa-ssugi*). Why did Korea's 15th-century scholars bundle letters into these neat square shapes instead of writing them out linearly?
+My wife Sofie is Danish. The first time she really looked at Hangul on a shop sign—not “Korean looks cool,” but a slow read of the shapes—she said, “It’s all sticks and circles inside squares.” She meant it as a plain compliment: the letters look geometric, almost tidy enough to stack. I laughed because she had accidentally described **모아쓰기** (*moa-ssugi*, “assemble-and-write”), the habit of packing each spoken syllable into one square block instead of lining letters up in a long row like English.
+
+That comment stuck with me. Latin scripts stretch sideways: **l-a-n-g-u-a-g-e** gives you eight boxes in a row, but no box tells you where one syllable ends. Korean does the opposite. **언** and **어** and **를** each get their own cell. You read in beats. Once you notice that, street signs, subtitles, and textbook pages all start to feel like the same grid.
+
+![Colorful plastic Hangul letter pieces arranged to spell 한글 — 모아쓰기 syllable blocks as physical toys](/images/posts/hangul_toys.jpg)
 
 ---
 
-## Historical Logic and Cultural Context
+## It started as one mouthful, one box
 
-**To understand why Hangul uses square blocks, we have to look back at its foundational explanation.** According to the **훈민정음 해례본** (1446), the alphabet was created to directly mirror spoken syllables. Every spoken syllable in Korean consists of an initial consonant, a medial vowel, and sometimes a final consonant, so the script assembles these sound parts together into a single syllable unit.
+**King Sejong the Great** (*Sejong Daewang*, **세종대왕**) finished the alphabet around **1443** and announced it in **1446** as **훈민정음** (*Hunminjeongeum*, “The Correct Sounds for the Instruction of the People”). The **훈민정음 해례본** (*Hunminjeongeum Haeryebon*, the annotated explanation edition) treats the Korean syllable as the basic unit: an initial consonant, a vowel in the middle, sometimes a final consonant underneath. Write those parts into one frame and you get one block per mouthful of sound.
 
-**At the same time, Hangul was created in a 15th-century East Asian environment dominated by traditional Chinese characters (banggwaeja).** Calligraphy, paper layouts, and woodblock or metal printing were all designed around uniform square dimensions shared with **방궤자**. Modern typographical analysis shows that arranging Hangul into square syllable shapes allowed it to fit smoothly into the printing infrastructure and visual reading habits of that era.
+Court records from his reign describe farmers who could not read posted laws and were punished without understanding the text. The preface to **훈민정음** pushes back with a learning-speed claim that teachers still quote: a clever person might learn it before the morning ends; a slower person might need ten days. Whether or not you believe the timetable, the design matches the pitch—repeatable syllable boxes instead of thousands of Hanja shapes.
 
----
+Korea in the 1400s was not a blank page. Official documents, Buddhist texts, and elite poetry still ran on **한자** (*Hanja*, Chinese characters). Books and woodblocks were built around **방궤자** (*banggwaeja*, “square-frame characters”—each Hanja sitting in a uniform cell). Hangul did not need to invent the idea of a square line of type; it needed a script that could live inside the same printing and reading habits. A syllable block slides into the grid that readers already expected.
 
-## Visual Efficiency and Reading Speed
+![Joseon-style em square compared with one Hangul syllable block](/images/posts/square-blocks-em-box-hanja.svg){scale=0.85}
 
-**Packing letters into square blocks offers a clear practical advantage for readers:** distinct syllable boundaries. Rather than parsing a long, flat line of individual letters, a reader can immediately spot where one syllable stops and the next begins.
-
-**This layout works seamlessly with how the human brain processes text.** In cognitive science, this recognition pattern is known as "chunking." Instead of processing consonants and vowels one letter at a time, your eyes recognize the entire square syllable block in a single glance, which speeds up reading comprehension significantly.
+If you want the holiday side of that story—how **한글날** (*Hangul-nal*) turned a hundred years old in 2026—read [100 Years Ago, It Wasn't Called Hangul Day](/learn/hangul-day-100-years-gagya-day-korea-national-holiday). If you care how foreign scholars copied Korean sounds in old textbooks, see [Why Foreign Linguists Still Study Ancient Korean Books](/learn/why-foreign-linguists-study-ancient-korean-books).
 
 ---
 
-## An Unintended Fit for Digital Screens
+## What actually sits inside the square
 
-**King Sejong and his scholars certainly did not foresee computer pixels or mobile displays 600 years ago.**
+English can park three consonants in a row (**str** in “string”) and deal with the mess later. Standard Korean typography does not leave consonants floating without a vowel slot. Inside one block you get three named zones:
 
-**Yet, this square block structure turned out to be remarkably practical for modern screens.** Because each syllable block forms a uniform, compact shape, Korean text maintains high information density without stretching out horizontally. On small phone screens and narrow digital columns, this keeps text clear, organized, and easy to scan.
+* **초성** (*choseong*, initial consonant)
+* **중성** (*jungseong*, medial vowel)
+* **종성** (*jongseong*, final consonant—optional)
+
+The outer square stays roughly the same size whether the syllable is simple (**한**) or packed (**값**, **없**). That is a different problem from “why **Latte** becomes **라떼** on a menu,” which is about English sounds forced into Korean frames. For loanword mechanics, read [The Graphic Blueprint of Sound](/learn/graphic-blueprint-hangul-loanwords). This article is about the frame itself.
+
+![Initial, medial, and final slots, with the syllables han, gap, and eop](/images/posts/square-blocks-syllable-slots.svg){scale=0.85}
+
+Try swapping the parts below—same frame, different fillings. The Play tool is only here so your fingers match what your eyes already see on the page.
+
+@widget jamo-builder
+
+Full-screen version: [/play/jamo-builder](/play/jamo-builder).
 
 ---
 
-**Hangul's square block structure began as a linguistic solution** to match spoken sounds and fit 15th-century printing tools. Through a remarkable coincidence of history and design, that same 600-year-old structure makes Korean one of the most efficient scripts on a modern digital screen today.
+## Why your eyes prefer blocks
+
+Open any English paragraph and your gaze moves letter by letter until your brain groups them into words. Korean text gives you the group upfront: each block is one syllable. Reading researchers call that **chunking**—recognizing a familiar bundle instead of assembling it from scratch.
+
+You can test it on yourself. Time five seconds on an English sentence, then five seconds on a Korean sentence of similar length. Count how many complete syllables you cleared in Korean versus how many full words you cleared in English. Most learners report that the Korean line feels “chunkier,” even when they do not know every word.
+
+![English linear letters versus Korean syllable blocks on one line](/images/posts/square-blocks-linear-vs-moa.svg){scale=0.85}
+
+That is why flashcards that respect syllable boundaries often feel less cruel than cards that split Hangul at random. You are copying what the script already decided in the 15th century.
+
+---
+
+## Squares on paper, then on glass
+
+Joseon printers and copyists cared about rows of equal cells—vertical columns, fixed line height, predictable spacing. Hangul syllables respect that rhythm. When metal type and later digital fonts render Korean, each syllable is usually shipped as one precomposed glyph in Unicode’s Hangul Syllables range (for example **한** is one code point, not three separate jamo in the file you read).
+
+That matters on phones. A narrow column breaks English words wherever the line runs out of room, sometimes splitting **interna-** from **-tional**. Korean lines more often break between blocks, not inside them.
+
+![Narrow column line breaks in English versus Korean](/images/posts/square-blocks-narrow-column-wrap.svg){scale=0.85}
+
+**세종대왕** did not design an iPhone keyboard. If you want the live version—keys that scoot jamo around while you type—read [Why Typing Korean Feels Like Playing Tetris](/learn/why-typing-korean-feels-like-tetris-hangul-keyboards). That piece is about input. This one is about the finished line on the screen.
+
+---
+
+## So was it planned for iPhones?
+
+No. But three practical overlaps show up anyway:
+
+* **Syllable edges are visible**, so beginners spot word parts faster.
+* **Line breaks respect blocks**, which keeps narrow layouts readable.
+* **Each syllable occupies similar width**, so lines look even in subtitles and captions.
+
+Hangul began as a fix for people who could not read Hanja-heavy notices. It had to match speech and fit Joseon books. Six centuries later, the same squares happen to behave well in a pocket-sized rectangle. Sofie’s “sticks and circles in squares” was a joke; it is also a fair description of a script built one mouthful at a time.
 
 ---
 
 ### Reactions & Next Steps
 
-* **Continue Reading:** [Why Typing Korean Feels Like Playing Tetris: The Genius UX Behind Hangul Keyboards](/learn/why-typing-korean-feels-like-tetris-hangul-keyboards) — how **모아쓰기** squares become live tiles on a smartphone keyboard.
-* **Related:** [Why Foreign Linguists Still Study Ancient Korean Books](/learn/why-foreign-linguists-study-ancient-korean-books) — how Joseon scholars documented sound with Hangul centuries ago.
+* **Continue Reading:** [Why Typing Korean Feels Like Playing Tetris: The Genius UX Behind Hangul Keyboards](/learn/why-typing-korean-feels-like-tetris-hangul-keyboards) — when **모아쓰기** moves on a phone keyboard.
+* **Related:** [The Graphic Blueprint of Sound: Why English Words Look and Sound Different in Korean](/learn/graphic-blueprint-hangul-loanwords) — loanwords inside the same blocks.
+* **Related:** [100 Years Ago, It Wasn't Called Hangul Day](/learn/hangul-day-100-years-gagya-day-korea-national-holiday) — the modern name **한글** (*Hangul*) and the scholars who defended the script.

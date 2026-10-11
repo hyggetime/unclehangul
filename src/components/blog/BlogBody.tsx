@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { KoreanZodiacWidget } from "@/components/learn/KoreanZodiacWidget";
+import { JamoBuilderWidget } from "@/components/play/JamoBuilderWidget";
+import { BlogImageCredit } from "@/components/blog/BlogImageCredit";
 import { MediaFrame } from "@/components/MediaFrame";
 import { InlineMarkdown } from "@/components/legal/InlineMarkdown";
 import { YoutubeEmbed } from "@/components/media/YoutubeEmbed";
@@ -248,6 +250,13 @@ function BlogBlockRenderer({
       if (block.id === "korean-zodiac") {
         return <KoreanZodiacWidget />;
       }
+      if (block.id === "jamo-builder") {
+        return (
+          <div className="my-10 border-[0.5px] border-[#D9D9D3] bg-background p-4 md:p-6">
+            <JamoBuilderWidget />
+          </div>
+        );
+      }
       return null;
 
     case "image": {
@@ -269,13 +278,28 @@ function BlogBlockRenderer({
               sizes="(max-width: 768px) 100vw, min(768px, 100vw)"
             />
           </MediaFrame>
-          {block.alt ? (
-            <figcaption className="font-ko mt-3 text-xs italic leading-relaxed text-foreground/50">
-              {richText ? (
-                <InlineMarkdown text={block.alt} {...mdProps} />
-              ) : (
-                block.alt
-              )}
+          {(block.captionNote ?? block.alt ?? block.credit) ? (
+            <figcaption className="mt-3">
+              {block.captionNote ? (
+                <p className="font-ko text-xs italic leading-relaxed text-foreground/50">
+                  {richText ? (
+                    <InlineMarkdown text={block.captionNote} {...mdProps} />
+                  ) : (
+                    block.captionNote
+                  )}
+                </p>
+              ) : block.alt ? (
+                <p className="font-ko text-xs italic leading-relaxed text-foreground/50">
+                  {richText ? (
+                    <InlineMarkdown text={block.alt} {...mdProps} />
+                  ) : (
+                    block.alt
+                  )}
+                </p>
+              ) : null}
+              {block.credit ? (
+                <BlogImageCredit credit={block.credit} />
+              ) : null}
             </figcaption>
           ) : null}
         </figure>

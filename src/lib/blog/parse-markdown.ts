@@ -3,6 +3,7 @@ import {
   assignHeadingSlugs,
   type BlogBlockDraft,
 } from "@/lib/blog/assign-heading-slugs";
+import { getImageCredit } from "@/lib/blog/image-credits";
 import { getPublicImageDimensions } from "@/lib/blog/image-dimensions";
 
 const YOUTUBE_LINE =
@@ -204,11 +205,12 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
     if (imageMatch) {
       flushParagraph();
       flushListBuffer();
-      let caption = imageMatch[1].trim();
+      const alt = imageMatch[1].trim();
       const nextLine = lines[index + 1]?.trim() ?? "";
       const captionMatch = nextLine.match(/^\*(.+)\*$/);
+      let captionNote: string | undefined;
       if (captionMatch) {
-        caption = captionMatch[1].trim();
+        captionNote = captionMatch[1].trim();
         index += 1;
       }
       const displayScale = imageMatch[3]
@@ -216,12 +218,15 @@ export function markdownToBlocks(markdown: string): BlogBlock[] {
         : undefined;
       const src = imageMatch[2];
       const { width, height } = getPublicImageDimensions(src);
+      const credit = getImageCredit(src);
       blocks.push({
         type: "image",
         src,
-        alt: caption,
+        alt,
         width,
         height,
+        ...(captionNote ? { captionNote } : {}),
+        ...(credit ? { credit } : {}),
         ...(displayScale && displayScale > 0 && displayScale < 1
           ? { displayScale }
           : {}),

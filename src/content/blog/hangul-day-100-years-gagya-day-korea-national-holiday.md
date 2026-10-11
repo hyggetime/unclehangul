@@ -15,6 +15,8 @@ Most national holidays around the world mark military victories, historic battle
 
 Even more remarkable is the milestone we reach today: 2026 marks exactly 100 years since Korean scholars first established this holiday back in 1926. But if you could step back in time one century ago, you would find that people were celebrating under a completely different name.
 
+![한글날 (Hangul Day) — traditional brush calligraphy for Korea's Hangul Day holiday](/images/posts/hangulnal_text.jpg){scale=0.6}
+
 ---
 
 ## The 1926 Origin Story: When It Was Called "Gagya Day" (가갸날)

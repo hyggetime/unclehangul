@@ -62,7 +62,6 @@ For example, if you were born in the year of the Dragon (**용**):
 **Artists across centuries** documented these guardian animals in royal screens and folk art to protect homes and mark time.
 
 ![Joseon Dynasty 12 Zodiac Animals Folding Screen (십이지신도)](/images/posts/zodiac-joseon-12-zodiac-screen.jpg)
-*Joseon Dynasty 12 Zodiac Animals Folding Screen (십이지신도). Source: National Museum of Korea (Public Domain / KOGL Type 1).*
 
 ---
 

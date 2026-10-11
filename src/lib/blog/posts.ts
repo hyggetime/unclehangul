@@ -3,6 +3,7 @@ import {
   getMarkdownSlugs,
   loadMarkdownPost,
 } from "@/lib/blog/load-markdown-post";
+import type { ImageCredit } from "@/lib/blog/image-credits";
 import { isPostPublic } from "@/lib/blog/publish";
 import { buildPageMetadata } from "@/lib/site-metadata";
 import { seoBrandPhrase, seoScriptPhrase } from "@/lib/seo/keywords";
@@ -30,6 +31,10 @@ export type BlogBlock =
       height: number;
       /** Display width as a fraction of content column (default 1). */
       displayScale?: number;
+      /** Optional scene note from markdown `*…*` line (not copyright). */
+      captionNote?: string;
+      /** Rights line from `IMAGE_CREDITS` registry. */
+      credit?: ImageCredit;
     }
   | { type: "widget"; id: string };
 

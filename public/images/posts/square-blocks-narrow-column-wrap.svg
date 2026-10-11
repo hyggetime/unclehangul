@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-label="Word break mid-word in English versus syllable breaks in Korean on a narrow column">
+  <rect width="1200" height="440" fill="#F2F2F0"/>
+  <text x="200" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#111111">320PX COLUMN · ENGLISH</text>
+  <rect x="80" y="64" width="240" height="140" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1"/>
+  <text x="96" y="100" font-family="system-ui, sans-serif" font-size="18" fill="#111111">interna-</text>
+  <text x="96" y="128" font-family="system-ui, sans-serif" font-size="18" fill="#111111">tional</text>
+  <text x="96" y="168" font-family="system-ui, sans-serif" font-size="12" fill="#FF4B3E">breaks inside a word</text>
+  <text x="600" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#111111">320PX COLUMN · KOREAN</text>
+  <rect x="480" y="64" width="240" height="140" fill="#FFFFFF" stroke="#D9D9D3" stroke-width="1"/>
+  <text x="496" y="100" font-family="Pretendard, sans-serif" font-size="18" font-weight="600" fill="#111111">m</text>
+  <text x="496" y="128" font-family="Pretendard, sans-serif" font-size="18" font-weight="600" fill="#111111">0¡</text>
+  <text x="496" y="168" font-family="system-ui, sans-serif" font-size="12" fill="#6B6960">breaks between syllable blocks</text>
+  <text x="600" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B6960">Rendered text on phones  not live keyboard assembly</text>
+</svg>

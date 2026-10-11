@@ -28,7 +28,6 @@ In Western culture, dreams are generally treated as random psychological noise�
 In Korea, however, a dream during pregnancy is rarely dismissed as mere noise.
 
 ![Three giant blue-eyed elephants over a tiny fence](/images/posts/tae-mong-elephants.jpg)
-*"Three giant blue-eyed elephants over a tiny fence" — Illustrated by Sofie Fribo*
 
 When my wife recounted her dream, the details were so crisp they felt painterly. The three elephants were immense—towering like two-story suburban houses. Yet, despite their intimidating size, they didn't break the flimsy knee-high fence. They simply leaned over it, blinking their giant blue eyes with curious affection.
 
