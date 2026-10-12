@@ -139,7 +139,14 @@ Western learners group digits in **threes** (base 10³: thousand, million).
 
 Korean groups digits in **fours** after the first chunk (base 10⁴: **만**, **억**).
 
-![Western vs Korean number grouping for 910,213,090](/images/og/learn/korean-numbers-chunking.svg)
+```
+[ 910,213,090 · Western 10³ triplets vs Korean 만/억 blocks ]
+
+   Western:     910  |  213  |  090        (comma every 3 digits)
+
+   Korean:      9    |  1021 |  3090       (억 · 만 · ones block)
+                억       만
+```
 *910,213,090 — Western 10³ triplets vs Korean **9**억 · **1021**만 · **3090** blocks*
 
 > **Visual chunking: 910,213,090** — Western triplets vs Korean **만/억** blocks.

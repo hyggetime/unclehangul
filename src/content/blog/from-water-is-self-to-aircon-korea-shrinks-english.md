@@ -57,7 +57,14 @@ To solve this, Korean speakers chop off the trailing end of foreign words withou
 
 This process is not laziness or accidental slang; it is intentional phonological compression.
 
-![Konglish syllable compression: 에어컨디셔너 to 에어컨 and 리모컨트롤러 to 리모컨](/images/posts/konglish-syllable-compression.svg)
+```
+[ Phonological compression · long English loanwords clipped to 2–3 Korean beats ]
+
+   Air Conditioner (6):  [에][어][컨][디][셔][너]  ──→  [에][어][컨]  (3)
+
+   Remote Controller:    [리][모][컨][트][롤][러]  ──→  [리][모][컨]  (3)
+                         tail syllables dropped · daily speech rhythm
+```
 *에어컨디셔너 (6 syllables) → 에어컨 (3 syllables); 리모컨트롤러 → 리모컨 — tail syllables clipped for Korean speech rhythm*
 
 ---

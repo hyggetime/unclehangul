@@ -15,7 +15,14 @@ Most national holidays around the world mark military victories, historic battle
 
 Even more remarkable is the milestone we reach today: 2026 marks exactly 100 years since Korean scholars first established this holiday back in 1926. But if you could step back in time one century ago, you would find that people were celebrating under a completely different name.
 
-![한글날 (Hangul Day) — traditional brush calligraphy for Korea's Hangul Day holiday](/images/posts/hangulnal_text.jpg){scale=0.6}
+```
+[ Hangul Day · 한글날 — title in brush-style lettering (concept) ]
+
+              한  글  날
+
+   Source: Korea Copyright Commission (Gongu) · work 「한글날」 · CC BY 4.0
+   https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13213550&menuNo=200018
+```
 
 ---
 
