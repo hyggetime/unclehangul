@@ -13,14 +13,7 @@ My wife Sofie is Danish. The first time she really looked at Hangul on a shop si
 
 That comment stuck with me. Latin scripts stretch sideways: **l-a-n-g-u-a-g-e** gives you eight boxes in a row, but no box tells you where one syllable ends. Korean does the opposite. **언** and **어** and **를** each get their own cell. You read in beats. Once you notice that, street signs, subtitles, and textbook pages all start to feel like the same grid.
 
-```
-[ 모아쓰기 · plastic letter tiles on a table (concept) ]
-
-   Separate jamo:  ㅎ  ㅏ  ㄴ     ㄱ  ㅡ  ㄹ
-   Assembled:     [ 한 ]        [ 글 ]     →  한글
-
-   Each syllable = one square block, not a long horizontal string.
-```
+![Colorful plastic Hangul letter pieces arranged to spell 한글 — 모아쓰기 syllable blocks as physical toys](/images/posts/hangul_toys.jpg)
 
 ---
 
@@ -32,17 +25,7 @@ Court records from his reign describe farmers who could not read posted laws and
 
 Korea in the 1400s was not a blank page. Official documents, Buddhist texts, and elite poetry still ran on **한자** (*Hanja*, Chinese characters). Books and woodblocks were built around **방궤자** (*banggwaeja*, “square-frame characters”—each Hanja sitting in a uniform cell). Hangul did not need to invent the idea of a square line of type; it needed a script that could live inside the same printing and reading habits. A syllable block slides into the grid that readers already expected.
 
-```
-[ Joseon page grid · one em square per character ]
-
-   Hanja habit:     ┌─────────┐
-                    │  (方)   │  ← one cell in the woodblock grid
-                    └─────────┘
-                         ↓
-   Hangul syllable: ┌────┐
-                    │ 한 │  ← same footprint, one mouthful of sound
-                    └────┘
-```
+![Joseon-style em square compared with one Hangul syllable block](/images/posts/square-blocks-em-box-hanja.svg){scale=0.85}
 
 If you want the holiday side of that story—how **한글날** (*Hangul-nal*) turned a hundred years old in 2026—read [100 Years Ago, It Wasn't Called Hangul Day](/learn/hangul-day-100-years-gagya-day-korea-national-holiday). If you care how foreign scholars copied Korean sounds in old textbooks, see [Why Foreign Linguists Still Study Ancient Korean Books](/learn/why-foreign-linguists-study-ancient-korean-books).
 
@@ -58,14 +41,7 @@ English can park three consonants in a row (**str** in “string”) and deal wi
 
 The outer square stays roughly the same size whether the syllable is simple (**한**) or packed (**값**, **없**). That is a different problem from “why **Latte** becomes **라떼** on a menu,” which is about English sounds forced into Korean frames. For loanword mechanics, read [The Graphic Blueprint of Sound](/learn/graphic-blueprint-hangul-loanwords). This article is about the frame itself.
 
-```
-[ One syllable frame · consonant + vowel + optional ending consonant ]
-
-   Slots:     cho (ㅎ)  +  jung (ㅏ)  +  jong (ㄴ)   →   한
-
-   Same outer box, different fill:
-             [ 한 ]    [ 값 ]    [ 없 ]
-```
+![Initial, medial, and final slots, with the syllables han, gap, and eop](/images/posts/square-blocks-syllable-slots.svg){scale=0.85}
 
 Try swapping the parts below—same frame, different fillings. The Play tool is only here so your fingers match what your eyes already see on the page.
 
@@ -81,15 +57,7 @@ Open any English paragraph and your gaze moves letter by letter until your brain
 
 You can test it on yourself. Time five seconds on an English sentence, then five seconds on a Korean sentence of similar length. Count how many complete syllables you cleared in Korean versus how many full words you cleared in English. Most learners report that the Korean line feels “chunkier,” even when they do not know every word.
 
-```
-[ Reading unit · English vs Korean on one line ]
-
-   English (linear):   l - a - n - g - u - a - g - e
-                       ↑ no boxed syllable edges
-
-   Korean (moa-ssugi): [언] [어] [를]
-                       ↑ one eye-rest per block
-```
+![English linear letters versus Korean syllable blocks on one line](/images/posts/square-blocks-linear-vs-moa.svg){scale=0.85}
 
 That is why flashcards that respect syllable boundaries often feel less cruel than cards that split Hangul at random. You are copying what the script already decided in the 15th century.
 
@@ -101,16 +69,7 @@ Joseon printers and copyists cared about rows of equal cells—vertical columns,
 
 That matters on phones. A narrow column breaks English words wherever the line runs out of room, sometimes splitting **interna-** from **-tional**. Korean lines more often break between blocks, not inside them.
 
-```
-[ Narrow phone column · where the line breaks ]
-
-   English (~320px):     Korean (~320px):
-   ┌──────────────┐      ┌──────────────┐
-   │ interna-     │      │ 국제         │
-   │ tional       │      │ 배송         │
-   └──────────────┘      └──────────────┘
-   break inside word     break between syllable blocks
-```
+![Narrow column line breaks in English versus Korean](/images/posts/square-blocks-narrow-column-wrap.svg){scale=0.85}
 
 **세종대왕** did not design an iPhone keyboard. If you want the live version—keys that scoot jamo around while you type—read [Why Typing Korean Feels Like Playing Tetris](/learn/why-typing-korean-feels-like-tetris-hangul-keyboards). That piece is about input. This one is about the finished line on the screen.
 
