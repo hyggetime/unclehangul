@@ -23,6 +23,7 @@ The optional italic line is for **scene notes** (e.g. tongue-twister contrast). 
 | With contributor | `original` + `by` | `Credit · Original · Sofie Fribo (Uncle Hangul).` |
 | 공유마당 (Gongu) | `gongu` | `Credit · 「work」 · author · [license](url) · [Gongu (공유마당)](sourceUrl).` |
 | KOGL (non-Gongu page) | `kogl` | `Credit · work · author · KOGL Type N · [Source](url).` |
+| Historical publication (copyright expired) | `historical` | `Credit · publication · date · [source label](sourceUrl).` |
 
 ### Gongu example (한글날)
 

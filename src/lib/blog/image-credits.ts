@@ -23,6 +23,15 @@ export type ImageCredit =
       author: string;
       koglType: 1 | 2 | 3 | 4;
       sourceUrl?: string;
+    }
+  | {
+      kind: "historical";
+      /** Publication name, e.g. "Dong-A Ilbo". */
+      publication: string;
+      /** Issue date as printed, e.g. "6 Nov 1926". */
+      published: string;
+      sourceUrl?: string;
+      sourceLabel?: string;
     };
 
 /** Relative paths under `public/` (same as markdown `src`). */
@@ -60,6 +69,13 @@ export const IMAGE_CREDITS: Record<string, ImageCredit> = {
     licenseUrl: "https://creativecommons.org/licenses/by/4.0/deed.ko",
     sourceUrl:
       "https://gongu.copyright.or.kr/gongu/wrt/wrt/view.do?wrtSn=13213550&menuNo=200018",
+  },
+  "/images/posts/gagya-day-banquet-dongailbo-1926.png": {
+    kind: "historical",
+    publication: "Dong-A Ilbo",
+    published: "6 Nov 1926",
+    sourceLabel: "Newspaper Archive",
+    sourceUrl: "https://www.nl.go.kr/newspaper/",
   },
   "/images/posts/water-is-self-sign.jpg": {
     kind: "original",
@@ -170,6 +186,27 @@ export function buildImageCreditSegments(
       }
       tail.push({ type: "text", value: "." });
       return tail;
+    }
+    case "historical": {
+      const segments: ImageCreditSegment[] = [
+        ...lead,
+        {
+          type: "text",
+          value: `${credit.publication} · ${credit.published}`,
+        },
+      ];
+      if (credit.sourceUrl) {
+        segments.push(
+          { type: "text", value: " · " },
+          {
+            type: "link",
+            label: credit.sourceLabel ?? "Source",
+            href: credit.sourceUrl,
+          },
+        );
+      }
+      segments.push({ type: "text", value: "." });
+      return segments;
     }
     default:
       return lead;

@@ -27,6 +27,11 @@ In the middle of this dark period, a brave group of linguists and scholars from 
 
 However, they did not call it "Hangul Day." Instead, they named it *Gagya Day* (*Gagya-nal* / **가갸날**).
 
+**The first celebration was a banquet.** More than 400 people from the press, publishing, religion, literature, and academia gathered at Sikdowon (**식도원**), a Korean restaurant in Jongno. The Joseon Language Society hosted the day with Sinminsa (**신민사**), publisher of the magazine *Sinmin* (**신민**). The Dong-A Ilbo and the Chosun Ilbo both reported it, and in the days that followed, Hangul lectures, classes, and celebrations opened in other places.
+
+![First Gagya Day banquet at Sikdowon, reported in the Dong-A Ilbo on 6 November 1926, with guests seated along a long table beside a vertical Korean headline](/images/posts/gagya-day-banquet-dongailbo-1926.png)
+*언론, 출판, 종교, 문예, 학계 등 각계 인사 400여 명이 참석한 가갸날잔치. 동아일보 1926.11.6.*
+
 Why *Gagya Day*? At the time, Korean children learned the alphabet by rhythmically chanting basic syllabic tables out loud: **"가, 갸, 거, 겨..."** The scholars chose **가갸날** because it was warm, friendly, and instantly recognizable to ordinary families across the nation.
 
 The term "Hangul" (*Hangul* / **한글**) itself was coined around 1910 by Ju Si-gyeong (*Ju Si-gyeong* / **주시경**), one of Korea's most visionary modern linguists. He combined *Han* (**한**)—an ancient word meaning "great," "grand," or "one"—with *Gul* (**글**), meaning "script" or "letter." Together, **한글** literally translates to "Great Script" or "Correct Script." As **주시경**'s term gained popularity across schools and newspapers, the Joseon Language Society officially changed the holiday's name from **가갸날** to **한글날** in 1928.
