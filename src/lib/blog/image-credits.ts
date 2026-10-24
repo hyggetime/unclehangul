@@ -52,6 +52,10 @@ export const IMAGE_CREDITS: Record<string, ImageCredit> = {
     kind: "original",
     by: "Uncle Hangul",
   },
+  "/images/posts/lego-bricks-of-sound.png": {
+    kind: "original",
+    by: "Uncle Hangul",
+  },
   "/images/posts/hangul_toys.jpg": {
     kind: "gongu",
     workTitle: "교육_사진_0107",

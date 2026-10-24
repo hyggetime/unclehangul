@@ -27,6 +27,9 @@ This live, dynamic real-time assembly feels remarkably like playing a game of fa
 
 Hangul is a true **Sound Script (소리문자)**—a visual writing system engineered not merely to represent abstract ideas, but to capture the physical, spatial architecture of spoken audio. When you interact with a Korean digital keyboard, you are not stringing together arbitrary symbols. You are assembling physical **Lego Bricks of Sound** inside a responsive two-dimensional grid.
 
+![Hangul jamo drawn as Lego bricks: ㅎ, ㅏ, and ㄴ locked into the syllable 한, and a figure stacking ㄱ, ㅡ, and ㄴ](/images/posts/lego-bricks-of-sound.png)
+*ㅎ, ㅏ, and ㄴ snap into the block 한. On the right, ㄱ, ㅡ, and ㄴ stack the same way a Lego brick clicks into place.*
+
 ---
 
 ## 1. Lego Bricks of Sound: Infinite Acoustic Combinations
