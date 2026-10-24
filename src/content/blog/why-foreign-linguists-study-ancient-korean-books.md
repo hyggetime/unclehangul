@@ -47,6 +47,9 @@ To train diplomats and official interpreters, the Sayeokwon published a series o
 > **Mongolian & Manchu: Mong-eo Nogeoldae (몽어노걸대) and Cheong-eo Nogeoldae (청어노걸대)**
 > Adaptations of the core conversational curriculum tailored specifically for northern continental relations.
 
+![Three Joseon Sayeokwon textbook covers: Nogeoldae, Bak Tongsa Eonhae, and Cheophae Sin-eo](/images/posts/sayeokwon-textbook-covers.png)
+*Left to right: 《노걸대 (老乞大)》, 《박통사언해 (朴通事諺解)》, 《첩해신어 (捷解新語)》.*
+
 The defining feature of these Sayeokwon texts was their dual-layer annotation system. The original foreign text was printed alongside Hangul characters mapped directly to the local spoken sounds of the era, capturing subtle tone shifts, regional accents, and colloquial phrasing that traditional character scripts could not register.
 
 ---

@@ -52,6 +52,13 @@ export const IMAGE_CREDITS: Record<string, ImageCredit> = {
     kind: "original",
     by: "Uncle Hangul",
   },
+  "/images/posts/sayeokwon-textbook-covers.png": {
+    kind: "historical",
+    publication: "Kyujanggak, Seoul National University",
+    published: "노걸대 · 박통사언해 · 첩해신어",
+    sourceLabel: "Kyujanggak",
+    sourceUrl: "https://kyudb.snu.ac.kr/",
+  },
   "/images/posts/lego-bricks-of-sound.png": {
     kind: "original",
     by: "Uncle Hangul",
